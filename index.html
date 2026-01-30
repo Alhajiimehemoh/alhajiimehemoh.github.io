@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Alhaji Ibrahim Mehemoh | IT Support & Data Systems</title>
   <meta name="description" content="Alhaji Ibrahim Mehemoh — IT Support & Data Systems Specialist in Bo, Sierra Leone. Technical support, networking, Excel reporting, web services, and basic security setup."/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css?v=6"/>
 </head>
 <body>
 
@@ -21,12 +21,11 @@
   </div>
 </div>
 
-<div class="hero" style="background:
-linear-gradient(rgba(11,31,58,.86),rgba(11,31,58,.86)),
-url('images/cover.jpg') center/cover;">
-  <div class="container">
+<!-- HERO -->
+<div class="hero overlay-strong" style="background:url('images/cover.jpg') center/cover;">
+  <div class="container reveal">
 
-    <div class="reveal" style="display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;">
+    <div class="hero-panel gradient-border" style="display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;">
       <div>
         <div style="display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);font-weight:900;font-size:13px;">
           IT • Data Systems • Networking • Web Support
@@ -34,7 +33,7 @@ url('images/cover.jpg') center/cover;">
 
         <h1 style="margin-top:12px;">IT Support & Data Systems Specialist</h1>
 
-        <p style="margin-top:10px;">
+        <p style="margin-top:10px;max-width:900px;">
           Helping organizations run better with technology — through reliable IT support, strong data systems,
           networking, and practical digital solutions.
         </p>
@@ -66,33 +65,31 @@ url('images/cover.jpg') center/cover;">
       </div>
     </div>
 
-    <!-- HERO NAV CARDS (glassy + gradient + tilt + stagger) -->
+    <!-- HERO NAV CARDS -->
     <div class="grid reveal stagger" style="margin-top:22px;">
-
-      <div class="card glass-strong gradient-border tilt">
+      <div class="card glass gradient-border tilt">
         <h3>Get Hired / IT Career</h3>
         <p>CV, skills, target roles, and proof of work for employers.</p>
         <a class="btn primary" href="hire.html">Explore</a>
       </div>
 
-      <div class="card glass-strong gradient-border tilt">
+      <div class="card glass gradient-border tilt">
         <h3>Consulting / Services</h3>
         <p>Service packages in Leones, support contracts, and quick turnaround.</p>
         <a class="btn primary" href="services.html">Explore</a>
       </div>
 
-      <div class="card glass-strong gradient-border tilt">
+      <div class="card glass gradient-border tilt">
         <h3>Portfolio / Personal Brand</h3>
         <p>Projects and case studies showing real results and impact.</p>
         <a class="btn primary" href="portfolio.html">Explore</a>
       </div>
 
-      <div class="card glass-strong gradient-border tilt">
+      <div class="card glass gradient-border tilt">
         <h3>Community / Organization</h3>
-        <p>Professional profile of community and organizational contributions.</p>
+        <p>Community and organizational contributions + blog posts.</p>
         <a class="btn primary" href="community.html">Explore</a>
       </div>
-
     </div>
 
   </div>
@@ -101,7 +98,7 @@ url('images/cover.jpg') center/cover;">
 <!-- Summary -->
 <div class="container section reveal stagger">
   <h2>Quick Summary</h2>
-  <p>
+  <p style="max-width:980px;">
     I provide technical support, networking, data systems, web services, and basic security setup for individuals,
     offices, schools, clinics, and NGOs. I focus on practical solutions that improve productivity, reporting accuracy,
     and accountability.
@@ -117,15 +114,15 @@ url('images/cover.jpg') center/cover;">
   </div>
 
   <div class="grid" style="margin-top:16px;">
-    <div class="card">
+    <div class="card tilt">
       <h3>Fast Support</h3>
       <p>Quick troubleshooting, installations, upgrades, and device setup for smooth work.</p>
     </div>
-    <div class="card">
+    <div class="card tilt">
       <h3>Reliable Systems</h3>
       <p>Simple data tools and reporting templates that improve accuracy and accountability.</p>
     </div>
-    <div class="card">
+    <div class="card tilt">
       <h3>Secure & Organized</h3>
       <p>Backups, basic security configuration, and clean documentation for your systems.</p>
     </div>
@@ -133,7 +130,7 @@ url('images/cover.jpg') center/cover;">
 </div>
 
 <!-- CTA -->
-<div class="container section reveal stagger" style="padding-top:0;">
+<div class="container section reveal" style="padding-top:0;">
   <div class="card" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
     <div>
       <h3 style="margin:0;">Need IT support or a data system setup?</h3>
@@ -148,9 +145,7 @@ url('images/cover.jpg') center/cover;">
 
 <a class="whatsapp" href="https://wa.me/23279301430" target="_blank">WhatsApp</a>
 
-<div class="footer">
-  © 2026 Alhaji Ibrahim Mehemoh
-</div>
+<div class="footer">© 2026 Alhaji Ibrahim Mehemoh</div>
 
 <script>
   // Reveal + Stagger
@@ -178,7 +173,7 @@ url('images/cover.jpg') center/cover;">
     }
   });
 
-  // Card tilt effect (subtle + professional)
+  // Tilt effect
   document.querySelectorAll('.tilt').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const r = card.getBoundingClientRect();
@@ -195,6 +190,13 @@ url('images/cover.jpg') center/cover;">
     });
   });
 </script>
+
+<!-- Small mobile fix for the hero grid -->
+<style>
+  @media (max-width: 860px){
+    .hero-panel{grid-template-columns:1fr !important;}
+  }
+</style>
 
 </body>
 </html>
