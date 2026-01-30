@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact | Alhaji Ibrahim Mehemoh</title>
   <meta name="description" content="Contact Alhaji Ibrahim Mehemoh — IT Support & Data Systems Specialist in Bo, Sierra Leone. Fast response on WhatsApp."/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css?v=5"/>
 </head>
 <body>
 
@@ -22,32 +22,41 @@
 </div>
 
 <!-- HERO -->
-<div class="hero" style="background:
-linear-gradient(rgba(11,31,58,.86),rgba(11,31,58,.86)),
-url('images/cover.jpg') center/cover;">
+<div class="hero overlay-strong" style="
+  background:
+    linear-gradient(rgba(11,31,58,.86),rgba(11,31,58,.86)),
+    url('images/cover.jpg') center/cover;">
   <div class="container reveal">
-    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;">
-      <div>
+    <!-- HERO PANEL (fixes readability) -->
+    <div class="hero-panel glass-strong gradient-border" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;">
+      <div style="max-width:860px;">
         <div style="display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);font-weight:900;font-size:13px;">
           Contact • WhatsApp • Email • Phone
         </div>
+
         <h1 style="margin-top:12px;">Contact</h1>
-        <p style="margin-top:10px;max-width:820px;">
+
+        <!-- This line will now show clearly -->
+        <p style="margin-top:10px;max-width:820px;color:rgba(255,255,255,.92);">
           Let’s talk — I respond fastest on WhatsApp. You can also email me or call directly.
         </p>
 
-        <a class="btn primary" href="https://wa.me/23279301430" target="_blank">WhatsApp Now</a>
-        <a class="btn outline" href="mailto:alhajiimehemoh@gmail.com">Email Me</a>
-        <a class="btn outline" href="tel:+23279301430">Call</a>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+          <a class="btn primary" href="https://wa.me/23279301430" target="_blank">WhatsApp Now</a>
+          <a class="btn outline" href="mailto:alhajiimehemoh@gmail.com">Email Me</a>
+          <a class="btn outline" href="tel:+23279301430">Call</a>
+        </div>
 
-        <p class="small" style="margin-top:12px;opacity:.92;">
+        <p class="small" style="margin-top:12px;opacity:.92;color:rgba(255,255,255,.88);">
           <b>Location:</b> Bo, Sierra Leone • <b>Availability:</b> Onsite & Remote
         </p>
       </div>
 
       <div style="text-align:right;">
-        <p class="small" style="margin:0;opacity:.9;">Quickest response:</p>
-        <p style="margin:4px 0 0;font-weight:950;font-size:18px;">WhatsApp: +232 79 301 430</p>
+        <p class="small" style="margin:0;opacity:.9;color:rgba(255,255,255,.85);">Quickest response:</p>
+        <p style="margin:4px 0 0;font-weight:950;font-size:18px;color:rgba(255,255,255,.95);">
+          WhatsApp: +232 79 301 430
+        </p>
       </div>
     </div>
   </div>
@@ -55,8 +64,8 @@ url('images/cover.jpg') center/cover;">
 
 <!-- CONTACT CARDS -->
 <div class="container section reveal stagger">
-
   <div class="grid">
+
     <div class="card glass-strong gradient-border tilt">
       <h3>Email</h3>
       <p><b>Primary:</b> <a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></p>
@@ -78,6 +87,7 @@ url('images/cover.jpg') center/cover;">
       <p>Bo, Sierra Leone</p>
       <p class="small" style="margin-top:10px;">Available for onsite support in Bo and nearby areas. Remote support available nationwide.</p>
     </div>
+
   </div>
 
   <div class="section-divider"></div>
@@ -112,11 +122,9 @@ url('images/cover.jpg') center/cover;">
       </div>
     </form>
   </div>
-
 </div>
 
 <a class="whatsapp" href="https://wa.me/23279301430" target="_blank">WhatsApp</a>
-
 <div class="footer">© 2026 Alhaji Ibrahim Mehemoh</div>
 
 <script>
