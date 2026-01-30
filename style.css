@@ -27,7 +27,20 @@ body{
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Page fade-in */
+  animation: pageIn .35s ease both;
 }
+@keyframes pageIn{
+  from{opacity:0; transform: translateY(6px)}
+  to{opacity:1; transform: translateY(0)}
+}
+.fade-out{
+  opacity:0 !important;
+  transform: translateY(6px) !important;
+  transition: opacity .22s ease, transform .22s ease;
+}
+
 a{color:inherit}
 .container{max-width:1120px;margin:auto;padding:28px 18px}
 
@@ -65,15 +78,57 @@ body:before{
   font-size: 14px;
   opacity:.95;
   transition: opacity .15s ease, transform .15s ease;
+  position:relative;
 }
-.nav a:hover{opacity:1; transform: translateY(-1px); text-decoration: underline}
+.nav a:hover{opacity:1; transform: translateY(-1px)}
+
+/* Modern underline hover */
+.nav a:after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-6px;
+  width:0;
+  height:2px;
+  background: rgba(63,169,245,.85);
+  border-radius:999px;
+  transition: width .18s ease;
+}
+.nav a:hover:after{width:100%}
 
 /* HERO */
 .hero{
   color: rgba(255,255,255,.98);
   padding: 84px 0 48px;
   position:relative;
+  overflow:hidden;
 }
+
+/* Floating glow blobs (subtle premium motion) */
+.hero:before,
+.hero:after{
+  content:"";
+  position:absolute;
+  width:520px; height:520px;
+  border-radius:50%;
+  filter: blur(60px);
+  opacity:.22;
+  pointer-events:none;
+}
+.hero:before{
+  background: rgba(63,169,245,.9);
+  left:-180px; top:-220px;
+  animation: floatBlob 10s ease-in-out infinite;
+}
+.hero:after{
+  background: rgba(255,255,255,.6);
+  right:-220px; bottom:-260px;
+  animation: floatBlob 12s ease-in-out infinite reverse;
+}
+@keyframes floatBlob{
+  0%,100%{transform: translate(0,0) scale(1)}
+  50%{transform: translate(30px,24px) scale(1.08)}
+}
+
 .hero h1{
   margin:0;
   font-size: 48px;
@@ -135,6 +190,13 @@ body:before{
 }
 .section:first-of-type{border-top:none}
 
+/* Nice divider helper */
+.section-divider{
+  height:1px;
+  background: linear-gradient(90deg, transparent, rgba(11,31,58,.12), transparent);
+  margin: 10px 0 0;
+}
+
 /* Grid */
 .grid{
   display:grid;
@@ -154,7 +216,6 @@ body:before{
   position:relative;
   overflow:hidden;
 }
-/* soft gradient edge */
 .card:before{
   content:"";
   position:absolute; inset:0;
@@ -180,6 +241,40 @@ body:before{
   border: 1px solid rgba(255,255,255,.25) !important;
   backdrop-filter: blur(16px);
 }
+
+/* Stronger glass */
+.glass-strong{
+  background: rgba(255,255,255,.10) !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.18);
+}
+
+/* Gradient border effect */
+.gradient-border{position:relative}
+.gradient-border:after{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, rgba(63,169,245,.65), rgba(255,255,255,.15), rgba(63,169,245,.25));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events:none;
+  opacity:.85;
+}
+
+/* Tilt-ready cards (JS will handle tilt) */
+.tilt{
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tilt:hover{
+  box-shadow: var(--shadow2), 0 0 30px rgba(63,169,245,.22);
+}
+
+/* HERO cards */
 .hero .card{
   background: rgba(255,255,255,.10);
   border: 1px solid rgba(255,255,255,.18);
@@ -198,6 +293,11 @@ body:before{
   font-size: 13px;
   font-weight: 800;
   color: rgba(11,31,58,.86);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.badge:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.08);
 }
 
 /* Type */
@@ -208,6 +308,22 @@ h2{
   color: var(--navy);
 }
 .small{opacity:.84;font-size:14px}
+
+/* Forms (contact page) */
+input, textarea{
+  width:100%;
+  padding:12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(231,233,238,.9);
+  background: rgba(255,255,255,.92);
+  outline: none;
+  transition: border-color .16s ease, box-shadow .16s ease;
+  font: inherit;
+}
+input:focus, textarea:focus{
+  border-color: rgba(63,169,245,.55);
+  box-shadow: 0 0 0 4px rgba(63,169,245,.18);
+}
 
 /* Footer */
 .footer{
@@ -247,14 +363,44 @@ h2{
   transform: translateY(0);
 }
 
+/* Stagger reveal (nice for grids) */
+.stagger > *{
+  opacity:0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.stagger.active > *{
+  opacity:1;
+  transform: translateY(0);
+}
+.stagger.active > *:nth-child(1){transition-delay:.05s}
+.stagger.active > *:nth-child(2){transition-delay:.12s}
+.stagger.active > *:nth-child(3){transition-delay:.19s}
+.stagger.active > *:nth-child(4){transition-delay:.26s}
+
+/* Counter style (optional) */
+.counter{
+  font-size: 28px;
+  font-weight: 950;
+  letter-spacing: -.4px;
+  color: var(--navy);
+}
+.counter-label{
+  font-size: 13px;
+  font-weight: 800;
+  opacity:.78;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .btn,.card,.whatsapp,.reveal{transition:none !important}
-  .reveal{opacity:1;transform:none}
+  body{animation:none}
+  .btn,.card,.whatsapp,.reveal,.stagger > *{transition:none !important}
+  .reveal,.stagger > *{opacity:1;transform:none}
+  .hero:before,.hero:after{animation:none}
 }
 
-/* Auto dark mode (optional, looks very modern) */
+/* Auto dark mode */
 @media (prefers-color-scheme: dark){
   :root{
     --white:#071326;
@@ -273,6 +419,11 @@ h2{
     background: rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.10);
     color: rgba(255,255,255,.86);
+  }
+  input, textarea{
+    background: rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    color: rgba(255,255,255,.92);
   }
   .section{border-top:1px solid rgba(255,255,255,.08)}
 }
