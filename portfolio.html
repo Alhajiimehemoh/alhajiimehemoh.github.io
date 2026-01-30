@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfolio | Alhaji Ibrahim Mehemoh</title>
   <meta name="description" content="Portfolio of Alhaji Ibrahim Mehemoh — projects in health data systems, IT support, networking, and inventory tracking."/>
-  <link rel="stylesheet" href="style.css?v=4"/>
+  <link rel="stylesheet" href="style.css?v=5"/>
 </head>
 <body>
 
@@ -31,13 +31,15 @@
 
       <h1 style="margin-top:12px;">Portfolio</h1>
       <p style="margin-top:10px;max-width:940px;">
-        Selected projects showing real-world impact in health data systems, IT support, networking, and inventory tracking.
-        Each project focuses on practical tools, accurate reporting, and reliable systems.
+        Selected projects showing impact in health data systems, IT support, networking, and inventory tracking.
+        I focus on practical tools, accurate reporting, and reliable systems.
       </p>
 
-      <a class="btn primary" href="contact.html">Work With Me</a>
-      <a class="btn outline" href="services.html">View Services</a>
-      <a class="btn outline" href="#projects">See Projects</a>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;">
+        <a class="btn primary" href="contact.html">Work With Me</a>
+        <a class="btn outline" href="services.html">View Services</a>
+        <a class="btn outline" href="#projects">See Projects</a>
+      </div>
 
       <p class="small" style="margin-top:12px;opacity:.92;">
         <b>Location:</b> Bo, Sierra Leone • <b>Support:</b> Onsite & Remote
@@ -46,19 +48,40 @@
   </div>
 </div>
 
+<!-- FILTER STRIP (simple visual — no JS needed) -->
+<div class="container section reveal" style="padding-bottom:0;">
+  <div class="card glass-strong gradient-border" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
+    <div>
+      <h3 style="margin:0;">Project Categories</h3>
+      <p class="small" style="margin:6px 0 0;">Health data • Networking • IT support • Inventory systems</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span class="badge">Health Sector</span>
+      <span class="badge">IT + Networking</span>
+      <span class="badge">Inventory</span>
+      <span class="badge">Reporting Tools</span>
+    </div>
+  </div>
+</div>
+
 <!-- PROJECTS -->
 <div id="projects" class="container section reveal stagger">
-  <h2>Featured Projects</h2>
+  <h2>Featured Case Studies</h2>
   <p class="small" style="max-width:980px;">
-    Below are highlighted case studies. If you want a detailed demo, screenshots, or templates, contact me and I’ll share them.
+    Below are highlighted projects. If you want screenshots, templates, or a walkthrough, message me and I’ll share what’s available.
   </p>
 
   <div class="grid" style="margin-top:16px;">
 
     <!-- Project 1 -->
     <div class="card tilt gradient-border">
-      <div class="badge">Health Sector</div>
-      <h3 style="margin-top:10px;">Health Facility Data Management System (RHCI)</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <span class="badge">Health Sector</span>
+        <span class="badge">Data Systems</span>
+        <span class="badge">Excel Reporting</span>
+      </div>
+
+      <h3 style="margin-top:12px;">Health Facility Data Management System (RHCI)</h3>
       <p style="margin-top:8px;">
         Designed and managed digital data systems for health facilities, including MMS tracking, CHW attendance,
         ultrasound reporting, and inventory records.
@@ -66,10 +89,19 @@
 
       <div class="section-divider"></div>
 
-      <p class="small" style="margin-top:10px;">
-        <b>Impact:</b> Improved accuracy and streamlined monthly submissions, making it easier to monitor performance and supplies.
-      </p>
-      <p class="small" style="margin-top:8px;">
+      <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px;">
+        <div>
+          <p class="small" style="margin:0;"><b>Problem:</b> Manual reporting and inconsistent tracking reduced accuracy and slowed submissions.</p>
+        </div>
+        <div>
+          <p class="small" style="margin:0;"><b>Solution:</b> Structured Excel tracking tools + standardized templates + monthly reporting workflow.</p>
+        </div>
+        <div>
+          <p class="small" style="margin:0;"><b>Impact:</b> Improved accuracy and streamlined monthly submissions; easier monitoring of performance and supplies.</p>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
         <b>Skills:</b> Data systems • Excel reporting • ICT support • Field coordination
       </p>
 
@@ -79,14 +111,19 @@
       </div>
 
       <p class="small" style="margin-top:10px;opacity:.78;">
-        Next: Add screenshots (dashboard/logbooks), tools used, and sample reporting templates.
+        Next upgrade: add screenshots (dashboard/logbooks) + sample template preview.
       </p>
     </div>
 
     <!-- Project 2 -->
     <div class="card tilt gradient-border">
-      <div class="badge">IT + Networking</div>
-      <h3 style="margin-top:10px;">Office Network & Computer Support Project</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <span class="badge">IT + Networking</span>
+        <span class="badge">Support</span>
+        <span class="badge">Office Setup</span>
+      </div>
+
+      <h3 style="margin-top:12px;">Office Network & Computer Support Project</h3>
       <p style="margin-top:8px;">
         Installed and maintained office computers and Wi-Fi networks. Provided ongoing support including software installation,
         troubleshooting, printer setup, and system optimization for staff.
@@ -94,10 +131,19 @@
 
       <div class="section-divider"></div>
 
-      <p class="small" style="margin-top:10px;">
-        <b>Outcome:</b> Improved uptime, reduced recurring issues, and enabled smoother day-to-day operations.
-      </p>
-      <p class="small" style="margin-top:8px;">
+      <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px;">
+        <div>
+          <p class="small" style="margin:0;"><b>Problem:</b> Frequent downtime, connectivity issues, and recurring device problems.</p>
+        </div>
+        <div>
+          <p class="small" style="margin:0;"><b>Solution:</b> Router configuration, LAN/Wi-Fi improvement, device setup checklist, and support routine.</p>
+        </div>
+        <div>
+          <p class="small" style="margin:0;"><b>Outcome:</b> Improved uptime, fewer repeated issues, and smoother day-to-day operations.</p>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
         <b>Skills:</b> Networking • Hardware maintenance • Technical support
       </p>
 
@@ -107,14 +153,19 @@
       </div>
 
       <p class="small" style="margin-top:10px;opacity:.78;">
-        Next: Add network diagram sample + checklist used during setup.
+        Next upgrade: add sample network diagram + setup checklist preview.
       </p>
     </div>
 
     <!-- Project 3 -->
     <div class="card tilt gradient-border">
-      <div class="badge">Inventory & Accountability</div>
-      <h3 style="margin-top:10px;">Vitamin Angels Supply Tracking & Log Book System</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <span class="badge">Inventory</span>
+        <span class="badge">Accountability</span>
+        <span class="badge">Logbooks</span>
+      </div>
+
+      <h3 style="margin-top:12px;">Vitamin Angels Supply Tracking & Log Book System</h3>
       <p style="margin-top:8px;">
         Created structured Excel + printed logbooks to monitor MMS, Vitamin A, and Albendazole distribution across facilities,
         improving accountability and stock visibility.
@@ -122,10 +173,19 @@
 
       <div class="section-divider"></div>
 
-      <p class="small" style="margin-top:10px;">
-        <b>Impact:</b> Clearer reporting, reduced confusion on stock, and better tracking of supplies received vs distributed.
-      </p>
-      <p class="small" style="margin-top:8px;">
+      <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px;">
+        <div>
+          <p class="small" style="margin:0;"><b>Problem:</b> Weak visibility into stock received vs distributed and inconsistent record keeping.</p>
+        </div>
+        <div>
+          <p class="small" style="margin:0;"><b>Solution:</b> Standardized logbooks + Excel template structure for monthly inventory reporting.</p>
+        </div>
+        <div>
+          <p class="small" style="margin:0;"><b>Impact:</b> Clearer reporting, better accountability, and improved tracking of supplies.</p>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
         <b>Skills:</b> Inventory systems • Process improvement • Excel design
       </p>
 
@@ -135,28 +195,28 @@
       </div>
 
       <p class="small" style="margin-top:10px;opacity:.78;">
-        Next: Add sample template screenshots + “how-to” usage steps.
+        Next upgrade: add screenshots + simple “how to use the template” steps.
       </p>
     </div>
 
   </div>
 </div>
 
-<!-- NEXT IMPROVEMENTS -->
+<!-- TRUST / CTA -->
 <div class="container section reveal">
-  <h2>Next Improvements</h2>
+  <h2>What I Can Build for You</h2>
   <div class="grid" style="margin-top:16px;">
     <div class="card tilt">
-      <h3>Add Screenshots</h3>
-      <p class="small">Add dashboard images, sample logbooks, and before/after examples to increase credibility.</p>
+      <h3>Tracking & Reporting Tools</h3>
+      <p class="small">Excel templates, dashboards, monthly reporting formats, and digital logbooks.</p>
     </div>
     <div class="card tilt">
-      <h3>Show Tools Used</h3>
-      <p class="small">List tools per project (Excel, Word templates, networking tools, reporting formats, etc.).</p>
+      <h3>Office & Network Setup</h3>
+      <p class="small">Wi-Fi/LAN setup, device configuration, printer/scanner setup, and documentation.</p>
     </div>
     <div class="card tilt">
-      <h3>Quantify Impact</h3>
-      <p class="small">Add measurable outcomes: time saved, error reduction, reporting speed, stock visibility improvement.</p>
+      <h3>Support & Maintenance</h3>
+      <p class="small">Ongoing support contracts, staff training, and basic security + backup setup.</p>
     </div>
   </div>
 
