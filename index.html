@@ -51,7 +51,6 @@ url('images/cover.jpg') center/cover;">
           Trusted for: Health data systems • Office IT support • Inventory tracking • Networking
         </p>
 
-        <!-- Quick stats (modern trust strip) -->
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
           <span class="badge" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.92);">Fast Response</span>
           <span class="badge" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.92);">Onsite & Remote</span>
@@ -67,36 +66,40 @@ url('images/cover.jpg') center/cover;">
       </div>
     </div>
 
-    <div class="grid reveal" style="margin-top:22px;">
-      <div class="card glass">
+    <!-- HERO NAV CARDS (glassy + gradient + tilt + stagger) -->
+    <div class="grid reveal stagger" style="margin-top:22px;">
+
+      <div class="card glass-strong gradient-border tilt">
         <h3>Get Hired / IT Career</h3>
         <p>CV, skills, target roles, and proof of work for employers.</p>
         <a class="btn primary" href="hire.html">Explore</a>
       </div>
 
-      <div class="card glass">
+      <div class="card glass-strong gradient-border tilt">
         <h3>Consulting / Services</h3>
         <p>Service packages in Leones, support contracts, and quick turnaround.</p>
         <a class="btn primary" href="services.html">Explore</a>
       </div>
 
-      <div class="card glass">
+      <div class="card glass-strong gradient-border tilt">
         <h3>Portfolio / Personal Brand</h3>
         <p>Projects and case studies showing real results and impact.</p>
         <a class="btn primary" href="portfolio.html">Explore</a>
       </div>
 
-      <div class="card glass">
+      <div class="card glass-strong gradient-border tilt">
         <h3>Community / Organization</h3>
         <p>Professional profile of community and organizational contributions.</p>
         <a class="btn primary" href="community.html">Explore</a>
       </div>
+
     </div>
 
   </div>
 </div>
 
-<div class="container section reveal">
+<!-- Summary -->
+<div class="container section reveal stagger">
   <h2>Quick Summary</h2>
   <p>
     I provide technical support, networking, data systems, web services, and basic security setup for individuals,
@@ -129,7 +132,8 @@ url('images/cover.jpg') center/cover;">
   </div>
 </div>
 
-<div class="container section reveal" style="padding-top:0;">
+<!-- CTA -->
+<div class="container section reveal stagger" style="padding-top:0;">
   <div class="card" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
     <div>
       <h3 style="margin:0;">Need IT support or a data system setup?</h3>
@@ -148,18 +152,48 @@ url('images/cover.jpg') center/cover;">
   © 2026 Alhaji Ibrahim Mehemoh
 </div>
 
-<!-- Scroll reveal script -->
 <script>
-  const reveals = document.querySelectorAll(".reveal");
-  const run = () => {
+  // Reveal + Stagger
+  const reveals = document.querySelectorAll(".reveal, .stagger");
+  const runReveal = () => {
     reveals.forEach(el => {
       const top = el.getBoundingClientRect().top;
       if (top < window.innerHeight - 110) el.classList.add("active");
     });
   };
-  window.addEventListener("scroll", run);
-  window.addEventListener("load", run);
-  run();
+  window.addEventListener("scroll", runReveal);
+  window.addEventListener("load", runReveal);
+  runReveal();
+
+  // Page fade-out transition on internal links
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    const isInternal = !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('#');
+    if (isInternal) {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => { window.location.href = href; }, 220);
+      });
+    }
+  });
+
+  // Card tilt effect (subtle + professional)
+  document.querySelectorAll('.tilt').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      const midX = r.width / 2;
+      const midY = r.height / 2;
+      const rotX = ((y - midY) / midY) * -6;
+      const rotY = ((x - midX) / midX) * 6;
+      card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-5px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 </script>
 
 </body>
