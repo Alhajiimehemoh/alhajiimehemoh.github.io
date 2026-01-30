@@ -114,7 +114,7 @@ body:before{
   filter: blur(60px);
   opacity:.22;
   pointer-events:none;
-  z-index:0; /* IMPORTANT: blobs stay behind text */
+  z-index:0;
 }
 .hero:before{
   background: rgba(63,169,245,.9);
@@ -134,7 +134,7 @@ body:before{
 /* Ensure hero content is always above overlays/blobs */
 .hero .container{
   position:relative;
-  z-index:2;
+  z-index:3;
 }
 
 .hero h1{
@@ -142,16 +142,17 @@ body:before{
   font-size: 48px;
   line-height: 1.07;
   letter-spacing: -0.8px;
-  text-shadow: 0 12px 28px rgba(0,0,0,.28);
+  text-shadow: 0 12px 28px rgba(0,0,0,.35);
 }
 .hero p{
   max-width: 860px;
   font-size: 18px;
   opacity: .95;
-  text-shadow: 0 10px 22px rgba(0,0,0,.22);
+  text-shadow: 0 10px 22px rgba(0,0,0,.30);
 }
 
 /* ===== Overlay helper for pages with background image ===== */
+/* FIXED: stronger overlay + correct z-index so text is always clear */
 .overlay-strong{
   position:relative;
   isolation:isolate;
@@ -160,9 +161,9 @@ body:before{
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(rgba(11,31,58,.78), rgba(11,31,58,.78));
+  background: linear-gradient(rgba(11,31,58,.86), rgba(11,31,58,.86));
   pointer-events:none;
-  z-index:1;
+  z-index:1; /* overlay above bg image, below content */
 }
 
 /* Make overlay hero content sit above overlay */
@@ -171,15 +172,21 @@ body:before{
   z-index:2;
 }
 
-/* HERO PANEL */
+/* HERO PANEL (FIXED: darker panel for readability on image backgrounds) */
 .hero-panel{
   position:relative;
   padding: 18px;
   border-radius: var(--radius);
-  background: rgba(255,255,255,.10);
+  background: rgba(11,31,58,.55); /* ✅ darker */
   border: 1px solid rgba(255,255,255,.18);
   backdrop-filter: blur(16px);
-  box-shadow: 0 18px 70px rgba(0,0,0,.22);
+  box-shadow: 0 18px 70px rgba(0,0,0,.28);
+}
+
+/* If you use .glass inside hero sections (Quick Facts box), make it readable */
+.hero .glass{
+  background: rgba(11,31,58,.45) !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
 }
 
 /* Force hero panel text to be readable everywhere */
@@ -455,6 +462,12 @@ input:focus, textarea:focus{
 }
 
 /* Responsive */
+@media (max-width: 860px){
+  /* make hero 2-col layouts stack */
+  .hero [style*="grid-template-columns"]{
+    grid-template-columns: 1fr !important;
+  }
+}
 @media (max-width: 760px){
   .hero{padding: 66px 0 36px}
   .hero h1{font-size: 34px}
