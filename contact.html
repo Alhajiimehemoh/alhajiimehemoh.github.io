@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact | Alhaji Ibrahim Mehemoh</title>
+  <meta name="description" content="Contact Alhaji Ibrahim Mehemoh — IT Support & Data Systems Specialist in Bo, Sierra Leone. Fast response on WhatsApp."/>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -20,50 +21,147 @@
   </div>
 </div>
 
-<div class="hero">
-  <div class="container">
-    <h1>Contact</h1>
-    <p>Let’s talk — I respond fastest on WhatsApp.</p>
-    <a class="btn primary" href="https://wa.me/23279301430" target="_blank">WhatsApp Now</a>
+<!-- HERO -->
+<div class="hero" style="background:
+linear-gradient(rgba(11,31,58,.86),rgba(11,31,58,.86)),
+url('images/cover.jpg') center/cover;">
+  <div class="container reveal">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;">
+      <div>
+        <div style="display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);font-weight:900;font-size:13px;">
+          Contact • WhatsApp • Email • Phone
+        </div>
+        <h1 style="margin-top:12px;">Contact</h1>
+        <p style="margin-top:10px;max-width:820px;">
+          Let’s talk — I respond fastest on WhatsApp. You can also email me or call directly.
+        </p>
+
+        <a class="btn primary" href="https://wa.me/23279301430" target="_blank">WhatsApp Now</a>
+        <a class="btn outline" href="mailto:alhajiimehemoh@gmail.com">Email Me</a>
+        <a class="btn outline" href="tel:+23279301430">Call</a>
+
+        <p class="small" style="margin-top:12px;opacity:.92;">
+          <b>Location:</b> Bo, Sierra Leone • <b>Availability:</b> Onsite & Remote
+        </p>
+      </div>
+
+      <div style="text-align:right;">
+        <p class="small" style="margin:0;opacity:.9;">Quickest response:</p>
+        <p style="margin:4px 0 0;font-weight:950;font-size:18px;">WhatsApp: +232 79 301 430</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="container section">
+<!-- CONTACT CARDS -->
+<div class="container section reveal stagger">
+
   <div class="grid">
-    <div class="card">
+    <div class="card glass-strong gradient-border tilt">
       <h3>Email</h3>
-      <p>alhajiimehemoh@gmail.com</p>
-      <p>amehemohib@gmail.com</p>
+      <p><b>Primary:</b> <a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></p>
+      <p><b>Secondary:</b> <a href="mailto:amehemohib@gmail.com">amehemohib@gmail.com</a></p>
+      <p class="small" style="margin-top:10px;">Best for formal requests, proposals, and documents.</p>
     </div>
-    <div class="card">
+
+    <div class="card glass-strong gradient-border tilt">
       <h3>Phone / WhatsApp</h3>
-      <p>+232 79 301 430</p>
+      <p><b>Number:</b> <a href="tel:+23279301430">+232 79 301 430</a></p>
+      <p class="small" style="margin-top:10px;">Fastest for urgent support, troubleshooting, and bookings.</p>
+      <div style="margin-top:10px;">
+        <a class="btn primary" href="https://wa.me/23279301430" target="_blank">Chat on WhatsApp</a>
+      </div>
     </div>
-    <div class="card">
+
+    <div class="card glass-strong gradient-border tilt">
       <h3>Location</h3>
       <p>Bo, Sierra Leone</p>
+      <p class="small" style="margin-top:10px;">Available for onsite support in Bo and nearby areas. Remote support available nationwide.</p>
     </div>
   </div>
 
-  <div class="card" style="margin-top:14px;">
-    <h3>Send a Message (Form)</h3>
-    <p class="small">
-      To make this form work on GitHub Pages, we will connect it to Formspree.
-      When you create your Formspree form, replace the action link below.
+  <div class="section-divider"></div>
+
+  <!-- FORM -->
+  <div class="card reveal" style="margin-top:16px;">
+    <h3>Send a Message</h3>
+    <p class="small" style="margin-top:6px;">
+      This form works on GitHub Pages using Formspree. Create your Formspree form and replace the action link below.
     </p>
 
-    <form action="https://formspree.io/f/xxxxabcd" method="POST">
-      <p><input name="name" placeholder="Your Name" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #ccc;"></p>
-      <p><input name="email" type="email" placeholder="Your Email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid #ccc;"></p>
-      <p><textarea name="message" placeholder="Your Message" required rows="5" style="width:100%;padding:10px;border-radius:10px;border:1px solid #ccc;"></textarea></p>
-      <button class="btn primary" type="submit" style="border:none;cursor:pointer;">Send</button>
+    <form action="https://formspree.io/f/xxxxabcd" method="POST" style="margin-top:10px;">
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+        <div>
+          <label class="small"><b>Your Name</b></label>
+          <input name="name" placeholder="Enter your name" required>
+        </div>
+        <div>
+          <label class="small"><b>Your Email</b></label>
+          <input name="email" type="email" placeholder="Enter your email" required>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <label class="small"><b>Your Message</b></label>
+        <textarea name="message" placeholder="Tell me what you need help with…" required rows="6"></textarea>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <button class="btn primary" type="submit" style="border:none;cursor:pointer;">Send Message</button>
+        <span class="small">Or message me directly on WhatsApp for the fastest response.</span>
+      </div>
     </form>
   </div>
 
 </div>
 
-<div class="footer">© 2026 Alhaji Ibrahim Mehemoh</div>
 <a class="whatsapp" href="https://wa.me/23279301430" target="_blank">WhatsApp</a>
+
+<div class="footer">© 2026 Alhaji Ibrahim Mehemoh</div>
+
+<script>
+  // Reveal + Stagger
+  const reveals = document.querySelectorAll(".reveal, .stagger");
+  const runReveal = () => {
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 110) el.classList.add("active");
+    });
+  };
+  window.addEventListener("scroll", runReveal);
+  window.addEventListener("load", runReveal);
+  runReveal();
+
+  // Page fade-out transition on internal links
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    const isInternal = !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('#');
+    if (isInternal) {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => { window.location.href = href; }, 220);
+      });
+    }
+  });
+
+  // Tilt effect
+  document.querySelectorAll('.tilt').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      const midX = r.width / 2;
+      const midY = r.height / 2;
+      const rotX = ((y - midY) / midY) * -6;
+      const rotY = ((x - midX) / midX) * 6;
+      card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-5px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+</script>
 
 </body>
 </html>
