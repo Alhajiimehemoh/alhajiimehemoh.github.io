@@ -4,33 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Alhaji Ibrahim Mehemoh | IT Support & Data Systems Specialist (Bo, Sierra Leone)</title>
-  <meta name="description" content="Alhaji Ibrahim Mehemoh — IT Support & Data Systems Specialist in Bo, Sierra Leone. Technical support, networking (LAN/Wi-Fi), Excel reporting, web services, and basic security setup."/>
+  <title>Alhaji Ibrahim Mehemoh | IT Support & Data Systems Specialist — Bo, Sierra Leone</title>
+  <meta name="description" content="Alhaji Ibrahim Mehemoh — IT Support & Data Systems Specialist with 8+ years experience in Bo, Sierra Leone. Technical support, networking, Excel reporting, web services, cybersecurity."/>
 
-  <!-- Canonical + Robots -->
   <link rel="canonical" href="https://alhajiimehemoh.github.io/">
   <meta name="robots" content="index, follow">
 
-  <!-- Open Graph (Facebook/WhatsApp/LinkedIn) -->
-  <meta property="og:title" content="Alhaji Ibrahim Mehemoh | IT Support & Data Systems Specialist">
-  <meta property="og:description" content="IT support, networking (LAN/Wi-Fi), Excel reporting, web services, and basic security setup in Bo, Sierra Leone.">
-  <meta property="og:url" content="https://alhajiimehemoh.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://alhajiimehemoh.github.io/images/profile.jpeg">
-  <meta property="og:locale" content="en_US">
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Alhaji Ibrahim Mehemoh | IT Support & Data Systems Specialist">
+  <meta property="og:description" content="8+ years delivering IT support, networking, data systems and web services across Sierra Leone.">
+  <meta property="og:url"         content="https://alhajiimehemoh.github.io/">
+  <meta property="og:type"        content="website">
+  <meta property="og:image"       content="https://alhajiimehemoh.github.io/images/profile.jpeg">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Alhaji Ibrahim Mehemoh | IT Support & Data Systems">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Alhaji Ibrahim Mehemoh | IT Support & Data Systems">
   <meta name="twitter:description" content="IT support, networking, and data systems in Bo, Sierra Leone.">
-  <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/profile.jpeg">
+  <meta name="twitter:image"       content="https://alhajiimehemoh.github.io/images/profile.jpeg">
 
-  <!-- Favicon (optional: add /images/favicon.png if you have one) -->
   <link rel="icon" href="images/favicon.png">
 
-  <link rel="stylesheet" href="style.css?v=6"/>
+  <!-- Google Fonts (loaded in CSS via @import, keeping head clean) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Structured Data (JSON-LD) -->
+  <link rel="stylesheet" href="style.css?v=7"/>
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,100 +40,138 @@
     "url": "https://alhajiimehemoh.github.io/",
     "image": "https://alhajiimehemoh.github.io/images/profile.jpeg",
     "jobTitle": "IT Support & Data Systems Specialist",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Bo",
-      "addressCountry": "SL"
-    },
+    "description": "Results-driven IT and Data Management Specialist with over 8 years of progressive experience.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bo", "addressCountry": "SL" },
     "telephone": "+23279301430",
-    "sameAs": [
-      "https://alhajiimehemoh.github.io/"
-    ]
+    "email": "alhajiimehemoh@gmail.com"
   }
   </script>
 </head>
 <body>
 
-<div class="nav">
-  <div class="brand">Alhaji Ibrahim Mehemoh 1</div>
-  <div>
-    <a href="index.html">Home</a>
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav">
+  <div class="brand">Alhaji Ibrahim Mehemoh</div>
+
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
     <a href="hire.html">Hire Me</a>
     <a href="services.html">Services</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="community.html">Community</a>
     <a href="contact.html">Contact</a>
   </div>
+
+  <div style="display:flex;align-items:center;">
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" aria-label="Toggle theme">☀</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="hire.html">Hire Me</a>
+  <a href="services.html">Services</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="community.html">Community</a>
+  <a href="contact.html">Contact</a>
 </div>
 
-<!-- HERO -->
+<!-- ══════════ HERO ══════════ -->
 <div class="hero overlay-strong" style="background:url('images/cover.jpg') center/cover;">
-  <div class="container reveal">
+  <div class="container">
 
-    <div class="hero-panel gradient-border" style="display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;">
+    <div class="hero-panel gradient-border" style="display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center;">
+
+      <!-- Left: Text -->
       <div>
-        <div style="display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);font-weight:900;font-size:13px;">
-          IT • Data Systems • Networking • Web Support
+        <div class="hero-anim-1" style="display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);font-weight:700;font-size:13px;letter-spacing:.3px;">
+          IT • Data Systems • Networking • Cybersecurity
         </div>
 
-        <h1 style="margin-top:12px;">IT Support & Data Systems Specialist</h1>
+        <h1 class="hero-anim-2" style="margin-top:14px;">
+          IT Support &amp; Data<br>Systems Specialist
+        </h1>
 
-        <p style="margin-top:10px;max-width:900px;">
-          Helping organizations run better with technology - through reliable IT support, strong data systems,
-          networking, cybersecurity and practical digital solutions.
+        <p class="hero-anim-3" style="margin-top:12px;max-width:600px;">
+          Helping organizations run better with technology — reliable IT support, strong data systems,
+          networking, cybersecurity and practical digital solutions across Sierra Leone.
         </p>
 
-        <a class="btn primary" href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV</a>
-        <a class="btn outline" href="services.html">Request a Service</a>
-        <a class="btn outline" href="contact.html">Contact Me</a>
+        <div class="hero-anim-4">
+          <a class="btn primary" href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">⬇ Download CV</a>
+          <a class="btn outline" href="services.html">Request a Service</a>
+          <a class="btn outline" href="contact.html">Contact Me</a>
+        </div>
 
-        <p class="small" style="margin-top:14px;opacity:.92;">
-          <b>Location:</b> Bo, Sierra Leone • <b>Open to:</b> Jobs, contracts, and consultancy
+        <p class="small hero-anim-5" style="margin-top:16px;opacity:.88;">
+          <strong>Location:</strong> Bo, Sierra Leone &nbsp;•&nbsp;
+          <strong>Open to:</strong> Jobs, contracts &amp; consultancy
         </p>
 
-        <p class="small" style="margin-top:8px;opacity:.92;">
-          Trusted for: Health data systems • Office IT support • Inventory tracking • Networking • Cybersecurity • And more
-        </p>
-
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
+        <div class="hero-anim-5" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
           <span class="badge" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.92);">Fast Response</span>
           <span class="badge" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.92);">Onsite & Remote</span>
           <span class="badge" style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.92);">Leones Pricing</span>
         </div>
       </div>
 
-      <div style="text-align:center;">
+      <!-- Right: Photo -->
+      <div class="hero-anim-3" style="text-align:center;">
         <img src="images/profile.jpeg"
-             alt="Alhaji Ibrahim Mehemoh - IT Support & Data Systems Specialist in Bo, Sierra Leone"
-             style="width:220px;height:220px;object-fit:cover;border-radius:50%;
-             border:4px solid rgba(255,255,255,.92); box-shadow:0 18px 50px rgba(0,0,0,.28);">
-        <p class="small" style="margin-top:10px;opacity:.9;">Available for onsite & remote support</p>
+             alt="Alhaji Ibrahim Mehemoh — IT Support & Data Systems Specialist, Bo Sierra Leone"
+             style="width:250px;height:250px;object-fit:cover;border-radius:50%;border:4px solid rgba(255,255,255,.92);box-shadow:0 20px 55px rgba(0,0,0,.32);">
+        <p class="small" style="margin-top:12px;opacity:.85;">Available for onsite &amp; remote support</p>
       </div>
     </div>
 
-    <!-- HERO NAV CARDS -->
-    <div class="grid reveal stagger" style="margin-top:22px;">
+    <!-- Stats strip -->
+    <div class="stats-strip reveal" style="margin-top:24px;">
+      <div class="stat-card">
+        <span class="stat-num" data-target="8">0</span><span class="stat-num" style="font-size:24px;">+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-target="200">0</span><span class="stat-num" style="font-size:24px;">+</span>
+        <span class="stat-label">Students Trained</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-target="99">0</span><span class="stat-num" style="font-size:24px;">%</span>
+        <span class="stat-label">System Uptime</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-target="30">0</span><span class="stat-num" style="font-size:24px;">%+</span>
+        <span class="stat-label">Engagement Boost</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-target="25">0</span><span class="stat-num" style="font-size:24px;">%</span>
+        <span class="stat-label">Accuracy Improved</span>
+      </div>
+    </div>
+
+    <!-- Nav cards -->
+    <div class="grid reveal stagger" style="margin-top:20px;">
       <div class="card glass gradient-border tilt">
         <h3>Get Hired / IT Career</h3>
         <p>CV, skills, target roles, and proof of work for employers.</p>
         <a class="btn primary" href="hire.html">Explore</a>
       </div>
-
       <div class="card glass gradient-border tilt">
         <h3>Consulting / Services</h3>
-        <p>Service packages in Leones, support contracts, and quick turnaround.</p>
+        <p>Service packages in Leones, support contracts, fast turnaround.</p>
         <a class="btn primary" href="services.html">Explore</a>
       </div>
-
       <div class="card glass gradient-border tilt">
-        <h3>Portfolio / Personal Brand</h3>
+        <h3>Portfolio / Case Studies</h3>
         <p>Projects and case studies showing real results and impact.</p>
         <a class="btn primary" href="portfolio.html">Explore</a>
       </div>
-
       <div class="card glass gradient-border tilt">
-        <h3>Community / Organization</h3>
-        <p>Community and organizational contributions + blog posts.</p>
+        <h3>Community / Blog</h3>
+        <p>Community contributions, organizational work and blog posts.</p>
         <a class="btn primary" href="community.html">Explore</a>
       </div>
     </div>
@@ -140,108 +179,335 @@
   </div>
 </div>
 
-<!-- Summary -->
+<!-- ══════════ QUICK SUMMARY ══════════ -->
 <div class="container section reveal stagger">
   <h2>Quick Summary</h2>
-  <p style="max-width:980px;">
-    I provide technical support, networking, data systems, web services, and basic security setup for individuals,
-    offices, schools, clinics, and NGOs. I focus on practical solutions that improve productivity, reporting accuracy,
-    and accountability.
+  <p style="max-width:960px;margin-top:12px;">
+    Results-driven IT and Data Management Specialist with 8+ years of progressive experience across government,
+    NGO, and private sectors. I deliver practical solutions that improve productivity, reporting accuracy,
+    and accountability for offices, schools, clinics, and NGOs.
   </p>
 
-  <div style="margin-top:8px;">
+  <div style="margin-top:12px;">
     <span class="badge">IT Support / Help Desk</span>
     <span class="badge">Systems Administration</span>
     <span class="badge">Networking (LAN/Wi-Fi)</span>
     <span class="badge">Data Reporting (Excel)</span>
     <span class="badge">WordPress Websites</span>
-    <span class="badge">Backup & Security (Basic)</span>
+    <span class="badge">Backup &amp; Security</span>
+    <span class="badge">Monitoring &amp; Evaluation</span>
+    <span class="badge">Staff Training</span>
   </div>
 
-  <div class="grid" style="margin-top:16px;">
+  <div class="grid" style="margin-top:20px;">
     <div class="card tilt">
+      <div style="font-size:28px;margin-bottom:8px;">⚡</div>
       <h3>Fast Support</h3>
-      <p>Quick troubleshooting, installations, upgrades, and device setup for smooth work.</p>
+      <p>Quick troubleshooting, installations, upgrades and device setup for smooth day-to-day work.</p>
     </div>
     <div class="card tilt">
+      <div style="font-size:28px;margin-bottom:8px;">📊</div>
       <h3>Reliable Systems</h3>
       <p>Simple data tools and reporting templates that improve accuracy and accountability.</p>
     </div>
     <div class="card tilt">
-      <h3>Secure & Organized</h3>
+      <div style="font-size:28px;margin-bottom:8px;">🔒</div>
+      <h3>Secure &amp; Organized</h3>
       <p>Backups, basic security configuration, and clean documentation for your systems.</p>
     </div>
   </div>
 </div>
 
-<!-- CTA -->
+<!-- ══════════ SKILL BARS ══════════ -->
+<div class="container section reveal">
+  <h2>Key Skills</h2>
+  <p style="margin-top:12px;margin-bottom:20px;max-width:700px;">A snapshot of my core technical competencies built over 8+ years of hands-on experience.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;">
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Data Management &amp; Excel Reporting</span><span>92%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>IT Support &amp; Help Desk</span><span>90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Networking (LAN / Wi-Fi)</span><span>85%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Systems Administration</span><span>82%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+      </div>
+    </div>
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>WordPress &amp; Web Admin</span><span>78%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Monitoring &amp; Evaluation (M&amp;E)</span><span>80%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Cybersecurity (Basic)</span><span>70%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+      </div>
+      <div class="skill-bar-item">
+        <div class="skill-bar-label"><span>Training &amp; Capacity Building</span><span>88%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ EXPERIENCE TIMELINE ══════════ -->
+<div class="container section reveal">
+  <h2>Experience Timeline</h2>
+  <p style="margin-top:12px;margin-bottom:4px;">8+ years of progressive experience across NGO, government &amp; private sectors.</p>
+
+  <div class="timeline stagger">
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🏥</div>
+      <div class="timeline-body">
+        <div class="timeline-year">Oct 2024 — Present</div>
+        <div class="timeline-title">Evaluator &amp; Data Officer — RHCI, Tikonko</div>
+        <div class="timeline-sub">Health data systems, CHW database management, dashboards, mobile data collection, M&amp;E reporting. ↑ 25% accuracy improvement.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🏢</div>
+      <div class="timeline-body">
+        <div class="timeline-year">Sep 2023 — Oct 2024</div>
+        <div class="timeline-title">Assistant IT Manager — SLIEPA, Freetown</div>
+        <div class="timeline-sub">Agency-wide IT infrastructure, 99% system availability, helpdesk support, cybersecurity measures, staff ICT training.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">📊</div>
+      <div class="timeline-body">
+        <div class="timeline-year">Jan 2021 — Sep 2023</div>
+        <div class="timeline-title">Data Manager &amp; IT Officer — SLPP, Bo District</div>
+        <div class="timeline-sub">Centralized membership databases, electoral data analysis, digital campaign management. ↑ 30% online engagement.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🎓</div>
+      <div class="timeline-body">
+        <div class="timeline-year">2016 — 2021</div>
+        <div class="timeline-title">ICT Tutor &amp; Café Attendant — Growth Centre, Bo</div>
+        <div class="timeline-sub">Delivered ICT training to 200+ students in Microsoft Office. Hardware &amp; network troubleshooting, document preparation.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<div class="container section reveal">
+  <h2>What People Say</h2>
+  <p style="margin-top:12px;">Feedback from colleagues and supervisors who have worked with me directly.</p>
+
+  <div class="testimonial-grid stagger" style="margin-top:20px;">
+
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">
+        Alhaji has a remarkable ability to turn complex data challenges into simple, workable systems.
+        His Excel dashboards transformed how we track and report health program data every month.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar">MC</div>
+        <div>
+          <div class="author-name">Moses Hopanda Carter</div>
+          <div class="author-role">Director of Projects, RHCI — Tikonko</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">
+        Reliable, fast, and always willing to go the extra mile. Alhaji kept our IT systems running smoothly
+        and trained staff effectively during a critical period for our organization.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar">FA</div>
+        <div>
+          <div class="author-name">Foday Abdulai</div>
+          <div class="author-role">District Secretary General, SLPP — Bo District</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">
+        His networking setup gave us stable Wi-Fi across the entire office floor — something we struggled with for months.
+        Professional, well-documented, and completed on time.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar">IT</div>
+        <div>
+          <div class="author-name">IT Client, Bo</div>
+          <div class="author-role">Office Network Setup — Sierra Leone</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ CTA ══════════ -->
 <div class="container section reveal" style="padding-top:0;">
-  <div class="card" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
+  <div class="card" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:24px;">
     <div>
       <h3 style="margin:0;">Need IT support or a data system setup?</h3>
       <p class="small" style="margin:6px 0 0;">Send a message on WhatsApp or request a quote from the contact page.</p>
     </div>
     <div>
-      <a class="btn primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp Me</a>
+      <a class="btn primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">💬 WhatsApp Me</a>
       <a class="btn outline" href="contact.html">Request a Quote</a>
     </div>
   </div>
 </div>
 
-<a class="whatsapp" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp</a>
+<!-- Floating buttons -->
+<a class="whatsapp" href="https://wa.me/23279301430" target="_blank" rel="noopener">
+  💬 WhatsApp
+</a>
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
-<div class="footer">© 2026 Alhaji Ibrahim Mehemoh</div>
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 Alhaji Ibrahim Mehemoh &nbsp;•&nbsp;
+    <a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a> &nbsp;•&nbsp;
+    <a href="https://wa.me/23279301430" target="_blank">+232 79 301 430</a> &nbsp;•&nbsp;
+    Bo, Sierra Leone
+  </p>
+</footer>
 
 <script>
-  // Reveal + Stagger
-  const reveals = document.querySelectorAll(".reveal, .stagger");
-  const runReveal = () => {
-    reveals.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < window.innerHeight - 110) el.classList.add("active");
-    });
-  };
-  window.addEventListener("scroll", runReveal);
-  window.addEventListener("load", runReveal);
-  runReveal();
+/* ── Theme toggle ── */
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
 
-  // Page fade-out transition on internal links
-  document.querySelectorAll('a[href]').forEach(a => {
-    const href = a.getAttribute('href') || '';
-    const isInternal = !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('#');
-    if (isInternal) {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.body.classList.add('fade-out');
-        setTimeout(() => { window.location.href = href; }, 220);
-      });
-    }
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀' : '🌙';
+}
+
+/* ── Hamburger menu ── */
+function toggleMenu() {
+  const nav  = document.getElementById('mobileNav');
+  const btn  = document.getElementById('hamburger');
+  const open = nav.classList.toggle('open');
+  btn.classList.toggle('open', open);
+}
+document.addEventListener('click', e => {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('hamburger');
+  if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+  }
+});
+
+/* ── Active nav link ── */
+document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
+  if (a.href === location.href) a.classList.add('active');
+});
+
+/* ── Scroll reveal ── */
+const reveals = document.querySelectorAll('.reveal, .stagger');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) { el.target.classList.add('active'); observer.unobserve(el.target); }
   });
+}, { threshold: 0.08 });
+reveals.forEach(el => observer.observe(el));
 
-  // Tilt effect
+/* ── Skill bars ── */
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+      const w = bar.dataset.width;
+      setTimeout(() => { bar.style.width = w + '%'; }, 120);
+    });
+    barObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.skill-bar-wrap').forEach(el => barObserver.observe(el));
+
+/* ── Counter animation ── */
+function animateCounter(el, target, duration) {
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(eased * target);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-target]').forEach(el => {
+      animateCounter(el, parseInt(el.dataset.target), 1400);
+    });
+    statsObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.stats-strip').forEach(el => statsObserver.observe(el));
+
+/* ── Back to top button ── */
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 400);
+});
+
+/* ── Page fade-out on internal links ── */
+document.querySelectorAll('a[href]').forEach(a => {
+  const href = a.getAttribute('href') || '';
+  const isInternal = !href.startsWith('http') && !href.startsWith('mailto:') &&
+                     !href.startsWith('tel:') && !href.startsWith('#');
+  if (isInternal) {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.body.classList.add('fade-out');
+      setTimeout(() => { window.location.href = href; }, 320);
+    });
+  }
+});
+
+/* ── 3D tilt (desktop only) ── */
+if (window.matchMedia('(hover: hover)').matches) {
   document.querySelectorAll('.tilt').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
+    card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      const midX = r.width / 2;
-      const midY = r.height / 2;
-      const rotX = ((y - midY) / midY) * -6;
-      const rotY = ((x - midX) / midX) * 6;
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      const rotX = ((y - r.height / 2) / r.height) * -6;
+      const rotY = ((x - r.width  / 2) / r.width)  *  6;
       card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-5px)`;
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
+}
 </script>
-
-<!-- Small mobile fix for the hero grid -->
-<style>
-  @media (max-width: 860px){
-    .hero-panel{grid-template-columns:1fr !important;}
-  }
-</style>
 
 </body>
 </html>
