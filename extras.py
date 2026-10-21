@@ -264,7 +264,8 @@ def request():
     <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
     <input type="hidden" name="_subject" value="Quote request from website">
     <div class="field"><label for="rq-name">Your name</label><input id="rq-name" name="name" autocomplete="name" required></div>
-    <div class="field"><label for="rq-email">Email or WhatsApp number</label><input id="rq-email" name="contact" required></div>
+    <div class="field"><label for="rq-email">Your email</label><input id="rq-email" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="rq-wa">WhatsApp number (optional)</label><input id="rq-wa" name="whatsapp" type="tel" autocomplete="tel"></div>
     <div class="field"><label for="rq-service">Service</label>
       <select id="rq-service" name="service">
         <option>Dashboard (Power BI or Excel)</option><option>Survey123 or XLSForm data collection</option><option>M&amp;E framework and reporting</option>
