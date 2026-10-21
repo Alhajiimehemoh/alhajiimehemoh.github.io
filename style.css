@@ -510,3 +510,7 @@ a.reg-row:hover{background:color-mix(in srgb,var(--green-soft) 60%,transparent);
 .page-head::after{content:"";position:absolute;right:0;top:-1rem;width:10rem;height:10rem;border-radius:50%;z-index:-1;
   background:radial-gradient(closest-side,color-mix(in srgb,var(--green) 18%,transparent),transparent);filter:blur(6px)}
 @media (prefers-reduced-motion:reduce){.eyebrow .dot{animation:none}}
+.hero-portrait { display: block; width: 100%; max-width: 26rem; height: auto; aspect-ratio: 720/924; object-fit: cover; margin-inline: auto; border-radius: var(--r); border: 1px solid var(--rule); box-shadow: var(--shadow); }
+:root[data-theme=dark] img.hero-portrait{filter:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) img.hero-portrait{filter:none}}
+.hero-photo figcaption { text-align: center; }
