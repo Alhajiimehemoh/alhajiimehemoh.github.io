@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alhajiimehemoh.github.io/alhajiibrahimmehemoh.github.io/sitemap.xml
+Sitemap: https://alhajiimehemoh.github.io/sitemap.xml

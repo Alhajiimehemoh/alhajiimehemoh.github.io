@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPI reporting dashboard | Alhaji Ibrahim Mehemoh</title>
+  <meta name="description" content="Case study: a Power BI report built from monthly Survey123 immunisation exports at RHCI, with data quality checks for GPS, dose sequences and duplicates.">
+  <meta name="theme-color" content="#0F2430">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://alhajiimehemoh.github.io/case-epi-dashboard.html">
+
+  <meta property="og:title" content="EPI reporting dashboard | Alhaji Ibrahim Mehemoh">
+  <meta property="og:description" content="Case study: a Power BI report built from monthly Survey123 immunisation exports at RHCI, with data quality checks for GPS, dose sequences and duplicates.">
+  <meta property="og:url" content="https://alhajiimehemoh.github.io/case-epi-dashboard.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EPI reporting dashboard | Alhaji Ibrahim Mehemoh">
+  <meta name="twitter:description" content="Case study: a Power BI report built from monthly Survey123 immunisation exports at RHCI, with data quality checks for GPS, dose sequences and duplicates.">
+  <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css?v=9">
+  <script src="shared.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
+    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" aria-current="page">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html">Notes</a><a href="hire.html">Hire me</a><a href="contact.html">Contact</a></nav>
+    <div class="header-tools">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">&#9790;</button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <div class="wrap"><a href="portfolio.html" aria-current="page">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html">Notes</a><a href="hire.html">Hire me</a><a href="contact.html">Contact</a></div>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <div class="page-head"><p class="crumb"><a href="portfolio.html">Projects</a></p><h1>EPI reporting dashboard</h1><p class="lede">A Power BI report that turns each monthly Survey123 immunisation export into the same trusted view, for people who need different levels of detail.</p></div>
+  <section class="section-tight" style="padding-top:2rem"><dl class="facts"><div><dt>Organisation</dt><dd>Rural Health Care Initiative (RHCI), Bo District</dd></div><div><dt>Role</dt><dd>Data Officer: design, build and data quality</dd></div><div><dt>Status</dt><dd>In development</dd></div><div><dt>Data source</dt><dd>Survey123 EPI exports, supplied monthly</dd></div><div><dt>Tools</dt><dd>Power BI, Survey123, Excel</dd></div><div><dt>Audience</dt><dd>Nurses, health facilities, RHCI management, the DHMT, the RHCI Board and donors</dd></div></dl></section>
+  <section class="section-tight"><div class="prose"><h2>The reporting question</h2><p>EPI (immunisation) visit data is collected in Survey123 and exported as files. The challenge is to turn every new export into the same report without rebuilding it by hand, and to keep the numbers trustworthy as data volume grows.</p></div></section>
+<section class="section-tight"><div class="prose"><h2>What I built</h2><p>A Power BI project built from the Survey123 EPI export, covering 1 January 2026 to date. It is designed to extend as each monthly export arrives, so the report grows instead of being rebuilt.</p><p>Different readers need different views. Nurses and facilities see their own work, RHCI management sees programme-wide results, and the DHMT, the Board and donors see summary reporting.</p></div></section>
+<section class="section-tight"><div class="prose"><h2>Data quality checks</h2><p>Before numbers reach a dashboard, the records are checked. In March and April 2026 I ran a multi-stage analysis of the nurse datasets and produced a cleaned dataset. The checks cover:</p><ul class="bullets"><li>GPS validation</li><li>Dose sequence violations</li><li>Duplicate detection</li><li>Village name inconsistencies</li><li>Compliance tracking per nurse</li></ul><p>Each nurse received an Excel audit workbook, and management received consolidated Word reports and presentations.</p></div></section>
+<section class="section-tight"><div class="prose"><h2>How it is built</h2><p>The work moves through staged checkpoints: foundation (data model and structure), build (measures and pages) and validation and handover (checking figures against the source export before release).</p></div></section>
+
+  <section class="section-tight"><div class="prose"><p class="muted">Screenshots are not published here because the data belongs to RHCI. I am happy to walk you through the work on a call.</p></div>
+  <div class="note-nav"><a href="portfolio.html">All projects</a><a href="case-survey123.html">Next: Survey123 forms and field tools</a></div></section>
+</div>
+<section class="cta-band section">
+  <div class="wrap">
+    <h2>Need a dashboard, a data collection form or IT support?</h2>
+    <p>Tell me what you need to report on and who will read it. I will reply with a plan and a quote.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn" href="contact.html">Use the contact page</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="whatsapp-fab" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp</a>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Alhaji Ibrahim Mehemoh</h2>
+        <p class="muted">Data Officer and M&amp;E specialist. Bo, Sierra Leone.</p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></li>
+          <li><a href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
+          <li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="portfolio.html">Projects</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="community.html">Notes</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh</p>
+  </div>
+</footer>
+</body>
+</html>

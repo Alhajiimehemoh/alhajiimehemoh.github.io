@@ -1,137 +1,69 @@
-/* shared.js — v7 — used on all pages */
+/* shared.js - v9 - menu, theme, contact form fallback. No scroll or tilt effects. */
 
-/* ── Theme (runs immediately before paint) ── */
+/* Apply saved theme before first paint */
 (function () {
-  const saved = localStorage.getItem('theme');
-  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  try {
+    var saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) { /* storage blocked: follow system theme */ }
 })();
 
+function isDarkNow() {
+  var t = document.documentElement.getAttribute('data-theme');
+  if (t) return t === 'dark';
+  return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+}
+
+function syncThemeButton() {
+  var btn = document.getElementById('themeBtn');
+  if (!btn) return;
+  var dark = isDarkNow();
+  btn.textContent = dark ? '☀' : '☾';
+  btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+  syncThemeButton();
 
-  /* ── Theme toggle button ── */
-  const themeBtn = document.querySelector('.theme-toggle');
+  var themeBtn = document.getElementById('themeBtn');
   if (themeBtn) {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    themeBtn.textContent = isDark ? '☀' : '🌙';
-  }
-
-  /* ── Active nav link ── */
-  document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
-    const url = new URL(a.href, location.href);
-    if (url.pathname === location.pathname) a.classList.add('active');
-  });
-
-  /* ── Hamburger menu ── */
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      const open = mobileNav.classList.toggle('open');
-      hamburger.classList.toggle('open', open);
-    });
-    document.addEventListener('click', e => {
-      if (mobileNav.classList.contains('open') &&
-          !mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
-        mobileNav.classList.remove('open');
-        hamburger.classList.remove('open');
-      }
+    themeBtn.addEventListener('click', function () {
+      var next = isDarkNow() ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      syncThemeButton();
     });
   }
 
-  /* ── Scroll reveal ── */
-  const revealEls = document.querySelectorAll('.reveal, .stagger');
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('active'); revealObs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => revealObs.observe(el));
-
-  /* ── Skill bars ── */
-  const barObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 120);
-      });
-      barObs.unobserve(entry.target);
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.skill-bar-wrap').forEach(el => barObs.observe(el));
-
-  /* ── Counter animation ── */
-  function animateCounter(el, target, duration) {
-    const start = performance.now();
-    function step(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(eased * target);
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+  /* Mobile menu */
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mobileNav');
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   }
-  const statsObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll('[data-target]').forEach(el => {
-        animateCounter(el, parseInt(el.dataset.target), 1400);
-      });
-      statsObs.unobserve(entry.target);
+  if (btn && nav) {
+    btn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); btn.focus(); }
     });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.stats-strip').forEach(el => statsObs.observe(el));
-
-  /* ── Back to top ── */
-  const btt = document.getElementById('backToTop');
-  if (btt) {
-    window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400));
-    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) setMenu(false);
+    });
   }
 
-  /* ── Page fade-out on internal links ── */
-  document.querySelectorAll('a[href]').forEach(a => {
-    const href = a.getAttribute('href') || '';
-    const isInternal = !href.startsWith('http') && !href.startsWith('mailto:') &&
-                       !href.startsWith('tel:') && !href.startsWith('#');
-    if (isInternal) {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        document.body.classList.add('fade-out');
-        setTimeout(() => { window.location.href = href; }, 320);
-      });
-    }
-  });
-
-  /* ── 3D Tilt (desktop only) ── */
-  if (window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.tilt').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const r = card.getBoundingClientRect();
-        const rotX = ((e.clientY - r.top  - r.height / 2) / r.height) * -6;
-        const rotY = ((e.clientX - r.left - r.width  / 2) / r.width)  *  6;
-        card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-5px)`;
-      });
-      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  /* Contact form: until a real Formspree ID replaces "xxxxabcd" in the form action,
+     send the message through WhatsApp so no enquiry is lost. */
+  var form = document.querySelector('form[action*="xxxxabcd"]');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = new FormData(form);
+      var text = 'Hello Alhaji, I am ' + (f.get('name') || '') + ' (' + (f.get('email') || '') + '). ' + (f.get('message') || '');
+      window.open('https://wa.me/23279301430?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      var status = document.getElementById('formStatus');
+      if (status) status.textContent = 'Opening WhatsApp with your message. Press send there to deliver it.';
     });
   }
 });
-
-/* ── Theme toggle global function ── */
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  const btn = document.querySelector('.theme-toggle');
-  if (btn) btn.textContent = next === 'dark' ? '☀' : '🌙';
-}
-
-/* ── Hamburger global ── */
-function toggleMenu() {
-  const nav = document.getElementById('mobileNav');
-  const btn = document.getElementById('hamburger');
-  if (nav && btn) {
-    const open = nav.classList.toggle('open');
-    btn.classList.toggle('open', open);
-  }
-}
