@@ -22,35 +22,105 @@
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=9">
-  <script src="shared.js"></script>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
+  <link rel="preload" href="fonts/zilla-slab-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=11">
+  <script src="shared.js?v=11"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://alhajiimehemoh.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Notes",
+      "item": "https://alhajiimehemoh.github.io/community.html"
+    }
+  ]
+}
+  </script>
 </head>
-<body>
+<body class="">
 <a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="site-header">
   <div class="wrap header-in">
     <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
-    <nav class="nav-links" aria-label="Main"><a href="portfolio.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html" aria-current="page">Notes</a><a href="hire.html">Hire me</a><a href="contact.html">Contact</a></nav>
+    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" aria-current="page" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
     <div class="header-tools">
+      
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">&#9790;</button>
       <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
-    <div class="wrap"><a href="portfolio.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html" aria-current="page">Notes</a><a href="hire.html">Hire me</a><a href="contact.html">Contact</a></div>
+    <div class="wrap"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" aria-current="page" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></div>
   </nav>
 </header>
 
 <main id="main">
 <div class="wrap">
-  <div class="page-head"><h1>Notes</h1><p class="lede">Short, practical posts on data, health systems, IT and cybersecurity.</p></div>
+  <div class="page-head"><h1>Notes</h1><p class="lede">Short, practical posts on data, health systems, IT and cybersecurity.</p>
+  <p class="small"><a href="feed.xml">Subscribe with RSS</a></p></div>
 </div>
 <section class="section">
-  <div class="wrap"><div class="register"><a class="reg-row two" href="note-healthcare-technology.html"><h3>How technology is transforming healthcare in Sierra Leone</h3><p>Digital data collection, electronic reporting and better tracking are changing how facilities work.</p></a><a class="reg-row two" href="note-small-business-it.html"><h3>Why every small business needs basic IT support</h3><p>Basic IT support cuts downtime and improves productivity for small businesses and organisations.</p></a><a class="reg-row two" href="note-my-journey.html"><h3>My journey into IT and data management</h3><p>From diplomas in software, hardware and networking to health data work, while studying Computer Science.</p></a><a class="reg-row two" href="note-protect-your-computer.html"><h3>Simple ways to protect your computer from viruses</h3><p>Most computer problems can be avoided with a few safe habits and basic protection.</p></a><a class="reg-row two" href="note-data-decisions.html"><h3>Using data to make better decisions</h3><p>Clean, organised data helps teams measure performance and plan with confidence.</p></a></div></div>
+  <div class="wrap">
+    <div class="notes-tools">
+      <label class="sr-only" for="noteSearch">Search notes</label>
+      <input id="noteSearch" type="search" placeholder="Search notes" autocomplete="off">
+      <div class="filters" role="group" aria-label="Filter notes by category"><button type="button" class="filter is-active" data-cat="all" aria-pressed="true">All</button><button type="button" class="filter" data-cat="Career" aria-pressed="false">Career</button><button type="button" class="filter" data-cat="Cybersecurity" aria-pressed="false">Cybersecurity</button><button type="button" class="filter" data-cat="Health data" aria-pressed="false">Health data</button><button type="button" class="filter" data-cat="IT support" aria-pressed="false">IT support</button></div>
+    </div>
+    <p class="small muted" id="noteCount" role="status" aria-live="polite"></p>
+    <div class="register" id="noteList"><a class="reg-row two" data-cat="Health data" data-search="how technology is transforming healthcare in sierra leone digital data collection, electronic reporting and better tracking are changing how facilities work. healthcare delivery in sierra leone is shifting from paper-based processes to digital systems. facilities can now monitor performance with excel tracking sheets, digital logbooks and centralised databases.
+
+programmes such as mms distribution, chw attendance and ultrasound reporting become much easier to manage once the data is organised.
+
+## what technology improves
+
+- fewer data errors
+- faster reporting
+- better tracking of supplies
+- stronger decisions at facility and district level
+
+## what still holds us back
+
+limited internet access, lack of equipment and too little it training slow progress. with investment in skills and infrastructure, healthcare systems can become more efficient and responsive.
+
+i will keep supporting digital transformation in healthcare through data systems, it support and technical training." href="note-healthcare-technology.html"><h3>How technology is transforming healthcare in Sierra Leone</h3><div><p>Digital data collection, electronic reporting and better tracking are changing how facilities work.</p><p class="small"><span class="pill pill-cat">Health data</span> 1 min read</p></div></a><a class="reg-row two" data-cat="IT support" data-search="why every small business needs basic it support basic it support cuts downtime and improves productivity for small businesses and organisations. many offices struggle with slow systems, computer faults and unreliable internet. these problems cost time and money every day.
+
+simple services make a big difference: regular maintenance, software installation, virus removal, network setup and backups.
+
+you do not need expensive equipment. you need the right setup and someone to look after it. technology should work for you, not against you." href="note-small-business-it.html"><h3>Why every small business needs basic IT support</h3><div><p>Basic IT support cuts downtime and improves productivity for small businesses and organisations.</p><p class="small"><span class="pill pill-cat">IT support</span> 1 min read</p></div></a><a class="reg-row two" data-cat="Career" data-search="my journey into it and data management from diplomas in software, hardware and networking to health data work, while studying computer science. i began with diplomas in computer software, hardware and networking in bo. over the years i gained experience in networking, system setup, health facility data management, inventory tracking, excel reporting and technical support.
+
+working in the ngo and health sector taught me that technology is about solving real problems and improving lives, with accuracy, efficiency and sustainability.
+
+i am now studying computer science and building the skills to design larger data systems." href="note-my-journey.html"><h3>My journey into IT and data management</h3><div><p>From diplomas in software, hardware and networking to health data work, while studying Computer Science.</p><p class="small"><span class="pill pill-cat">Career</span> 1 min read</p></div></a><a class="reg-row two" data-cat="Cybersecurity" data-search="simple ways to protect your computer from viruses most computer problems can be avoided with a few safe habits and basic protection. - install antivirus software
+- avoid unknown flash drives
+- do not open suspicious email attachments
+- keep your system updated
+- back up important files regularly
+
+cybersecurity does not have to be complicated. awareness is the first line of defence." href="note-protect-your-computer.html"><h3>Simple ways to protect your computer from viruses</h3><div><p>Most computer problems can be avoided with a few safe habits and basic protection.</p><p class="small"><span class="pill pill-cat">Cybersecurity</span> 1 min read</p></div></a><a class="reg-row two" data-cat="Health data" data-search="using data to make better decisions clean, organised data helps teams measure performance and plan with confidence. good data lets a team:
+
+- track medical supplies
+- monitor outreach activities
+- measure programme performance
+- support planning and reporting
+
+whether in healthcare, education or business, decisions based on data lead to better outcomes." href="note-data-decisions.html"><h3>Using data to make better decisions</h3><div><p>Clean, organised data helps teams measure performance and plan with confidence.</p><p class="small"><span class="pill pill-cat">Health data</span> 1 min read</p></div></a></div>
+    <p class="muted" id="noteEmpty" hidden>No notes match your search.</p>
+  </div>
 </section>
 <section class="section">
   <div class="wrap cols">
@@ -63,14 +133,15 @@
     <h2>Want to work together?</h2>
     <p>If your team needs a tracking system, reporting templates or training, send me a message.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">Message on WhatsApp</a>
-      <a class="btn" href="contact.html">Use the contact page</a>
+      <a class="btn btn-primary" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn" href="request.html">Request a quote</a>
+      <a class="btn" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20book%20a%2020-minute%20call.%20What%20times%20suit%20you%20this%20week%3F" target="_blank" rel="noopener">Book a call</a>
     </div>
   </div>
 </section>
 </main>
 
-<a class="whatsapp-fab" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp</a>
+<a class="whatsapp-fab" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20am%20on%20your%20website%20%28Notes%20page%29%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -78,26 +149,40 @@
       <div>
         <h2>Alhaji Ibrahim Mehemoh</h2>
         <p class="muted">Data Officer and M&amp;E specialist. Bo, Sierra Leone.</p>
+        
       </div>
       <div>
         <h2>Contact</h2>
         <ul>
           <li><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></li>
           <li><a href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
+          <li><a href="request.html">Request a quote</a></li>
           <li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></li>
         </ul>
       </div>
       <div>
-        <h2>Pages</h2>
+        <h2>Explore</h2>
         <ul>
           <li><a href="portfolio.html">Projects</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Free resources</a></li>
+          <li><a href="demo.html">Sample dashboard</a></li>
           <li><a href="community.html">Notes</a></li>
         </ul>
       </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="now.html">What I am doing now</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="capability-statement.html">Capability statement</a></li>
+          <li><a href="cv.html">Web CV</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
     </div>
-    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh</p>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "note-healthcare-technology",
+    "title": "How technology is transforming healthcare in Sierra Leone",
+    "summary": "Digital data collection, electronic reporting and better tracking are changing how facilities work.",
+    "category": "Health data",
+    "date": "",
+    "body": "Healthcare delivery in Sierra Leone is shifting from paper-based processes to digital systems. Facilities can now monitor performance with Excel tracking sheets, digital logbooks and centralised databases.\n\nProgrammes such as MMS distribution, CHW attendance and ultrasound reporting become much easier to manage once the data is organised.\n\n## What technology improves\n\n- Fewer data errors\n- Faster reporting\n- Better tracking of supplies\n- Stronger decisions at facility and district level\n\n## What still holds us back\n\nLimited internet access, lack of equipment and too little IT training slow progress. With investment in skills and infrastructure, healthcare systems can become more efficient and responsive.\n\nI will keep supporting digital transformation in healthcare through data systems, IT support and technical training."
+  },
+  {
+    "slug": "note-small-business-it",
+    "title": "Why every small business needs basic IT support",
+    "summary": "Basic IT support cuts downtime and improves productivity for small businesses and organisations.",
+    "category": "IT support",
+    "date": "",
+    "body": "Many offices struggle with slow systems, computer faults and unreliable internet. These problems cost time and money every day.\n\nSimple services make a big difference: regular maintenance, software installation, virus removal, network setup and backups.\n\nYou do not need expensive equipment. You need the right setup and someone to look after it. Technology should work for you, not against you."
+  },
+  {
+    "slug": "note-my-journey",
+    "title": "My journey into IT and data management",
+    "summary": "From diplomas in software, hardware and networking to health data work, while studying Computer Science.",
+    "category": "Career",
+    "date": "",
+    "body": "I began with diplomas in computer software, hardware and networking in Bo. Over the years I gained experience in networking, system setup, health facility data management, inventory tracking, Excel reporting and technical support.\n\nWorking in the NGO and health sector taught me that technology is about solving real problems and improving lives, with accuracy, efficiency and sustainability.\n\nI am now studying Computer Science and building the skills to design larger data systems."
+  },
+  {
+    "slug": "note-protect-your-computer",
+    "title": "Simple ways to protect your computer from viruses",
+    "summary": "Most computer problems can be avoided with a few safe habits and basic protection.",
+    "category": "Cybersecurity",
+    "date": "",
+    "body": "- Install antivirus software\n- Avoid unknown flash drives\n- Do not open suspicious email attachments\n- Keep your system updated\n- Back up important files regularly\n\nCybersecurity does not have to be complicated. Awareness is the first line of defence."
+  },
+  {
+    "slug": "note-data-decisions",
+    "title": "Using data to make better decisions",
+    "summary": "Clean, organised data helps teams measure performance and plan with confidence.",
+    "category": "Health data",
+    "date": "",
+    "body": "Good data lets a team:\n\n- Track medical supplies\n- Monitor outreach activities\n- Measure programme performance\n- Support planning and reporting\n\nWhether in healthcare, education or business, decisions based on data lead to better outcomes."
+  }
+]

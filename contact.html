@@ -22,33 +22,57 @@
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=9">
-  <script src="shared.js"></script>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
+  <link rel="preload" href="fonts/zilla-slab-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=11">
+  <script src="shared.js?v=11"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://alhajiimehemoh.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact",
+      "item": "https://alhajiimehemoh.github.io/contact.html"
+    }
+  ]
+}
+  </script>
 </head>
-<body>
+<body class="">
 <a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="site-header">
   <div class="wrap header-in">
     <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
-    <nav class="nav-links" aria-label="Main"><a href="portfolio.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html">Notes</a><a href="hire.html">Hire me</a><a href="contact.html" aria-current="page">Contact</a></nav>
+    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" aria-current="page" data-i18n="nav.contact">Contact</a></nav>
     <div class="header-tools">
+      
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">&#9790;</button>
       <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
-    <div class="wrap"><a href="portfolio.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html">Notes</a><a href="hire.html">Hire me</a><a href="contact.html" aria-current="page">Contact</a></div>
+    <div class="wrap"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" aria-current="page" data-i18n="nav.contact">Contact</a></div>
   </nav>
 </header>
 
 <main id="main">
 <div class="wrap">
   <div class="page-head"><h1>Contact</h1><p class="lede">WhatsApp is the fastest way to reach me. Email suits proposals and documents.</p>
-  <div class="actions"><a class="btn btn-primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp now</a><a class="btn" href="mailto:alhajiimehemoh@gmail.com">Email me</a><a class="btn" href="tel:+23279301430">Call</a></div></div>
+  <div class="actions"><a class="btn btn-primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp now</a><a class="btn" href="mailto:alhajiimehemoh@gmail.com">Email me</a><button class="btn" type="button" data-copy="alhajiimehemoh@gmail.com">Copy email</button><a class="btn" href="tel:+23279301430">Call</a><a class="btn" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20book%20a%2020-minute%20call.%20What%20times%20suit%20you%20this%20week%3F" target="_blank" rel="noopener">Book a call</a></div></div>
 </div>
 <section class="section">
   <div class="wrap cols">
@@ -62,8 +86,7 @@
     </div>
     <div>
       <h2>Send a message</h2>
-      <!-- TODO: replace xxxxabcd with your own Formspree form ID (formspree.io). Until then, the form sends the message through WhatsApp. -->
-      <form action="https://formspree.io/f/xxxxabcd" method="POST">
+      <form action="https://formspree.io/f/xxxxabcd" method="POST" data-fallback="wa">
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" autocomplete="name" required></div>
         <div class="field"><label for="cf-email">Your email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
@@ -71,12 +94,13 @@
         <button class="btn btn-primary" type="submit">Send message</button>
         <p class="small muted" id="formStatus" role="status" aria-live="polite" style="margin-top:.75rem"></p>
       </form>
+      <p class="small muted">Prefer a structured request? Use the <a href="request.html">quote request form</a>.</p>
     </div>
   </div>
 </section>
 </main>
 
-<a class="whatsapp-fab" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp</a>
+<a class="whatsapp-fab" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20am%20on%20your%20website%20%28Contact%20page%29%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -84,26 +108,40 @@
       <div>
         <h2>Alhaji Ibrahim Mehemoh</h2>
         <p class="muted">Data Officer and M&amp;E specialist. Bo, Sierra Leone.</p>
+        
       </div>
       <div>
         <h2>Contact</h2>
         <ul>
           <li><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></li>
           <li><a href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
+          <li><a href="request.html">Request a quote</a></li>
           <li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></li>
         </ul>
       </div>
       <div>
-        <h2>Pages</h2>
+        <h2>Explore</h2>
         <ul>
           <li><a href="portfolio.html">Projects</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Free resources</a></li>
+          <li><a href="demo.html">Sample dashboard</a></li>
           <li><a href="community.html">Notes</a></li>
         </ul>
       </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="now.html">What I am doing now</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="capability-statement.html">Capability statement</a></li>
+          <li><a href="cv.html">Web CV</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
     </div>
-    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh</p>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

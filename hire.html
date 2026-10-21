@@ -22,26 +22,30 @@
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=9">
-  <script src="shared.js"></script>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
+  <link rel="preload" href="fonts/zilla-slab-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=11">
+  <script src="shared.js?v=11"></script>
 </head>
-<body>
+<body class="">
 <a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="site-header">
   <div class="wrap header-in">
     <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
-    <nav class="nav-links" aria-label="Main"><a href="portfolio.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html">Notes</a><a href="hire.html" aria-current="page">Hire me</a><a href="contact.html">Contact</a></nav>
+    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" aria-current="page" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
     <div class="header-tools">
+      
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">&#9790;</button>
       <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
-    <div class="wrap"><a href="portfolio.html">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html">Notes</a><a href="hire.html" aria-current="page">Hire me</a><a href="contact.html">Contact</a></div>
+    <div class="wrap"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" aria-current="page" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></div>
   </nav>
 </header>
 
@@ -87,14 +91,15 @@
     <h2>Let us talk about the role.</h2>
     <p>Send me the job description or the problem you want solved.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">Message on WhatsApp</a>
-      <a class="btn" href="contact.html">Use the contact page</a>
+      <a class="btn btn-primary" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn" href="request.html">Request a quote</a>
+      <a class="btn" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20book%20a%2020-minute%20call.%20What%20times%20suit%20you%20this%20week%3F" target="_blank" rel="noopener">Book a call</a>
     </div>
   </div>
 </section>
 </main>
 
-<a class="whatsapp-fab" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp</a>
+<a class="whatsapp-fab" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20am%20on%20your%20website%20%28Hire%20Me%20page%29%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -102,26 +107,40 @@
       <div>
         <h2>Alhaji Ibrahim Mehemoh</h2>
         <p class="muted">Data Officer and M&amp;E specialist. Bo, Sierra Leone.</p>
+        
       </div>
       <div>
         <h2>Contact</h2>
         <ul>
           <li><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></li>
           <li><a href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
+          <li><a href="request.html">Request a quote</a></li>
           <li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></li>
         </ul>
       </div>
       <div>
-        <h2>Pages</h2>
+        <h2>Explore</h2>
         <ul>
           <li><a href="portfolio.html">Projects</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Free resources</a></li>
+          <li><a href="demo.html">Sample dashboard</a></li>
           <li><a href="community.html">Notes</a></li>
         </ul>
       </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="now.html">What I am doing now</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="capability-statement.html">Capability statement</a></li>
+          <li><a href="cv.html">Web CV</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
     </div>
-    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh</p>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Note composer</title>
+  <meta name="description" content="Private note composer.">
+  <meta name="theme-color" content="#0F2430">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://alhajiimehemoh.github.io/admin.html">
+
+  <meta property="og:title" content="Note composer">
+  <meta property="og:description" content="Private note composer.">
+  <meta property="og:url" content="https://alhajiimehemoh.github.io/admin.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Note composer">
+  <meta name="twitter:description" content="Private note composer.">
+  <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
+  <link rel="preload" href="fonts/zilla-slab-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=11">
+  <script src="shared.js?v=11"></script>
+</head>
+<body class="">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
+    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
+    <div class="header-tools">
+      
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">&#9790;</button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <div class="wrap"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></div>
+  </nav>
+</header>
+
+<main id="main">
+<div class="wrap"><div class="page-head"><h1>Note composer</h1><p class="lede">For my own use. Write a note, copy the JSON, paste it into notes.json, then rebuild. Nothing is saved or sent from this page.</p></div></div>
+<section class="section"><div class="wrap narrow">
+  <div class="field"><label for="n-title">Title</label><input id="n-title"></div>
+  <div class="field"><label for="n-summary">One-sentence summary</label><input id="n-summary"></div>
+  <div class="field"><label for="n-cat">Category</label><select id="n-cat"><option>Health data</option><option>IT support</option><option>Career</option><option>Cybersecurity</option></select></div>
+  <div class="field"><label for="n-date">Date</label><input id="n-date" type="date"></div>
+  <div class="field"><label for="n-body">Body (use ## for headings and - for bullets)</label><textarea id="n-body" rows="12"></textarea></div>
+  <button class="btn btn-primary" type="button" id="n-make">Make JSON</button>
+  <div class="field" style="margin-top:1rem"><label for="n-out">Paste this into notes.json</label><textarea id="n-out" rows="10" readonly></textarea></div>
+  <button class="btn" type="button" id="n-copy">Copy</button>
+</div></section>
+<script>
+(function(){var g=function(i){return document.getElementById(i)};
+g('n-make').onclick=function(){var t=g('n-title').value.trim();var slug='note-'+t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+g('n-out').value=JSON.stringify({slug:slug,title:t,summary:g('n-summary').value.trim(),category:g('n-cat').value,date:g('n-date').value,body:g('n-body').value.trim()},null,2)+',';};
+g('n-copy').onclick=function(){g('n-out').select();try{navigator.clipboard.writeText(g('n-out').value)}catch(e){document.execCommand('copy')}};})();
+</script>
+</main>
+
+<a class="whatsapp-fab" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20am%20on%20your%20website%20%28Note%20composer%20page%29%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Alhaji Ibrahim Mehemoh</h2>
+        <p class="muted">Data Officer and M&amp;E specialist. Bo, Sierra Leone.</p>
+        
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></li>
+          <li><a href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
+          <li><a href="request.html">Request a quote</a></li>
+          <li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="portfolio.html">Projects</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="resources.html">Free resources</a></li>
+          <li><a href="demo.html">Sample dashboard</a></li>
+          <li><a href="community.html">Notes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="now.html">What I am doing now</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="capability-statement.html">Capability statement</a></li>
+          <li><a href="cv.html">Web CV</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
+  </div>
+</footer>
+</body>
+</html>

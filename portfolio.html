@@ -22,26 +22,50 @@
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=9">
-  <script src="shared.js"></script>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
+  <link rel="preload" href="fonts/zilla-slab-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=11">
+  <script src="shared.js?v=11"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://alhajiimehemoh.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Projects",
+      "item": "https://alhajiimehemoh.github.io/portfolio.html"
+    }
+  ]
+}
+  </script>
 </head>
-<body>
+<body class="">
 <a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="site-header">
   <div class="wrap header-in">
     <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
-    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" aria-current="page">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html">Notes</a><a href="hire.html">Hire me</a><a href="contact.html">Contact</a></nav>
+    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" aria-current="page" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
     <div class="header-tools">
+      
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">&#9790;</button>
       <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
-    <div class="wrap"><a href="portfolio.html" aria-current="page">Projects</a><a href="services.html">Services</a><a href="about.html">About</a><a href="community.html">Notes</a><a href="hire.html">Hire me</a><a href="contact.html">Contact</a></div>
+    <div class="wrap"><a href="portfolio.html" aria-current="page" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></div>
   </nav>
 </header>
 
@@ -52,11 +76,13 @@
 <section class="section" id="projects">
   <div class="wrap">
     <div class="section-head"><h2>Case studies</h2></div>
-    <div class="register">
-      <a class="reg-row" href="case-epi-dashboard.html"><h3>EPI reporting dashboard</h3><p>Power BI report from monthly Survey123 immunisation exports, plus the data quality checks behind it.</p><span class="reg-status">In development</span></a>
-      <a class="reg-row" href="case-survey123.html"><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification form, malaria campaign registration with QR autofill, an offline stock dashboard and a campaign inventory tracker.</p><span class="reg-status">Built</span></a>
-      <a class="reg-row" href="case-chw-card-studio.html"><h3>CHW Card Studio</h3><p>Issuing and verifying credential cards for more than 1,000 Community Health Workers.</p><span class="reg-status">In design</span></a>
-      <a class="reg-row" href="case-dms.html"><h3>Data Management System</h3><p>An 11-module system for vaccine coverage and nutrition tracking, using PostgreSQL, Flask and a PWA.</p><span class="reg-status">Designed</span></a>
+    <div class="filters" role="group" aria-label="Filter projects by type"><button type="button" class="filter is-active" data-filter="all" aria-pressed="true">All</button><button type="button" class="filter" data-filter="health" aria-pressed="false">Health data</button><button type="button" class="filter" data-filter="systems" aria-pressed="false">Systems</button><button type="button" class="filter" data-filter="it" aria-pressed="false">IT and field tools</button></div>
+    <p class="small muted" id="filterCount" role="status" aria-live="polite"></p>
+    <div class="register" data-filter-target>
+      <a class="reg-row" data-type="health" href="case-epi-dashboard.html"><h3>EPI reporting dashboard</h3><p>Power BI report from monthly Survey123 immunisation exports, plus the data quality checks behind it.</p><span class="reg-status pill pill-dev">In development</span></a>
+      <a class="reg-row" data-type="health it" href="case-survey123.html"><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification form, malaria campaign registration with QR autofill, an offline stock dashboard and a campaign inventory tracker.</p><span class="reg-status pill pill-ok">Built</span></a>
+      <a class="reg-row" data-type="systems health" href="case-chw-card-studio.html"><h3>CHW Card Studio</h3><p>Issuing and verifying credential cards for more than 1,000 Community Health Workers.</p><span class="reg-status pill pill-design">In design</span></a>
+      <a class="reg-row" data-type="systems health" href="case-dms.html"><h3>Data Management System</h3><p>An 11-module system for vaccine coverage and nutrition tracking, using PostgreSQL, Flask and a PWA.</p><span class="reg-status pill pill-done">Designed</span></a>
     </div>
   </div>
 </section>
@@ -64,10 +90,10 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head"><h2>Earlier work</h2></div>
-    <ul class="register">
-      <li class="reg-row two"><h3>Health facility reporting tools, RHCI</h3><div><p><strong>Problem:</strong> Manual reporting and inconsistent tracking reduced accuracy and slowed submissions.</p><p><strong>Solution:</strong> Excel tracking tools for MMS (multiple micronutrient supplements), CHW attendance, ultrasound reporting and inventory, with standard templates and a monthly reporting workflow.</p><p><strong>Outcome:</strong> More accurate data and smoother monthly submissions.</p></div></li>
-      <li class="reg-row two"><h3>Office network and computer support</h3><div><p><strong>Problem:</strong> Frequent downtime, connectivity issues and recurring device problems.</p><p><strong>Solution:</strong> Router configuration, LAN and Wi-Fi improvements, a device setup checklist and a regular support routine.</p><p><strong>Outcome:</strong> Better uptime, fewer repeat issues and smoother daily operations.</p></div></li>
-      <li class="reg-row two"><h3>Vitamin Angels supply tracking</h3><div><p><strong>Problem:</strong> Unclear stock visibility for MMS, Vitamin A and Albendazole distribution.</p><p><strong>Solution:</strong> Excel templates and printed logbooks for recording each distribution.</p><p><strong>Outcome:</strong> Clearer stock visibility and accountability.</p></div></li>
+    <ul class="register" data-filter-target>
+      <li class="reg-row two" data-type="health"><h3>Health facility reporting tools, RHCI</h3><div><p><strong>Problem:</strong> Manual reporting and inconsistent tracking reduced accuracy and slowed submissions.</p><p><strong>Solution:</strong> Excel tracking tools for MMS (multiple micronutrient supplements), CHW attendance, ultrasound reporting and inventory, with standard templates and a monthly reporting workflow.</p><p><strong>Outcome:</strong> More accurate data and smoother monthly submissions.</p></div></li>
+      <li class="reg-row two" data-type="it"><h3>Office network and computer support</h3><div><p><strong>Problem:</strong> Frequent downtime, connectivity issues and recurring device problems.</p><p><strong>Solution:</strong> Router configuration, LAN and Wi-Fi improvements, a device setup checklist and a regular support routine.</p><p><strong>Outcome:</strong> Better uptime, fewer repeat issues and smoother daily operations.</p></div></li>
+      <li class="reg-row two" data-type="health it"><h3>Vitamin Angels supply tracking</h3><div><p><strong>Problem:</strong> Unclear stock visibility for MMS, Vitamin A and Albendazole distribution.</p><p><strong>Solution:</strong> Excel templates and printed logbooks for recording each distribution.</p><p><strong>Outcome:</strong> Clearer stock visibility and accountability.</p></div></li>
     </ul>
   </div>
 </section>
@@ -76,14 +102,15 @@
     <h2>Want something similar for your team?</h2>
     <p>Tell me what you track today and what you need to report. I will suggest the simplest system that works.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">Message on WhatsApp</a>
-      <a class="btn" href="contact.html">Use the contact page</a>
+      <a class="btn btn-primary" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn" href="request.html">Request a quote</a>
+      <a class="btn" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20book%20a%2020-minute%20call.%20What%20times%20suit%20you%20this%20week%3F" target="_blank" rel="noopener">Book a call</a>
     </div>
   </div>
 </section>
 </main>
 
-<a class="whatsapp-fab" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp</a>
+<a class="whatsapp-fab" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20am%20on%20your%20website%20%28Projects%20page%29%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -91,26 +118,40 @@
       <div>
         <h2>Alhaji Ibrahim Mehemoh</h2>
         <p class="muted">Data Officer and M&amp;E specialist. Bo, Sierra Leone.</p>
+        
       </div>
       <div>
         <h2>Contact</h2>
         <ul>
           <li><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></li>
           <li><a href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
+          <li><a href="request.html">Request a quote</a></li>
           <li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></li>
         </ul>
       </div>
       <div>
-        <h2>Pages</h2>
+        <h2>Explore</h2>
         <ul>
           <li><a href="portfolio.html">Projects</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Free resources</a></li>
+          <li><a href="demo.html">Sample dashboard</a></li>
           <li><a href="community.html">Notes</a></li>
         </ul>
       </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="now.html">What I am doing now</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="capability-statement.html">Capability statement</a></li>
+          <li><a href="cv.html">Web CV</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
     </div>
-    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh</p>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>
 </footer>
 </body>

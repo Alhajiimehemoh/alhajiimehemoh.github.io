@@ -1,0 +1,16 @@
+name: Check site
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install openpyxl reportlab
+      - name: Rebuild and make sure committed files are up to date
+        run: |
+          python3 build.py
+          git diff --stat
+      - name: Check local links
+        run: python3 tools/check_links.py
