@@ -57,7 +57,8 @@ def tally_svg():
 index_body = f'''<div class="wrap">
   <section class="hero">
     <div class="hero-copy">
-      <h1 data-i18n="hero.h1">I help health programmes turn field data into decisions.</h1>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open to consulting, contracts and roles</p>
+        <h1 data-i18n="hero.h1">I help health programmes turn <span class="mark">field data</span> into decisions.</h1>
       <p class="lede" data-i18n="hero.lede">I am a Data Officer and M&amp;E specialist at Rural Health Care Initiative in Bo District, Sierra Leone. I design Survey123 forms, Power BI dashboards and data systems that nurses, programme managers and donors can read at a glance.</p>
       <div class="actions">
         <a class="btn btn-primary" href="portfolio.html" data-i18n="hero.projects">See projects</a>

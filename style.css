@@ -473,3 +473,40 @@ dialog.lightbox button{position:absolute;top:.5rem;right:.5rem}
 :root[data-theme=dark] img:not(.portrait){filter:brightness(.88) contrast(1.05)}
 @media print{.no-print,.site-header,.site-footer,.whatsapp-fab,.progress{display:none!important}
  body{background:#fff;color:#000}.doc{max-width:none;padding:0}.doc h2{font-size:13pt}.doc,.doc p,.doc li{font-size:10.5pt;line-height:1.35}}
+
+/* ===== v12: richer look ===== */
+body{background:
+  radial-gradient(60rem 32rem at 85% -8%,color-mix(in srgb,var(--green) 14%,transparent),transparent 70%),
+  radial-gradient(50rem 28rem at -10% 18%,color-mix(in srgb,var(--blue) 10%,transparent),transparent 70%),
+  var(--paper);background-attachment:fixed}
+h1,h2{letter-spacing:-.02em}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.85rem;font-weight:600;color:var(--green);
+  background:var(--green-soft);padding:.4rem .85rem;border-radius:999px;margin:0 0 1.1rem}
+.eyebrow .dot{width:.55rem;height:.55rem;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 55%,transparent);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 .6rem transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(2.6rem,6.2vw,4.6rem);line-height:1.02}
+.mark{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--amber) 55%,transparent) 62% 92%,transparent 92%);
+  padding:0 .12em;margin:0 -.12em;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.section-head h2::before{content:"";display:block;width:2.4rem;height:4px;border-radius:4px;margin-bottom:.8rem;
+  background:linear-gradient(90deg,var(--green),var(--blue))}
+.tile{border-radius:24px;background:linear-gradient(160deg,var(--sheet),color-mix(in srgb,var(--sheet) 90%,var(--tint)))}
+.tile-green{background:linear-gradient(150deg,var(--green-soft),color-mix(in srgb,var(--green-soft) 70%,var(--sheet)))}
+.tile-ink{background:linear-gradient(150deg,#16384A,var(--panel) 70%)}
+.tile:hover{transform:translateY(-5px) rotate(-.15deg)}
+.btn{border-radius:999px;transition:transform .18s,box-shadow .18s,background .18s}
+.btn-primary{background:linear-gradient(135deg,var(--green),color-mix(in srgb,var(--green) 70%,var(--blue)))}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px color-mix(in srgb,var(--green) 80%,transparent)}
+.nav-links a[aria-current=page]{box-shadow:inset 0 -2px 0 var(--green)}
+.reg-row{transition:background .2s,padding-left .2s}
+a.reg-row:hover{background:color-mix(in srgb,var(--green-soft) 60%,transparent);padding-left:.75rem;border-radius:12px}
+.cta-band .wrap{background:radial-gradient(40rem 16rem at 90% 0,color-mix(in srgb,var(--green) 45%,transparent),transparent 70%),linear-gradient(150deg,#16384A,var(--panel) 65%);
+  box-shadow:0 30px 60px -30px rgba(15,36,48,.6)}
+.promo{background:linear-gradient(120deg,var(--green-soft),color-mix(in srgb,var(--green-soft) 55%,var(--sheet)));border:1px solid color-mix(in srgb,var(--green) 25%,transparent)}
+.quote{border-radius:22px;background:linear-gradient(170deg,var(--sheet),color-mix(in srgb,var(--sheet) 92%,var(--tint)))}
+.chip{transition:transform .18s,border-color .18s}.chip:hover{transform:translateY(-2px);border-color:var(--green)}
+.site-footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--tint) 70%,transparent))}
+.page-head h1{font-size:clamp(2.4rem,5.5vw,3.8rem)}
+.page-head{position:relative}
+.page-head::after{content:"";position:absolute;right:0;top:-1rem;width:10rem;height:10rem;border-radius:50%;z-index:-1;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--green) 18%,transparent),transparent);filter:blur(6px)}
+@media (prefers-reduced-motion:reduce){.eyebrow .dot{animation:none}}
