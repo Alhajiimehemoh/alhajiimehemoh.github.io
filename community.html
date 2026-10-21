@@ -79,10 +79,356 @@
     <div class="notes-tools">
       <label class="sr-only" for="noteSearch">Search notes</label>
       <input id="noteSearch" type="search" placeholder="Search notes" autocomplete="off">
-      <div class="filters" role="group" aria-label="Filter notes by category"><button type="button" class="filter is-active" data-cat="all" aria-pressed="true">All</button><button type="button" class="filter" data-cat="Career" aria-pressed="false">Career</button><button type="button" class="filter" data-cat="Cybersecurity" aria-pressed="false">Cybersecurity</button><button type="button" class="filter" data-cat="Health data" aria-pressed="false">Health data</button><button type="button" class="filter" data-cat="IT support" aria-pressed="false">IT support</button></div>
+      <div class="filters" role="group" aria-label="Filter notes by category"><button type="button" class="filter is-active" data-cat="all" aria-pressed="true">All</button><button type="button" class="filter" data-cat="Career" aria-pressed="false">Career</button><button type="button" class="filter" data-cat="Cybersecurity" aria-pressed="false">Cybersecurity</button><button type="button" class="filter" data-cat="Data and analytics" aria-pressed="false">Data and analytics</button><button type="button" class="filter" data-cat="Data collection" aria-pressed="false">Data collection</button><button type="button" class="filter" data-cat="Databases" aria-pressed="false">Databases</button><button type="button" class="filter" data-cat="Digital health" aria-pressed="false">Digital health</button><button type="button" class="filter" data-cat="Health data" aria-pressed="false">Health data</button><button type="button" class="filter" data-cat="ICT consulting" aria-pressed="false">ICT consulting</button><button type="button" class="filter" data-cat="IT support" aria-pressed="false">IT support</button><button type="button" class="filter" data-cat="Inventory" aria-pressed="false">Inventory</button><button type="button" class="filter" data-cat="M&amp;E" aria-pressed="false">M&amp;E</button><button type="button" class="filter" data-cat="Power BI" aria-pressed="false">Power BI</button><button type="button" class="filter" data-cat="Websites" aria-pressed="false">Websites</button></div>
     </div>
     <p class="small muted" id="noteCount" role="status" aria-live="polite"></p>
-    <div class="register" id="noteList"><a class="reg-row two" data-cat="Health data" data-search="how technology is transforming healthcare in sierra leone digital data collection, electronic reporting and better tracking are changing how facilities work. healthcare delivery in sierra leone is shifting from paper-based processes to digital systems. facilities can now monitor performance with excel tracking sheets, digital logbooks and centralised databases.
+    <div class="register" id="noteList"><a class="reg-row two" data-cat="Health data" data-search="how to check epi data quality before you report six quick checks that catch most errors in monthly immunisation data before they reach a dashboard. immunisation data passes through many hands before it becomes a coverage figure. a few minutes of checking at the start saves hours of explaining later. these are the checks i run on a monthly epi export.
+
+## 1. completeness
+
+list every facility that should report and tick off the ones that did. a missing facility is the most common reason coverage looks low. also look for blank required fields. a blank is not the same as zero.
+
+## 2. timeliness
+
+note which reports arrived late and by how many days. late reports often get entered in a rush, so they deserve a closer look.
+
+## 3. totals that add up
+
+check that the doses by age group add up to the facility total. if they do not, one of the numbers is wrong and the report should go back to the facility.
+
+## 4. impossible or unlikely values
+
+sort each indicator from highest to lowest and read the top and bottom rows. a facility that vaccinated far more children than its target population needs a conversation, not a chart.
+
+## 5. duplicates
+
+check for repeated submissions from the same facility and month. keep the latest valid one and note what you removed.
+
+## 6. compare with last month
+
+a sudden jump or drop can be real, but it is more often an entry error or a change in who reported. write down the reason next to the number.
+
+## keep a log
+
+record every correction: what changed, who confirmed it and when. a simple sheet is enough. it makes your report defensible when a donor or the dhmt asks questions.
+
+i turned these into a one-page checklist you can print. you can download it from the [resources page](resources.html)." href="note-check-epi-data-quality.html"><h3>How to check EPI data quality before you report</h3><div><p>Six quick checks that catch most errors in monthly immunisation data before they reach a dashboard.</p><p class="small"><span class="pill pill-cat">Health data</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Data collection" data-search="survey123 form mistakes to avoid common problems that make field data messy, and the simple form design choices that prevent them. most data quality problems start in the form, not in the spreadsheet. fixing the form is cheaper than cleaning the data every month.
+
+## free-text where a list would do
+
+if facility names are typed, you will get five spellings of the same clinic. use a choice list so every record uses the same name.
+
+## no limits on numbers
+
+a field for children vaccinated should not accept 5,000. add a constraint with a clear message so the mistake is caught on the phone, while the health worker is still at the facility.
+
+## too many questions
+
+every extra question lowers the chance that the form is filled in properly. ask only what you will use in a report. if nobody will read an answer, remove the question.
+
+## asking for names you do not need
+
+collect the least personal information possible. patient names and phone numbers create risk and are often not needed for programme reporting.
+
+## skipping skip logic
+
+if a follow-up question only applies when the answer is yes, show it only then. this keeps the form short and avoids contradictory answers.
+
+## not testing in the field
+
+a form that looks fine on a laptop can be slow or confusing on a basic phone with weak signal. test with two or three real users before you roll out.
+
+## changing the form without a plan
+
+renaming a field mid-programme can break your dashboard. version your form, write down changes and update the report at the same time.
+
+there is a sample xlsform with validation rules on the [resources page](resources.html) if you want a starting point." href="note-survey123-mistakes.html"><h3>Survey123 form mistakes to avoid</h3><div><p>Common problems that make field data messy, and the simple form design choices that prevent them.</p><p class="small"><span class="pill pill-cat">Data collection</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Health data" data-search="why dashboards fail and how to design one people use a dashboard works when each reader sees the answer to their own question without help. a dashboard is not finished when it looks good. it is finished when the person it was built for uses it to make a decision.
+
+## start with the reader
+
+a nurse, a programme manager and a donor ask different questions. a nurse wants to know what is due at my facility this week. a manager wants to know which facilities are falling behind. a donor wants a short summary against targets. build a view for each, or at least decide who the main reader is.
+
+## one message per chart
+
+if a chart needs a paragraph to explain it, split it. give each chart a title that states the point, for example coverage is lowest at two facilities, instead of coverage by facility.
+
+## show the target
+
+a number without a target has no meaning. add a line or colour that shows whether the result is on track.
+
+## keep the data table underneath
+
+people trust a chart more when they can see the numbers behind it. keep a clean table one click away.
+
+## make updating easy
+
+a dashboard that takes a day to refresh will not be refreshed. design it so a new month of data is added by dropping in the new export.
+
+## be honest about gaps
+
+if three facilities did not report, say so on the page. hiding missing data makes the whole dashboard less credible.
+
+you can try these ideas on the [sample dashboard](demo.html), which uses invented data." href="note-dashboards-people-use.html"><h3>Why dashboards fail and how to design one people use</h3><div><p>A dashboard works when each reader sees the answer to their own question without help.</p><p class="small"><span class="pill pill-cat">Health data</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Data collection" data-search="choosing a data collection tool: survey123, kobotoolbox, commcare or odk a plain guide to picking a tool based on your team, your connectivity and what you need to do with the data. there is no single best tool. the right choice depends on your team, your budget and what happens to the data afterwards. these are the questions i ask first.
+
+## who will build and maintain the forms?
+
+if your team knows excel, tools that use xlsform let you design forms in a spreadsheet. survey123, kobotoolbox and odk all support xlsform, so skills carry across.
+
+## does the team work offline?
+
+most field work in sierra leone happens with weak or no signal. check that the tool saves records on the phone and sends them later. test this with real phones before you commit.
+
+## where does the data need to go?
+
+if your organisation already uses arcgis and maps, survey123 fits naturally. if you need a free tool with simple exports to excel or power bi, kobotoolbox is a common choice. if you need follow-up of individual clients or community health workers over time, a case management tool such as commcare may suit better.
+
+## what does it cost to run?
+
+look at licences, training, and the cost of mobile data and devices. a cheap tool that nobody can support is expensive.
+
+## who owns the data?
+
+check where the data is stored and who can access it. make sure you can export everything at any time.
+
+## start small
+
+run a pilot with one form and a few users for a month. you will learn more from that than from any comparison table.
+
+if you want help choosing, send me a short description of your programme through the [quote form](request.html)." href="note-choosing-data-collection-tool.html"><h3>Choosing a data collection tool: Survey123, KoboToolbox, CommCare or ODK</h3><div><p>A plain guide to picking a tool based on your team, your connectivity and what you need to do with the data.</p><p class="small"><span class="pill pill-cat">Data collection</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Data and analytics" data-search="ten habits for cleaning data in excel without breaking it simple, repeatable steps that make messy exports safe to analyse and easy to check later. most reports go wrong before any analysis starts. these habits keep your cleaning safe and repeatable.
+
+## before you touch anything
+
+- save a copy of the raw file and never edit it
+- work on a copy named with the date and version
+- convert the range to a table so formulas and filters follow the data
+
+## while you clean
+
+- trim extra spaces and fix capitalisation so the same facility is not counted as three
+- use a drop-down list or data validation for fields with fixed choices
+- mark dates as real dates, not text
+- look for duplicates before you count anything
+- keep a column that flags rows you changed
+
+## after you clean
+
+- compare totals with the raw file to be sure nothing was lost
+- record what you changed in a short log sheet
+- save the final version as the one source your charts and pivot tables use
+
+clean data is boring, and that is the goal. if your team does this every month, a [dashboard](demo.html) becomes easy to build because the data is always in the same shape." href="note-clean-data-in-excel.html"><h3>Ten habits for cleaning data in Excel without breaking it</h3><div><p>Simple, repeatable steps that make messy exports safe to analyse and easy to check later.</p><p class="small"><span class="pill pill-cat">Data and analytics</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Power BI" data-search="starting a power bi dashboard: five measures that matter a short list of measures to build first, and why a clean data model matters more than clever formulas. many dashboards start with charts. good ones start with a clear data model and a few trusted measures.
+
+## build the model first
+
+use one table for facts, such as monthly reports, and small tables for facilities, months and indicators. connect them with simple relationships. a tidy model makes every formula shorter.
+
+## five measures to create first
+
+- **total**: the sum of the value you report, for example doses given
+- **target**: the target for the same period
+- **coverage**: total divided by target, using divide so a zero target does not cause an error
+- **change from last month**: this month minus last month
+- **facilities reporting**: a count of distinct facilities with data
+
+## keep the page simple
+
+put the key numbers at the top, one trend chart, one comparison by facility, and a table underneath. add filters for month and facility. show the target as a line so a number always has meaning.
+
+## test before you share
+
+check three facilities by hand against the source file. if they match, you can trust the rest.
+
+you can see this approach on the [sample dashboard](demo.html)." href="note-power-bi-kpis.html"><h3>Starting a Power BI dashboard: five measures that matter</h3><div><p>A short list of measures to build first, and why a clean data model matters more than clever formulas.</p><p class="small"><span class="pill pill-cat">Power BI</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="M&amp;E" data-search="how to write a monitoring indicator people can actually measure a good indicator says what is counted, for whom, how often and where the number comes from. an indicator that nobody can measure is just a wish. before you add one to a framework, check that it answers these questions.
+
+## the five parts
+
+- **definition**: exactly what is counted, for example children under one who received the third dose
+- **numerator and denominator**: if it is a percentage, say what sits on top and what sits underneath
+- **source**: the register, form or survey the number comes from
+- **frequency**: how often it is collected and reported
+- **responsible person**: who collects it and who checks it
+
+## set a baseline and a target
+
+without a starting point you cannot show change. without a target you cannot say whether the result is good.
+
+## keep the list short
+
+every indicator costs time to collect. if nobody will use a number in a decision, remove it.
+
+## test with real data
+
+try the indicator on last month&#x27;s data. if two people calculate different answers, the definition is not clear enough yet.
+
+the [data quality checklist](resources.html) helps you check the numbers once you start collecting them." href="note-me-indicators.html"><h3>How to write a monitoring indicator people can actually measure</h3><div><p>A good indicator says what is counted, for whom, how often and where the number comes from.</p><p class="small"><span class="pill pill-cat">M&amp;E</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Data collection" data-search="when qr codes help in registration and tracking systems qr codes are useful for fast, accurate lookup, but only when the system behind them is designed properly. a qr code is a quick way to open a record without typing. it helps when a printed card, register or box needs to connect to digital data.
+
+## good uses
+
+- staff or community health worker cards that can be checked online
+- stock items or boxes that need to be counted or issued
+- attendance at training sessions or outreach events
+- linking a paper form to the right digital record
+
+## what the code should contain
+
+keep the code to a short id or web link. do not put names, phone numbers or other personal details inside the code, because anyone with a phone can read it.
+
+## plan for problems
+
+- print codes large enough to scan on a basic phone
+- protect printed cards from water and wear
+- keep a way to look up the record by typing the id
+- decide who can see what once the code is scanned
+
+a qr code is only the key. the reliable part is the database and the rules behind it.
+
+if you are thinking about a card or registration system, you can describe it through the [quote form](request.html)." href="note-qr-code-registration.html"><h3>When QR codes help in registration and tracking systems</h3><div><p>QR codes are useful for fast, accurate lookup, but only when the system behind them is designed properly.</p><p class="small"><span class="pill pill-cat">Data collection</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Inventory" data-search="a simple monthly stock reconciliation for clinics and programmes compare what the records say with what is on the shelf, then explain every difference. stock records and shelves drift apart quickly. a monthly reconciliation keeps them honest.
+
+## what you need
+
+- opening stock from last month&#x27;s closing figure
+- everything received, with dates and delivery notes
+- everything issued, with who received it
+- a physical count done on the same day
+
+## the calculation
+
+opening stock plus received minus issued gives expected closing stock. compare it with the physical count. any difference must be explained.
+
+## common causes of differences
+
+- items issued but not recorded
+- entry mistakes in quantities or units
+- expired or damaged items not written off
+- borrowing between locations without a record
+
+## keep it practical
+
+do the count with two people. record the difference, the reason and the action taken. set a reorder level for each item so you order before you run out.
+
+the [stock tracker](resources.html) on this site calculates closing stock and flags items to reorder. it is a free excel template you can adapt." href="note-stock-reconciliation.html"><h3>A simple monthly stock reconciliation for clinics and programmes</h3><div><p>Compare what the records say with what is on the shelf, then explain every difference.</p><p class="small"><span class="pill pill-cat">Inventory</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Databases" data-search="when to move from excel to a database excel is a good start. these signs show it is time for something stronger. excel is fast, flexible and familiar, which is why most programmes start there. it becomes risky when the data grows or many people use it.
+
+## signs you have outgrown it
+
+- several people edit copies of the same file
+- files take a long time to open or crash
+- you repeat the same cleaning every month
+- different sheets show different totals for the same thing
+- you need to control who can see or change certain records
+
+## what a database gives you
+
+- one central copy of the data
+- rules that stop wrong values from being saved
+- access levels for different users
+- reports that update from the same source
+- a history of who changed what
+
+## move in steps
+
+clean the data first. design the tables on paper. import a small sample and test it. run both systems side by side for a month before you switch.
+
+a database does not fix unclear processes, so agree on the process first. if you are not sure whether you need one yet, send me a description through the [quote form](request.html)." href="note-excel-to-database.html"><h3>When to move from Excel to a database</h3><div><p>Excel is a good start. These signs show it is time for something stronger.</p><p class="small"><span class="pill pill-cat">Databases</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Digital health" data-search="designing community health worker reporting that gets used short forms, clear feedback and simple reports help community health worker data stay accurate. community health workers collect data while doing demanding work. reporting has to be quick, or it will be late or wrong.
+
+## keep the form short
+
+ask only for what the programme will use. use choice lists instead of typing, and skip questions that do not apply.
+
+## work offline
+
+many communities have weak signal. the tool must save records on the phone and send them later without losing anything.
+
+## give something back
+
+people report more carefully when they see their data used. share a simple summary with supervisors and health workers each month, such as visits completed and what is outstanding.
+
+## protect people
+
+- collect the least personal information needed
+- limit who can see individual records
+- never share identifiable data in group chats or public files
+
+## check quality regularly
+
+supervisors should sample a few records each month and compare them with what happened in the field. feedback should be friendly and specific.
+
+the [survey123 mistakes note](note-survey123-mistakes.html) lists form design problems to avoid." href="note-chw-reporting.html"><h3>Designing community health worker reporting that gets used</h3><div><p>Short forms, clear feedback and simple reports help community health worker data stay accurate.</p><p class="small"><span class="pill pill-cat">Digital health</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Websites" data-search="why a small organisation needs a simple website a clear site builds trust, answers common questions and lets people reach you at any hour. a website does not have to be big. for a small organisation, a few clear pages can do a lot of work.
+
+## what people look for
+
+- who you are and what you do
+- how to contact you
+- proof that you are real and active, such as projects, reports or photos
+- prices or how to request a quote
+
+## a simple structure
+
+- home page with one clear message
+- about page
+- services or programmes
+- contact page with phone, whatsapp and email
+
+## keep it working
+
+- make sure it loads fast on a phone
+- keep contact details current
+- update it when something important changes
+- back up the files
+
+## start small and grow
+
+launch with the essentials, then add pages when you have real content. a site that is finished and accurate is better than a big one that is half done.
+
+this website itself is a small, fast site hosted for free. you can see the approach on the [services page](services.html)." href="note-small-organisation-website.html"><h3>Why a small organisation needs a simple website</h3><div><p>A clear site builds trust, answers common questions and lets people reach you at any hour.</p><p class="small"><span class="pill pill-cat">Websites</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="IT support" data-search="the 3-2-1 backup rule for small offices three copies, two kinds of storage, one copy somewhere else. it is simple and it works. most people only think about backups after losing files. the 3-2-1 rule gives you a plan before that happens.
+
+## the rule
+
+- **3 copies** of important files: the original and two backups
+- **2 types of storage**, for example the computer and an external drive
+- **1 copy away from the office**, such as a cloud folder or a drive kept at another site
+
+## what to back up
+
+- financial records and registers
+- programme data and reports
+- email exports and key documents
+- software licences and setup files
+
+## make it routine
+
+set a day each week for backups, or use automatic sync where possible. name backups with the date.
+
+## test restoring
+
+a backup you have never opened is only a hope. once a month, restore one file to check it works.
+
+## protect the backups
+
+do not leave the external drive plugged in all the time. if a virus hits the computer, a connected drive can be damaged too.
+
+see also [simple ways to protect your computer from viruses](note-protect-your-computer.html)." href="note-backup-rule.html"><h3>The 3-2-1 backup rule for small offices</h3><div><p>Three copies, two kinds of storage, one copy somewhere else. It is simple and it works.</p><p class="small"><span class="pill pill-cat">IT support</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="ICT consulting" data-search="how to run a quick ict needs assessment before buying equipment or software, find out what your team actually needs and what is already working. organisations often buy laptops or software first and ask questions later. a short assessment saves money and avoids waste.
+
+## start with the work
+
+list the main tasks your team does and the problems that slow them down. examples include late reports, lost files, slow internet or duplicate data entry.
+
+## take stock
+
+- computers and phones: age, condition and who uses them
+- internet and power: how reliable and how much it costs
+- software: what is licensed and what is actually used
+- data: where it lives and who can access it
+- skills: what staff can do now and what they need
+
+## set priorities
+
+rank problems by how much time or money they cost. fix the cheap, high-impact ones first, for example backups, training or a better form.
+
+## make a short plan
+
+write what to do, who is responsible, the cost and the date. review it every three months.
+
+if you would like help with an assessment, you can send details through the [quote form](request.html)." href="note-ict-needs-assessment.html"><h3>How to run a quick ICT needs assessment</h3><div><p>Before buying equipment or software, find out what your team actually needs and what is already working.</p><p class="small"><span class="pill pill-cat">ICT consulting</span> <time datetime="2026-10-21">21 October 2026</time> &middot; 1 min read</p></div></a><a class="reg-row two" data-cat="Health data" data-search="how technology is transforming healthcare in sierra leone digital data collection, electronic reporting and better tracking are changing how facilities work. healthcare delivery in sierra leone is shifting from paper-based processes to digital systems. facilities can now monitor performance with excel tracking sheets, digital logbooks and centralised databases.
 
 programmes such as mms distribution, chw attendance and ultrasound reporting become much easier to manage once the data is organised.
 
