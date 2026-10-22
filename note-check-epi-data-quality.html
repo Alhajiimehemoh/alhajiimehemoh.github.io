@@ -21,14 +21,15 @@
   <meta name="twitter:description" content="Six checks that catch most errors in monthly immunisation data before they reach a dashboard, with a worked example and a log you can copy.">
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="images/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
   <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=18">
-  <script src="shared.js?v=18"></script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <script src="shared.js?v=19"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -80,7 +81,7 @@
 
 <header class="site-header">
   <div class="wrap header-in">
-    <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
+    <a class="brand" href="index.html"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""><span>Alhaji Ibrahim Mehemoh</span></a>
     <nav class="nav-links" aria-label="Main"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" aria-current="page" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
     <div class="header-tools">
       
@@ -133,6 +134,7 @@
 <p>Check for repeated submissions from the same facility and month. On mobile tools this often happens when a health worker presses submit twice on a weak connection. Keep the latest valid record, remove the others, and note what you removed.</p>
 <h2 id="6-compare-with-last-month">6. Compare with last month</h2>
 <p>Put this month next to last month for every facility. A sudden jump or drop can be real, for example after an outreach campaign or a vaccine stock-out, but it is more often an entry error or a change in who completed the report. Either way, the reason belongs in your report.</p>
+<figure class="nfig nfig-photo"><picture><source type="image/webp" srcset="images/cases/case-epi-dashboard/04-data-quality-review.webp"><img src="images/cases/case-epi-dashboard/04-data-quality-review.webp" alt="Design mockup of a data quality review dashboard" loading="lazy"></picture><figcaption>Design mockup with sample data: flags grouped by issue type, with a priority queue for review.</figcaption></figure>
 <h2 id="keep-a-cleaning-log">Keep a cleaning log</h2>
 <p>Record every correction: what changed, from what to what, who confirmed it and when. A simple sheet with one row per issue is enough. When a donor, the DHMT or your manager asks &quot;why is this number different from last week?&quot;, the log answers in seconds.</p>
 <aside class="callout c-example"><span class="callout-l">Example</span><p>R-0142, children vaccinated, changed from 1500 to 150. Confirmed with the facility in-charge by phone on 16 January: an extra zero was typed.</p></aside>
@@ -206,6 +208,7 @@
         </ul>
       </div>
     </div>
+    <p class="foot-logo"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
     <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
     <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>

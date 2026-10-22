@@ -21,14 +21,15 @@
   <meta name="twitter:description" content="Case study: a Power BI report built from monthly Survey123 immunisation exports at RHCI, with data quality checks for GPS, dose sequences and duplicates.">
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="images/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
   <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=18">
-  <script src="shared.js?v=18"></script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <script src="shared.js?v=19"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,7 +63,7 @@
 
 <header class="site-header">
   <div class="wrap header-in">
-    <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
+    <a class="brand" href="index.html"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""><span>Alhaji Ibrahim Mehemoh</span></a>
     <nav class="nav-links" aria-label="Main"><a href="portfolio.html" aria-current="page" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
     <div class="header-tools">
       
@@ -100,9 +101,9 @@
 <section class="section-tight"><div class="prose"><h2>Data quality checks</h2><p>Before numbers reach a dashboard, the records are checked. In March and April 2026 I ran a multi-stage analysis of the nurse datasets and produced a cleaned dataset. The checks cover:</p><ul class="bullets"><li>GPS validation</li><li>Dose sequence violations</li><li>Duplicate detection</li><li>Village name inconsistencies</li><li>Compliance tracking per nurse</li></ul><p>Each nurse received an Excel audit workbook, and management received consolidated Word reports and presentations.</p></div></section>
 <section class="section-tight"><div class="prose"><h2>How it is built</h2><p>The work moves through staged checkpoints: foundation (data model and structure), build (measures and pages) and validation and handover (checking figures against the source export before release).</p></div></section>
 
+  <section class="section-tight case-gallery"><div class="gallery-head"><h2>Design mockups</h2><p class="mock-note"><span class="pill pill-design">Sample data</span> These screens show the design using invented, anonymised data. Real programme data stays with RHCI.</p></div><div class="shots"><figure class="shot"><button type="button" class="shot-btn" data-full="images/cases/case-epi-dashboard/01-management-overview.webp" aria-label="Enlarge: Management overview: encounters by month, facility and activity"><img src="images/cases/case-epi-dashboard/01-management-overview-800.webp" alt="Design mockup: Management overview: encounters by month, facility and activity" loading="lazy"><span class="shot-zoom" aria-hidden="true"></span></button><figcaption>Management overview: encounters by month, facility and activity</figcaption></figure><figure class="shot shot-tall"><button type="button" class="shot-btn" data-full="images/cases/case-epi-dashboard/02-facility-and-nurse-performance.webp" aria-label="Enlarge: Facility and nurse performance: activity delivery and reporting completeness"><img src="images/cases/case-epi-dashboard/02-facility-and-nurse-performance-800.webp" alt="Design mockup: Facility and nurse performance: activity delivery and reporting completeness" loading="lazy"><span class="shot-zoom" aria-hidden="true"></span></button><figcaption>Facility and nurse performance: activity delivery and reporting completeness</figcaption></figure><figure class="shot shot-tall"><button type="button" class="shot-btn" data-full="images/cases/case-epi-dashboard/03-monthly-performance.webp" aria-label="Enlarge: Monthly performance: trends and previous-month comparison"><img src="images/cases/case-epi-dashboard/03-monthly-performance-800.webp" alt="Design mockup: Monthly performance: trends and previous-month comparison" loading="lazy"><span class="shot-zoom" aria-hidden="true"></span></button><figcaption>Monthly performance: trends and previous-month comparison</figcaption></figure><figure class="shot"><button type="button" class="shot-btn" data-full="images/cases/case-epi-dashboard/04-data-quality-review.webp" aria-label="Enlarge: Data quality review: flags by issue type and a priority review queue"><img src="images/cases/case-epi-dashboard/04-data-quality-review-800.webp" alt="Design mockup: Data quality review: flags by issue type and a priority review queue" loading="lazy"><span class="shot-zoom" aria-hidden="true"></span></button><figcaption>Data quality review: flags by issue type and a priority review queue</figcaption></figure></div></section>
   
-  
-  <section class="section-tight"><div class="prose"><p class="muted">Screenshots are not published here because the data belongs to RHCI. I am happy to walk you through the work on a call.</p></div>
+  <section class="section-tight"><div class="prose"><p class="muted">Real screenshots are not published because the data belongs to RHCI. I am happy to walk you through the work on a call.</p></div>
   <div class="note-nav"><a href="portfolio.html">All projects</a><a href="case-survey123.html">Next: Survey123 forms and field tools</a></div></section>
 </div>
 <section class="cta-band section">
@@ -160,6 +161,7 @@
         </ul>
       </div>
     </div>
+    <p class="foot-logo"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
     <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
     <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>

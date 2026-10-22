@@ -1299,3 +1299,68 @@ main > section.section:nth-of-type(even):not(.band) .timeline li{background:var(
 @media print{.note-side,.note-pn,.note-rel,.author-card{display:none}.note-layout{display:block}}
 .note-layout>*,.note-hero>*{min-width:0}
 .note-main{min-width:0}
+
+/* ==========================================================
+   v18: real images, mockups, logos
+   ========================================================== */
+.brand{display:inline-flex;align-items:center;gap:.6rem}
+.brand-logo{height:28px;width:auto;display:block;filter:none!important}
+.logo-dark{display:none!important}
+:root[data-theme=dark] .logo-light{display:none!important}:root[data-theme=dark] .logo-dark{display:block!important}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .logo-light{display:none!important}:root:not([data-theme=light]) .logo-dark{display:block!important}}
+@media (max-width:22rem){.brand span{font-size:1rem}}
+.foot-logo{margin:2.5rem 0 0}.foot-logo img{height:44px;width:auto;filter:none!important}
+.chip-logo{display:inline-flex;align-items:center;padding:.3rem .8rem;background:#fff}
+.chip-logo img{display:block;filter:none!important}
+/* case gallery */
+.gallery-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 1.5rem;margin-bottom:1rem}
+.gallery-head h2{margin:0}
+.mock-note{margin:0;font-size:.88rem;color:var(--muted);max-width:36rem;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.case-gallery .shots{grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:1.1rem}
+.shot{background:var(--sheet);border:1px solid var(--rule);border-radius:18px;padding:.6rem .6rem .8rem;transition:transform var(--t) var(--ease),box-shadow var(--t) var(--ease)}
+.shot:hover{transform:translateY(-4px);box-shadow:var(--lift)}
+.shot img{border-radius:12px;border:0;aspect-ratio:16/9;object-fit:cover;object-position:top;filter:none!important}
+.shot-tall img{aspect-ratio:16/9;object-position:center 30%}
+.shot-btn{position:relative;display:block;width:100%}
+.shot-zoom{position:absolute;right:.6rem;bottom:.6rem;width:2.2rem;height:2.2rem;border-radius:50%;background:rgba(15,36,48,.75);opacity:0;transition:opacity var(--t) var(--ease)}
+.shot-zoom::after{content:"";position:absolute;inset:.55rem;background:#fff;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5M11 8v6M8 11h6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5M11 8v6M8 11h6'/%3E%3C/svg%3E") center/contain no-repeat}
+.shot:hover .shot-zoom{opacity:1}
+.shot figcaption{text-transform:none;font-size:.86rem;color:var(--ink);margin:.6rem .2rem 0;line-height:1.4}
+dialog.lightbox img{filter:none!important}
+/* project cards with real mockups */
+.proj-shot{display:block;width:100%;aspect-ratio:400/250;object-fit:cover;object-position:top;filter:none!important;transition:transform .8s var(--ease)}
+.proj-card:hover .proj-shot{transform:scale(1.04)}
+/* home showcase */
+.showcase{display:grid;gap:.9rem;margin-top:2rem;grid-template-columns:repeat(2,1fr)}
+@media (min-width:52rem){.showcase{grid-template-columns:2fr 1fr 1.4fr;grid-template-rows:auto auto}.sc-wide{grid-column:1;grid-row:1/3}.sc-tall{grid-row:1/3}}
+.sc{position:relative;display:block;border-radius:18px;overflow:hidden;border:1px solid var(--rule);background:var(--sheet);box-shadow:0 10px 30px -18px rgba(15,36,48,.4)}
+.sc img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;filter:none!important;transition:transform .8s var(--ease)}
+.sc:hover img{transform:scale(1.04)}
+.sc span{position:absolute;left:.7rem;bottom:.7rem;padding:.3rem .7rem;border-radius:999px;background:rgba(15,36,48,.82);color:#fff;font-size:.8rem;font-weight:600;backdrop-filter:blur(4px)}
+.sc-wide{aspect-ratio:16/10}.sc-tall{aspect-ratio:auto;min-height:14rem}
+@media (max-width:52rem){.sc-wide{grid-column:1/3}.sc-tall img{aspect-ratio:3/4}}
+.sc-note{grid-column:1/-1;margin:0;font-size:.82rem;color:var(--muted);display:flex;gap:.6rem;align-items:center}
+/* about photo strip */
+.photo-strip{display:grid;gap:.9rem;grid-template-columns:repeat(2,1fr)}
+@media (min-width:52rem){.photo-strip{grid-template-columns:1.3fr .8fr 1.3fr;grid-template-rows:15rem 15rem}.ps-a{grid-column:1;grid-row:1}.ps-b{grid-column:2;grid-row:1/3}.ps-c{grid-column:3;grid-row:1}.ps-d{grid-column:1;grid-row:2}.ps-d+*{}}
+@media (min-width:52rem){.ps-d{grid-column:1}.photo-strip>.ps-d{grid-column:1/2}}
+.ps{margin:0;border-radius:20px;overflow:hidden;border:1px solid var(--rule);box-shadow:0 12px 30px -18px rgba(15,36,48,.4)}
+.ps img,.ps picture{display:block;width:100%;height:100%;object-fit:cover;filter:none!important}
+.ps-b img{object-position:center 20%}
+@media (min-width:52rem){.ps-d{grid-column:3;grid-row:2}}
+@media (max-width:52rem){.ps-b{grid-row:span 2}.ps img{aspect-ratio:4/3}.ps-b img{aspect-ratio:auto}}
+/* photos inside notes */
+.nfig-photo img{filter:none!important;max-height:42rem;width:auto;max-width:100%;margin-inline:auto}
+/* v18 fixes */
+@media (min-width:52rem){
+  .photo-strip{grid-template-columns:1.25fr .85fr 1.25fr;grid-template-rows:14rem 14rem}
+  .photo-strip .ps-a{grid-column:1;grid-row:1}
+  .photo-strip .ps-d{grid-column:1;grid-row:2}
+  .photo-strip .ps-b{grid-column:2;grid-row:1/3}
+  .photo-strip .ps-c{grid-column:3;grid-row:1/3}
+}
+.ps-c img{object-position:35% center}
+.shot-tall img{object-fit:contain;background:linear-gradient(160deg,#E9EEF0,#DDE6E9)}
+.chip-logo img{height:38px!important}
+.chip-logo{padding:.25rem .9rem}
+@media (max-width:52rem){.sc{aspect-ratio:4/3}.sc-wide{aspect-ratio:16/10}.sc-tall{min-height:0}.sc-tall img{aspect-ratio:auto;object-fit:contain;background:linear-gradient(160deg,#E9EEF0,#DDE6E9)}}

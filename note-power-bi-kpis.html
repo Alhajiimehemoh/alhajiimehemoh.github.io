@@ -21,14 +21,15 @@
   <meta name="twitter:description" content="Start a Power BI report the right way: a clean data model, five trusted measures and a simple page layout, with the DAX to copy.">
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="images/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
   <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=18">
-  <script src="shared.js?v=18"></script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <script src="shared.js?v=19"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -80,7 +81,7 @@
 
 <header class="site-header">
   <div class="wrap header-in">
-    <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
+    <a class="brand" href="index.html"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""><span>Alhaji Ibrahim Mehemoh</span></a>
     <nav class="nav-links" aria-label="Main"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" aria-current="page" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
     <div class="header-tools">
       
@@ -125,6 +126,7 @@
 <p>DIVIDE is used for coverage because it returns a blank instead of an error when the target is zero.</p>
 <h2 id="keep-the-page-simple">Keep the page simple</h2>
 <ul class="bullets"><li>Headline cards at the top: total, coverage and facilities reporting</li><li>One trend chart: coverage by month with the target as a line</li><li>One comparison: coverage by facility, sorted lowest first</li><li>A table underneath with the same numbers</li><li>Filters for month and facility in the same place on every page</li></ul>
+<figure class="nfig nfig-photo"><picture><source type="image/webp" srcset="images/cases/case-epi-dashboard/03-monthly-performance.webp"><img src="images/cases/case-epi-dashboard/03-monthly-performance.webp" alt="Design mockup of a monthly performance dashboard" loading="lazy"></picture><figcaption>Design mockup with sample data: headline cards, a trend, a comparison and a table underneath.</figcaption></figure>
 <h2 id="test-before-you-share">Test before you share</h2>
 <p>Pick three facilities and calculate their numbers by hand from the source file. If all three match the report, you can trust the logic. If one does not, you have found a relationship or filter problem before your audience did.</p>
 <h2 id="write-the-definitions-down">Write the definitions down</h2>
@@ -197,6 +199,7 @@
         </ul>
       </div>
     </div>
+    <p class="foot-logo"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
     <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
     <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>
