@@ -114,6 +114,34 @@
    "pages": 1
   },
   {
+   "file": "logframe-template.pdf",
+   "slug": "logframe-template",
+   "type": "PDF",
+   "category": "M&E",
+   "title": "Logframe template",
+   "blurb": "Goal, outcome, outputs and activities with indicators, means of verification and assumptions. Includes a guide, a worked example and a blank frame.",
+   "tags": [
+    "Template",
+    "Worked example"
+   ],
+   "size": "31 KB",
+   "pages": 2
+  },
+  {
+   "file": "training-session-plan.pdf",
+   "slug": "training-session-plan",
+   "type": "PDF",
+   "category": "Training",
+   "title": "Training session plan",
+   "blurb": "Objectives, a timed agenda, a materials checklist and an after-session review for data, ICT and Survey123 trainings.",
+   "tags": [
+    "Template",
+    "Checklist"
+   ],
+   "size": "31 KB",
+   "pages": 2
+  },
+  {
    "file": "stock-tracker.xlsx",
    "slug": "stock-tracker",
    "type": "Excel",
@@ -183,10 +211,40 @@
    ],
    "size": "10 KB",
    "sheets": 3
+  },
+  {
+   "file": "reporting-timeliness-tracker.xlsx",
+   "slug": "reporting-timeliness-tracker",
+   "type": "Excel",
+   "category": "M&E",
+   "title": "Reporting timeliness tracker",
+   "blurb": "Log the date each facility report arrives. Every month turns On time, Late or Missing, with completeness and timeliness rates and a chart.",
+   "tags": [
+    "Excel",
+    "Chart",
+    "M&E"
+   ],
+   "size": "24 KB",
+   "sheets": 5
+  },
+  {
+   "file": "training-tracker.xlsx",
+   "slug": "training-tracker",
+   "type": "Excel",
+   "category": "Training",
+   "title": "Training attendance and results tracker",
+   "blurb": "Attendance for up to five days, pre and post test scores, improvement and certificate eligibility, with a summary and a chart.",
+   "tags": [
+    "Excel",
+    "Chart",
+    "Training"
+   ],
+   "size": "20 KB",
+   "sheets": 4
   }
  ],
  "kit": {
   "file": "free-resource-kit.zip",
-  "size": "275 KB"
+  "size": "365 KB"
  }
 }
