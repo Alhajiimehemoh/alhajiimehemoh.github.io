@@ -28,8 +28,8 @@
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
   <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=24">
-  <script src="shared.js?v=24"></script>
+  <link rel="stylesheet" href="style.css?v=30">
+  <script src="shared.js?v=30"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -76,10 +76,12 @@
 <body class="">
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"></div>
+<div class="intro" aria-hidden="true"><img src="images/brand/logo-mark.png" alt="" width="160" height="94"></div>
 
 <header class="site-header">
   <div class="wrap header-in">
-    <a class="brand" href="index.html"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""><span>Alhaji Ibrahim Mehemoh</span></a>
+    <a class="brand" href="index.html"><span class="logo-anim"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""></span><span>Alhaji Ibrahim Mehemoh</span></a>
     <nav class="nav-links" aria-label="Main"><a href="portfolio.html" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
     <div class="header-tools">
       
@@ -94,10 +96,12 @@
 
 <main id="main">
 <div class="wrap">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
   <section class="hero">
     <div class="hero-copy">
       <div class="hero-top"><picture class="hero-avatar"><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="96" height="96" alt=""></picture><p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open to consulting, contracts and roles</p></div>
         <h1 data-i18n="hero.h1">I help health programmes turn <span class="mark">field data</span> into decisions.</h1>
+      <p class="rotator" aria-live="off">I build <span class="rot-wrap"><span class="rot" data-words="Power BI dashboards|Survey123 forms|data quality checks|data systems|IT support|staff training">Power BI dashboards</span></span></p>
       <p class="lede" data-i18n="hero.lede">I am a Data Officer and M&amp;E specialist at Rural Health Care Initiative in Bo District, Sierra Leone. I design Survey123 forms, Power BI dashboards and data systems that nurses, programme managers and donors can read at a glance.</p>
       <div class="actions">
         <a class="btn btn-primary" href="portfolio.html" data-i18n="hero.projects">See projects</a>
@@ -114,6 +118,8 @@
   </section>
   <div class="marquee-row"><span class="chips-label">Tools I use</span><div class="marquee" aria-label="Tools I use"><div class="marquee-track"><ul><li>Survey123</li><li>XLSForm</li><li>Power BI</li><li>Excel</li><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>KoboToolbox</li><li>ODK</li><li>DHIS2</li><li>WordPress</li></ul><ul aria-hidden="true"><li>Survey123</li><li>XLSForm</li><li>Power BI</li><li>Excel</li><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>KoboToolbox</li><li>ODK</li><li>DHIS2</li><li>WordPress</li></ul></div></div></div>
   <div class="chips" aria-label="Organisations I have worked with"><span class="chips-label">Worked with</span><span class="chip chip-logo" title="Rural Health Care Initiative"><img src="images/brand/rhci-logo.webp" alt="Rural Health Care Initiative" height="38" style="height:38px;width:auto" loading="lazy"></span><span class="chip chip-logo" title="SLIEPA"><img src="images/brand/sliepa-logo.png" alt="SLIEPA" height="38" style="height:38px;width:auto" loading="lazy"></span><span class="chip">SLPP</span><span class="chip">Growth Centre</span></div>
+  <div class="glance home-glance"><a class="gl gl-link" href="portfolio.html"><b data-count="10">10</b><span>case studies</span></a><a class="gl gl-link" href="services.html"><b data-count="11">11</b><span>services</span></a><a class="gl gl-link" href="resources.html"><b data-count="17">17</b><span>free resources</span></a><a class="gl gl-link" href="community.html"><b data-count="19">19</b><span>practical notes</span></a></div>
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
 </div>
 
 <section class="section">
@@ -147,20 +153,18 @@
 <section class="section band band-sheet">
   <div class="wrap">
     <div class="section-head"><h2>Selected work</h2><p>Case studies from my work at RHCI. The screens shown are design mockups with sample data; real programme data stays with the organisation. Ask me for a walkthrough.</p></div>
-    <div class="register with-ico">
-      <a class="reg-row" href="case-epi-dashboard.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>EPI reporting dashboard</h3><p>A Power BI report built from monthly Survey123 immunisation exports, with views for nurses, management, the DHMT and donors.</p><span class="reg-status pill pill-ok">Built</span></a>
-      <a class="reg-row" href="case-survey123.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3M8.5 11l2 2 4-4M8.5 17h7"/></svg></span><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification, malaria campaign registration with QR autofill, and an offline stock dashboard.</p><span class="reg-status pill pill-ok">Built</span></a>
-      <a class="reg-row" href="case-chw-card-studio.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2.2"/><path d="M5 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M14 10h5M14 14h3"/></svg></span><h3>CHW Card Studio</h3><p>Credential cards with QR verification for more than 1,000 Community Health Workers.</p><span class="reg-status pill pill-ok">Completed</span></a>
-      <a class="reg-row" href="case-dms.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="2.8"/><path d="M4 5.5v13c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8v-13M4 12c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8"/></svg></span><h3>Data Management System</h3><p>An 11-module system for tracking vaccine coverage and nutrition, using PostgreSQL, Flask and a PWA.</p><span class="reg-status pill pill-ok">Completed</span></a>
-    </div>
-    <p style="margin-top:1.25rem"><a class="text-link" href="portfolio.html">All projects</a></p>
-    <div class="showcase" aria-label="Design mockups from the projects">
-      <a class="sc sc-wide" href="case-epi-dashboard.html"><img src="images/cases/case-epi-dashboard/01-management-overview-800.webp" alt="Design mockup of the EPI management dashboard with sample data" loading="lazy"><span>EPI dashboard</span></a>
-      <a class="sc sc-tall" href="case-survey123.html"><img src="images/cases/case-survey123/02-qr-autofill-follow-up-800.webp" alt="Design mockup of a mobile follow-up form with QR autofill" loading="lazy"><span>QR autofill form</span></a>
-      <a class="sc" href="case-chw-card-studio.html"><img src="images/cases/case-chw-card-studio/01-card-and-qr-verification-800.webp" alt="Design mockup of a sample health worker card and QR verification" loading="lazy"><span>CHW Card Studio</span></a>
-      <a class="sc" href="case-epi-dashboard.html"><img src="images/cases/case-epi-dashboard/04-data-quality-review-800.webp" alt="Design mockup of a data quality review dashboard" loading="lazy"><span>Data quality review</span></a>
-      <p class="sc-note"><span class="pill pill-design">Sample data</span> Design mockups. No real patient or programme data.</p>
-    </div>
+    <div class="proj-grid home-proj"><a class="proj-card" data-type="health" href="case-epi-dashboard.html"><div class="proj-art"><img class="proj-shot" src="images/cases/case-epi-dashboard/01-management-overview-800.webp" alt="" loading="lazy"><span class="mock-tag">Design mockup</span></div><div class="proj-body"><div class="proj-meta"><span class="pill pill-ok">Built</span><span class="proj-tags">Power BI &middot; Survey123 &middot; Excel</span></div><h3>EPI reporting dashboard</h3><p>Power BI report from monthly Survey123 immunisation exports, with views for nurses, managers, the DHMT and donors.</p><span class="tile-link">Read the case study</span></div></a><a class="proj-card" data-type="health it" href="case-survey123.html"><div class="proj-art"><img class="proj-shot" src="images/cases/case-survey123/01-mobile-registration-form-800.webp" alt="" loading="lazy"><span class="mock-tag">Design mockup</span></div><div class="proj-body"><div class="proj-meta"><span class="pill pill-ok">Built</span><span class="proj-tags">Survey123 &middot; XLSForm &middot; QR codes</span></div><h3>Survey123 forms and field tools</h3><p>Hospitalisation notices, malaria campaign registration with QR autofill, an offline stock dashboard and a campaign inventory tracker.</p><span class="tile-link">Read the case study</span></div></a><a class="proj-card" data-type="systems health" href="case-chw-card-studio.html"><div class="proj-art"><img class="proj-shot" src="images/cases/case-chw-card-studio/01-card-and-qr-verification-800.webp" alt="" loading="lazy"><span class="mock-tag">Design mockup</span></div><div class="proj-body"><div class="proj-meta"><span class="pill pill-ok">Completed</span><span class="proj-tags">Google Sheets &middot; Apps Script &middot; Google Drive</span></div><h3>CHW Card Studio</h3><p>Issuing, printing and verifying credential cards for more than 1,000 Community Health Workers.</p><span class="tile-link">Read the case study</span></div></a><a class="proj-card" data-type="health" href="case-epi-data-audit.html"><div class="proj-art"><img class="proj-shot" src="images/cases/case-epi-dashboard/04-data-quality-review-800.webp" alt="" loading="lazy"><span class="mock-tag">Design mockup</span></div><div class="proj-body"><div class="proj-meta"><span class="pill pill-ok">Completed</span><span class="proj-tags">Excel &middot; Data cleaning &middot; Word</span></div><h3>EPI data quality audit</h3><p>A multi-stage review of March and April 2026 nurse datasets, with per-nurse audit workbooks and a cleaned dataset.</p><span class="tile-link">Read the case study</span></div></a><a class="proj-card" data-type="systems health" href="case-dms.html"><div class="proj-art"><img class="proj-shot" src="images/cases/case-dms/01-patient-registration-workspace-800.webp" alt="" loading="lazy"><span class="mock-tag">Design mockup</span></div><div class="proj-body"><div class="proj-meta"><span class="pill pill-ok">Completed</span><span class="proj-tags">PostgreSQL &middot; Flask &middot; PWA</span></div><h3>Data Management System</h3><p>An 11-module system for vaccine coverage and nutrition tracking, built with PostgreSQL, Flask and a progressive web app.</p><span class="tile-link">Read the case study</span></div></a><a class="proj-card" data-type="systems it" href="case-staff-id-cards.html"><div class="proj-art"><svg class="cover-art" viewBox="0 0 400 250" role="img" aria-label="Illustration: a Community Health Worker ID card with a photo placeholder, a QR code and a verified tick"><rect class="a-bg" width="400" height="250" rx="0"/><g class="a-grid"><line x1="25" y1="0" x2="25" y2="250"/><line x1="50" y1="0" x2="50" y2="250"/><line x1="75" y1="0" x2="75" y2="250"/><line x1="100" y1="0" x2="100" y2="250"/><line x1="125" y1="0" x2="125" y2="250"/><line x1="150" y1="0" x2="150" y2="250"/><line x1="175" y1="0" x2="175" y2="250"/><line x1="200" y1="0" x2="200" y2="250"/><line x1="225" y1="0" x2="225" y2="250"/><line x1="250" y1="0" x2="250" y2="250"/><line x1="275" y1="0" x2="275" y2="250"/><line x1="300" y1="0" x2="300" y2="250"/><line x1="325" y1="0" x2="325" y2="250"/><line x1="350" y1="0" x2="350" y2="250"/><line x1="375" y1="0" x2="375" y2="250"/></g><g class="float-c"><rect class="a-card a-back" x="96" y="52" width="232" height="146" rx="16" transform="rotate(-7 212 125)"/></g>
+<g class="float-a">
+  <rect class="a-card" x="76" y="62" width="232" height="146" rx="16"/>
+  <rect class="a-g" x="76" y="62" width="232" height="34" rx="16"/><rect class="a-g" x="76" y="80" width="232" height="16"/>
+  <rect class="a-white" x="92" y="74" width="70" height="9" rx="4.5"/>
+  <rect class="a-gs" x="92" y="110" width="58" height="72" rx="10"/><circle class="a-g" cx="121" cy="136" r="13"/><path class="a-g" d="M100 176c3-13 11-19 21-19s18 6 21 19z"/>
+  <rect class="a-line" x="162" y="114" width="62" height="9" rx="4.5"/><rect class="a-mu" x="162" y="132" width="46" height="7" rx="3.5"/><rect class="a-mu" x="162" y="146" width="56" height="7" rx="3.5"/>
+  <rect class="a-am" x="162" y="166" width="40" height="14" rx="7"/><rect class="a-ink-fill" x="238" y="108" width="6" height="6"/><rect class="a-ink-fill" x="246" y="108" width="6" height="6"/><rect class="a-ink-fill" x="254" y="108" width="6" height="6"/><rect class="a-ink-fill" x="270" y="108" width="6" height="6"/><rect class="a-ink-fill" x="238" y="116" width="6" height="6"/><rect class="a-ink-fill" x="254" y="116" width="6" height="6"/><rect class="a-ink-fill" x="270" y="116" width="6" height="6"/><rect class="a-ink-fill" x="238" y="124" width="6" height="6"/><rect class="a-ink-fill" x="254" y="124" width="6" height="6"/><rect class="a-ink-fill" x="270" y="124" width="6" height="6"/><rect class="a-ink-fill" x="238" y="132" width="6" height="6"/><rect class="a-ink-fill" x="254" y="132" width="6" height="6"/><rect class="a-ink-fill" x="270" y="132" width="6" height="6"/><rect class="a-ink-fill" x="238" y="140" width="6" height="6"/><rect class="a-ink-fill" x="246" y="140" width="6" height="6"/><rect class="a-ink-fill" x="254" y="140" width="6" height="6"/><rect class="a-ink-fill" x="270" y="140" width="6" height="6"/>
+</g>
+<g class="float-b">
+  <circle cx="318" cy="66" r="26" class="a-ok"/><path class="a-check-w" d="M306 66l8 8 16-16"/>
+</g></svg></div><div class="proj-body"><div class="proj-meta"><span class="pill pill-ok">Built</span><span class="proj-tags">HTML &middot; JavaScript &middot; Excel</span></div><h3>Staff medical ID card generator</h3><p>A single-file HTML app that turns a staff and dependants workbook into print-ready ID cards with QR codes and security patterns.</p><span class="tile-link">Read the case study</span></div></a></div><p class="sc-note" style="margin-top:1rem"><span class="pill pill-design">Sample data</span> Screens are design mockups. Real programme data stays with the organisation.</p><p style="margin-top:1rem"><a class="btn" href="portfolio.html">See all 10 projects</a></p>
   </div>
 </section>
 
@@ -176,6 +180,81 @@
   </div></div>
 </section>
 
+
+<section class="section laptops-band" id="tools-in-action">
+  <div class="wrap">
+    <div class="me-open" aria-hidden="true">
+      <svg class="me-svg" viewBox="0 0 420 300">
+        <defs><clipPath id="faceclip"><circle cx="210" cy="64" r="40"/></clipPath></defs>
+        <ellipse cx="210" cy="290" rx="175" ry="9" class="me-shadow"/>
+        <rect x="40" y="270" width="340" height="14" rx="4" class="me-desk"/>
+        <path class="me-body" d="M112 272c0-92 40-160 98-160s98 68 98 160z"/>
+        <path class="me-collar" d="M186 114l24 24 24-24"/>
+        <image href="images/profile-square.webp" x="170" y="24" width="80" height="80" clip-path="url(#faceclip)" preserveAspectRatio="xMidYMid slice"/>
+        <circle cx="210" cy="64" r="40" class="me-ring"/>
+        <path class="me-arm me-arm-l" d="M132 168c-12 40 4 76 34 96"/>
+        <path class="me-arm me-arm-r" d="M288 168c12 40-4 76-34 96"/>
+        <g class="me-laptop">
+          <g class="me-lid"><rect x="150" y="196" width="120" height="70" rx="6" class="lp-lid"/><rect x="157" y="203" width="106" height="56" rx="3" class="lp-glow"/>
+            <g class="me-screen"><rect x="164" y="236" width="9" height="16" class="lp-bar"/><rect x="178" y="228" width="9" height="24" class="lp-bar"/><rect x="192" y="220" width="9" height="32" class="lp-bar"/><rect x="206" y="212" width="9" height="40" class="lp-bar am"/><rect x="222" y="212" width="34" height="5" rx="2.5" class="lp-line"/><rect x="222" y="222" width="24" height="4" rx="2" class="lp-line2"/></g></g>
+          <rect x="138" y="264" width="144" height="8" rx="3" class="lp-sbase"/>
+          <circle cx="162" cy="266" r="9" class="me-hand"/><circle cx="258" cy="266" r="9" class="me-hand"/>
+        </g>
+      </svg>
+      <div class="me-bubble"><b>Let me show you how I work.</b><span>Illustration, with my real photo</span></div>
+    </div>
+    <div class="section-head sh-center"><h2>Tools in action</h2><p>Open a laptop to see the kind of work I do in each tool. All data shown is invented for illustration.</p></div>
+    <div class="lp-tabs" role="tablist" aria-label="Choose a tool">
+      <button role="tab" aria-selected="true" data-lp="pbi">Power BI</button><button role="tab" aria-selected="false" data-lp="xls">Excel</button><button role="tab" aria-selected="false" data-lp="py">Python</button>
+    </div>
+    <div class="lp-stage">
+      <figure class="laptop is-active" data-lp="pbi" aria-label="Animated laptop showing a Power BI style dashboard with invented data">
+        <div class="lp-screen"><div class="lp-display pbi">
+          <div class="pbi-top"><span class="pbi-logo"></span><b>EPI Overview</b><em>Sample data</em></div>
+          <div class="pbi-kpis"><div><span>Doses</span><b data-to="1284">0</b></div><div><span>Coverage</span><b data-to="74" data-suf="%">0</b></div><div><span>Facilities</span><b data-to="14">0</b></div></div>
+          <div class="pbi-body"><div class="pbi-bars"><i style="--h:42%;--i:0"></i><i style="--h:55%;--i:1"></i><i style="--h:49%;--i:2"></i><i style="--h:63%;--i:3"></i><i style="--h:71%;--i:4"></i><i style="--h:68%;--i:5"></i><i style="--h:79%;--i:6"></i><i style="--h:86%;--i:7"></i></div>
+          <svg class="pbi-donut" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" class="dn-bg"/><circle cx="21" cy="21" r="15.9" class="dn" pathLength="100"/><text x="21" y="24" text-anchor="middle">74%</text></svg></div>
+        </div></div>
+        <div class="lp-base"><span></span></div>
+        <figcaption>Power BI: monthly coverage dashboard</figcaption>
+      </figure>
+      <figure class="laptop" data-lp="xls" aria-label="Animated laptop showing an Excel stock sheet with a formula being typed">
+        <div class="lp-screen"><div class="lp-display xls">
+          <div class="xls-top"><span class="xls-logo">X</span><b>stock-tracker.xlsx</b></div>
+          <div class="xls-fx"><span>fx</span><code class="typer" data-text="=IF(I5<Settings!B3,&quot;REORDER&quot;,&quot;OK&quot;)"></code></div>
+          <table class="xls-grid"><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+            <tr><th>1</th><td>Item</td><td>Closing</td><td>Months</td><td>Status</td></tr>
+            <tr><th>2</th><td>ORS</td><td>680</td><td>2.7</td><td><span class="xst ok">OK</span></td></tr>
+            <tr><th>3</th><td>Paracetamol</td><td>800</td><td>1.0</td><td><span class="xst bad">REORDER</span></td></tr>
+            <tr><th>4</th><td>Gloves</td><td>80</td><td>8.0</td><td><span class="xst warn">OVERSTOCK</span></td></tr>
+            <tr><th>5</th><td>Zinc</td><td>120</td><td>1.5</td><td class="xls-sel"><span class="xst bad late">REORDER</span></td></tr></table>
+        </div></div>
+        <div class="lp-base"><span></span></div>
+        <figcaption>Excel: stock tracker with automatic flags</figcaption>
+      </figure>
+      <figure class="laptop" data-lp="py" aria-label="Animated laptop showing Python code being typed and a chart appearing">
+        <div class="lp-screen"><div class="lp-display py">
+          <div class="py-top"><i></i><i></i><i></i><b>clean_epi.py</b></div>
+          <pre class="py-code"><code class="typer" data-text="import pandas as pd
+df = pd.read_csv(&quot;epi_export.csv&quot;)
+df = df.drop_duplicates(&quot;record_id&quot;)
+bad = df[df.dose3_date < df.dose1_date]
+print(len(bad), &quot;dose order issues&quot;)
+df.groupby(&quot;month&quot;).doses.sum().plot()"></code></pre>
+          <div class="py-out"><span>&gt;&gt;&gt; 12 dose order issues</span><svg viewBox="0 0 120 40"><polyline points="0,34 17,30 34,31 51,22 68,18 85,20 102,10 120,6" class="py-line" pathLength="1"/></svg></div>
+        </div></div>
+        <div class="lp-base"><span></span></div>
+        <figcaption>Python: cleaning an export and plotting it</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section"><div class="wrap"><div class="svc-head-row"><div class="section-head"><h2>Services</h2><p>Data and M&amp;E for health programmes, and practical IT support for offices, clinics and schools.</p></div><div class="screw-anim" aria-hidden="true"><svg viewBox="0 0 240 150">  <rect x="20" y="96" width="200" height="34" rx="8" class="sw-board"/>  <g class="sw-chips"><rect x="40" y="104" width="26" height="18" rx="3"/><rect x="172" y="104" width="26" height="18" rx="3"/></g>  <path class="sw-trace" d="M66 113h30M144 113h28"/>  <g class="sw-screw"><circle cx="120" cy="113" r="12" class="sw-head"/><path d="M112 113h16M120 105v16" class="sw-slot"/></g>  <g class="sw-driver"><rect x="115" y="40" width="10" height="64" rx="2" class="sw-shaft"/><path d="M116 104l4 7 4-7z" class="sw-shaft"/><rect x="104" y="0" width="32" height="46" rx="10" class="sw-handle"/><path d="M112 8v30M120 8v30M128 8v30" class="sw-grip"/></g>  <g class="sw-sparks"><circle cx="100" cy="98" r="2"/><circle cx="142" cy="96" r="2"/><circle cx="96" cy="88" r="1.5"/></g></svg></div></div><div class="hs-grid"><a class="hs" href="service-dashboards.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><b>Dashboards and reports</b><span>Data and M&amp;E</span></a><a class="hs" href="service-forms.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3M8.5 11l2 2 4-4M8.5 17h7"/></svg></span><b>Survey and form design</b><span>Data and M&amp;E</span></a><a class="hs" href="service-quality.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Data quality audits</b><span>Data and M&amp;E</span></a><a class="hs" href="service-reporting.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></span><b>M&amp;E reporting</b><span>Data and M&amp;E</span></a><a class="hs" href="service-systems.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="2.8"/><path d="M4 5.5v13c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8v-13M4 12c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8"/></svg></span><b>Data systems</b><span>Data and M&amp;E</span></a><a class="hs" href="service-training.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></svg></span><b>Training</b><span>Data and M&amp;E</span></a><a class="hs" href="service-hardware.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5"/><path d="M4 20l3-3"/></svg></span><b>Technical support and hardware</b><span>IT support</span></a><a class="hs" href="service-network.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg></span><b>Networking and internet</b><span>IT support</span></a><a class="hs" href="service-web.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></span><b>Web and digital</b><span>IT support</span></a><a class="hs" href="service-security.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg></span><b>Security and backups</b><span>IT support</span></a><a class="hs" href="service-contracts.html"><span class="svc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b>Office and NGO IT support</b><span>IT support</span></a><a class="hs hs-cta" href="services.html#finder"><b>Not sure which?</b><span>Answer one question and I will point you to the right service.</span></a></div></div></section>
+
+<svg class="wave wave-top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V30C240 0 480 0 720 30s480 30 720 0v30z"/></svg>
+<div class="mega" aria-hidden="true"><div class="mega-track"><span>Survey123 <i></i> Power BI <i></i> Data quality <i></i> M&amp;E reporting <i></i> Data systems <i></i> IT support <i></i> Training <i></i></span><span>Survey123 <i></i> Power BI <i></i> Data quality <i></i> M&amp;E reporting <i></i> Data systems <i></i> IT support <i></i> Training <i></i></span></div></div>
+
 <section class="section band band-ink">
   <div class="wrap">
     <div class="section-head"><h2>How I work</h2><p>Four steps, the same on every project, so you always know what happens next.</p></div>
@@ -188,13 +267,182 @@
   </div>
 </section>
 
+<section class="section band-sheet"><div class="wrap"><div class="section-head"><h2>Free resources</h2><p>Checklists, templates and trackers you can use today. No sign-up.</p></div><div class="rel-grid home-res"><a class="rel-card" href="downloads/me-data-quality-checklist.pdf" download><img src="images/resources/me-data-quality-checklist.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-pdf">PDF</span><b>M&amp;E data quality checklist</b><em>32 KB</em></span></a><a class="rel-card" href="downloads/stock-tracker.xlsx" download><img src="images/resources/stock-tracker.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-xls">Excel</span><b>Stock tracker</b><em>15 KB</em></span></a><a class="rel-card" href="downloads/xlsform-cheat-sheet.pdf" download><img src="images/resources/xlsform-cheat-sheet.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-pdf">PDF</span><b>XLSForm cheat sheet</b><em>33 KB</em></span></a><a class="rel-card" href="downloads/indicator-tracker.xlsx" download><img src="images/resources/indicator-tracker.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-xls">Excel</span><b>Indicator tracker</b><em>14 KB</em></span></a></div><div class="actions"><a class="btn btn-primary" href="downloads/free-resource-kit.zip" download>Download all 17 as a ZIP (365 KB)</a><a class="btn" href="resources.html">Browse the library</a></div></div></section>
+
+<section class="section"><div class="wrap"><div class="section-head"><h2>Latest notes</h2><p>Short, practical guides on health data, M&amp;E and IT.</p></div><div class="note-grid home-notes"><a class="note-card c0" data-cat="Health data" data-search="how to check epi data quality before you report six checks that catch most errors in monthly immunisation data before they reach a dashboard, with a worked example and a log you can copy. immunisation data passes through many hands before it becomes a coverage figure: the vaccinator&#x27;s tally, the facility register, the monthly summary, the data entry screen and finally the export you open in excel. every step is a chance for a small mistake to become a big one. a few minutes of checking at the start saves hours of explaining later.
+
+these are the six checks i run on every monthly epi export, in this order.
+
+::flow monthly export &gt; completeness &gt; timeliness &gt; totals &gt; outliers &gt; duplicates &gt; trend &gt; report | the order matters: fix missing reports before you judge the numbers inside them.
+
+## 1. completeness
+
+list every facility that should report and tick off the ones that did. a missing facility is the most common reason district coverage suddenly looks low, and it is easy to miss when you only look at totals.
+
+then look inside the reports for blank required fields. a blank is not the same as zero. zero means &quot;we vaccinated nobody&quot;, which is a real result you need to explain. blank means &quot;we do not know&quot;.
+
+&gt; **tip:** keep a fixed master list of facilities in its own sheet and count against it every month, so a facility cannot silently drop out.
+
+## 2. timeliness
+
+note which reports arrived late and by how many days. late reports are often entered in a rush near the deadline, so they deserve a closer look. over a few months, timeliness also tells you which facilities need support rather than reminders.
+
+## 3. totals that add up
+
+check that the doses by age group or by session type add up to the facility total. if they do not, one of the numbers is wrong. do not fix it yourself by guessing; send it back to the facility to confirm.
+
+| facility | under 1 | 1 year and over | total reported | check |
+| facility a | 42 | 6 | 48 | ok |
+| facility b | 37 | 4 | 45 | does not add up: 37 + 4 = 41 |
+
+## 4. impossible or unlikely values
+
+sort each indicator from highest to lowest and read the top and bottom five rows. you are looking for values that cannot be true, such as more penta 3 than penta 1 doses over the year, a negative number, or a small health post reporting more children than its whole catchment population.
+
+&gt; **watch out:** coverage above 100% is not always an error. target populations are estimates and children from neighbouring areas may come to a facility. ask before you correct it, and write the reason down.
+
+## 5. duplicates
+
+check for repeated submissions from the same facility and month. on mobile tools this often happens when a health worker presses submit twice on a weak connection. keep the latest valid record, remove the others, and note what you removed.
+
+## 6. compare with last month
+
+put this month next to last month for every facility. a sudden jump or drop can be real, for example after an outreach campaign or a vaccine stock-out, but it is more often an entry error or a change in who completed the report. either way, the reason belongs in your report.
+
+::photo images/cases/case-epi-dashboard/04-data-quality-review.webp | design mockup with sample data: flags grouped by issue type, with a priority queue for review. | design mockup of a data quality review dashboard
+
+## keep a cleaning log
+
+record every correction: what changed, from what to what, who confirmed it and when. a simple sheet with one row per issue is enough. when a donor, the dhmt or your manager asks &quot;why is this number different from last week?&quot;, the log answers in seconds.
+
+&gt; **example:** r-0142, children vaccinated, changed from 1500 to 150. confirmed with the facility in-charge by phone on 16 january: an extra zero was typed.
+
+## make it a routine
+
+[ ] run the six checks on the same day every month
+[ ] send queries to facilities in one message, not one by one
+[ ] give facilities a clear deadline to confirm
+[ ] only build charts after the checks are done
+[ ] share a short data quality note with the report
+
+i turned these checks into a printable one-page checklist and a ready-made cleaning log. both are free below." href="note-check-epi-data-quality.html"><span class="nc-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a dataset passing through six numbered checks"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-card" x="150" y="30" width="180" height="180" rx="14"/><circle class="a-g" cx="174" cy="52" r="8"/><path class="a-check-w" d="M170 52 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-mu" x="192" y="48" width="90" height="8" rx="4"/><circle class="a-g" cx="174" cy="78" r="8"/><path class="a-check-w" d="M170 78 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-line" x="192" y="74" width="70" height="8" rx="4"/><circle class="a-g" cx="174" cy="104" r="8"/><path class="a-check-w" d="M170 104 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-mu" x="192" y="100" width="100" height="8" rx="4"/><circle class="a-g" cx="174" cy="130" r="8"/><path class="a-check-w" d="M170 130 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-line" x="192" y="126" width="60" height="8" rx="4"/><circle class="a-g" cx="174" cy="156" r="8"/><path class="a-check-w" d="M170 156 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-mu" x="192" y="152" width="84" height="8" rx="4"/><circle class="a-am" cx="174" cy="182" r="8"/><rect class="a-line" x="192" y="178" width="76" height="8" rx="4"/></g><g class="float-b"><rect class="a-card" x="40" y="70" width="90" height="100" rx="14"/><rect class="a-mu" x="54" y="86" width="62" height="6" rx="3"/><rect class="a-mu" x="54" y="100" width="52" height="6" rx="3"/><rect class="a-mu" x="54" y="114" width="42" height="6" rx="3"/><rect class="a-mu" x="54" y="128" width="62" height="6" rx="3"/><rect class="a-mu" x="54" y="142" width="52" height="6" rx="3"/></g><path class="a-link" d="M130 120 H150 M330 120 H350"/><g class="float-c"><rect class="a-card" x="350" y="80" width="90" height="80" rx="14"/><rect class="a-g" x="364" y="120" width="10" height="20" rx="3"/><rect class="a-g" x="380" y="108" width="10" height="32" rx="3"/><rect class="a-g" x="396" y="114" width="10" height="26" rx="3"/><rect class="a-g" x="412" y="96" width="10" height="44" rx="3"/></g></svg></span><span class="nc-in"><span class="nc-cat">Health data</span><h3>How to check EPI data quality before you report</h3><p>Six checks that catch most errors in monthly immunisation data before they reach a dashboard, with a worked example and a log you can copy.</p><span class="nc-meta"><time datetime="2026-10-21">21 October 2026</time> &middot; 3 min read</span></span></a><a class="note-card c0" data-cat="Health data" data-search="why dashboards fail and how to design one people use a dashboard works when each reader sees the answer to their own question without help. here is how to design for that. a dashboard is not finished when it looks good. it is finished when the person it was built for opens it, finds their answer and makes a decision. many dashboards fail that test, not because the data is wrong, but because they were designed for the person who built them.
+
+::photo images/work/dashboard-review.webp | the real test of a dashboard: can the reader find their answer in a minute, without help? | alhaji reviewing a dashboard at his desk
+
+## start with the reader, not the data
+
+a nurse, a programme manager and a donor ask very different questions of the same data.
+
+| reader | their question | what they need on screen |
+| facility nurse | what is due at my facility this month? | their own facility, this month, simple numbers |
+| programme manager | which facilities are falling behind? | all facilities ranked against target, with trends |
+| donor or board | are we on track overall? | a few headline figures against targets, by quarter |
+
+build a page for each, or at least decide who the main reader is. trying to answer everyone on one page usually answers nobody.
+
+## a layout that works
+
+::fig wireframe | headline numbers at the top, one trend and one comparison in the middle, the data table underneath.
+
+readers scan from the top left. put the most important number there, then the trend over time, then the comparison between places, and finally the table for people who want to check the detail.
+
+## one message per chart
+
+if a chart needs a paragraph to explain it, split it into two. give each chart a title that states the point.
+
+- weak title: coverage by facility
+- strong title: coverage is below 60% at two facilities
+
+## show the target
+
+a number without a target has no meaning. is 74% good? add a target line, or colour the bar when the result is below target, so the reader does not have to remember what the goal was.
+
+&gt; **tip:** use colour to highlight, not to decorate. if everything is coloured, nothing stands out. one accent colour for &quot;needs attention&quot; is often enough.
+
+## keep the numbers one click away
+
+people trust a chart more when they can see the numbers behind it. keep a clean table on the same page or one click away, with the same filters applied.
+
+## make updating easy
+
+a dashboard that takes a day to refresh will not be refreshed. design the data so that a new month is added by dropping in the new export, with the same column names every time. this is where a stable form and a clean data model pay off.
+
+## be honest about gaps
+
+if three facilities did not report this month, say so on the page: &quot;data from 14 of 17 facilities.&quot; hiding missing data makes the whole dashboard less credible the moment someone notices.
+
+## test it with a real reader
+
+before you share it widely, sit with one real user and watch them use it for two minutes without helping. every time they hesitate, you have found something to fix.
+
+you can try these ideas on the sample dashboard on this site, which uses invented data, and use the checklist below before you share your own." href="note-dashboards-people-use.html"><span class="nc-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a dashboard with headline numbers, a trend line and a table"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-card" x="60" y="24" width="360" height="192" rx="14"/><rect class="a-gs" x="76" y="40" width="100" height="42" rx="8"/><rect class="a-mu" x="86" y="50" width="40" height="6" rx="3"/><rect class="a-g" x="86" y="64" width="54" height="10" rx="5"/><rect class="a-gs" x="188" y="40" width="100" height="42" rx="8"/><rect class="a-mu" x="198" y="50" width="40" height="6" rx="3"/><rect class="a-am" x="198" y="64" width="54" height="10" rx="5"/><rect class="a-gs" x="300" y="40" width="100" height="42" rx="8"/><rect class="a-mu" x="310" y="50" width="40" height="6" rx="3"/><rect class="a-g" x="310" y="64" width="54" height="10" rx="5"/><polyline class="a-am a-path" pathLength="1" points="80,150 120,138 160,142 200,122 240,116 280,104" style="fill:none;stroke-width:3"/><line x1="80" y1="112" x2="290" y2="112" stroke="var(--green)" stroke-dasharray="5 5" stroke-width="2"/><rect class="a-g" x="310" y="130" width="14" height="30" rx="3"/><rect class="a-g" x="330" y="114" width="14" height="46" rx="3"/><rect class="a-g" x="350" y="140" width="14" height="20" rx="3"/><rect class="a-g" x="370" y="104" width="14" height="56" rx="3"/><rect class="a-g" x="390" y="122" width="14" height="38" rx="3"/><rect class="a-mu" x="76" y="176" width="320" height="5" rx="2"/><rect class="a-mu" x="76" y="188" width="320" height="5" rx="2"/><rect class="a-mu" x="76" y="200" width="320" height="5" rx="2"/></g></svg></span><span class="nc-in"><span class="nc-cat">Health data</span><h3>Why dashboards fail and how to design one people use</h3><p>A dashboard works when each reader sees the answer to their own question without help. Here is how to design for that.</p><span class="nc-meta"><time datetime="2026-10-21">21 October 2026</time> &middot; 3 min read</span></span></a><a class="note-card c2" data-cat="Data collection" data-search="survey123 form mistakes to avoid seven form design mistakes that make field data messy, why they happen and the exact xlsform settings that prevent them. most data quality problems start in the form, not in the spreadsheet. every month spent cleaning the same mistakes is a sign the form is doing less work than it could. fixing the form once is cheaper than cleaning the data every month.
+
+here are the mistakes i see most often in survey123 and kobotoolbox forms, and how to avoid each one.
+
+## 1. free text where a list would do
+
+if facility or village names are typed, you will get five spellings of the same clinic, and your pivot table will count them as five places. use a choice list so every record uses exactly the same name.
+
+for long lists, use a cascading select: choose the district first, then only that district&#x27;s facilities appear.
+
+| column | value |
+| type | select_one facility |
+| choice_filter | district = ${district} |
+| appearance | minimal or autocomplete |
+
+## 2. no limits on numbers
+
+a field for children vaccinated today should not accept 5,000. add a constraint with a clear message so the mistake is caught on the phone, while the health worker is still at the facility and can check the register.
+
+::fig phone-error | a constraint message appears the moment a value is out of range, before the record can be sent.
+
+&gt; **tip:** write constraint messages that say what to do, not just that something is wrong. &quot;enter a number from 0 to 500&quot; is better than &quot;invalid value&quot;.
+
+## 3. too many questions
+
+every extra question lowers the chance that the whole form is filled in carefully. go through the form with the person who writes the report and ask of each question: which table or chart uses this answer? if nobody can name one, remove the question.
+
+## 4. asking for personal details you do not need
+
+collect the least personal information possible. patient names and phone numbers create a privacy risk if a phone is lost or a file is shared, and they are rarely needed for programme reporting. use an id or a code instead, and keep any lookup list in a separate, protected place.
+
+::photo images/cases/case-survey123/01-mobile-registration-form.webp | design mockup with fictional data: short sections, required fields marked, choices instead of typing, and an offline indicator. | design mockup of a mobile registration form
+
+## 5. skipping skip logic
+
+if a follow-up question only applies when the answer is yes, show it only then. this keeps the form short and stops contradictory answers, such as &quot;no stock-out&quot; followed by &quot;stock-out lasted 6 days&quot;.
+
+| column | value |
+| relevant | ${stock_out} = &#x27;yes&#x27; |
+
+## 6. not testing in the field
+
+a form that looks fine on a laptop can be slow or confusing on a basic phone in bright sunlight with weak signal. before training the whole team:
+
+[ ] fill it in on the cheapest phone your team uses
+[ ] switch off data and complete three records offline
+[ ] turn data back on and confirm they all arrive
+[ ] ask two real users to complete it while you watch, without helping
+
+## 7. changing the form without a plan
+
+renaming a field in the middle of a programme can quietly break your dashboard, because last month&#x27;s data and this month&#x27;s data no longer line up. keep field names stable, increase the version number for every change, write down what changed and update the report at the same time.
+
+&gt; **watch out:** never reuse an old field name for a new meaning. create a new field instead.
+
+## a quick pre-launch check
+
+::flow draft in excel &gt; peer review &gt; phone test offline &gt; pilot with 2 to 3 users &gt; fix &gt; train team &gt; launch | a week spent here saves months of cleaning.
+
+the xlsform cheat sheet below has the syntax for every rule in this note, and the sample form shows them working together." href="note-survey123-mistakes.html"><span class="nc-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a phone form showing a validation message"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-phone" x="180" y="18" width="124" height="210" rx="22"/><rect class="a-card" x="188" y="32" width="108" height="184" rx="12"/><rect class="a-g" x="198" y="44" width="54" height="8" rx="4"/><rect class="a-line" x="198" y="64" width="40" height="8" rx="4"/><rect class="a-field" x="198" y="76" width="88" height="18" rx="5"/><rect class="a-line" x="198" y="104" width="50" height="8" rx="4"/><rect x="198" y="116" width="88" height="18" rx="5" fill="none" stroke="#B42318" stroke-width="2"/><rect x="198" y="140" width="88" height="20" rx="5" fill="#FDE2E1"/><rect x="204" y="147" width="60" height="6" rx="3" fill="#B42318"/><rect class="a-g" x="198" y="188" width="88" height="18" rx="9"/></g><g class="float-b"><rect class="a-card" x="330" y="60" width="110" height="60" rx="14"/><rect class="a-line" x="344" y="74" width="56" height="8" rx="4"/><text class="a-code" x="344" y="104">. &lt;= 500</text></g><g class="float-c"><rect class="a-card" x="40" y="120" width="110" height="70" rx="14"/><circle class="a-gs-fill" cx="64" cy="155" r="14"/><path class="a-check" d="M57 155l5 5 9-9"/><rect class="a-line" x="86" y="146" width="50" height="8" rx="4"/><rect class="a-mu" x="86" y="160" width="36" height="6" rx="3"/></g></svg></span><span class="nc-in"><span class="nc-cat">Data collection</span><h3>Survey123 form mistakes to avoid</h3><p>Seven form design mistakes that make field data messy, why they happen and the exact XLSForm settings that prevent them.</p><span class="nc-meta"><time datetime="2026-10-21">21 October 2026</time> &middot; 3 min read</span></span></a></div><p style="margin-top:1.25rem"><a class="text-link" href="community.html">Read all 19 notes</a></p></div></section>
+
 <section class="section band band-tint">
   <div class="wrap">
     <div class="section-head"><h2>What colleagues say</h2></div>
     <div class="quotes">
-      <figure class="quote" style="margin:0"><p>Alhaji has a remarkable ability to turn complex data challenges into simple, workable systems. His Excel dashboards transformed how we track and report health program data every month.</p><footer>Moses Hopanda Carter, Director of Projects, RHCI, Tikonko</footer></figure>
-      <figure class="quote" style="margin:0"><p>Reliable, fast, and always willing to go the extra mile. Alhaji kept our IT systems running smoothly and trained staff effectively during a critical period for our organization.</p><footer>Foday Abdulai, District Secretary General, SLPP, Bo District</footer></figure>
-      <figure class="quote" style="margin:0"><p>His networking setup gave us stable Wi-Fi across the entire office floor, something we struggled with for months. Professional, well-documented, and completed on time.</p><footer>IT client, Bo (office network setup)</footer></figure>
+      <figure class="quote" style="margin:0"><p>Alhaji has a remarkable ability to turn complex data challenges into simple, workable systems. His Excel dashboards transformed how we track and report health program data every month.</p><footer><span class="q-av" aria-hidden="true">MH</span><span>Moses Hopanda Carter, Director of Projects, RHCI, Tikonko</span></footer></figure>
+      <figure class="quote" style="margin:0"><p>Reliable, fast, and always willing to go the extra mile. Alhaji kept our IT systems running smoothly and trained staff effectively during a critical period for our organization.</p><footer><span class="q-av" aria-hidden="true">FA</span><span>Foday Abdulai, District Secretary General, SLPP, Bo District</span></footer></figure>
+      <figure class="quote" style="margin:0"><p>His networking setup gave us stable Wi-Fi across the entire office floor, something we struggled with for months. Professional, well-documented, and completed on time.</p><footer><span class="q-av" aria-hidden="true">IT</span><span>IT client, Bo (office network setup)</span></footer></figure>
     </div>
   </div>
 </section>
@@ -254,7 +502,7 @@
         </ul>
       </div>
     </div>
-    <p class="foot-logo"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
+    <p class="foot-logo logo-anim"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
     <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
     <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>

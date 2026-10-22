@@ -61,10 +61,12 @@ def tally_svg():
 
 # ------------------------------------------------------------------ INDEX
 index_body = f'''<div class="wrap">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
   <section class="hero">
     <div class="hero-copy">
       <div class="hero-top"><picture class="hero-avatar"><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="96" height="96" alt=""></picture><p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open to consulting, contracts and roles</p></div>
         <h1 data-i18n="hero.h1">I help health programmes turn <span class="mark">field data</span> into decisions.</h1>
+      <p class="rotator" aria-live="off">I build <span class="rot-wrap"><span class="rot" data-words="Power BI dashboards|Survey123 forms|data quality checks|data systems|IT support|staff training">Power BI dashboards</span></span></p>
       <p class="lede" data-i18n="hero.lede">I am a Data Officer and M&amp;E specialist at Rural Health Care Initiative in Bo District, Sierra Leone. I design Survey123 forms, Power BI dashboards and data systems that nurses, programme managers and donors can read at a glance.</p>
       <div class="actions">
         <a class="btn btn-primary" href="portfolio.html" data-i18n="hero.projects">See projects</a>
@@ -81,6 +83,8 @@ index_body = f'''<div class="wrap">
   </section>
   <div class="marquee-row"><span class="chips-label">Tools I use</span><div class="marquee" aria-label="Tools I use"><div class="marquee-track"><ul><li>Survey123</li><li>XLSForm</li><li>Power BI</li><li>Excel</li><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>KoboToolbox</li><li>ODK</li><li>DHIS2</li><li>WordPress</li></ul><ul aria-hidden="true"><li>Survey123</li><li>XLSForm</li><li>Power BI</li><li>Excel</li><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>KoboToolbox</li><li>ODK</li><li>DHIS2</li><li>WordPress</li></ul></div></div></div>
   {partners()}
+  @@HOME_STATS@@
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
 </div>
 
 <section class="section">
@@ -114,20 +118,7 @@ index_body = f'''<div class="wrap">
 <section class="section band band-sheet">
   <div class="wrap">
     <div class="section-head"><h2>Selected work</h2><p>Case studies from my work at RHCI. The screens shown are design mockups with sample data; real programme data stays with the organisation. Ask me for a walkthrough.</p></div>
-    <div class="register with-ico">
-      <a class="reg-row" href="case-epi-dashboard.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>EPI reporting dashboard</h3><p>A Power BI report built from monthly Survey123 immunisation exports, with views for nurses, management, the DHMT and donors.</p><span class="reg-status pill pill-ok">Built</span></a>
-      <a class="reg-row" href="case-survey123.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3M8.5 11l2 2 4-4M8.5 17h7"/></svg></span><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification, malaria campaign registration with QR autofill, and an offline stock dashboard.</p><span class="reg-status pill pill-ok">Built</span></a>
-      <a class="reg-row" href="case-chw-card-studio.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2.2"/><path d="M5 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M14 10h5M14 14h3"/></svg></span><h3>CHW Card Studio</h3><p>Credential cards with QR verification for more than 1,000 Community Health Workers.</p><span class="reg-status pill pill-ok">Completed</span></a>
-      <a class="reg-row" href="case-dms.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="2.8"/><path d="M4 5.5v13c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8v-13M4 12c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8"/></svg></span><h3>Data Management System</h3><p>An 11-module system for tracking vaccine coverage and nutrition, using PostgreSQL, Flask and a PWA.</p><span class="reg-status pill pill-ok">Completed</span></a>
-    </div>
-    <p style="margin-top:1.25rem"><a class="text-link" href="portfolio.html">All projects</a></p>
-    <div class="showcase" aria-label="Design mockups from the projects">
-      <a class="sc sc-wide" href="case-epi-dashboard.html"><img src="images/cases/case-epi-dashboard/01-management-overview-800.webp" alt="Design mockup of the EPI management dashboard with sample data" loading="lazy"><span>EPI dashboard</span></a>
-      <a class="sc sc-tall" href="case-survey123.html"><img src="images/cases/case-survey123/02-qr-autofill-follow-up-800.webp" alt="Design mockup of a mobile follow-up form with QR autofill" loading="lazy"><span>QR autofill form</span></a>
-      <a class="sc" href="case-chw-card-studio.html"><img src="images/cases/case-chw-card-studio/01-card-and-qr-verification-800.webp" alt="Design mockup of a sample health worker card and QR verification" loading="lazy"><span>CHW Card Studio</span></a>
-      <a class="sc" href="case-epi-dashboard.html"><img src="images/cases/case-epi-dashboard/04-data-quality-review-800.webp" alt="Design mockup of a data quality review dashboard" loading="lazy"><span>Data quality review</span></a>
-      <p class="sc-note"><span class="pill pill-design">Sample data</span> Design mockups. No real patient or programme data.</p>
-    </div>
+    @@HOME_WORK@@
   </div>
 </section>
 
@@ -143,6 +134,81 @@ index_body = f'''<div class="wrap">
   </div></div>
 </section>
 
+
+<section class="section laptops-band" id="tools-in-action">
+  <div class="wrap">
+    <div class="me-open" aria-hidden="true">
+      <svg class="me-svg" viewBox="0 0 420 300">
+        <defs><clipPath id="faceclip"><circle cx="210" cy="64" r="40"/></clipPath></defs>
+        <ellipse cx="210" cy="290" rx="175" ry="9" class="me-shadow"/>
+        <rect x="40" y="270" width="340" height="14" rx="4" class="me-desk"/>
+        <path class="me-body" d="M112 272c0-92 40-160 98-160s98 68 98 160z"/>
+        <path class="me-collar" d="M186 114l24 24 24-24"/>
+        <image href="images/profile-square.webp" x="170" y="24" width="80" height="80" clip-path="url(#faceclip)" preserveAspectRatio="xMidYMid slice"/>
+        <circle cx="210" cy="64" r="40" class="me-ring"/>
+        <path class="me-arm me-arm-l" d="M132 168c-12 40 4 76 34 96"/>
+        <path class="me-arm me-arm-r" d="M288 168c12 40-4 76-34 96"/>
+        <g class="me-laptop">
+          <g class="me-lid"><rect x="150" y="196" width="120" height="70" rx="6" class="lp-lid"/><rect x="157" y="203" width="106" height="56" rx="3" class="lp-glow"/>
+            <g class="me-screen"><rect x="164" y="236" width="9" height="16" class="lp-bar"/><rect x="178" y="228" width="9" height="24" class="lp-bar"/><rect x="192" y="220" width="9" height="32" class="lp-bar"/><rect x="206" y="212" width="9" height="40" class="lp-bar am"/><rect x="222" y="212" width="34" height="5" rx="2.5" class="lp-line"/><rect x="222" y="222" width="24" height="4" rx="2" class="lp-line2"/></g></g>
+          <rect x="138" y="264" width="144" height="8" rx="3" class="lp-sbase"/>
+          <circle cx="162" cy="266" r="9" class="me-hand"/><circle cx="258" cy="266" r="9" class="me-hand"/>
+        </g>
+      </svg>
+      <div class="me-bubble"><b>Let me show you how I work.</b><span>Illustration, with my real photo</span></div>
+    </div>
+    <div class="section-head sh-center"><h2>Tools in action</h2><p>Open a laptop to see the kind of work I do in each tool. All data shown is invented for illustration.</p></div>
+    <div class="lp-tabs" role="tablist" aria-label="Choose a tool">
+      <button role="tab" aria-selected="true" data-lp="pbi">Power BI</button><button role="tab" aria-selected="false" data-lp="xls">Excel</button><button role="tab" aria-selected="false" data-lp="py">Python</button>
+    </div>
+    <div class="lp-stage">
+      <figure class="laptop is-active" data-lp="pbi" aria-label="Animated laptop showing a Power BI style dashboard with invented data">
+        <div class="lp-screen"><div class="lp-display pbi">
+          <div class="pbi-top"><span class="pbi-logo"></span><b>EPI Overview</b><em>Sample data</em></div>
+          <div class="pbi-kpis"><div><span>Doses</span><b data-to="1284">0</b></div><div><span>Coverage</span><b data-to="74" data-suf="%">0</b></div><div><span>Facilities</span><b data-to="14">0</b></div></div>
+          <div class="pbi-body"><div class="pbi-bars"><i style="--h:42%;--i:0"></i><i style="--h:55%;--i:1"></i><i style="--h:49%;--i:2"></i><i style="--h:63%;--i:3"></i><i style="--h:71%;--i:4"></i><i style="--h:68%;--i:5"></i><i style="--h:79%;--i:6"></i><i style="--h:86%;--i:7"></i></div>
+          <svg class="pbi-donut" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" class="dn-bg"/><circle cx="21" cy="21" r="15.9" class="dn" pathLength="100"/><text x="21" y="24" text-anchor="middle">74%</text></svg></div>
+        </div></div>
+        <div class="lp-base"><span></span></div>
+        <figcaption>Power BI: monthly coverage dashboard</figcaption>
+      </figure>
+      <figure class="laptop" data-lp="xls" aria-label="Animated laptop showing an Excel stock sheet with a formula being typed">
+        <div class="lp-screen"><div class="lp-display xls">
+          <div class="xls-top"><span class="xls-logo">X</span><b>stock-tracker.xlsx</b></div>
+          <div class="xls-fx"><span>fx</span><code class="typer" data-text="=IF(I5<Settings!B3,&quot;REORDER&quot;,&quot;OK&quot;)"></code></div>
+          <table class="xls-grid"><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+            <tr><th>1</th><td>Item</td><td>Closing</td><td>Months</td><td>Status</td></tr>
+            <tr><th>2</th><td>ORS</td><td>680</td><td>2.7</td><td><span class="xst ok">OK</span></td></tr>
+            <tr><th>3</th><td>Paracetamol</td><td>800</td><td>1.0</td><td><span class="xst bad">REORDER</span></td></tr>
+            <tr><th>4</th><td>Gloves</td><td>80</td><td>8.0</td><td><span class="xst warn">OVERSTOCK</span></td></tr>
+            <tr><th>5</th><td>Zinc</td><td>120</td><td>1.5</td><td class="xls-sel"><span class="xst bad late">REORDER</span></td></tr></table>
+        </div></div>
+        <div class="lp-base"><span></span></div>
+        <figcaption>Excel: stock tracker with automatic flags</figcaption>
+      </figure>
+      <figure class="laptop" data-lp="py" aria-label="Animated laptop showing Python code being typed and a chart appearing">
+        <div class="lp-screen"><div class="lp-display py">
+          <div class="py-top"><i></i><i></i><i></i><b>clean_epi.py</b></div>
+          <pre class="py-code"><code class="typer" data-text="import pandas as pd
+df = pd.read_csv(&quot;epi_export.csv&quot;)
+df = df.drop_duplicates(&quot;record_id&quot;)
+bad = df[df.dose3_date < df.dose1_date]
+print(len(bad), &quot;dose order issues&quot;)
+df.groupby(&quot;month&quot;).doses.sum().plot()"></code></pre>
+          <div class="py-out"><span>&gt;&gt;&gt; 12 dose order issues</span><svg viewBox="0 0 120 40"><polyline points="0,34 17,30 34,31 51,22 68,18 85,20 102,10 120,6" class="py-line" pathLength="1"/></svg></div>
+        </div></div>
+        <div class="lp-base"><span></span></div>
+        <figcaption>Python: cleaning an export and plotting it</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+@@HOME_SERVICES@@
+
+<svg class="wave wave-top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V30C240 0 480 0 720 30s480 30 720 0v30z"/></svg>
+<div class="mega" aria-hidden="true"><div class="mega-track"><span>Survey123 <i></i> Power BI <i></i> Data quality <i></i> M&amp;E reporting <i></i> Data systems <i></i> IT support <i></i> Training <i></i></span><span>Survey123 <i></i> Power BI <i></i> Data quality <i></i> M&amp;E reporting <i></i> Data systems <i></i> IT support <i></i> Training <i></i></span></div></div>
+
 <section class="section band band-ink">
   <div class="wrap">
     <div class="section-head"><h2>How I work</h2><p>Four steps, the same on every project, so you always know what happens next.</p></div>
@@ -155,13 +221,17 @@ index_body = f'''<div class="wrap">
   </div>
 </section>
 
+@@HOME_RESOURCES@@
+
+@@HOME_NOTES@@
+
 <section class="section band band-tint">
   <div class="wrap">
     <div class="section-head"><h2>What colleagues say</h2></div>
     <div class="quotes">
-      <figure class="quote" style="margin:0"><p>Alhaji has a remarkable ability to turn complex data challenges into simple, workable systems. His Excel dashboards transformed how we track and report health program data every month.</p><footer>Moses Hopanda Carter, Director of Projects, RHCI, Tikonko</footer></figure>
-      <figure class="quote" style="margin:0"><p>Reliable, fast, and always willing to go the extra mile. Alhaji kept our IT systems running smoothly and trained staff effectively during a critical period for our organization.</p><footer>Foday Abdulai, District Secretary General, SLPP, Bo District</footer></figure>
-      <figure class="quote" style="margin:0"><p>His networking setup gave us stable Wi-Fi across the entire office floor, something we struggled with for months. Professional, well-documented, and completed on time.</p><footer>IT client, Bo (office network setup)</footer></figure>
+      <figure class="quote" style="margin:0"><p>Alhaji has a remarkable ability to turn complex data challenges into simple, workable systems. His Excel dashboards transformed how we track and report health program data every month.</p><footer><span class="q-av" aria-hidden="true">MH</span><span>Moses Hopanda Carter, Director of Projects, RHCI, Tikonko</span></footer></figure>
+      <figure class="quote" style="margin:0"><p>Reliable, fast, and always willing to go the extra mile. Alhaji kept our IT systems running smoothly and trained staff effectively during a critical period for our organization.</p><footer><span class="q-av" aria-hidden="true">FA</span><span>Foday Abdulai, District Secretary General, SLPP, Bo District</span></footer></figure>
+      <figure class="quote" style="margin:0"><p>His networking setup gave us stable Wi-Fi across the entire office floor, something we struggled with for months. Professional, well-documented, and completed on time.</p><footer><span class="q-av" aria-hidden="true">IT</span><span>IT client, Bo (office network setup)</span></footer></figure>
     </div>
   </div>
 </section>
@@ -178,9 +248,7 @@ person_ld = {
     "knowsAbout": ["Monitoring and evaluation", "Health data systems", "Survey123", "Power BI", "Excel reporting", "IT support"],
     "knowsLanguage": ["English", "Krio"],
 }
-page('index.html', 'Alhaji Ibrahim Mehemoh | Health Data and M&E Specialist in Bo, Sierra Leone',
-     'Data Officer and M&E specialist in Bo, Sierra Leone. Survey123 forms, Power BI dashboards, data quality and health data systems for NGOs and health programmes.',
-     index_body, ld=person_ld)
+
 
 # ------------------------------------------------------------------ ABOUT
 about_story = [
@@ -943,6 +1011,7 @@ for i, n in enumerate(NOTES):
 
 
 # ------------------------------------------------------------------ SERVICE DETAIL PAGES
+SCREW = '''<div class="screw-anim" aria-hidden="true"><svg viewBox="0 0 240 150">  <rect x="20" y="96" width="200" height="34" rx="8" class="sw-board"/>  <g class="sw-chips"><rect x="40" y="104" width="26" height="18" rx="3"/><rect x="172" y="104" width="26" height="18" rx="3"/></g>  <path class="sw-trace" d="M66 113h30M144 113h28"/>  <g class="sw-screw"><circle cx="120" cy="113" r="12" class="sw-head"/><path d="M112 113h16M120 105v16" class="sw-slot"/></g>  <g class="sw-driver"><rect x="115" y="40" width="10" height="64" rx="2" class="sw-shaft"/><path d="M116 104l4 7 4-7z" class="sw-shaft"/><rect x="104" y="0" width="32" height="46" rx="10" class="sw-handle"/><path d="M112 8v30M120 8v30M128 8v30" class="sw-grip"/></g>  <g class="sw-sparks"><circle cx="100" cy="98" r="2"/><circle cx="142" cy="96" r="2"/><circle cx="96" cy="88" r="1.5"/></g></svg></div>'''
 from services_content import DETAIL
 SVC_ART = {'dashboards': 'case-epi-dashboard/01-management-overview', 'forms': 'case-survey123/01-mobile-registration-form',
            'quality': 'case-epi-dashboard/04-data-quality-review', 'systems': 'case-dms/01-patient-registration-workspace',
@@ -957,7 +1026,7 @@ for k, sv in enumerate(SERVICES):
         art = ('<figure class="case-cover"><div class="browser"><span class="b-dots"><i></i><i></i><i></i></span><img src="images/cases/%s.webp" alt=""></div><figcaption>%s</figcaption></figure>'
                % (SVC_ART[sv['key']], 'Screenshot of this website' if real else '<span class="pill pill-design">Sample data</span> Design mockup from my work'))
     else:
-        art = '<div class="case-art">%s<p class="art-note">Illustration</p></div>' % NR.hero_art(SVC_MOTIF.get(sv['key'], 'checks'))
+        art = ('<div class="case-art screw-hero">' + SCREW + '<p class="art-note">Illustration</p></div>') if sv['key'] == 'hardware' else '<div class="case-art">%s<p class="art-note">Illustration</p></div>' % NR.hero_art(SVC_MOTIF.get(sv['key'], 'checks'))
     gets = ''.join('<li>%s<span>%s</span></li>' % (icon('check'), esc(g)) for g in sv['gets'])
     how = ''.join('<li><h3>%s</h3><p>%s</p></li>' % (esc(a), esc(b)) for a, b in d['how'])
     faq = ''.join('<details class="faq"><summary>%s</summary><p>%s</p></details>' % (esc(a), esc(b)) for a, b in d['faq'])
@@ -1006,6 +1075,36 @@ for k, sv in enumerate(SERVICES):
     page('service-%s.html' % sv['key'], '%s in Sierra Leone | Alhaji Ibrahim Mehemoh' % sv['title'], sv['lead'], body,
          active='services.html', ld=ld, crumbs=[('Services', 'services.html'), (sv['title'], None)],
          wa_text='Hello Alhaji, I would like to ask about %s.' % sv['title'].lower())
+
+
+# ------------------------------------------------------------------ HOME (rendered last so it can show everything)
+_home_cases = ['case-epi-dashboard', 'case-survey123', 'case-chw-card-studio', 'case-epi-data-audit', 'case-dms', 'case-staff-id-cards']
+home_work = ('<div class="proj-grid home-proj">' + ''.join(proj_card(CASE_BY[c]) for c in _home_cases) + '</div>'
+             '<p class="sc-note" style="margin-top:1rem"><span class="pill pill-design">Sample data</span> Screens are design mockups. Real programme data stays with the organisation.</p>'
+             '<p style="margin-top:1rem"><a class="btn" href="portfolio.html">See all %d projects</a></p>' % len(CASES))
+home_stats = ('<div class="glance home-glance">'
+              '<a class="gl gl-link" href="portfolio.html"><b data-count="%d">%d</b><span>case studies</span></a>'
+              '<a class="gl gl-link" href="services.html"><b data-count="%d">%d</b><span>services</span></a>'
+              '<a class="gl gl-link" href="resources.html"><b data-count="%d">%d</b><span>free resources</span></a>'
+              '<a class="gl gl-link" href="community.html"><b data-count="%d">%d</b><span>practical notes</span></a></div>') % (len(CASES), len(CASES), len(SERVICES), len(SERVICES), len(RES_ALL), len(RES_ALL), len(NOTES), len(NOTES))
+home_services = ('<section class="section"><div class="wrap"><div class="svc-head-row"><div class="section-head"><h2>Services</h2><p>Data and M&amp;E for health programmes, and practical IT support for offices, clinics and schools.</p></div><div class="screw-anim" aria-hidden="true"><svg viewBox="0 0 240 150">  <rect x="20" y="96" width="200" height="34" rx="8" class="sw-board"/>  <g class="sw-chips"><rect x="40" y="104" width="26" height="18" rx="3"/><rect x="172" y="104" width="26" height="18" rx="3"/></g>  <path class="sw-trace" d="M66 113h30M144 113h28"/>  <g class="sw-screw"><circle cx="120" cy="113" r="12" class="sw-head"/><path d="M112 113h16M120 105v16" class="sw-slot"/></g>  <g class="sw-driver"><rect x="115" y="40" width="10" height="64" rx="2" class="sw-shaft"/><path d="M116 104l4 7 4-7z" class="sw-shaft"/><rect x="104" y="0" width="32" height="46" rx="10" class="sw-handle"/><path d="M112 8v30M120 8v30M128 8v30" class="sw-grip"/></g>  <g class="sw-sparks"><circle cx="100" cy="98" r="2"/><circle cx="142" cy="96" r="2"/><circle cx="96" cy="88" r="1.5"/></g></svg></div></div>'
+                 '<div class="hs-grid">' + ''.join('<a class="hs" href="service-%s.html">%s<b>%s</b><span>%s</span></a>' % (sv['key'], icon(sv['icon']), esc(sv['title']), 'Data and M&amp;E' if sv['group'] == 'data' else 'IT support') for sv in SERVICES) +
+                 '<a class="hs hs-cta" href="services.html#finder"><b>Not sure which?</b><span>Answer one question and I will point you to the right service.</span></a></div></div></section>')
+_home_res = ['me-data-quality-checklist.pdf', 'stock-tracker.xlsx', 'xlsform-cheat-sheet.pdf', 'indicator-tracker.xlsx']
+_kit = json.load(open(os.path.join(OUT, 'downloads', 'resources.json')))['kit']
+home_resources = ('<section class="section band-sheet"><div class="wrap"><div class="section-head"><h2>Free resources</h2><p>Checklists, templates and trackers you can use today. No sign-up.</p></div><div class="rel-grid home-res">' +
+                  ''.join('<a class="rel-card" href="downloads/%s" download><img src="images/resources/%s.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-%s">%s</span><b>%s</b><em>%s</em></span></a>' % (
+                      f, RES_ALL[f]['slug'], {'PDF': 'pdf', 'Excel': 'xls', 'XLSForm': 'form'}[RES_ALL[f]['type']], RES_ALL[f]['type'], esc(RES_ALL[f]['title']), RES_ALL[f]['size']) for f in _home_res) +
+                  '</div><div class="actions"><a class="btn btn-primary" href="downloads/%s" download>Download all %d as a ZIP (%s)</a><a class="btn" href="resources.html">Browse the library</a></div></div></section>') % (_kit['file'], len(RES_ALL), _kit['size'])
+_home_notes = ['note-check-epi-data-quality', 'note-dashboards-people-use', 'note-survey123-mistakes']
+_nb = {n['slug']: n for n in NOTES}
+home_notes = ('<section class="section"><div class="wrap"><div class="section-head"><h2>Latest notes</h2><p>Short, practical guides on health data, M&amp;E and IT.</p></div><div class="note-grid home-notes">' +
+              ''.join(note_row(_nb[k]) for k in _home_notes) + '</div><p style="margin-top:1.25rem"><a class="text-link" href="community.html">Read all %d notes</a></p></div></section>' % len(NOTES))
+for k, v in [('@@HOME_WORK@@', home_work), ('@@HOME_STATS@@', home_stats), ('@@HOME_SERVICES@@', home_services), ('@@HOME_RESOURCES@@', home_resources), ('@@HOME_NOTES@@', home_notes)]:
+    index_body = index_body.replace(k, v)
+page('index.html', 'Alhaji Ibrahim Mehemoh | Health Data and M&E Specialist in Bo, Sierra Leone',
+     'Data Officer and M&E specialist in Bo, Sierra Leone. Survey123 forms, Power BI dashboards, data quality and health data systems for NGOs and health programmes.',
+     index_body, ld=person_ld)
 
 # ------------------------------------------------------------------ 404
 page('404.html', 'Page not found | Alhaji Ibrahim Mehemoh', 'This page does not exist.',
