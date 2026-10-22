@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>Notes by Alhaji Ibrahim Mehemoh</title><link>https://alhajiimehemoh.github.io/community.html</link>
+<?xml-stylesheet type="text/xsl" href="feed.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes by Alhaji Ibrahim Mehemoh</title><link>https://alhajiimehemoh.github.io/community.html</link>
+<atom:link href="https://alhajiimehemoh.github.io/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Practical posts on health data, IT and cybersecurity.</description><language>en</language>
+<image><url>https://alhajiimehemoh.github.io/images/apple-touch-icon.png</url><title>Notes by Alhaji Ibrahim Mehemoh</title><link>https://alhajiimehemoh.github.io/community.html</link></image>
 <item><title>How to check EPI data quality before you report</title><link>https://alhajiimehemoh.github.io/note-check-epi-data-quality.html</link><guid>https://alhajiimehemoh.github.io/note-check-epi-data-quality.html</guid><category>Health data</category><pubDate>Wed, 21 Oct 2026 08:00:00 +0000</pubDate><description>Six quick checks that catch most errors in monthly immunisation data before they reach a dashboard.</description></item>
 <item><title>Survey123 form mistakes to avoid</title><link>https://alhajiimehemoh.github.io/note-survey123-mistakes.html</link><guid>https://alhajiimehemoh.github.io/note-survey123-mistakes.html</guid><category>Data collection</category><pubDate>Wed, 21 Oct 2026 08:00:00 +0000</pubDate><description>Common problems that make field data messy, and the simple form design choices that prevent them.</description></item>
 <item><title>Why dashboards fail and how to design one people use</title><link>https://alhajiimehemoh.github.io/note-dashboards-people-use.html</link><guid>https://alhajiimehemoh.github.io/note-dashboards-people-use.html</guid><category>Health data</category><pubDate>Wed, 21 Oct 2026 08:00:00 +0000</pubDate><description>A dashboard works when each reader sees the answer to their own question without help.</description></item>

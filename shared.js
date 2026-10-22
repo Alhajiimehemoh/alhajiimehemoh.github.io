@@ -29,9 +29,20 @@ document.addEventListener('DOMContentLoaded', function () {
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
       var next = isDarkNow() ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
-      syncThemeButton();
+      var apply = function () {
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        syncThemeButton();
+      };
+      var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!document.startViewTransition || still) { apply(); return; }
+      var r = themeBtn.getBoundingClientRect(), root = document.documentElement;
+      var x = r.left + r.width / 2, y = r.top + r.height / 2;
+      root.style.setProperty('--cx', x + 'px'); root.style.setProperty('--cy', y + 'px');
+      root.style.setProperty('--cr', Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 'px');
+      root.classList.add('theme-anim');
+      var vt = document.startViewTransition(apply);
+      vt.finished.finally(function () { root.classList.remove('theme-anim'); });
     });
   }
 
@@ -189,3 +200,150 @@ document.addEventListener('DOMContentLoaded', function () {
 if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
   window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
 }
+
+/* v13 motion: header state, WhatsApp button visibility, scroll reveals */
+document.addEventListener('DOMContentLoaded', function () {
+  var root = document.documentElement, body = document.body;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var hero = document.querySelector('.hero');
+  var onScroll = function () {
+    var y = window.scrollY;
+    body.classList.toggle('is-scrolled', y > 8);
+    body.classList.toggle('at-top', !!hero && y < 360);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  if (still || !('IntersectionObserver' in window)) return;
+  var sel = '.section-head, .mini-dash, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
+  var els = document.querySelectorAll(sel);
+  if (!els.length) return;
+  root.classList.add('reveal-on');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting || en.boundingClientRect.top < 0) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  var sweep = function () {
+    document.querySelectorAll('.rv:not(.is-in)').forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('is-in'); io.unobserve(el); }
+    });
+  };
+  window.addEventListener('scroll', function () { clearTimeout(sweep.t); sweep.t = setTimeout(sweep, 120); }, { passive: true });
+  els.forEach(function (el) {
+    if (el.closest('.hero')) return;
+    var sib = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+    el.style.setProperty('--d', Math.min(sib, 5) * 70 + 'ms');
+    el.classList.add('rv');
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.92) el.classList.add('is-in');
+    else io.observe(el);
+  });
+});
+
+
+/* v14 interaction layer: clock, back to top, spotlight, tilt, magnetic buttons, step line, counters */
+document.addEventListener('DOMContentLoaded', function () {
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* Live time in Bo (Sierra Leone uses GMT all year) */
+  var clock = document.getElementById('boClock');
+  if (clock) {
+    var tickClock = function () {
+      var d = new Date();
+      var hh = String(d.getUTCHours()).padStart(2, '0'), mm = String(d.getUTCMinutes()).padStart(2, '0');
+      clock.textContent = hh + ':' + mm + ' GMT';
+      clock.setAttribute('datetime', d.toISOString());
+    };
+    tickClock(); setInterval(tickClock, 15000);
+  }
+
+  /* Back to top with progress ring */
+  var top = document.getElementById('toTop'), ring = document.getElementById('toTopRing');
+  if (top) {
+    var upd = function () {
+      var h = document.documentElement.scrollHeight - innerHeight, p = h > 0 ? scrollY / h : 0;
+      top.classList.toggle('show', scrollY > 600);
+      if (ring) ring.style.setProperty('--off', String(100 - p * 100));
+    };
+    addEventListener('scroll', upd, { passive: true }); upd();
+    top.addEventListener('click', function () { scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' }); });
+  }
+
+  /* How I work: line fills and steps light up as you scroll */
+  var line = document.querySelector('.steps-line');
+  if (line) {
+    var lis = line.querySelectorAll('li');
+    var stepTick = function () {
+      var r = line.getBoundingClientRect();
+      var p = Math.max(0, Math.min(1, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35)));
+      if (still) p = 1;
+      line.style.setProperty('--p', p.toFixed(3));
+      lis.forEach(function (li, i) { li.classList.toggle('lit', p >= (i + 0.5) / lis.length - 0.12); });
+    };
+    addEventListener('scroll', stepTick, { passive: true }); stepTick();
+  }
+
+  /* Count up numbers in the sample dashboard when it appears */
+  var nums = document.querySelectorAll('[data-count]');
+  if (nums.length && !still && 'IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        var el = e.target, end = +el.getAttribute('data-count'), t0 = performance.now(), dur = 1400;
+        var step = function (t) {
+          var k = Math.min(1, (t - t0) / dur); k = 1 - Math.pow(1 - k, 3);
+          el.textContent = Math.round(end * k); if (k < 1) requestAnimationFrame(step);
+        };
+        el.textContent = '0'; requestAnimationFrame(step);
+      });
+    }, { threshold: 0.4 });
+    nums.forEach(function (n) { cio.observe(n); });
+  }
+
+  if (!fine || still) return;
+
+  /* Spotlight that follows the pointer on cards */
+  document.addEventListener('pointermove', function (e) {
+    var c = e.target.closest && e.target.closest('.tile, .quote, .package, .steps li, a.reg-row');
+    if (!c) return;
+    var r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+
+  /* Hero: soft glow follows the pointer, portrait tilts in 3D */
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    var glow = document.createElement('span'); glow.className = 'hero-glow'; glow.setAttribute('aria-hidden', 'true');
+    hero.appendChild(glow);
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      glow.style.setProperty('--hx', (e.clientX - r.left) + 'px'); glow.style.setProperty('--hy', (e.clientY - r.top) + 'px');
+    });
+  }
+  var art = document.querySelector('.hero-photo');
+  if (art) {
+    art.addEventListener('pointermove', function (e) {
+      var r = art.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      art.classList.add('tilting');
+      art.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg'); art.style.setProperty('--rx', (-y * 8).toFixed(2) + 'deg');
+      art.style.setProperty('--gx', ((x + 0.5) * 100) + '%'); art.style.setProperty('--gy', ((y + 0.5) * 100) + '%');
+    });
+    art.addEventListener('pointerleave', function () {
+      art.classList.remove('tilting'); art.style.setProperty('--rx', '0deg'); art.style.setProperty('--ry', '0deg');
+    });
+  }
+
+  /* Magnetic primary buttons */
+  document.querySelectorAll('.btn-primary, .nav-cta').forEach(function (b) {
+    b.addEventListener('pointermove', function (e) {
+      var r = b.getBoundingClientRect();
+      b.style.setProperty('--tx', ((e.clientX - r.left - r.width / 2) * 0.18).toFixed(1) + 'px');
+      b.style.setProperty('--ty', ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + 'px');
+    });
+    b.addEventListener('pointerleave', function () { b.style.setProperty('--tx', '0px'); b.style.setProperty('--ty', '0px'); });
+  });
+});

@@ -25,10 +25,10 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
-  <link rel="preload" href="fonts/zilla-slab-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=13">
-  <script src="shared.js?v=13"></script>
+  <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=15">
+  <script src="shared.js?v=15"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -95,7 +95,7 @@
 <div class="wrap">
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open to consulting, contracts and roles</p>
+      <div class="hero-top"><picture class="hero-avatar"><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="96" height="96" alt=""></picture><p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open to consulting, contracts and roles</p></div>
         <h1 data-i18n="hero.h1">I help health programmes turn <span class="mark">field data</span> into decisions.</h1>
       <p class="lede" data-i18n="hero.lede">I am a Data Officer and M&amp;E specialist at Rural Health Care Initiative in Bo District, Sierra Leone. I design Survey123 forms, Power BI dashboards and data systems that nurses, programme managers and donors can read at a glance.</p>
       <div class="actions">
@@ -107,10 +107,11 @@
     </div>
     <figure class="hero-art hero-photo">
       <picture><source type="image/webp" srcset="images/hero-portrait.webp"><img class="hero-portrait" src="images/hero-portrait.jpg" width="720" height="924" alt="Alhaji Ibrahim Mehemoh, Data Officer and M&amp;E specialist in Bo, Sierra Leone" fetchpriority="high"></picture>
+      <span class="float-badge fb-1" aria-hidden="true"><b>Survey123</b> forms</span><span class="float-badge fb-2" aria-hidden="true"><b>Power BI</b> dashboards</span><span class="float-badge fb-3"><span class="live-dot" aria-hidden="true"></span>Bo, Sierra Leone <b><time id="boClock">GMT</time></b></span>
       <figcaption>Alhaji Ibrahim Mehemoh, Bo, Sierra Leone</figcaption>
     </figure>
   </section>
-  <div class="chips" aria-label="Tools I work with"><span class="chips-label">Tools I use</span><span class="chip">Survey123</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">PostgreSQL</span><span class="chip">Flask</span><span class="chip">Google Apps Script</span></div>
+  <div class="marquee-row"><span class="chips-label">Tools I use</span><div class="marquee" aria-label="Tools I use"><div class="marquee-track"><ul><li>Survey123</li><li>XLSForm</li><li>Power BI</li><li>Excel</li><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>KoboToolbox</li><li>ODK</li><li>DHIS2</li><li>WordPress</li></ul><ul aria-hidden="true"><li>Survey123</li><li>XLSForm</li><li>Power BI</li><li>Excel</li><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>KoboToolbox</li><li>ODK</li><li>DHIS2</li><li>WordPress</li></ul></div></div></div>
   <div class="chips" aria-label="Organisations I have worked with"><span class="chips-label">Worked with</span><span class="chip">RHCI</span><span class="chip">SLIEPA</span><span class="chip">SLPP</span><span class="chip">Growth Centre</span></div>
 </div>
 
@@ -142,30 +143,35 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section band band-sheet">
   <div class="wrap">
     <div class="section-head"><h2>Selected work</h2><p>Case studies from my work at RHCI. Screenshots are not published because the data belongs to the organisation. Ask me for a walkthrough.</p></div>
-    <div class="register">
-      <a class="reg-row" href="case-epi-dashboard.html"><h3>EPI reporting dashboard</h3><p>A Power BI report built from monthly Survey123 immunisation exports, with views for nurses, management, the DHMT and donors.</p><span class="reg-status pill pill-dev">In development</span></a>
-      <a class="reg-row" href="case-survey123.html"><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification, malaria campaign registration with QR autofill, and an offline stock dashboard.</p><span class="reg-status pill pill-ok">Built</span></a>
-      <a class="reg-row" href="case-chw-card-studio.html"><h3>CHW Card Studio</h3><p>Credential cards with QR verification for more than 1,000 Community Health Workers.</p><span class="reg-status pill pill-design">In design</span></a>
-      <a class="reg-row" href="case-dms.html"><h3>Data Management System</h3><p>An 11-module system for tracking vaccine coverage and nutrition, using PostgreSQL, Flask and a PWA.</p><span class="reg-status pill pill-done">Designed</span></a>
+    <div class="register with-ico">
+      <a class="reg-row" href="case-epi-dashboard.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>EPI reporting dashboard</h3><p>A Power BI report built from monthly Survey123 immunisation exports, with views for nurses, management, the DHMT and donors.</p><span class="reg-status pill pill-dev">In development</span></a>
+      <a class="reg-row" href="case-survey123.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3M8.5 11l2 2 4-4M8.5 17h7"/></svg></span><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification, malaria campaign registration with QR autofill, and an offline stock dashboard.</p><span class="reg-status pill pill-ok">Built</span></a>
+      <a class="reg-row" href="case-chw-card-studio.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2.2"/><path d="M5 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M14 10h5M14 14h3"/></svg></span><h3>CHW Card Studio</h3><p>Credential cards with QR verification for more than 1,000 Community Health Workers.</p><span class="reg-status pill pill-design">In design</span></a>
+      <a class="reg-row" href="case-dms.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="2.8"/><path d="M4 5.5v13c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8v-13M4 12c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8"/></svg></span><h3>Data Management System</h3><p>An 11-module system for tracking vaccine coverage and nutrition, using PostgreSQL, Flask and a PWA.</p><span class="reg-status pill pill-done">Designed</span></a>
     </div>
     <p style="margin-top:1.25rem"><a class="text-link" href="portfolio.html">All projects</a></p>
   </div>
 </section>
 
-<section class="section-tight">
-  <div class="wrap"><div class="promo">
-    <div><h2>See how a dashboard works</h2><p>Explore an interactive EPI dashboard built on sample data. Filter by facility and month, and switch between nurse, management and donor views.</p></div>
-    <div class="actions"><a class="btn btn-primary" href="demo.html">Open the sample dashboard</a><a class="btn" href="resources.html">Free templates and checklists</a></div>
+<section class="section band-sheet promo-band">
+  <div class="wrap"><div class="promo promo-chart">
+    <div class="promo-copy"><h2>See how a dashboard works</h2><p>Explore an interactive EPI dashboard built on sample data. Filter by facility and month, and switch between nurse, management and donor views.</p>
+    <div class="actions"><a class="btn btn-primary" href="demo.html">Open the sample dashboard</a><a class="btn" href="resources.html">Free templates and checklists</a></div></div>
+    <figure class="mini-dash" aria-label="Animated sample chart: monthly immunisation coverage rising from 42 to 86 percent, using made-up sample data">
+      <figcaption><span><b>Penta 3 coverage</b> by month</span><span class="pill pill-design">Sample data</span></figcaption>
+      <div class="mini-kpis"><div><span>Coverage</span><strong data-count="86">86</strong><em>%</em></div><div><span>Facilities</span><strong data-count="12">12</strong></div><div><span>On time</span><strong data-count="91">91</strong><em>%</em></div></div>
+      <svg viewBox="0 0 400 180" aria-hidden="true"><g class="grid"><line x1="10" y1="150" x2="392" y2="150"/><line x1="10" y1="110" x2="392" y2="110"/><line x1="10" y1="70" x2="392" y2="70"/><line x1="10" y1="30" x2="392" y2="30"/></g><rect class="mb" style="--i:0" x="18" y="95" width="34" height="55" rx="6"/><rect class="mb" style="--i:1" x="66" y="78" width="34" height="72" rx="6"/><rect class="mb" style="--i:2" x="114" y="86" width="34" height="64" rx="6"/><rect class="mb" style="--i:3" x="162" y="68" width="34" height="82" rx="6"/><rect class="mb" style="--i:4" x="210" y="58" width="34" height="92" rx="6"/><rect class="mb" style="--i:5" x="258" y="62" width="34" height="88" rx="6"/><rect class="mb" style="--i:6" x="306" y="47" width="34" height="103" rx="6"/><rect class="mb" style="--i:7" x="354" y="38" width="34" height="112" rx="6"/><polyline class="mline" pathLength="1" points="35,81 83,64 131,72 179,54 227,44 275,48 323,33 371,24"/><circle class="md" style="--i:0" cx="35" cy="81" r="4"/><circle class="md" style="--i:1" cx="83" cy="64" r="4"/><circle class="md" style="--i:2" cx="131" cy="72" r="4"/><circle class="md" style="--i:3" cx="179" cy="54" r="4"/><circle class="md" style="--i:4" cx="227" cy="44" r="4"/><circle class="md" style="--i:5" cx="275" cy="48" r="4"/><circle class="md" style="--i:6" cx="323" cy="33" r="4"/><circle class="md" style="--i:7" cx="371" cy="24" r="4"/><text class="ml" x="35" y="170" text-anchor="middle">Jan</text><text class="ml" x="83" y="170" text-anchor="middle">Feb</text><text class="ml" x="131" y="170" text-anchor="middle">Mar</text><text class="ml" x="179" y="170" text-anchor="middle">Apr</text><text class="ml" x="227" y="170" text-anchor="middle">May</text><text class="ml" x="275" y="170" text-anchor="middle">Jun</text><text class="ml" x="323" y="170" text-anchor="middle">Jul</text><text class="ml" x="371" y="170" text-anchor="middle">Aug</text></svg>
+    </figure>
   </div></div>
 </section>
 
-<section class="section">
+<section class="section band band-ink">
   <div class="wrap">
-    <div class="section-head"><h2>How I work</h2></div>
-    <ol class="steps">
+    <div class="section-head"><h2>How I work</h2><p>Four steps, the same on every project, so you always know what happens next.</p></div>
+    <ol class="steps steps-line">
       <li><h3>Understand the need</h3><p>Who reads the report, and what decision does it support?</p></li>
       <li><h3>Design the data</h3><p>Forms, fields and checks that match how the field team really works.</p></li>
       <li><h3>Build and test</h3><p>Validate against real exports before anyone relies on the result.</p></li>
@@ -174,7 +180,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section band band-tint">
   <div class="wrap">
     <div class="section-head"><h2>What colleagues say</h2></div>
     <div class="quotes">
@@ -198,6 +204,7 @@
 </section>
 </main>
 
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="tt-track" cx="24" cy="24" r="21"/><circle class="tt-ring" id="toTopRing" cx="24" cy="24" r="21" pathLength="100"/><path class="tt-arrow" d="M24 31V17M17.5 23.5 24 17l6.5 6.5"/></svg></button>
 <a class="whatsapp-fab" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20am%20on%20your%20website%20%28Alhaji%20Ibrahim%20Mehemoh%20page%29%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
 
 <footer class="site-footer">
@@ -239,6 +246,7 @@
         </ul>
       </div>
     </div>
+    <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
     <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>
 </footer>
