@@ -1598,3 +1598,20 @@ optgroup{font-weight:700}
 .about-orgs .chip-logo img{height:54px!important}
 .about-orgs .chip-logo{border-radius:16px;padding:.5rem 1rem}
 .about-orgs .chip-logo img{height:46px!important}
+
+/* v23: hire page */
+.hire-hero h1{font-size:clamp(2.3rem,5vw,3.8rem)}
+.hire-card{background:var(--sheet);border:1px solid var(--rule);border-radius:24px;padding:1.4rem;box-shadow:var(--lift)}
+.hc-l{margin:0 0 .8rem;font:500 .7rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.hire-card dl{margin:0 0 1.2rem;display:grid;gap:.1rem}
+.hire-card dl div{display:grid;grid-template-columns:7.5rem 1fr;gap:.6rem;padding:.55rem 0;border-bottom:1px solid var(--rule)}
+.hire-card dt{font:500 .72rem var(--mono);color:var(--green);text-transform:uppercase;letter-spacing:.03em;padding-top:.15rem}
+.hire-card dd{margin:0;font-weight:500;font-size:.93rem}
+.hire-card .btn{width:100%;text-align:center}
+.role-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr))}
+.role-card{display:flex;flex-direction:column;gap:.5rem;background:var(--sheet);border:1px solid var(--rule);border-radius:20px;padding:1.2rem 1.25rem;transition:transform var(--t) var(--ease),box-shadow var(--t) var(--ease),border-color var(--t) var(--ease)}
+.role-card:hover{transform:translateY(-4px);box-shadow:var(--lift);border-color:color-mix(in srgb,var(--green) 35%,var(--rule))}
+.role-card h3{font-size:1.12rem;margin:.4rem 0 0}.role-card p{margin:0;color:var(--muted);font-size:.92rem;flex:1}
+.role-card .text-link{font-size:.86rem;margin-top:.4rem}
+.gl-link{text-decoration:none;color:var(--ink);transition:transform var(--t) var(--ease),box-shadow var(--t) var(--ease)}
+.gl-link:hover{transform:translateY(-4px);box-shadow:var(--lift)}

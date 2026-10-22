@@ -681,43 +681,108 @@ for idx, c in enumerate(CASES):
 
 
 # ------------------------------------------------------------------ HIRE
+hire_roles = [
+    ('chart', 'M&amp;E or Data Officer', 'Indicator tracking, data quality, reporting to management and donors.', 'case-epi-data-audit.html', 'EPI data quality audit'),
+    ('report', 'Data Analyst', 'Cleaning, analysis and Power BI or Excel dashboards for several audiences.', 'case-epi-dashboard.html', 'EPI reporting dashboard'),
+    ('form', 'Survey and data collection specialist', 'XLSForm design, field testing, collector training and supervision.', 'case-survey123.html', 'Survey123 forms and field tools'),
+    ('db', 'Systems administrator', 'Databases, web tools, user access and documentation.', 'case-dms.html', 'Data Management System'),
+    ('tool', 'IT support and help desk', 'Hardware, software, accounts, backups and user training.', 'service-hardware.html', 'Technical support service'),
+    ('web', 'Web administrator', 'Fast, maintained websites, domains, hosting and email.', 'case-this-website.html', 'This website'),
+    ('wifi', 'Network administrator', 'LAN and Wi-Fi design, routers, cabling and monitoring.', 'service-network.html', 'Networking service'),
+]
+hire_bring = [
+    ('From form to board report', 'I have run real programme data for a health NGO end to end: the field form, the cleaning, the dashboard and the report management reads.'),
+    ('Data you can defend', 'Every correction is logged and every figure is checked against the source before anyone relies on it.'),
+    ('IT background behind the data', 'Years of hardware, networking and helpdesk work mean I understand the equipment and connectivity the data depends on.'),
+    ('Teams that can carry on without me', 'Clear documentation and hands-on training for non-technical staff, in English and Krio.'),
+]
+hire_faq = [
+    ('Are you available for full-time roles?', 'Yes. I am open to full-time roles, fixed-term contracts and consulting. Tell me about the role and we can discuss timing.'),
+    ('Can you work remotely?', 'Yes. Data, dashboard, form and reporting work can be done remotely. I am based in Bo and can work onsite there and nearby.'),
+    ('Can we see examples of your work?', 'Yes. The case studies on this site show the approach, with design mockups using sample data. I can walk you through real work on a call where the data owner allows it.'),
+    ('Do you have references?', 'Yes. I can share references on request.'),
+    ('Which languages do you work in?', 'English and Krio.'),
+]
+roles_html = ''.join('<article class="role-card">%s<h3>%s</h3><p>%s</p><a class="text-link" href="%s">See: %s</a></article>' % (icon(ic), t, esc(d), h, esc(l)) for ic, t, d, h, l in hire_roles)
+bring_html = ''.join('<li><b>%s</b><span>%s</span></li>' % (esc(a), esc(b)) for a, b in hire_bring)
+hfaq_html = ''.join('<details class="faq"><summary>%s</summary><p>%s</p></details>' % (esc(a), esc(b)) for a, b in hire_faq)
+hire_wa = esc(wa_link('Hello Alhaji, I have a role I would like to discuss with you.'))
 hire_body = f'''<div class="wrap">
-  <div class="page-head"><h1>Hire me</h1><p class="lede">I am open to full-time, contract and consulting work in M&amp;E, health data and data systems, onsite in Bo or remote.</p>
-  <div class="actions"><a class="btn btn-primary" href="{CV}" target="_blank" rel="noopener">Download CV (PDF)</a><a class="btn" href="contact.html">Contact me</a></div></div>
+  <header class="about-hero hire-hero">
+    <div class="ah-text">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Available for roles, contracts and consulting</p>
+      <h1>Hire a data and MEL specialist who also knows the tech.</h1>
+      <p class="lede">I am a Data Officer at Rural Health Care Initiative in Bo, Sierra Leone, with a background in IT since 2015. I am open to full-time, contract and consulting work, onsite in Bo or remote.</p>
+      <div class="actions"><a class="btn btn-primary" href="{CV}" target="_blank" rel="noopener">Download CV (PDF)</a><a class="btn" href="{hire_wa}" target="_blank" rel="noopener">Discuss a role</a><a class="text-link" href="cv.html">View web CV</a></div>
+    </div>
+    <aside class="hire-card" aria-label="Quick facts">
+      <p class="hc-l">At a glance</p>
+      <dl>
+        <div><dt>Current role</dt><dd>Evaluator and Data Officer, RHCI</dd></div>
+        <div><dt>Location</dt><dd>Bo, Sierra Leone</dd></div>
+        <div><dt>Work type</dt><dd>Full-time, contract, consulting</dd></div>
+        <div><dt>Work mode</dt><dd>Onsite in Bo, or remote</dd></div>
+        <div><dt>Languages</dt><dd>English and Krio</dd></div>
+        <div><dt>Core tools</dt><dd>Power BI, Excel, Survey123, PostgreSQL</dd></div>
+      </dl>
+      <a class="btn btn-primary" href="mailto:{EMAIL}?subject=Role%20for%20Alhaji%20Ibrahim%20Mehemoh">Email me</a>
+    </aside>
+  </header>
 </div>
-<section class="section">
-  <div class="wrap cols">
-    <div>
-      <h2>Roles I am looking for</h2>
-      <ul class="plain">
-        <li>M&amp;E officer or data officer</li>
-        <li>Data analyst</li>
-        <li>Survey and data collection specialist</li>
-        <li>Systems administrator</li>
-        <li>IT support and help desk</li>
-        <li>Web administrator</li>
-        <li>Network administrator</li>
-      </ul>
-    </div>
-    <div>
-      <h2>What I bring</h2>
-      <ul class="bullets">
-        <li>Years of running real programme data for a health NGO, from form to board report</li>
-        <li>Survey123, Power BI and Excel skills, with attention to data quality</li>
-        <li>IT support and networking background, so I understand the equipment behind the data</li>
-        <li>Clear documentation and hands-on training for non-technical teams</li>
-        <li>English and Krio</li>
-      </ul>
-    </div>
-  </div>
-</section>
+
 <section class="section">
   <div class="wrap">
-    <div class="section-head"><h2>See the work first</h2><p>The projects page shows how I approach problems. I can share more detail and walk through the work on a call.</p></div>
-    <p><a class="btn" href="portfolio.html">View projects</a></p>
+    <div class="section-head"><h2>Roles I am looking for</h2><p>Each one links to work that shows how I approach it.</p></div>
+    <div class="role-grid">{roles_html}</div>
   </div>
 </section>
-{cta('Let us talk about the role.', 'Send me the job description or the problem you want solved.')}'''
+
+<section class="section">
+  <div class="wrap about-two">
+    <div>
+      <div class="section-head"><h2>What I bring</h2></div>
+      <ul class="principles">{bring_html}</ul>
+    </div>
+    <div>
+      <div class="section-head"><h2>Experience in brief</h2></div>
+      <ol class="jt edu">
+        <li><span class="jt-when">Oct 2024 to present</span><b>Evaluator and Data Officer</b><em>Rural Health Care Initiative, Tikonko</em></li>
+        <li><span class="jt-when">Sep 2023 to Oct 2024</span><b>Assistant IT Manager</b><em>SLIEPA, Freetown</em></li>
+        <li><span class="jt-when">Jan 2022 to Sep 2023</span><b>IT and Data Officer</b><em>SLPP, Bo District</em></li>
+        <li><span class="jt-when">2016 to 2021</span><b>ICT Tutor and Internet Cafe Attendant</b><em>Growth Centre, Bo</em></li>
+      </ol>
+      <p style="margin-top:1rem"><a class="text-link" href="about.html">Full story and education</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Skills employers ask about</h2></div>
+    <div class="sk-grid">
+      <div class="sk-card">{icon('chart')}<h3>Data and M&amp;E</h3><ul><li>Power BI</li><li>Excel</li><li>Survey123</li><li>XLSForm</li><li>Data quality</li><li>Indicators</li><li>Logframes</li></ul></div>
+      <div class="sk-card">{icon('db')}<h3>Systems</h3><ul><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>Web apps</li><li>Documentation</li></ul></div>
+      <div class="sk-card">{icon('wifi')}<h3>IT</h3><ul><li>Networking</li><li>Hardware</li><li>Helpdesk</li><li>Backups</li><li>Security basics</li></ul></div>
+      <div class="sk-card">{icon('teach')}<h3>People</h3><ul><li>Staff training</li><li>Supervising a Data Assistant</li><li>Reports</li><li>Presentations</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Proof of work</h2><p>Case studies, free resources and notes on this site.</p></div>
+    <div class="glance">
+      <a class="gl gl-link" href="portfolio.html"><b>10</b><span>case studies</span></a>
+      <a class="gl gl-link" href="resources.html"><b>17</b><span>free templates and checklists</span></a>
+      <a class="gl gl-link" href="community.html"><b>19</b><span>practical notes</span></a>
+      <a class="gl gl-link" href="demo.html"><b>1</b><span>interactive sample dashboard</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section"><div class="wrap"><div class="section-head"><h2>Questions from employers</h2></div><div class="faq-list">{hfaq_html}</div></div></section>
+
+{cta('Let us talk about the role.', 'Send me the job description or the problem you want solved. I usually reply fastest on WhatsApp.')}'''
 page('hire.html', 'Hire Me | Alhaji Ibrahim Mehemoh',
      'Hire Alhaji Ibrahim Mehemoh for M&E, health data, Survey123, dashboards, systems administration or IT support. Based in Bo, Sierra Leone; onsite or remote.',
      hire_body)
