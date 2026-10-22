@@ -281,7 +281,7 @@ def row2(h, p):
     ic = icon(SVC_ICON[h]) if h in SVC_ICON else ''
     return f'<li class="reg-row two svc-row">{ic}<h3>{h}</h3><p>{p}</p></li>'
 
-from services_content import SERVICES, AUDIENCES
+from services_content import SERVICES, AUDIENCES, FINDER, PRICE_FACTORS
 import notes_render as NR_S
 
 
@@ -291,19 +291,25 @@ def svc_card(sv):
     q = 'request.html?service=' + sv['form'].replace(' ', '+').replace('&', '%26')
     return f"""<article class="svc-card" id="{sv['key']}" data-type="{sv['group']}">
   <div class="svc-top">{icon(sv['icon'])}<span class="svc-grp">{'Data and M&amp;E' if sv['group'] == 'data' else 'IT support'}</span></div>
-  <h3>{esc(sv['title'])}</h3>
+  <h3><a class="svc-title" href="service-{sv['key']}.html">{esc(sv['title'])}</a></h3>
   <p class="svc-lead">{esc(sv['lead'])}</p>
   <p class="svc-l">What you get</p>
   <ul class="svc-gets">{gets}</ul>
   <p class="svc-fit"><b>Good for:</b> {esc(sv['fit'])}</p>
-  <div class="svc-foot"><a class="btn btn-primary" href="{q}">Ask about this</a><a class="text-link" href="{href}">{esc(label)}</a></div>
+  <div class="svc-foot"><a class="btn btn-primary" href="{q}">Ask about this</a><a class="text-link" href="service-{sv['key']}.html">Full details</a></div>
+  <p class="svc-proof">Proof: <a href="{href}">{esc(label)}</a></p>
 </article>"""
 
 
 svc_cards = ''.join(svc_card(sv) for sv in SERVICES)
 
+SVC_BY = {sv['key']: sv for sv in SERVICES}
+finder_opts = ''.join('<button type="button" class="fd-opt" data-svc="%s"><span>%s</span></button>' % (k, esc(t)) for t, k in FINDER)
+finder_res = ''.join('<div class="fd-res" data-res="%s" hidden>%s<div><p class="fd-k">I recommend</p><h3>%s</h3><p>%s</p><div class="actions"><a class="btn btn-primary" href="service-%s.html">See the details</a><a class="btn" href="request.html?service=%s">Ask about this</a></div></div></div>' % (
+    sv['key'], icon(sv['icon']), esc(sv['title']), esc(sv['lead']), sv['key'], sv['form'].replace(' ', '+').replace('&', '%26')) for sv in SERVICES)
+price_html = ''.join('<li><b>%s</b><span>%s</span></li>' % (esc(a), esc(b)) for a, b in PRICE_FACTORS)
 aud = ''.join('<li><span class="aud-art">%s</span><b>%s</b></li>' % (NR_S.hero_art(m), esc(a)) for a, m in AUDIENCES)
-jump = ''.join('<a href="#%s">%s%s</a>' % (sv['key'], icon(sv['icon']), esc(sv['title'])) for sv in SERVICES)
+jump = ''.join('<a href="service-%s.html">%s%s</a>' % (sv['key'], icon(sv['icon']), esc(sv['title'])) for sv in SERVICES)
 services_body = f'''<div class="wrap">
   <div class="page-head svc-hero">
     <div>
@@ -319,6 +325,12 @@ services_body = f'''<div class="wrap">
   <div class="wrap">
     <div class="section-head"><h2>Who I work with</h2></div>
     <ul class="aud">{aud}</ul>
+  </div>
+</section>
+<section class="section finder-band" id="finder">
+  <div class="wrap">
+    <div class="section-head"><h2>Which service do I need?</h2><p>Pick the sentence that sounds most like you.</p></div>
+    <div class="finder"><div class="fd-opts" role="group" aria-label="Choose what sounds like you">{finder_opts}</div><div class="fd-out" aria-live="polite"><div class="fd-empty"><p>Your recommendation appears here.</p></div>{finder_res}</div></div>
   </div>
 </section>
 <section class="section" id="all-services">
@@ -338,6 +350,19 @@ services_body = f'''<div class="wrap">
       <div class="package featured"><h3>Standard</h3><p class="muted">Office setup</p><p class="price">Le 800 to Le 2,500</p><ul class="bullets"><li>Wi-Fi and router configuration</li><li>Staff PC setup</li><li>Basic network design</li><li>Excel reporting templates</li></ul><a class="btn btn-primary" href="request.html?service=IT+support+(Standard)">Request Standard</a></div>
       <div class="package"><h3>Premium</h3><p class="muted">Monthly contract</p><p class="price">Le 3,000+</p><ul class="bullets"><li>Ongoing support</li><li>Backups and security checks</li><li>Systems setup and staff training</li><li>Priority response</li></ul><a class="btn" href="request.html?service=IT+support+(Premium)">Book Premium</a></div>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Which package fits?</h2></div>
+    <div class="ntable cmp"><table><thead><tr><th scope="col"></th><th scope="col">Starter</th><th scope="col" class="cmp-hi">Standard</th><th scope="col">Premium</th></tr></thead><tbody>
+      <tr><th scope="row">Best for</th><td>A one-off fix</td><td class="cmp-hi">Setting up or improving an office</td><td>Ongoing help every month</td></tr>
+      <tr><th scope="row">How it is priced</th><td>Le 250 to Le 600</td><td class="cmp-hi">Le 800 to Le 2,500</td><td>Le 3,000+ per month contract</td></tr>
+      <tr><th scope="row">Typical work</th><td>Setup, troubleshooting, printers, clean-up</td><td class="cmp-hi">Wi-Fi and routers, staff PC setup, network design, Excel templates</td><td>Ongoing support, backups and security checks, systems and training, priority response</td></tr>
+    </tbody></table></div>
+    <div class="section-head" id="pricing" style="margin-top:3rem;scroll-margin-top:6rem"><h2>What affects the price</h2><p>Data and M&amp;E work is quoted after a short conversation. These are the things that make the biggest difference.</p></div>
+    <ul class="pf">{price_html}</ul>
   </div>
 </section>
 
@@ -790,6 +815,71 @@ for i, n in enumerate(NOTES):
          og_type='article', crumbs=[('Notes', 'community.html'), (n['title'], None)],
          wa_text='Hello Alhaji, I read your note "%s" and have a question.' % n['title'])
 
+
+# ------------------------------------------------------------------ SERVICE DETAIL PAGES
+from services_content import DETAIL
+SVC_ART = {'dashboards': 'case-epi-dashboard/01-management-overview', 'forms': 'case-survey123/01-mobile-registration-form',
+           'quality': 'case-epi-dashboard/04-data-quality-review', 'systems': 'case-dms/01-patient-registration-workspace',
+           'web': 'case-this-website/01-home', 'reporting': 'case-epi-dashboard/03-monthly-performance'}
+SVC_MOTIF = {'training': 'people', 'hardware': 'wrench', 'network': 'tools', 'security': 'shield', 'contracts': 'matrix'}
+CASE_BY = {c['slug']: c for c in CASES}
+for k, sv in enumerate(SERVICES):
+    d = DETAIL[sv['key']]
+    q = 'request.html?service=' + sv['form'].replace(' ', '+').replace('&', '%26')
+    if sv['key'] in SVC_ART:
+        real = 'website' in SVC_ART[sv['key']]
+        art = ('<figure class="case-cover"><div class="browser"><span class="b-dots"><i></i><i></i><i></i></span><img src="images/cases/%s.webp" alt=""></div><figcaption>%s</figcaption></figure>'
+               % (SVC_ART[sv['key']], 'Screenshot of this website' if real else '<span class="pill pill-design">Sample data</span> Design mockup from my work'))
+    else:
+        art = '<div class="case-art">%s<p class="art-note">Illustration</p></div>' % NR.hero_art(SVC_MOTIF.get(sv['key'], 'checks'))
+    gets = ''.join('<li>%s<span>%s</span></li>' % (icon('check'), esc(g)) for g in sv['gets'])
+    how = ''.join('<li><h3>%s</h3><p>%s</p></li>' % (esc(a), esc(b)) for a, b in d['how'])
+    faq = ''.join('<details class="faq"><summary>%s</summary><p>%s</p></details>' % (esc(a), esc(b)) for a, b in d['faq'])
+    cases_html = ''.join('<a class="pn-card" href="%s.html"><span class="pn-l">Case study</span><span class="pn-art">%s</span><b>%s</b></a>' % (c, cover_img(CASE_BY[c])[0], esc(CASE_BY[c]['title'])) for c in d['cases'] if c in CASE_BY)
+    notes_html = ''.join('<a class="rn" href="%s.html"><span class="rn-art">%s</span><b>%s</b></a>' % (s_, NR.hero_art(NOTE_TITLES[s_].get('motif', 'checks')), esc(NOTE_TITLES[s_]['title'])) for s_ in d['notes'] if s_ in NOTE_TITLES)
+    res_html = ''.join('<a class="rel-card" href="downloads/%s" download><img src="images/resources/%s.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-%s">%s</span><b>%s</b><em>%s</em></span></a>' % (
+        f, RES_ALL[f]['slug'], {'PDF': 'pdf', 'Excel': 'xls', 'XLSForm': 'form'}[RES_ALL[f]['type']], RES_ALL[f]['type'], esc(RES_ALL[f]['title']), RES_ALL[f]['size']) for f in d['resources'] if f in RES_ALL)
+    others = ''.join('<a href="service-%s.html"%s>%s%s</a>' % (o['key'], ' aria-current="page"' if o['key'] == sv['key'] else '', icon(o['icon']), esc(o['title'])) for o in SERVICES)
+    grp = 'Data and M&amp;E' if sv['group'] == 'data' else 'IT support'
+    wa = esc(wa_link('Hello Alhaji, I would like to ask about %s.' % sv['title'].lower()))
+    pk = '<p class="svc-pk">IT support has fixed packages from Le 250. <a class="text-link" href="services.html#packages">See the packages</a></p>' if sv['group'] == 'it' else '<p class="svc-pk">Priced by scope after a short conversation. <a class="text-link" href="services.html#pricing">What affects the price</a></p>'
+    body = f"""<div class="wrap">
+  <header class="case-hero svc-detail-hero">
+    <div class="case-hero-text">
+      <p class="crumb"><a href="services.html">Services</a></p>
+      <div class="case-status"><span class="pill {'pill-ok' if sv['group'] == 'data' else 'pill-design'}">{grp}</span><span class="case-org">Bo, Sierra Leone &middot; onsite and remote</span></div>
+      <h1>{esc(sv['title'])}</h1>
+      <p class="lede">{esc(d['intro'])}</p>
+      <div class="actions"><a class="btn btn-primary" href="{q}">Ask about this</a><a class="btn" href="{wa}" target="_blank" rel="noopener">WhatsApp me</a></div>
+      {pk}
+    </div>
+    {art}
+  </header>
+</div>
+<section class="section">
+  <div class="wrap svc-two">
+    <div><div class="section-head"><h2>What you get</h2></div><ul class="get-list">{gets}</ul><p class="svc-fit"><b>Good for:</b> {esc(sv['fit'])}</p></div>
+    <div><div class="section-head"><h2>Common questions</h2></div><div class="faq-list">{faq}</div></div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>How it works</h2></div>
+    <ol class="steps steps-line">{how}</ol>
+  </div>
+</section>
+{('<section class="section"><div class="wrap"><div class="section-head"><h2>Proof from my work</h2></div><div class="note-pn">' + cases_html + '</div></div></section>') if cases_html else ''}
+{('<section class="section"><div class="wrap">' + ('<div class="case-more" style="margin-top:0"><h2>Read more</h2><div class="rn-grid">' + notes_html + '</div></div>' if notes_html else '') + ('<div class="note-rel case-res"><h2>Free tools</h2><div class="rel-grid">' + res_html + '</div></div>' if res_html else '') + '</div></section>') if (notes_html or res_html) else ''}
+<section class="section-tight">
+  <div class="wrap"><nav class="svc-others" aria-label="Other services"><p>All services</p>{others}</nav></div>
+</section>
+{cta('Ready to talk about ' + esc(sv['title'].lower()) + '?', 'Tell me what you need in a few lines. I will reply with a plan and a quote.')}"""
+    ld = {"@context": "https://schema.org", "@type": "Service", "name": sv['title'], "description": d['intro'], "serviceType": sv['title'],
+          "provider": {"@type": "Person", "name": "Alhaji Ibrahim Mehemoh", "url": BASE},
+          "areaServed": {"@type": "Country", "name": "Sierra Leone"}, "url": BASE + 'service-%s.html' % sv['key']}
+    page('service-%s.html' % sv['key'], '%s in Sierra Leone | Alhaji Ibrahim Mehemoh' % sv['title'], sv['lead'], body,
+         active='services.html', ld=ld, crumbs=[('Services', 'services.html'), (sv['title'], None)],
+         wa_text='Hello Alhaji, I would like to ask about %s.' % sv['title'].lower())
 
 # ------------------------------------------------------------------ 404
 page('404.html', 'Page not found | Alhaji Ibrahim Mehemoh', 'This page does not exist.',

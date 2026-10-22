@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   if (still || !('IntersectionObserver' in window)) return;
-  var sel = '.section-head, .svc-card, .aud li, .sp-card, .gl, .more-card, .rn, .nfig, .callout, .ntable, .takeaways, .rel-card, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
+  var sel = '.section-head, .pf li, .get-list li, .svc-card, .aud li, .sp-card, .gl, .more-card, .rn, .nfig, .callout, .ntable, .takeaways, .rel-card, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
   var els = document.querySelectorAll(sel);
   if (!els.length) return;
   root.classList.add('reveal-on');
@@ -381,4 +381,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
   document.querySelectorAll('.note-body h2[id], .case-body h2[id]').forEach(function (h) { io.observe(h); });
+});
+
+/* v21: 'Which service do I need?' finder */
+document.addEventListener('DOMContentLoaded', function () {
+  var opts = document.querySelectorAll('.fd-opt');
+  if (!opts.length) return;
+  var empty = document.querySelector('.fd-empty');
+  opts.forEach(function (o) {
+    o.setAttribute('aria-pressed', 'false');
+    o.addEventListener('click', function () {
+      var k = o.getAttribute('data-svc');
+      opts.forEach(function (x) { x.setAttribute('aria-pressed', x === o ? 'true' : 'false'); });
+      if (empty) empty.hidden = true;
+      document.querySelectorAll('.fd-res').forEach(function (r) { r.hidden = r.getAttribute('data-res') !== k; });
+      if (window.innerWidth < 960) { var out = document.querySelector('.fd-out'); if (out) out.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    });
+  });
 });
