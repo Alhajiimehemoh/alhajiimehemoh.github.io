@@ -8,7 +8,7 @@ EMAIL = 'alhajiimehemoh@gmail.com'
 CV = 'Alhaji_Ibrahim_Mehemoh_CV.pdf'
 OUT = os.path.dirname(os.path.abspath(__file__))
 from aimlogo import aim_logo
-CSS_V = '35'
+CSS_V = '36'
 
 NAV = [('portfolio.html', 'Projects', 'nav.projects'), ('services.html', 'Services', 'nav.services'),
        ('resources.html', 'Resources', 'nav.resources'), ('community.html', 'Notes', 'nav.notes'),

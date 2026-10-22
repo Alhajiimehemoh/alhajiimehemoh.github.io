@@ -2135,7 +2135,8 @@ main{position:relative;isolation:isolate}
 .aim .lg-ring{fill:none;stroke:var(--lg-teal);stroke-width:6;opacity:0}
 .aim *{transform-box:fill-box}
 .aim-head{height:30px}
-.aim-foot{height:56px}
+.aim-foot{height:76px}
+.foot-logo{cursor:pointer}
 .aim-intro{height:auto;width:min(15rem,60vw)}
 @media (max-width:30rem){.aim-head{height:24px}}
 .foot-logo{display:inline-flex}
@@ -2152,7 +2153,8 @@ main{position:relative;isolation:isolate}
   .show-intro .aim-head{--lg-d:2.2s}
   .aim-head{--lg-d:.1s}
   /* footer plays when it scrolls into view */
-  .reveal-on .foot-logo:not(.is-in) .aim *{animation-play-state:paused}
+  .foot-logo:not(.lg-play) .aim *{animation:none!important}
+  .foot-logo .aim{--lg-d:.25s}
   .foot-logo.rv{opacity:1!important;transform:none!important}
   /* hover: wave, hop, redraw */
   .brand:hover .aim .lg-a,.foot-logo:hover .aim .lg-a{animation:lg-wave .6s cubic-bezier(.34,1.56,.64,1) 0s both}

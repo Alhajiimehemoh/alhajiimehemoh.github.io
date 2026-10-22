@@ -564,3 +564,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var ta = document.getElementById('cf-message'), cnt = document.getElementById('cfCount');
   if (ta && cnt) ta.addEventListener('input', function () { cnt.textContent = ta.value.length; });
 });
+
+/* v32: footer logo replays its build each time it scrolls into view, or when tapped */
+document.addEventListener('DOMContentLoaded', function () {
+  var f = document.querySelector('.foot-logo');
+  if (!f) return;
+  function play() { f.classList.remove('lg-play'); void f.offsetWidth; f.classList.add('lg-play'); }
+  f.addEventListener('click', play);
+  if (!('IntersectionObserver' in window)) { play(); return; }
+  new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) play(); }); }, { threshold: .9 }).observe(f);
+});
