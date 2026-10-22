@@ -4,19 +4,25 @@ Settings live in site_config.py, notes in notes.json, layout in layout.py, extra
 import datetime, json, os, re
 import site_config as C
 from layout import *
+from art import cover, icon
 
 TODAY = datetime.date.today().isoformat()
 
 
 def partners():
-    """Logos you have permission to show, or the employers' names as plain text."""
-    if C.PARTNER_LOGOS:
-        items = ''.join(
-            '<a class="chip chip-logo" href="%s" target="_blank" rel="noopener"><img src="%s" alt="%s" height="28" loading="lazy"></a>' % (
-                esc(p.get('url', '#')), esc(p['image']), esc(p['name'])) for p in C.PARTNER_LOGOS)
-    else:
-        items = ''.join('<span class="chip">%s</span>' % n for n in ['RHCI', 'SLIEPA', 'SLPP', 'Growth Centre'])
+    """Organisation logos used with permission, other employers as plain text."""
+    logos = [('RHCI', 'Rural Health Care Initiative', 'images/brand/rhci-logo.webp', 116), ('SLIEPA', 'SLIEPA', 'images/brand/sliepa-logo.png', 92)]
+    items = ''.join('<span class="chip chip-logo" title="%s"><img src="%s" alt="%s" height="38" style="height:38px;width:auto" loading="lazy"></span>' % (t, src, t) for _, t, src, w in logos)
+    items += ''.join('<span class="chip">%s</span>' % n for n in ['SLPP', 'Growth Centre'])
     return '<div class="chips" aria-label="Organisations I have worked with"><span class="chips-label">Worked with</span>%s</div>' % items
+
+def case_cover(slug):
+    d = os.path.join(OUT, 'images', 'cases', slug)
+    if os.path.isdir(d):
+        f = sorted(x for x in os.listdir(d) if x.endswith('-800.webp'))
+        if f:
+            return '<img class="proj-shot" src="images/cases/%s/%s" alt="" loading="lazy">' % (slug, f[0])
+    return cover(slug)
 
 
 def certs_section():
@@ -57,7 +63,7 @@ def tally_svg():
 index_body = f'''<div class="wrap">
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open to consulting, contracts and roles</p>
+      <div class="hero-top"><picture class="hero-avatar"><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="96" height="96" alt=""></picture><p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open to consulting, contracts and roles</p></div>
         <h1 data-i18n="hero.h1">I help health programmes turn <span class="mark">field data</span> into decisions.</h1>
       <p class="lede" data-i18n="hero.lede">I am a Data Officer and M&amp;E specialist at Rural Health Care Initiative in Bo District, Sierra Leone. I design Survey123 forms, Power BI dashboards and data systems that nurses, programme managers and donors can read at a glance.</p>
       <div class="actions">
@@ -67,12 +73,13 @@ index_body = f'''<div class="wrap">
       </div>
       <p class="fact" data-i18n="hero.fact">Based in Bo, Sierra Leone. Open to roles, contracts and consulting, onsite or remote.</p>
     </div>
-    <figure class="hero-art">
-      <div class="sheet">{tally_svg()}</div>
-      <figcaption>Tally marks on a register become a chart. Illustration only.</figcaption>
+    <figure class="hero-art hero-photo">
+      <picture><source type="image/webp" srcset="images/hero-portrait.webp"><img class="hero-portrait" src="images/hero-portrait.jpg" width="720" height="924" alt="Alhaji Ibrahim Mehemoh, Data Officer and M&amp;E specialist in Bo, Sierra Leone" fetchpriority="high"></picture>
+      <span class="float-badge fb-1" aria-hidden="true"><b>Survey123</b> forms</span><span class="float-badge fb-2" aria-hidden="true"><b>Power BI</b> dashboards</span><span class="float-badge fb-3"><span class="live-dot" aria-hidden="true"></span>Bo, Sierra Leone <b><time id="boClock">GMT</time></b></span>
+      <figcaption>Alhaji Ibrahim Mehemoh, Bo, Sierra Leone</figcaption>
     </figure>
   </section>
-  <div class="chips" aria-label="Tools I work with"><span class="chips-label">Tools I use</span><span class="chip">Survey123</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">PostgreSQL</span><span class="chip">Flask</span><span class="chip">Google Apps Script</span></div>
+  <div class="marquee-row"><span class="chips-label">Tools I use</span><div class="marquee" aria-label="Tools I use"><div class="marquee-track"><ul><li>Survey123</li><li>XLSForm</li><li>Power BI</li><li>Excel</li><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>KoboToolbox</li><li>ODK</li><li>DHIS2</li><li>WordPress</li></ul><ul aria-hidden="true"><li>Survey123</li><li>XLSForm</li><li>Power BI</li><li>Excel</li><li>PostgreSQL</li><li>Flask</li><li>Google Apps Script</li><li>KoboToolbox</li><li>ODK</li><li>DHIS2</li><li>WordPress</li></ul></div></div></div>
   {partners()}
 </div>
 
@@ -104,30 +111,42 @@ index_body = f'''<div class="wrap">
   </div>
 </section>
 
-<section class="section">
+<section class="section band band-sheet">
   <div class="wrap">
-    <div class="section-head"><h2>Selected work</h2><p>Case studies from my work at RHCI. Screenshots are not published because the data belongs to the organisation. Ask me for a walkthrough.</p></div>
-    <div class="register">
-      <a class="reg-row" href="case-epi-dashboard.html"><h3>EPI reporting dashboard</h3><p>A Power BI report built from monthly Survey123 immunisation exports, with views for nurses, management, the DHMT and donors.</p><span class="reg-status pill pill-dev">In development</span></a>
-      <a class="reg-row" href="case-survey123.html"><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification, malaria campaign registration with QR autofill, and an offline stock dashboard.</p><span class="reg-status pill pill-ok">Built</span></a>
-      <a class="reg-row" href="case-chw-card-studio.html"><h3>CHW Card Studio</h3><p>Credential cards with QR verification for more than 1,000 Community Health Workers.</p><span class="reg-status pill pill-design">In design</span></a>
-      <a class="reg-row" href="case-dms.html"><h3>Data Management System</h3><p>An 11-module system for tracking vaccine coverage and nutrition, using PostgreSQL, Flask and a PWA.</p><span class="reg-status pill pill-done">Designed</span></a>
+    <div class="section-head"><h2>Selected work</h2><p>Case studies from my work at RHCI. The screens shown are design mockups with sample data; real programme data stays with the organisation. Ask me for a walkthrough.</p></div>
+    <div class="register with-ico">
+      <a class="reg-row" href="case-epi-dashboard.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h3>EPI reporting dashboard</h3><p>A Power BI report built from monthly Survey123 immunisation exports, with views for nurses, management, the DHMT and donors.</p><span class="reg-status pill pill-ok">Built</span></a>
+      <a class="reg-row" href="case-survey123.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3M8.5 11l2 2 4-4M8.5 17h7"/></svg></span><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification, malaria campaign registration with QR autofill, and an offline stock dashboard.</p><span class="reg-status pill pill-ok">Built</span></a>
+      <a class="reg-row" href="case-chw-card-studio.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2.2"/><path d="M5 16c.6-1.6 1.7-2.4 3-2.4s2.4.8 3 2.4M14 10h5M14 14h3"/></svg></span><h3>CHW Card Studio</h3><p>Credential cards with QR verification for more than 1,000 Community Health Workers.</p><span class="reg-status pill pill-ok">Completed</span></a>
+      <a class="reg-row" href="case-dms.html"><span class="reg-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="2.8"/><path d="M4 5.5v13c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8v-13M4 12c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8"/></svg></span><h3>Data Management System</h3><p>An 11-module system for tracking vaccine coverage and nutrition, using PostgreSQL, Flask and a PWA.</p><span class="reg-status pill pill-ok">Completed</span></a>
     </div>
     <p style="margin-top:1.25rem"><a class="text-link" href="portfolio.html">All projects</a></p>
+    <div class="showcase" aria-label="Design mockups from the projects">
+      <a class="sc sc-wide" href="case-epi-dashboard.html"><img src="images/cases/case-epi-dashboard/01-management-overview-800.webp" alt="Design mockup of the EPI management dashboard with sample data" loading="lazy"><span>EPI dashboard</span></a>
+      <a class="sc sc-tall" href="case-survey123.html"><img src="images/cases/case-survey123/02-qr-autofill-follow-up-800.webp" alt="Design mockup of a mobile follow-up form with QR autofill" loading="lazy"><span>QR autofill form</span></a>
+      <a class="sc" href="case-chw-card-studio.html"><img src="images/cases/case-chw-card-studio/01-card-and-qr-verification-800.webp" alt="Design mockup of a sample health worker card and QR verification" loading="lazy"><span>CHW Card Studio</span></a>
+      <a class="sc" href="case-epi-dashboard.html"><img src="images/cases/case-epi-dashboard/04-data-quality-review-800.webp" alt="Design mockup of a data quality review dashboard" loading="lazy"><span>Data quality review</span></a>
+      <p class="sc-note"><span class="pill pill-design">Sample data</span> Design mockups. No real patient or programme data.</p>
+    </div>
   </div>
 </section>
 
-<section class="section-tight">
-  <div class="wrap"><div class="promo">
-    <div><h2>See how a dashboard works</h2><p>Explore an interactive EPI dashboard built on sample data. Filter by facility and month, and switch between nurse, management and donor views.</p></div>
-    <div class="actions"><a class="btn btn-primary" href="demo.html">Open the sample dashboard</a><a class="btn" href="resources.html">Free templates and checklists</a></div>
+<section class="section band-sheet promo-band">
+  <div class="wrap"><div class="promo promo-chart">
+    <div class="promo-copy"><h2>See how a dashboard works</h2><p>Explore an interactive EPI dashboard built on sample data. Filter by facility and month, and switch between nurse, management and donor views.</p>
+    <div class="actions"><a class="btn btn-primary" href="demo.html">Open the sample dashboard</a><a class="btn" href="resources.html">Free templates and checklists</a></div></div>
+    <figure class="mini-dash" aria-label="Animated sample chart: monthly immunisation coverage rising from 42 to 86 percent, using made-up sample data">
+      <figcaption><span><b>Penta 3 coverage</b> by month</span><span class="pill pill-design">Sample data</span></figcaption>
+      <div class="mini-kpis"><div><span>Coverage</span><strong data-count="86">86</strong><em>%</em></div><div><span>Facilities</span><strong data-count="12">12</strong></div><div><span>On time</span><strong data-count="91">91</strong><em>%</em></div></div>
+      <svg viewBox="0 0 400 180" aria-hidden="true"><g class="grid"><line x1="10" y1="150" x2="392" y2="150"/><line x1="10" y1="110" x2="392" y2="110"/><line x1="10" y1="70" x2="392" y2="70"/><line x1="10" y1="30" x2="392" y2="30"/></g><rect class="mb" style="--i:0" x="18" y="95" width="34" height="55" rx="6"/><rect class="mb" style="--i:1" x="66" y="78" width="34" height="72" rx="6"/><rect class="mb" style="--i:2" x="114" y="86" width="34" height="64" rx="6"/><rect class="mb" style="--i:3" x="162" y="68" width="34" height="82" rx="6"/><rect class="mb" style="--i:4" x="210" y="58" width="34" height="92" rx="6"/><rect class="mb" style="--i:5" x="258" y="62" width="34" height="88" rx="6"/><rect class="mb" style="--i:6" x="306" y="47" width="34" height="103" rx="6"/><rect class="mb" style="--i:7" x="354" y="38" width="34" height="112" rx="6"/><polyline class="mline" pathLength="1" points="35,81 83,64 131,72 179,54 227,44 275,48 323,33 371,24"/><circle class="md" style="--i:0" cx="35" cy="81" r="4"/><circle class="md" style="--i:1" cx="83" cy="64" r="4"/><circle class="md" style="--i:2" cx="131" cy="72" r="4"/><circle class="md" style="--i:3" cx="179" cy="54" r="4"/><circle class="md" style="--i:4" cx="227" cy="44" r="4"/><circle class="md" style="--i:5" cx="275" cy="48" r="4"/><circle class="md" style="--i:6" cx="323" cy="33" r="4"/><circle class="md" style="--i:7" cx="371" cy="24" r="4"/><text class="ml" x="35" y="170" text-anchor="middle">Jan</text><text class="ml" x="83" y="170" text-anchor="middle">Feb</text><text class="ml" x="131" y="170" text-anchor="middle">Mar</text><text class="ml" x="179" y="170" text-anchor="middle">Apr</text><text class="ml" x="227" y="170" text-anchor="middle">May</text><text class="ml" x="275" y="170" text-anchor="middle">Jun</text><text class="ml" x="323" y="170" text-anchor="middle">Jul</text><text class="ml" x="371" y="170" text-anchor="middle">Aug</text></svg>
+    </figure>
   </div></div>
 </section>
 
-<section class="section">
+<section class="section band band-ink">
   <div class="wrap">
-    <div class="section-head"><h2>How I work</h2></div>
-    <ol class="steps">
+    <div class="section-head"><h2>How I work</h2><p>Four steps, the same on every project, so you always know what happens next.</p></div>
+    <ol class="steps steps-line">
       <li><h3>Understand the need</h3><p>Who reads the report, and what decision does it support?</p></li>
       <li><h3>Design the data</h3><p>Forms, fields and checks that match how the field team really works.</p></li>
       <li><h3>Build and test</h3><p>Validate against real exports before anyone relies on the result.</p></li>
@@ -136,7 +155,7 @@ index_body = f'''<div class="wrap">
   </div>
 </section>
 
-<section class="section">
+<section class="section band band-tint">
   <div class="wrap">
     <div class="section-head"><h2>What colleagues say</h2></div>
     <div class="quotes">
@@ -219,7 +238,12 @@ about_body = f'''<div class="wrap">
 
 {certs_section()}
 
-<section class="section-tight"><div class="wrap">{picture("images/cover.jpeg", "A team meeting in a busy room with laptops, documents and a projector", 1080, 810, "wide-photo")}</div></section>
+<section class="section-tight"><div class="wrap photo-strip">
+  <figure class="ps ps-a"><img src="images/work/dashboard-review-800.webp" alt="Alhaji reviewing a dashboard at his desk" loading="lazy"></figure>
+  <figure class="ps ps-b"><img src="images/work/navy-suit-portrait-800.webp" alt="Alhaji Ibrahim Mehemoh in a navy suit, outdoors" loading="lazy"></figure>
+  <figure class="ps ps-c"><img src="images/work/office-desk-800.webp" alt="Alhaji working at an office computer" loading="lazy"></figure>
+  <figure class="ps ps-d">{picture("images/cover.jpeg", "A team meeting in a busy room with laptops, documents and a projector", 1080, 810, "")}</figure>
+</div></section>
 
 {cta('Want to work together?', 'Send me a short description of the report, form or system you need.')}'''
 page('about.html', 'About | Alhaji Ibrahim Mehemoh',
@@ -248,37 +272,61 @@ def faq_ld():
             "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}
 
 
-def row2(h, p):
-    return f'<li class="reg-row two"><h3>{h}</h3><p>{p}</p></li>'
+SVC_ICON = {'Dashboards and reports': 'chart', 'Survey and form design': 'form', 'Data quality audits': 'check',
+            'M&amp;E reporting': 'report', 'Data systems': 'db', 'Training': 'teach', 'Technical support and hardware': 'tool',
+            'Networking and internet': 'wifi', 'Web and digital': 'web', 'Security and backups': 'lock', 'Office and NGO IT support': 'office'}
 
+
+def row2(h, p):
+    ic = icon(SVC_ICON[h]) if h in SVC_ICON else ''
+    return f'<li class="reg-row two svc-row">{ic}<h3>{h}</h3><p>{p}</p></li>'
+
+from services_content import SERVICES, AUDIENCES
+import notes_render as NR_S
+
+
+def svc_card(sv):
+    gets = ''.join('<li>%s</li>' % esc(g) for g in sv['gets'])
+    href, label = sv['proof']
+    q = 'request.html?service=' + sv['form'].replace(' ', '+').replace('&', '%26')
+    return f"""<article class="svc-card" id="{sv['key']}" data-type="{sv['group']}">
+  <div class="svc-top">{icon(sv['icon'])}<span class="svc-grp">{'Data and M&amp;E' if sv['group'] == 'data' else 'IT support'}</span></div>
+  <h3>{esc(sv['title'])}</h3>
+  <p class="svc-lead">{esc(sv['lead'])}</p>
+  <p class="svc-l">What you get</p>
+  <ul class="svc-gets">{gets}</ul>
+  <p class="svc-fit"><b>Good for:</b> {esc(sv['fit'])}</p>
+  <div class="svc-foot"><a class="btn btn-primary" href="{q}">Ask about this</a><a class="text-link" href="{href}">{esc(label)}</a></div>
+</article>"""
+
+
+svc_cards = ''.join(svc_card(sv) for sv in SERVICES)
+
+aud = ''.join('<li><span class="aud-art">%s</span><b>%s</b></li>' % (NR_S.hero_art(m), esc(a)) for a, m in AUDIENCES)
+jump = ''.join('<a href="#%s">%s%s</a>' % (sv['key'], icon(sv['icon']), esc(sv['title'])) for sv in SERVICES)
 services_body = f'''<div class="wrap">
-  <div class="page-head"><h1>Services</h1><p class="lede">Data and M&amp;E work for health programmes and NGOs, plus practical IT support for offices, clinics and schools in Bo and across Sierra Leone.</p>
-  <div class="actions"><a class="btn btn-primary" href="request.html">Request a quote</a><a class="btn" href="{WA}" target="_blank" rel="noopener">WhatsApp</a></div></div>
+  <div class="page-head svc-hero">
+    <div>
+      <h1>Services</h1>
+      <p class="lede">Data and M&amp;E work for health programmes and NGOs, plus practical IT support for offices, clinics and schools in Bo and across Sierra Leone.</p>
+      <div class="actions"><a class="btn btn-primary" href="request.html">Request a quote</a><a class="btn" href="{WA}" target="_blank" rel="noopener">WhatsApp me</a></div>
+      <ul class="trust"><li>Based in Bo</li><li>Onsite in Bo, remote nationwide</li><li>English and Krio</li><li>Quick replies on WhatsApp</li></ul>
+    </div>
+    <nav class="svc-jump" aria-label="Jump to a service"><p>Jump to a service</p>{jump}</nav>
+  </div>
 </div>
 <section class="section">
   <div class="wrap">
-    <div class="section-head"><h2>Data and M&amp;E</h2><p>Priced by scope. Send me your reporting need and I will reply with a plan and a quote.</p></div>
-    <ul class="register">
-      {row2('Dashboards and reports', 'Power BI and Excel dashboards that refresh from your survey exports, with views for field staff, managers and donors.')}
-      {row2('Survey and form design', 'Survey123 XLSForms with lookups, skip logic, validation and QR autofill, tested before field use.')}
-      {row2('Data quality audits', 'Checks for duplicates, GPS errors, impossible dose sequences, inconsistent village names and missing records, with a report per team or facility.')}
-      {row2('M&amp;E reporting', 'Monthly and quarterly programme reports, indicator tracking and presentations for management, boards and donors.')}
-      {row2('Data systems', 'Database and web tool design for tracking patients, supplies, staff or credentials.')}
-      {row2('Training', 'Hands-on training in Excel, data entry, data quality and basic dashboards for programme and facility staff.')}
-    </ul>
+    <div class="section-head"><h2>Who I work with</h2></div>
+    <ul class="aud">{aud}</ul>
   </div>
 </section>
-
-<section class="section">
+<section class="section" id="all-services">
   <div class="wrap">
-    <div class="section-head"><h2>IT support</h2><p>Onsite in Bo and nearby areas. Remote support across Sierra Leone.</p></div>
-    <ul class="register">
-      {row2('Technical support and hardware', 'Repairs, RAM and SSD upgrades, software installation, virus removal, printer and scanner setup.')}
-      {row2('Networking and internet', 'LAN and Wi-Fi setup, routers, network design and cable management for offices, NGOs and clinics.')}
-      {row2('Web and digital', 'WordPress sites, domains and hosting, maintenance, professional email and basic graphics.')}
-      {row2('Security and backups', 'Backup and recovery, antivirus and firewall setup, user accounts, access control and system checks.')}
-      {row2('Office and NGO IT support', 'Support contracts, staff training, ICT consultancy and inventory tools.')}
-    </ul>
+    <div class="section-head"><h2>What I can do for you</h2><p>Data and M&amp;E work is priced by scope: send me your need and I will reply with a plan and a quote. IT support has fixed packages below.</p></div>
+    <div class="filters" role="group" aria-label="Filter services"><button type="button" class="filter is-active" data-filter="all" aria-pressed="true">All 11</button><button type="button" class="filter" data-filter="data" aria-pressed="false">Data and M&amp;E</button><button type="button" class="filter" data-filter="it" aria-pressed="false">IT support</button></div>
+    <p class="small muted" id="filterCount" data-noun="service" role="status" aria-live="polite"></p>
+    <div class="svc-grid" data-filter-target>{svc_cards}</div>
   </div>
 </section>
 
@@ -295,13 +343,19 @@ services_body = f'''<div class="wrap">
 
 <section class="section">
   <div class="wrap">
-    <div class="section-head"><h2>How a project runs</h2></div>
-    <ol class="steps">
-      <li><h3>Assess</h3><p>We agree what you need and who will use it.</p></li>
-      <li><h3>Design</h3><p>I propose the form, system or setup and a fixed scope.</p></li>
+    <div class="section-head"><h2>How a project runs</h2><p>Clear steps, so you always know what happens next and what it will cost.</p></div>
+    <ol class="steps steps-line">
+      <li><h3>Assess</h3><p>We agree what you need, who will use it and the deadline.</p></li>
+      <li><h3>Design</h3><p>I propose the form, system or setup with a fixed scope and quote.</p></li>
       <li><h3>Build and test</h3><p>I deliver it and test it with your real data or equipment.</p></li>
       <li><h3>Hand over</h3><p>Documentation and training, so your team can keep it running.</p></li>
     </ol>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap svc-split">
+    <div class="sp-card"><span class="sp-k">Remote</span><h3>Across Sierra Leone</h3><ul class="bullets"><li>Dashboards, forms, data audits and reports</li><li>Calls and screen sharing for training</li><li>Files shared securely, never in group chats</li></ul></div>
+    <div class="sp-card sp-on"><span class="sp-k">Onsite</span><h3>In Bo and nearby</h3><ul class="bullets"><li>Networks, hardware and office setup</li><li>Hands-on staff training</li><li>Assessments and maintenance visits</li></ul></div>
   </div>
 </section>
 {faq_html()}
@@ -318,20 +372,75 @@ page('services.html', 'Services | Data, M&E and IT Support in Sierra Leone',
      'Dashboards, Survey123 forms, data quality audits, M&E reporting, IT support and networking in Bo and across Sierra Leone. IT packages priced in Leones.',
      services_body, ld=[sv_ld, faq_ld()], crumbs=[('Services', None)])
 
-# ------------------------------------------------------------------ PORTFOLIO
+# ------------------------------------------------------------------ PROJECTS (portfolio + case studies)
+from cases_content import CASES
+import notes_render as NR_C
+
+STATUS_PILL = {'Built': 'pill-ok', 'Completed': 'pill-ok', 'In progress': 'pill-dev', 'In development': 'pill-dev', 'In design': 'pill-design', 'Designed': 'pill-done'}
+
+
+def video_embed(url):
+    m = re.search(r'(?:youtube\.com/watch\?v=|youtu\.be/)([\w-]{6,})', url)
+    if m:
+        return '<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/%s" title="Video" loading="lazy" allowfullscreen></iframe></div>' % m.group(1)
+    if url.lower().endswith('.mp4'):
+        return '<video class="video" controls preload="none" src="%s"></video>' % esc(url)
+    return '<p><a class="btn" href="%s" target="_blank" rel="noopener">Watch the video</a></p>' % esc(url)
+
+
+def cover_img(c, size='800'):
+    """Mockup image for a case if one exists, otherwise the illustration."""
+    key = c.get('cover')
+    if not key:
+        d = os.path.join(OUT, 'images', 'cases', c['slug'])
+        if os.path.isdir(d):
+            f = sorted(x for x in os.listdir(d) if x.endswith('-800.webp'))
+            if f:
+                key = c['slug'] + '/' + f[0][:-9]
+    if key:
+        return '<img class="proj-shot" src="images/cases/%s%s.webp" alt="" loading="lazy">' % (key, '-800' if size == '800' else ''), True
+    if c.get('motif'):
+        return NR_C.hero_art(c['motif']), False
+    return cover(c['slug'] if c['slug'] != 'case-staff-id-cards' else 'case-chw-card-studio'), False
+
+
+def status_pill(c):
+    return '<span class="pill %s">%s</span>' % (STATUS_PILL.get(c['status'], 'pill-done'), esc(c['status'])) if c.get('status') else ''
+
+
+def stepper(c):
+    if not c.get('status'):
+        return ''
+    labels = ['Designed', c['status'] if c['stage'] == 2 else 'In development', c['status'] if c['stage'] == 3 else 'Built']
+    out = ''
+    for n, l in enumerate(labels, 1):
+        cls = 'done' if n < c['stage'] or (n == c['stage'] and c['stage'] == 3) else ('now' if n == c['stage'] else '')
+        out += '<li class="%s"><span></span>%s</li>' % (cls, esc(l))
+    return '<ol class="stepper" aria-label="Project status: %s">%s</ol>' % (esc(c['status']), out)
+
+
+def proj_card(c, featured=False):
+    img, real = cover_img(c)
+    tags = ' &middot; '.join(esc(t) for t in c['tools'][:3])
+    mock = ('<span class="mock-tag">%s</span>' % ('Screenshot' if c.get('screens_real') else 'Design mockup')) if real else ''
+    return f'''<a class="proj-card{' proj-featured' if featured else ''}" data-type="{c['types']}" href="{c['slug']}.html"><div class="proj-art">{img}{mock}</div><div class="proj-body"><div class="proj-meta">{status_pill(c)}<span class="proj-tags">{tags}</span></div><h3>{esc(c['title'])}</h3><p>{esc(c['short'])}</p>{('<ul class="proj-glance">' + ''.join('<li><b>%s</b>%s</li>' % (esc(a), esc(b)) for a, b in c['glance'][:3]) + '</ul>') if featured else ''}<span class="tile-link">Read the case study</span></div></a>'''
+
+
+from cases_content import MORE_WORK
+more_cards = ''.join('<div class="more-card">%s<span class="mc-k">%s</span><h3>%s</h3><p>%s</p></div>' % (icon(ic), esc(k), esc(t), esc(d)) for k, t, d, ic in MORE_WORK)
+feat = CASES[0]
+cards = proj_card(feat, True) + ''.join(proj_card(c) for c in CASES[1:])
+n_built = sum(1 for c in CASES if c.get('status') in ('Built', 'Completed'))
 portfolio_body = f'''<div class="wrap">
-  <div class="page-head"><h1>Projects</h1><p class="lede">Health data and M&amp;E work from my role at Rural Health Care Initiative, plus earlier IT and systems projects. Screenshots are not published because the data belongs to the organisation. Ask me for a walkthrough.</p></div>
+  <div class="page-head proj-hero"><h1>Projects</h1><p class="lede">Health data, M&amp;E and systems work from my role at Rural Health Care Initiative, plus earlier IT projects. Screens shown are design mockups with sample data; real programme data stays with the organisation.</p>
+  <ul class="res-stats"><li><b>{len(CASES)}</b> case studies</li><li><b>{n_built}</b> built or completed</li><li><b>{len(MORE_WORK)}</b> more pieces of work</li><li><b>1,000+</b> health workers in scope</li></ul></div>
 </div>
 <section class="section" id="projects">
   <div class="wrap">
-    <div class="section-head"><h2>Case studies</h2></div>
+    <div class="section-head"><h2>Case studies</h2><p>Each one explains the problem, the approach, what was built and how quality is protected.</p></div>
     <div class="filters" role="group" aria-label="Filter projects by type"><button type="button" class="filter is-active" data-filter="all" aria-pressed="true">All</button><button type="button" class="filter" data-filter="health" aria-pressed="false">Health data</button><button type="button" class="filter" data-filter="systems" aria-pressed="false">Systems</button><button type="button" class="filter" data-filter="it" aria-pressed="false">IT and field tools</button></div>
     <p class="small muted" id="filterCount" role="status" aria-live="polite"></p>
-    <div class="register" data-filter-target>
-      <a class="reg-row" data-type="health" href="case-epi-dashboard.html"><h3>EPI reporting dashboard</h3><p>Power BI report from monthly Survey123 immunisation exports, plus the data quality checks behind it.</p><span class="reg-status pill pill-dev">In development</span></a>
-      <a class="reg-row" data-type="health it" href="case-survey123.html"><h3>Survey123 forms and field tools</h3><p>Hospitalisation notification form, malaria campaign registration with QR autofill, an offline stock dashboard and a campaign inventory tracker.</p><span class="reg-status pill pill-ok">Built</span></a>
-      <a class="reg-row" data-type="systems health" href="case-chw-card-studio.html"><h3>CHW Card Studio</h3><p>Issuing and verifying credential cards for more than 1,000 Community Health Workers.</p><span class="reg-status pill pill-design">In design</span></a>
-      <a class="reg-row" data-type="systems health" href="case-dms.html"><h3>Data Management System</h3><p>An 11-module system for vaccine coverage and nutrition tracking, using PostgreSQL, Flask and a PWA.</p><span class="reg-status pill pill-done">Designed</span></a>
+    <div class="proj-grid" data-filter-target>{cards}
     </div>
   </div>
 </section>
@@ -346,112 +455,144 @@ portfolio_body = f'''<div class="wrap">
     </ul>
   </div>
 </section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>More work</h2><p>Smaller pieces from my day-to-day work in data, M&amp;E and operations.</p></div>
+    <div class="more-grid">{more_cards}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>How a project runs</h2><p>The same steps on every project, so you always know what happens next.</p></div>
+    <ol class="steps steps-line">
+      <li><h3>Understand the need</h3><p>Who reads the result, and what decision does it support?</p></li>
+      <li><h3>Design the data</h3><p>Forms, fields, tables and checks that match how the team really works.</p></li>
+      <li><h3>Build and test</h3><p>Validate against real exports before anyone relies on the result.</p></li>
+      <li><h3>Hand over and train</h3><p>Clear documentation, so your team can run it without me.</p></li>
+    </ol>
+  </div>
+</section>
 {cta('Want something similar for your team?', 'Tell me what you track today and what you need to report. I will suggest the simplest system that works.')}'''
 page('portfolio.html', 'Projects | Alhaji Ibrahim Mehemoh',
-     'Health data and M&E projects: a Power BI EPI dashboard, Survey123 forms, CHW credential cards and a data management system, from RHCI in Bo, Sierra Leone.',
+     'Health data and M&E case studies: an EPI Power BI dashboard, an EPI data quality audit, Survey123 field tools, CHW credential cards, staff ID cards and a data management system, from RHCI in Bo, Sierra Leone.',
      portfolio_body, crumbs=[('Projects', None)])
 
 
-# ------------------------------------------------------------------ CASE STUDIES
-def video_embed(url):
-    m = re.search(r'(?:youtube\.com/watch\?v=|youtu\.be/)([\w-]{6,})', url)
-    if m:
-        return '<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/%s" title="Video" loading="lazy" allowfullscreen></iframe></div>' % m.group(1)
-    if url.lower().endswith('.mp4'):
-        return '<video class="video" controls preload="none" src="%s"></video>' % esc(url)
-    return '<p><a class="btn" href="%s" target="_blank" rel="noopener">Watch the video</a></p>' % esc(url)
+SHOT_CAPTIONS = {
+    '01-management-overview': 'Management overview: encounters by month, facility and activity',
+    '02-facility-and-nurse-performance': 'Facility and nurse performance: activity delivery and reporting completeness',
+    '03-monthly-performance': 'Monthly performance: trends and previous-month comparison',
+    '04-data-quality-review': 'Data quality review: flags by issue type and a priority review queue',
+    '01-mobile-registration-form': 'Mobile registration form, designed to work offline',
+    '02-qr-autofill-follow-up': 'Follow-up visit: scanning a QR code fills in the record',
+    '03-offline-follow-up-screen': 'Follow-up screen: scan, verify, record',
+    '04-offline-stock-dashboard': 'Offline stock dashboard with reorder flags',
+    '01-card-and-qr-verification': 'Sample credential card and the QR verification page',
+    '01-patient-registration-workspace': 'Registration workspace with a built-in data quality checklist',
+    '01-home': 'Home page with the live Bo clock and project showcase',
+    '02-free-resources': 'Free resources library with previews and filters',
+    '03-note-page': 'A note with contents, key points and diagrams',
+    '04-dark-mode-notes': 'Notes in dark mode',
+}
 
 
-def case_shots(slug):
-    """Any images dropped into images/cases/<slug>/ appear here automatically."""
+def case_shots(slug, real=False):
+    """Design mockups in images/cases/<slug>/ (full size plus -800 thumbnails) appear here automatically."""
     d = os.path.join(OUT, 'images', 'cases', slug)
     if not os.path.isdir(d):
         return ''
-    files = sorted(f for f in os.listdir(d) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')))
+    files = sorted(f for f in os.listdir(d) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')) and '-800.' not in f)
     if not files:
         return ''
     figs = ''
     for f in files:
-        label = os.path.splitext(f)[0].replace('-', ' ').replace('_', ' ')
-        figs += '<figure class="shot"><button type="button" class="shot-btn" data-full="images/cases/%s/%s" aria-label="Enlarge: %s"><img src="images/cases/%s/%s" alt="%s" loading="lazy"></button><figcaption>%s</figcaption></figure>' % (slug, f, esc(label), slug, f, esc(label), esc(label))
-    return '<section class="section-tight"><h2>Screenshots</h2><div class="shots">%s</div></section>' % figs
+        base = os.path.splitext(f)[0]
+        thumb = base + '-800.webp' if os.path.exists(os.path.join(d, base + '-800.webp')) else f
+        label = SHOT_CAPTIONS.get(base, base.replace('-', ' '))
+        tall = ' shot-tall' if 'form' in base or 'follow-up' in base else ''
+        figs += ('<figure class="shot%s"><button type="button" class="shot-btn" data-full="images/cases/%s/%s" aria-label="Enlarge: %s">'
+                 '<img src="images/cases/%s/%s" alt="Design mockup: %s" loading="lazy"><span class="shot-zoom" aria-hidden="true"></span></button>'
+                 '<figcaption>%s</figcaption></figure>') % (tall, slug, f, esc(label), slug, thumb, esc(label), esc(label))
+    if real:
+        figs = figs.replace('alt="Design mockup: ', 'alt="Screenshot: ')
+        return '<section class="section-tight case-gallery"><div class="gallery-head"><h2>Screenshots</h2><p class="mock-note">Screenshots of the live site.</p></div><div class="shots">%s</div></section>' % figs
+    return ('<section class="section-tight case-gallery"><div class="gallery-head"><h2>All design mockups</h2>'
+            '<p class="mock-note"><span class="pill pill-design">Sample data</span> These screens show the design using invented, anonymised data. Real programme data stays with RHCI.</p></div>'
+            '<div class="shots">%s</div></section>') % figs
 
 
-def case(fn, title, desc, lede, facts, sections, nxt):
-    f = ''.join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in facts)
-    s = ''
-    for h, content in sections:
-        s += f'<section class="section-tight"><div class="prose"><h2>{h}</h2>{content}</div></section>\n'
-    slug = fn[:-5]
-    result = C.CASE_RESULTS.get(slug)
-    result_html = '<section class="section-tight"><div class="result"><strong>Result</strong><p>%s</p></div></section>' % esc(result) if result else ''
-    video = C.CASE_VIDEOS.get(slug)
-    video_html = ''
-    if video:
-        video_html = '<section class="section-tight"><h2>Walkthrough video</h2>%s</section>' % video_embed(video)
-    shots = case_shots(slug)
-    body = f'''<div class="wrap">
-  <div class="page-head"><p class="crumb"><a href="portfolio.html">Projects</a></p><h1>{title}</h1><p class="lede">{lede}</p></div>
-  <section class="section-tight" style="padding-top:2rem"><dl class="facts">{f}</dl></section>
-  {result_html}
-  {s}
+def render_case_body(c):
+    def shot(m):
+        name, _, cap = m.group(1).partition(' | ')
+        return '::photo images/cases/%s/%s.webp | %s | Design mockup: %s' % (c['slug'], name.strip(), cap.strip(), cap.strip())
+    body = re.sub(r'^::shot (.+)$', shot, c['body'], flags=re.M)
+    return NR_C.render(body)
+
+
+RES_ALL = {r['file']: r for r in json.load(open(os.path.join(OUT, 'downloads', 'resources.json')))['items']}
+NOTE_TITLES = {n['slug']: n for n in json.load(open(os.path.join(OUT, 'notes.json'), encoding='utf-8'))}
+
+for idx, c in enumerate(CASES):
+    nxt, prv = CASES[(idx + 1) % len(CASES)], CASES[idx - 1]
+    html_body, toc = render_case_body(c)
+    img, real = cover_img(c, 'full')
+    cap = 'Screenshot of the live site' if c.get('screens_real') else '<span class="pill pill-design">Sample data</span> Design mockup'
+    hero_art = ('<figure class="case-cover"><div class="browser"><span class="b-dots"><i></i><i></i><i></i></span>%s</div><figcaption>%s</figcaption></figure>' % (img, cap)) if real else (
+        '<div class="case-art">%s<p class="art-note">Illustration, not real data</p></div>' % img)
+    glance = ''.join('<div class="gl"><b>%s</b><span>%s</span></div>' % (esc(a), esc(b)) for a, b in c['glance'])
+    facts = ''.join('<div><dt>%s</dt><dd>%s</dd></div>' % (esc(k), esc(v)) for k, v in c['facts'])
+    tools = ''.join('<li>%s</li>' % esc(t) for t in c['tools'])
+    toc_html = ''.join('<li><a href="#%s">%s</a></li>' % (a, esc(t)) for a, t in toc)
+    notes_rel = ''.join('<a class="rn" href="%s.html"><span class="rn-art">%s</span><b>%s</b></a>' % (s_, NR_C.hero_art(NOTE_TITLES[s_].get('motif', 'checks')), esc(NOTE_TITLES[s_]['title'])) for s_ in c.get('notes', []) if s_ in NOTE_TITLES)
+    res_rel = ''.join('<a class="rel-card" href="downloads/%s" download><img src="images/resources/%s.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-%s">%s</span><b>%s</b><em>%s</em></span></a>' % (
+        f, RES_ALL[f]['slug'], {'PDF': 'pdf', 'Excel': 'xls', 'XLSForm': 'form'}[RES_ALL[f]['type']], RES_ALL[f]['type'], esc(RES_ALL[f]['title']), RES_ALL[f]['size']) for f in c.get('resources', []) if f in RES_ALL)
+    shots = case_shots(c['slug'], c.get('screens_real', False))
+    video = C.CASE_VIDEOS.get(c['slug'])
+    video_html = '<section class="section-tight"><h2>Walkthrough video</h2>%s</section>' % video_embed(video) if video else ''
+    result = C.CASE_RESULTS.get(c['slug']) if hasattr(C, 'CASE_RESULTS') else None
+    result_html = '<div class="result"><strong>Result</strong><p>%s</p></div>' % esc(result) if result else ''
+    wa = esc(wa_link('Hello Alhaji, I read your %s case study and would like to talk.' % c['title']))
+    body = f'''<article class="case">
+<div class="wrap">
+  <header class="case-hero">
+    <div class="case-hero-text">
+      <p class="crumb"><a href="portfolio.html">Projects</a></p>
+      <div class="case-status">{status_pill(c)}<span class="case-org">{esc(c['facts'][0][1].replace('Rural Health Care Initiative (RHCI), Bo District', 'RHCI, Bo District'))}</span></div>
+      <h1>{esc(c['title'])}</h1>
+      <p class="lede">{esc(c['lede'])}</p>
+      <ul class="tool-chips">{tools}</ul>
+      <div class="actions"><a class="btn btn-primary" href="{wa}" target="_blank" rel="noopener">Ask for a walkthrough</a><a class="btn" href="#{toc[0][0] if toc else ''}">Read the case study</a></div>
+    </div>
+    {hero_art}
+  </header>
+  <div class="glance">{glance}</div>
+  <div class="case-layout">
+    <aside class="case-side">
+      <div class="case-facts"><p class="cf-l">Project facts</p><dl>{facts}</dl>{('<p class="cf-l">Status</p>' + stepper(c)) if c.get('status') else ''}</div>
+      <nav class="note-toc"><p>On this page</p><ol>{toc_html}</ol></nav>
+    </aside>
+    <div class="case-main">
+      {result_html}
+      <div class="note-body case-body">{html_body}</div>
+    </div>
+  </div>
   {shots}
   {video_html}
-  <section class="section-tight"><div class="prose"><p class="muted">Screenshots are not published here because the data belongs to RHCI. I am happy to walk you through the work on a call.</p></div>
-  <div class="note-nav"><a href="portfolio.html">All projects</a><a href="{nxt[0]}">Next: {nxt[1]}</a></div></section>
+  {('<section class="case-more"><h2>Read more on this topic</h2><div class="rn-grid">' + notes_rel + '</div></section>') if notes_rel else ''}
+  {('<section class="note-rel case-res"><h2>Free tools from this work</h2><div class="rel-grid">' + res_rel + '</div></section>') if res_rel else ''}
+  <nav class="note-pn" aria-label="More case studies">
+    <a class="pn-card" href="{prv['slug']}.html"><span class="pn-l">Previous case study</span><span class="pn-art">{cover_img(prv)[0]}</span><b>{esc(prv['title'])}</b></a>
+    <a class="pn-card" href="{nxt['slug']}.html"><span class="pn-l">Next case study</span><span class="pn-art">{cover_img(nxt)[0]}</span><b>{esc(nxt['title'])}</b></a>
+  </nav>
 </div>
+</article>
 {cta()}'''
-    page(fn, title + ' | Alhaji Ibrahim Mehemoh', desc, body, active='portfolio.html', crumbs=[('Projects', 'portfolio.html'), (title, None)],
-         wa_text='Hello Alhaji, I read your %s case study and would like to talk.' % title)
+    page(c['slug'] + '.html', c['title'] + ' | Case study | Alhaji Ibrahim Mehemoh', c['desc'], body, active='portfolio.html',
+         crumbs=[('Projects', 'portfolio.html'), (c['title'], None)],
+         wa_text='Hello Alhaji, I read your %s case study and would like to talk.' % c['title'])
 
-
-case('case-epi-dashboard.html', 'EPI reporting dashboard',
-     'Case study: a Power BI report built from monthly Survey123 immunisation exports at RHCI, with data quality checks for GPS, dose sequences and duplicates.',
-     'A Power BI report that turns each monthly Survey123 immunisation export into the same trusted view, for people who need different levels of detail.',
-     [('Organisation', 'Rural Health Care Initiative (RHCI), Bo District'), ('Role', 'Data Officer: design, build and data quality'),
-      ('Status', 'In development'), ('Data source', 'Survey123 EPI exports, supplied monthly'),
-      ('Tools', 'Power BI, Survey123, Excel'),
-      ('Audience', 'Nurses, health facilities, RHCI management, the DHMT, the RHCI Board and donors')],
-     [('The reporting question', '<p>EPI (immunisation) visit data is collected in Survey123 and exported as files. The challenge is to turn every new export into the same report without rebuilding it by hand, and to keep the numbers trustworthy as data volume grows.</p>'),
-      ('What I built', '<p>A Power BI project built from the Survey123 EPI export, covering 1 January 2026 to date. It is designed to extend as each monthly export arrives, so the report grows instead of being rebuilt.</p><p>Different readers need different views. Nurses and facilities see their own work, RHCI management sees programme-wide results, and the DHMT, the Board and donors see summary reporting.</p>'),
-      ('Data quality checks', '<p>Before numbers reach a dashboard, the records are checked. In March and April 2026 I ran a multi-stage analysis of the nurse datasets and produced a cleaned dataset. The checks cover:</p><ul class="bullets"><li>GPS validation</li><li>Dose sequence violations</li><li>Duplicate detection</li><li>Village name inconsistencies</li><li>Compliance tracking per nurse</li></ul><p>Each nurse received an Excel audit workbook, and management received consolidated Word reports and presentations.</p>'),
-      ('How it is built', '<p>The work moves through staged checkpoints: foundation (data model and structure), build (measures and pages) and validation and handover (checking figures against the source export before release).</p>')],
-     ('case-survey123.html', 'Survey123 forms and field tools'))
-
-case('case-survey123.html', 'Survey123 forms and field tools',
-     'Case study: Survey123 XLSForms for hospitalisation notification and malaria campaign registration, an offline stock dashboard and a campaign inventory tracker at RHCI.',
-     'Forms and small tools that field and facility staff can use without training manuals, and that produce data a dashboard can trust.',
-     [('Organisation', 'Rural Health Care Initiative (RHCI), Bo District'), ('Role', 'Form design, build and testing'),
-      ('Status', 'Built'), ('Tools', 'Survey123 (XLSForm), Excel, HTML'),
-      ('Audience', 'Field staff, facility staff, programme managers')],
-     [('Hospitalisation notification form', '<p>A Survey123 form for staff hospitalisation notices, with cascading lookups. Choosing an employee limits the dependent list to that employee, which prevents mismatched records.</p>'),
-      ('Malaria campaign registration and field visit form', '<p>A registration and visit form where a QR code autofills the patient details. Staff scan instead of retyping, which cuts typing errors and speeds up each visit.</p>'),
-      ('Offline stock dashboard', '<p>A private dashboard that works offline on Survey123 CSV exports. It reports by day and by location and calculates stock as opening plus restock minus use, with Excel and PDF export.</p>'),
-      ('Campaign inventory tracker', '<p>For a three-month mobile health campaign that visits four locations in rotation, I built an Excel tracker. It records stock taken on each trip, stock used and remaining after it, and the running balance at the central store.</p>')],
-     ('case-chw-card-studio.html', 'CHW Card Studio'))
-
-case('case-chw-card-studio.html', 'CHW Card Studio',
-     'Case study: a credential system for more than 1,000 Community Health Workers, with printed cards, QR codes and online verification, specified for RHCI.',
-     'A system to issue, print and verify credential cards for Community Health Workers, so anyone can check a card is genuine.',
-     [('Organisation', 'Rural Health Care Initiative (RHCI), Bo District'), ('Role', 'Specification and design'),
-      ('Status', 'In design'), ('Scale', 'More than 1,000 CHWs'),
-      ('Planned stack', 'Google Sheets, Google Apps Script, Google Drive'),
-      ('Audience', 'RHCI administrators, CHWs, facility staff and the public verifying a card')],
-     [('What it does', '<ul class="bullets"><li>Gives each CHW a permanent ID</li><li>Produces standard CR80 cards with a QR code</li><li>Covers the card lifecycle: renewal, replacement, loss and revocation</li><li>Provides a public verification page that confirms a card is valid</li><li>Shows whether a CHW is Government-trained, MOMS-trained or dual-trained</li></ul>'),
-      ('Why Google tools', '<p>Google Sheets acts as the database, Apps Script as the backend, and Drive stores photos and QR images. RHCI staff already know these tools, and there are no servers to run or pay for.</p>'),
-      ('Related work already built', '<p>I built a staff medical ID card generator as a single-file HTML app. It reads a staff and dependants workbook, prints front and back cards at 85.6 by 53.98 mm, and adds QR verification and security patterns. The CHW system applies the same ideas at larger scale.</p>')],
-     ('case-dms.html', 'Data Management System'))
-
-case('case-dms.html', 'Data Management System',
-     'Case study: an 11-module data management system for RHCI to track vaccine coverage and nutrition, designed with PostgreSQL, Flask and a progressive web app.',
-     'An 11-module system for tracking vaccine coverage and nutrition, designed to work for nurses in the field and managers in the office.',
-     [('Organisation', 'Rural Health Care Initiative (RHCI), Bo District'), ('Role', 'System design and documentation'),
-      ('Status', 'Designed'), ('Stack', 'PostgreSQL, Flask, progressive web app (PWA)'),
-      ('Users', 'Administrators and nurses, with role-based access')],
-     [('What it covers', '<p>The first scope, written in November 2024, was a malaria vaccine coverage and nutrition tracking system. It includes:</p><ul class="bullets"><li>Patient management</li><li>Vaccine and nutrition tracking</li><li>Appointments and reminders</li><li>Missed appointment tracking</li><li>Dashboards, graphs and reports</li><li>Real-time notifications</li></ul>'),
-      ('How the design changed', '<p>The first plan used SQL Server, ASP.NET Core and React. In January 2025 the database moved to PostgreSQL, and the system settled into its current Flask and PWA design. A PWA suits low connectivity because it installs on a phone and keeps working with a weak signal.</p>'),
-      ('Documentation', '<p>I produced planning documents across several versions, covering the modules, roles and data model, so a developer or team can build from them.</p>')],
-     ('case-epi-dashboard.html', 'EPI reporting dashboard'))
 
 # ------------------------------------------------------------------ HIRE
 hire_body = f'''<div class="wrap">
@@ -530,10 +671,12 @@ page('contact.html', 'Contact | Alhaji Ibrahim Mehemoh',
 
 # ------------------------------------------------------------------ NOTES (blog), from notes.json
 NOTES = json.load(open(os.path.join(OUT, 'notes.json'), encoding='utf-8'))
+import notes_render as NR
 for n in NOTES:
     n['fn'] = n['slug'] + '.html'
-    n['html'] = md(n['body'])
+    n['html'], n['toc'] = NR.render(n['body'])
     n['mins'] = reading_minutes(n['body'])
+    n['art'] = NR.hero_art(n.get('motif', 'checks'))
 cats = sorted({n['category'] for n in NOTES})
 
 
@@ -547,11 +690,13 @@ def fmt_date(d):
 
 
 def note_row(n):
-    date = ('<time datetime="%s">%s</time> &middot; ' % (n['date'], fmt_date(n['date']))) if n.get('date') else ''
-    return ('<a class="reg-row two" data-cat="%s" data-search="%s" href="%s"><h3>%s</h3><div><p>%s</p>'
-            '<p class="small"><span class="pill pill-cat">%s</span> %s%d min read</p></div></a>') % (
-        esc(n['category']), esc((n['title'] + ' ' + n['summary'] + ' ' + n['body']).lower()), n['fn'], esc(n['title']),
-        esc(n['summary']), esc(n['category']), date, n['mins'])
+    d = n.get('date') or n.get('updated')
+    date = ('%s<time datetime="%s">%s</time> &middot; ' % ('' if n.get('date') else 'Updated ', d, fmt_date(d))) if d else ''
+    hue = sum(map(ord, n['category'])) % 4
+    return ('<a class="note-card c%d" data-cat="%s" data-search="%s" href="%s"><span class="nc-art">%s</span><span class="nc-in"><span class="nc-cat">%s</span><h3>%s</h3><p>%s</p>'
+            '<span class="nc-meta">%s%d min read</span></span></a>') % (
+        hue, esc(n['category']), esc((n['title'] + ' ' + n['summary'] + ' ' + n['body']).lower()), n['fn'], n['art'], esc(n['category']),
+        esc(n['title']), esc(n['summary']), date, n['mins'])
 
 
 rows = ''.join(note_row(n) for n in sorted(NOTES, key=lambda n: n.get('date') or '', reverse=True))
@@ -559,7 +704,7 @@ cat_btns = '<button type="button" class="filter is-active" data-cat="all" aria-p
     '<button type="button" class="filter" data-cat="%s" aria-pressed="false">%s</button>' % (esc(c), esc(c)) for c in cats)
 notes_body = f'''<div class="wrap">
   <div class="page-head"><h1>Notes</h1><p class="lede">Short, practical posts on data, health systems, IT and cybersecurity.</p>
-  <p class="small"><a href="feed.xml">Subscribe with RSS</a></p></div>
+  <p class="small"><a class="rss-link" href="feed.xml">Subscribe with RSS</a> <span class="muted">to get new notes in your feed reader.</span></p></div>
 </div>
 <section class="section">
   <div class="wrap">
@@ -569,7 +714,7 @@ notes_body = f'''<div class="wrap">
       <div class="filters" role="group" aria-label="Filter notes by category">{cat_btns}</div>
     </div>
     <p class="small muted" id="noteCount" role="status" aria-live="polite"></p>
-    <div class="register" id="noteList">{rows}</div>
+    <div class="note-grid" id="noteList">{rows}</div>
     <p class="muted" id="noteEmpty" hidden>No notes match your search.</p>
   </div>
 </section>
@@ -585,31 +730,70 @@ page('community.html', 'Notes | Alhaji Ibrahim Mehemoh',
      notes_body, active='community.html', crumbs=[('Notes', None)])
 
 # To add a note: add an entry to notes.json (or use admin.html to write it), then run: python3 build.py
+RES = {r['file']: r for r in json.load(open(os.path.join(OUT, 'downloads', 'resources.json')))['items']}
 for i, n in enumerate(NOTES):
     nxt = NOTES[(i + 1) % len(NOTES)]
-    date = ('<time datetime="%s">%s</time> &middot; ' % (n['date'], fmt_date(n['date']))) if n.get('date') else ''
+    prv = NOTES[i - 1]
+    pub = ('<span>Published <time datetime="%s">%s</time></span>' % (n['date'], fmt_date(n['date']))) if n.get('date') else ''
+    upd = ('<span>Updated <time datetime="%s">%s</time></span>' % (n['updated'], fmt_date(n['updated']))) if n.get('updated') else ''
     page_url = BASE + n['fn']
     share_wa = esc(wa_link('%s %s' % (n['title'], page_url)))
-    b = f'''<div class="wrap">
-  <div class="page-head"><p class="crumb"><a href="community.html">Notes</a></p><h1>{esc(n['title'])}</h1><p class="lede">{esc(n['summary'])}</p>
-  <p class="small muted">{date}{esc(n['category'])} &middot; {n['mins']} min read</p></div>
-  <section class="section"><div class="note-body">{n['html']}
-  <div class="share"><span class="muted small">Share:</span><a class="btn" href="{share_wa}" target="_blank" rel="noopener">WhatsApp</a><button class="btn" type="button" data-copy="{page_url}">Copy link</button></div>
-  <div class="note-nav"><a href="community.html">All notes</a><a href="{nxt['fn']}">Next: {esc(nxt['title'])}</a></div></div></section>
+    toc = ''.join('<li><a href="#%s">%s</a></li>' % (a, esc(t)) for a, t in n['toc'])
+    take = ''.join('<li>%s</li>' % esc(t) for t in n.get('takeaways', []))
+    rel = ''
+    if n.get('resources'):
+        cards = ''.join('<a class="rel-card" href="downloads/%s" download><img src="images/resources/%s.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-%s">%s</span><b>%s</b><em>%s</em></span></a>' % (
+            f, RES[f]['slug'], {'PDF': 'pdf', 'Excel': 'xls', 'XLSForm': 'form'}[RES[f]['type']], RES[f]['type'], esc(RES[f]['title']), RES[f]['size']) for f in n['resources'] if f in RES)
+        rel = '<section class="note-rel" aria-labelledby="rel-h"><h2 id="rel-h">Free tools for this note</h2><div class="rel-grid">%s</div><p class="small"><a class="text-link" href="resources.html">See all free resources</a></p></section>' % cards
+    b = f'''<article class="note">
+<div class="wrap">
+  <header class="note-hero">
+    <div class="note-hero-text">
+      <p class="crumb"><a href="community.html">Notes</a></p>
+      <p class="note-cat">{esc(n['category'])}</p>
+      <h1>{esc(n['title'])}</h1>
+      <p class="lede">{esc(n['summary'])}</p>
+      <div class="note-meta"><picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="44" height="44" alt=""></picture>
+        <div><b>Alhaji Ibrahim Mehemoh</b><p>{pub}{upd}<span>{n['mins']} min read</span></p></div></div>
+    </div>
+    <div class="note-hero-art">{n['art']}</div>
+  </header>
+  <div class="note-layout">
+    <aside class="note-side" aria-label="On this page">
+      <nav class="note-toc"><p>On this page</p><ol>{toc}</ol></nav>
+      <div class="note-share"><p>Share</p><a class="btn" href="{share_wa}" target="_blank" rel="noopener">WhatsApp</a><button class="btn" type="button" data-copy="{page_url}">Copy link</button></div>
+    </aside>
+    <div class="note-main">
+      <div class="takeaways"><p class="tk-l">In short</p><ul>{take}</ul></div>
+      <div class="note-body">{n['html']}</div>
+      {rel}
+      <div class="author-card"><picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="84" height="84" alt="Alhaji Ibrahim Mehemoh"></picture>
+        <div><p class="ac-l">Written by</p><b>Alhaji Ibrahim Mehemoh</b><p>Data Officer and M&amp;E specialist in Bo, Sierra Leone. I build Survey123 forms, Power BI dashboards and simple data systems for health programmes, and provide IT support for small organisations.</p>
+        <p class="ac-links"><a href="about.html">About me</a><a href="contact.html">Contact</a><a href="feed.xml">Follow by RSS</a></p></div></div>
+    </div>
+  </div>
+  <nav class="note-pn" aria-label="More notes">
+    <a class="pn-card" href="{prv['fn']}"><span class="pn-l">Previous</span><span class="pn-art">{prv['art']}</span><b>{esc(prv['title'])}</b></a>
+    <a class="pn-card" href="{nxt['fn']}"><span class="pn-l">Next</span><span class="pn-art">{nxt['art']}</span><b>{esc(nxt['title'])}</b></a>
+  </nav>
 </div>
+</article>
 {cta('Questions about your own data or IT setup?', 'Send me a message and I will point you in the right direction.')}'''
     art = {"@context": "https://schema.org", "@type": "Article", "headline": n['title'], "description": n['summary'],
            "author": {"@type": "Person", "name": "Alhaji Ibrahim Mehemoh", "url": BASE}, "mainEntityOfPage": page_url,
            "image": BASE + "images/og-image.jpg", "articleSection": n['category']}
     if n.get('date'):
         art["datePublished"] = n['date']
+    if n.get('updated'):
+        art["dateModified"] = n['updated']
     page(n['fn'], n['title'] + ' | Alhaji Ibrahim Mehemoh', n['summary'], b, active='community.html', ld=art,
          og_type='article', crumbs=[('Notes', 'community.html'), (n['title'], None)],
          wa_text='Hello Alhaji, I read your note "%s" and have a question.' % n['title'])
 
+
 # ------------------------------------------------------------------ 404
 page('404.html', 'Page not found | Alhaji Ibrahim Mehemoh', 'This page does not exist.',
-     '''<div class="wrap"><div class="page-head"><h1>That page does not exist</h1><p class="lede">The link may be old or mistyped. Try one of these instead.</p>
+     '''<div class="wrap"><div class="page-head nf-head"><p class="nf-code" aria-hidden="true">4<span>0</span>4</p><h1>That page does not exist</h1><p class="lede">The link may be old or mistyped. Try one of these instead.</p>
 <div class="actions"><a class="btn btn-primary" href="index.html">Go to the home page</a><a class="btn" href="portfolio.html">See projects</a><a class="btn" href="contact.html">Contact me</a></div></div></div>''',
      noindex=True)
 

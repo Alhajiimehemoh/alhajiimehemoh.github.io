@@ -1,0 +1,1017 @@
+"""Rewritten notes. Each entry: summary, takeaways, motif (hero art), resources (download files), body (extended markdown).
+Extended markdown: ## h2, ### h3, - bullets, 1. numbered, [ ] checklist, > **Label:** callout, | tables |,
+::flow A > B > C | caption, ::equation a + b - c = d | caption, ::photo path | caption | alt, ::fig name | caption"""
+
+NOTES = {}
+
+
+def note(slug, **kw):
+    NOTES[slug] = kw
+
+
+# ---------------------------------------------------------------------------------------------- 1
+note('note-check-epi-data-quality', motif='checks', resources=['me-data-quality-checklist.pdf', 'data-cleaning-log.xlsx', 'reporting-timeliness-tracker.xlsx'],
+     summary='Six checks that catch most errors in monthly immunisation data before they reach a dashboard, with a worked example and a log you can copy.',
+     takeaways=['Check completeness first: a missing facility is the most common reason coverage looks low.',
+                'Sort every indicator high to low and read the top and bottom rows before you chart anything.',
+                'Log every correction. It turns a difficult question from a donor into a two-minute answer.'],
+     body='''Immunisation data passes through many hands before it becomes a coverage figure: the vaccinator's tally, the facility register, the monthly summary, the data entry screen and finally the export you open in Excel. Every step is a chance for a small mistake to become a big one. A few minutes of checking at the start saves hours of explaining later.
+
+These are the six checks I run on every monthly EPI export, in this order.
+
+::flow Monthly export > Completeness > Timeliness > Totals > Outliers > Duplicates > Trend > Report | The order matters: fix missing reports before you judge the numbers inside them.
+
+## 1. Completeness
+
+List every facility that should report and tick off the ones that did. A missing facility is the most common reason district coverage suddenly looks low, and it is easy to miss when you only look at totals.
+
+Then look inside the reports for blank required fields. A blank is not the same as zero. Zero means "we vaccinated nobody", which is a real result you need to explain. Blank means "we do not know".
+
+> **Tip:** Keep a fixed master list of facilities in its own sheet and count against it every month, so a facility cannot silently drop out.
+
+## 2. Timeliness
+
+Note which reports arrived late and by how many days. Late reports are often entered in a rush near the deadline, so they deserve a closer look. Over a few months, timeliness also tells you which facilities need support rather than reminders.
+
+## 3. Totals that add up
+
+Check that the doses by age group or by session type add up to the facility total. If they do not, one of the numbers is wrong. Do not fix it yourself by guessing; send it back to the facility to confirm.
+
+| Facility | Under 1 | 1 year and over | Total reported | Check |
+| Facility A | 42 | 6 | 48 | OK |
+| Facility B | 37 | 4 | 45 | Does not add up: 37 + 4 = 41 |
+
+## 4. Impossible or unlikely values
+
+Sort each indicator from highest to lowest and read the top and bottom five rows. You are looking for values that cannot be true, such as more Penta 3 than Penta 1 doses over the year, a negative number, or a small health post reporting more children than its whole catchment population.
+
+> **Watch out:** Coverage above 100% is not always an error. Target populations are estimates and children from neighbouring areas may come to a facility. Ask before you correct it, and write the reason down.
+
+## 5. Duplicates
+
+Check for repeated submissions from the same facility and month. On mobile tools this often happens when a health worker presses submit twice on a weak connection. Keep the latest valid record, remove the others, and note what you removed.
+
+## 6. Compare with last month
+
+Put this month next to last month for every facility. A sudden jump or drop can be real, for example after an outreach campaign or a vaccine stock-out, but it is more often an entry error or a change in who completed the report. Either way, the reason belongs in your report.
+
+::photo images/cases/case-epi-dashboard/04-data-quality-review.webp | Design mockup with sample data: flags grouped by issue type, with a priority queue for review. | Design mockup of a data quality review dashboard
+
+## Keep a cleaning log
+
+Record every correction: what changed, from what to what, who confirmed it and when. A simple sheet with one row per issue is enough. When a donor, the DHMT or your manager asks "why is this number different from last week?", the log answers in seconds.
+
+> **Example:** R-0142, children vaccinated, changed from 1500 to 150. Confirmed with the facility in-charge by phone on 16 January: an extra zero was typed.
+
+## Make it a routine
+
+[ ] Run the six checks on the same day every month
+[ ] Send queries to facilities in one message, not one by one
+[ ] Give facilities a clear deadline to confirm
+[ ] Only build charts after the checks are done
+[ ] Share a short data quality note with the report
+
+I turned these checks into a printable one-page checklist and a ready-made cleaning log. Both are free below.''')
+
+# ---------------------------------------------------------------------------------------------- 2
+note('note-survey123-mistakes', motif='phone', resources=['xlsform-cheat-sheet.pdf', 'sample-epi-xlsform.xlsx', 'field-supervision-checklist.pdf'],
+     summary='Seven form design mistakes that make field data messy, why they happen and the exact XLSForm settings that prevent them.',
+     takeaways=['Most data quality problems start in the form, not in the spreadsheet.',
+                'Use choice lists and constraints so mistakes are caught on the phone, while the health worker can still fix them.',
+                'Test on a basic phone, offline, with real users before rolling out.'],
+     body='''Most data quality problems start in the form, not in the spreadsheet. Every month spent cleaning the same mistakes is a sign the form is doing less work than it could. Fixing the form once is cheaper than cleaning the data every month.
+
+Here are the mistakes I see most often in Survey123 and KoboToolbox forms, and how to avoid each one.
+
+## 1. Free text where a list would do
+
+If facility or village names are typed, you will get five spellings of the same clinic, and your pivot table will count them as five places. Use a choice list so every record uses exactly the same name.
+
+For long lists, use a cascading select: choose the district first, then only that district's facilities appear.
+
+| Column | Value |
+| type | select_one facility |
+| choice_filter | district = ${district} |
+| appearance | minimal or autocomplete |
+
+## 2. No limits on numbers
+
+A field for children vaccinated today should not accept 5,000. Add a constraint with a clear message so the mistake is caught on the phone, while the health worker is still at the facility and can check the register.
+
+::fig phone-error | A constraint message appears the moment a value is out of range, before the record can be sent.
+
+> **Tip:** Write constraint messages that say what to do, not just that something is wrong. "Enter a number from 0 to 500" is better than "Invalid value".
+
+## 3. Too many questions
+
+Every extra question lowers the chance that the whole form is filled in carefully. Go through the form with the person who writes the report and ask of each question: which table or chart uses this answer? If nobody can name one, remove the question.
+
+## 4. Asking for personal details you do not need
+
+Collect the least personal information possible. Patient names and phone numbers create a privacy risk if a phone is lost or a file is shared, and they are rarely needed for programme reporting. Use an ID or a code instead, and keep any lookup list in a separate, protected place.
+
+::photo images/cases/case-survey123/01-mobile-registration-form.webp | Design mockup with fictional data: short sections, required fields marked, choices instead of typing, and an offline indicator. | Design mockup of a mobile registration form
+
+## 5. Skipping skip logic
+
+If a follow-up question only applies when the answer is yes, show it only then. This keeps the form short and stops contradictory answers, such as "no stock-out" followed by "stock-out lasted 6 days".
+
+| Column | Value |
+| relevant | ${stock_out} = 'yes' |
+
+## 6. Not testing in the field
+
+A form that looks fine on a laptop can be slow or confusing on a basic phone in bright sunlight with weak signal. Before training the whole team:
+
+[ ] Fill it in on the cheapest phone your team uses
+[ ] Switch off data and complete three records offline
+[ ] Turn data back on and confirm they all arrive
+[ ] Ask two real users to complete it while you watch, without helping
+
+## 7. Changing the form without a plan
+
+Renaming a field in the middle of a programme can quietly break your dashboard, because last month's data and this month's data no longer line up. Keep field names stable, increase the version number for every change, write down what changed and update the report at the same time.
+
+> **Watch out:** Never reuse an old field name for a new meaning. Create a new field instead.
+
+## A quick pre-launch check
+
+::flow Draft in Excel > Peer review > Phone test offline > Pilot with 2 to 3 users > Fix > Train team > Launch | A week spent here saves months of cleaning.
+
+The XLSForm cheat sheet below has the syntax for every rule in this note, and the sample form shows them working together.''')
+
+# ---------------------------------------------------------------------------------------------- 3
+note('note-dashboards-people-use', motif='dashboard', resources=['dashboard-design-checklist.pdf', 'indicator-reference-sheet.pdf'],
+     summary='A dashboard works when each reader sees the answer to their own question without help. Here is how to design for that.',
+     takeaways=['Decide who the main reader is and what decision they make before you draw a single chart.',
+                'Give every chart a title that states the point, and always show the target.',
+                'Be open about missing data. Hiding gaps makes the whole dashboard less credible.'],
+     body='''A dashboard is not finished when it looks good. It is finished when the person it was built for opens it, finds their answer and makes a decision. Many dashboards fail that test, not because the data is wrong, but because they were designed for the person who built them.
+
+::photo images/work/dashboard-review.webp | The real test of a dashboard: can the reader find their answer in a minute, without help? | Alhaji reviewing a dashboard at his desk
+
+## Start with the reader, not the data
+
+A nurse, a programme manager and a donor ask very different questions of the same data.
+
+| Reader | Their question | What they need on screen |
+| Facility nurse | What is due at my facility this month? | Their own facility, this month, simple numbers |
+| Programme manager | Which facilities are falling behind? | All facilities ranked against target, with trends |
+| Donor or board | Are we on track overall? | A few headline figures against targets, by quarter |
+
+Build a page for each, or at least decide who the main reader is. Trying to answer everyone on one page usually answers nobody.
+
+## A layout that works
+
+::fig wireframe | Headline numbers at the top, one trend and one comparison in the middle, the data table underneath.
+
+Readers scan from the top left. Put the most important number there, then the trend over time, then the comparison between places, and finally the table for people who want to check the detail.
+
+## One message per chart
+
+If a chart needs a paragraph to explain it, split it into two. Give each chart a title that states the point.
+
+- Weak title: Coverage by facility
+- Strong title: Coverage is below 60% at two facilities
+
+## Show the target
+
+A number without a target has no meaning. Is 74% good? Add a target line, or colour the bar when the result is below target, so the reader does not have to remember what the goal was.
+
+> **Tip:** Use colour to highlight, not to decorate. If everything is coloured, nothing stands out. One accent colour for "needs attention" is often enough.
+
+## Keep the numbers one click away
+
+People trust a chart more when they can see the numbers behind it. Keep a clean table on the same page or one click away, with the same filters applied.
+
+## Make updating easy
+
+A dashboard that takes a day to refresh will not be refreshed. Design the data so that a new month is added by dropping in the new export, with the same column names every time. This is where a stable form and a clean data model pay off.
+
+## Be honest about gaps
+
+If three facilities did not report this month, say so on the page: "Data from 14 of 17 facilities." Hiding missing data makes the whole dashboard less credible the moment someone notices.
+
+## Test it with a real reader
+
+Before you share it widely, sit with one real user and watch them use it for two minutes without helping. Every time they hesitate, you have found something to fix.
+
+You can try these ideas on the sample dashboard on this site, which uses invented data, and use the checklist below before you share your own.''')
+
+# ---------------------------------------------------------------------------------------------- 4
+note('note-choosing-data-collection-tool', motif='tools', resources=['xlsform-cheat-sheet.pdf', 'sample-epi-xlsform.xlsx'],
+     summary='A plain guide to choosing between Survey123, KoboToolbox, CommCare and ODK, based on your team, your connectivity and what happens to the data.',
+     takeaways=['There is no single best tool. Start from your team, your connectivity and where the data must go.',
+                'Survey123, KoboToolbox and ODK all use XLSForm, so form-building skills carry across.',
+                'Run a one-month pilot with one form before committing a whole programme.'],
+     body='''There is no single best data collection tool. The right choice depends on your team, your budget, your connectivity and what happens to the data afterwards. I have built forms for field teams, and these are the questions I ask before recommending anything.
+
+## Five questions to answer first
+
+1. Who will build and maintain the forms after the consultant leaves?
+2. Will the team work offline for hours or days at a time?
+3. Where does the data need to go: Excel, Power BI, maps, a national system?
+4. Do you need to follow the same person or household over time?
+5. What can you afford to run every year, not just to set up?
+
+## How the common tools compare
+
+| | Survey123 | KoboToolbox | ODK | CommCare |
+| Form design | XLSForm or web designer | XLSForm or web designer | XLSForm | Web app builder |
+| Works offline | Yes | Yes | Yes | Yes |
+| Best fit | Teams already using ArcGIS and maps | Surveys and assessments with simple exports | Teams wanting open-source control | Following clients over time (case management) |
+| Typical cost | Needs an ArcGIS account | Free plans for many organisations | Free software; hosting costs vary | Paid plans; check current options |
+
+> **Watch out:** Pricing and plan limits change. Always check each provider's current terms before you budget.
+
+## Who will build and maintain the forms?
+
+If your team is comfortable in Excel, tools that use XLSForm let you design forms in a spreadsheet. Survey123, KoboToolbox and ODK all support it, so skills you build on one carry across to the others. That matters more than any single feature.
+
+## Does the team work offline?
+
+Much field work in Sierra Leone happens with weak or no signal. All four tools can save records on the phone and send them later, but test this yourself: fill in records offline, travel back into coverage and confirm every record arrives.
+
+## Where does the data need to go?
+
+- If your organisation already uses ArcGIS and maps, Survey123 fits naturally.
+- If you need simple exports to Excel or Power BI for surveys, KoboToolbox is a common choice.
+- If you need to register a person and follow them through visits, a case management tool such as CommCare may suit better.
+- If you want full control over your server and data, ODK is open source and can be self-hosted.
+
+## What does it really cost?
+
+Look beyond licences. Count training time, mobile data, phones and chargers, and who will fix problems. A free tool that nobody on the team can support becomes expensive very quickly.
+
+## Who owns the data?
+
+Check where the data is stored, who can see it and how you export everything. Make sure you can download all your data in a standard format at any time, so you are never locked in.
+
+## Start small
+
+::flow Pick one form > Pilot for one month > Review data quality > Decide > Scale up | A pilot teaches you more than any comparison table.
+
+Run a pilot with one form and a few users for a month. Look at the data at the end: is it complete, clean and arriving on time? That answer is worth more than any feature list, including this one.''')
+
+# ---------------------------------------------------------------------------------------------- 5
+note('note-clean-data-in-excel', motif='grid', resources=['data-cleaning-log.xlsx', 'me-data-quality-checklist.pdf'],
+     summary='Ten simple, repeatable habits that make messy exports safe to analyse and easy to check later, with the Excel functions that do the work.',
+     takeaways=['Never edit the raw file. Clean a dated copy and keep the original untouched.',
+                'Trim spaces, fix names and convert dates before you count anything.',
+                'Compare totals with the raw file at the end so you know nothing was lost.'],
+     body='''Most reports go wrong before any analysis starts. A trailing space, a date stored as text or a duplicated row can quietly change a total, and nobody notices until a manager asks why two reports disagree. These ten habits keep your cleaning safe and repeatable.
+
+::flow Raw export > Working copy > Clean > Check totals > Log changes > Final file | Every month, the same path.
+
+## Before you touch anything
+
+**1. Keep the raw file untouched.** Save the export exactly as it arrived, in a folder called Raw, and never edit it. If something goes wrong, you can always start again.
+
+**2. Work on a dated copy.** Name it clearly, for example EPI_2026-01_v1_cleaning.xlsx, so anyone can tell which file is which.
+
+**3. Turn the range into a table.** Select the data and press Ctrl + T. Formulas, filters and formatting then follow the data as rows are added.
+
+## While you clean
+
+**4. Trim spaces and fix capitals.** "Bo Govt Hospital " and "bo govt hospital" are counted as two places. Use a helper column and copy the result back as values.
+
+| Problem | Formula that fixes it |
+| Extra spaces | =TRIM(A2) |
+| Mixed capitals | =PROPER(TRIM(A2)) |
+| Numbers stored as text | =VALUE(A2) |
+| Dates stored as text (31/01/2026) | =DATEVALUE(A2), then format as a date |
+
+**5. Standardise names against a master list.** Keep one sheet with the correct facility names and use a lookup or data validation so every row matches it.
+
+**6. Make dates real dates.** If a date is left-aligned in its cell, Excel probably sees it as text. Text dates sort and filter wrongly.
+
+**7. Look for duplicates before counting.** Use Conditional Formatting, then Highlight Cells Rules, then Duplicate Values on the ID column, or a COUNTIFS formula across facility and month.
+
+**8. Flag what you change.** Add a column called Changed and write Yes on every row you edit. It takes seconds and makes your work checkable.
+
+> **Tip:** Never type over a number you are unsure about. Highlight it, write a query to the source and wait for the answer.
+
+## After you clean
+
+**9. Compare totals with the raw file.** Row counts and key totals should match the raw file, unless you removed duplicates on purpose. If they do not match, find out why before you continue.
+
+**10. Write a short cleaning log.** One row per change: what, where, from what to what, and who confirmed it. Then save the final file as the single source that your charts and pivot tables use.
+
+## The result
+
+Clean data is boring, and that is the goal. If your team does this every month, building a dashboard becomes easy, because the data always arrives in the same shape. The cleaning log below gives you a ready-made sheet with drop-down issue types and a summary.''')
+
+# ---------------------------------------------------------------------------------------------- 6
+note('note-power-bi-kpis', motif='star', resources=['dashboard-design-checklist.pdf', 'indicator-tracker.xlsx'],
+     summary='Start a Power BI report the right way: a clean data model, five trusted measures and a simple page layout, with the DAX to copy.',
+     takeaways=['Build the data model before any charts: one fact table and small lookup tables.',
+                'Create five measures first: total, target, coverage, change from last month and facilities reporting.',
+                'Check three facilities by hand against the source before you share anything.'],
+     body='''Many dashboards start with charts. Good ones start with a clear data model and a few measures everyone trusts. Once those are right, the charts almost build themselves.
+
+## Build the model first
+
+Use one table for the facts, such as one row per facility per month, and small lookup tables for facilities, dates and indicators. Connect each lookup table to the fact table with a simple one-to-many relationship. This shape is often called a star schema.
+
+::fig star | The fact table sits in the middle. Each lookup table filters it through one relationship.
+
+> **Tip:** Add a proper date table and mark it as a date table. Month-to-month comparisons become far simpler.
+
+## Five measures to create first
+
+Write these as measures, not calculated columns, so they respond to every filter on the page.
+
+| Measure | What it answers | Example DAX |
+| Total doses | How many? | Total Doses = SUM(Facts[Doses]) |
+| Target | How many should there be? | Target = SUM(Targets[Target]) |
+| Coverage | Are we on track? | Coverage = DIVIDE([Total Doses], [Target]) |
+| Change from last month | Up or down? | Change = [Total Doses] - CALCULATE([Total Doses], DATEADD(Dates[Date], -1, MONTH)) |
+| Facilities reporting | Is the data complete? | Reporting = DISTINCTCOUNT(Facts[FacilityID]) |
+
+DIVIDE is used for coverage because it returns a blank instead of an error when the target is zero.
+
+## Keep the page simple
+
+- Headline cards at the top: total, coverage and facilities reporting
+- One trend chart: coverage by month with the target as a line
+- One comparison: coverage by facility, sorted lowest first
+- A table underneath with the same numbers
+- Filters for month and facility in the same place on every page
+
+::photo images/cases/case-epi-dashboard/03-monthly-performance.webp | Design mockup with sample data: headline cards, a trend, a comparison and a table underneath. | Design mockup of a monthly performance dashboard
+
+## Test before you share
+
+Pick three facilities and calculate their numbers by hand from the source file. If all three match the report, you can trust the logic. If one does not, you have found a relationship or filter problem before your audience did.
+
+## Write the definitions down
+
+Every measure should have a one-line definition that a manager can read. Keep them on a hidden page or in the indicator reference sheet, so the next person to maintain the report knows exactly what each number means.
+
+You can see this layout on the sample dashboard on this site, and use the checklist below before you share your own.''')
+
+# ---------------------------------------------------------------------------------------------- 7
+note('note-me-indicators', motif='target', resources=['indicator-reference-sheet.pdf', 'logframe-template.pdf', 'indicator-tracker.xlsx'],
+     summary='A good indicator says exactly what is counted, for whom, how often and where the number comes from. Here is how to write one.',
+     takeaways=['Every indicator needs a definition, a numerator and denominator, a source, a frequency and an owner.',
+                'Set a baseline and a target, or you cannot say whether a result is good.',
+                'Test the definition on last month\'s data: if two people get different answers, it is not finished.'],
+     body='''An indicator that nobody can measure is just a wish. Frameworks often contain indicators like "improved community health" that sound right but cannot be counted the same way twice. Before an indicator goes into a logframe or a report, it should answer five questions.
+
+## The anatomy of an indicator
+
+::equation Numerator: children under 1 given Penta 3 this month / Denominator: estimated surviving infants for the same month = Penta 3 coverage (%) | A percentage indicator always needs both parts defined, for the same place and period.
+
+| Part | Question it answers | Example |
+| Definition | What exactly is counted? | Children under 1 who received the third dose of pentavalent vaccine |
+| Numerator and denominator | What sits on top and underneath? | Doses given / target population for the period |
+| Source | Where does the number come from? | Facility immunisation register and monthly summary |
+| Frequency | How often is it collected and reported? | Monthly, reviewed quarterly |
+| Responsible person | Who collects it and who checks it? | Facility in-charge collects; data officer checks |
+
+## Weak versus strong
+
+- Weak: Improved immunisation coverage
+- Strong: Percentage of children under 1 in the district who received Penta 3, reported monthly from facility registers
+
+- Weak: Staff trained
+- Strong: Number of facility staff who attended all three days of data quality training and scored 70% or more on the post-test
+
+## Set a baseline and a target
+
+Without a starting point you cannot show change. Without a target you cannot say whether the result is good. Record where the baseline came from and the year, so it can be checked later.
+
+## Output or outcome?
+
+Outputs are what the programme delivers, such as people trained. Outcomes are the changes that follow, such as reports arriving on time. Donors usually want both. Be careful not to report an output as if it proves an outcome.
+
+## Keep the list short
+
+Every indicator costs time to collect, check and report. If nobody will use a number to make a decision, remove it. Five indicators people trust are worth more than twenty nobody reads.
+
+## Test it with real data
+
+[ ] Two people calculate it separately from last month's data
+[ ] They get the same answer
+[ ] The source exists at every site that must report
+[ ] The person responsible knows it is their job
+
+> **Tip:** Write the full definition in an indicator reference sheet, one page per indicator, and share it with everyone who collects or reports the number.
+
+The reference sheet, a logframe template and a tracker for quarterly results are free below.''')
+
+# ---------------------------------------------------------------------------------------------- 8
+note('note-qr-code-registration', motif='qr', resources=['it-asset-register.xlsx', 'training-tracker.xlsx'],
+     summary='QR codes make lookup fast and accurate, but only when the system behind them is designed properly. When to use them, and how to do it safely.',
+     takeaways=['A QR code is only a key. The value is in the database and the rules behind it.',
+                'Put a short ID or link in the code, never names or phone numbers.',
+                'Always keep a way to look a record up by typing the ID when a code will not scan.'],
+     body='''A QR code is a quick way to open the right record without typing. It helps whenever something physical, such as a card, a register, a box or a device, needs to connect reliably to digital data. It also removes a whole class of errors: nobody misspells an ID they never had to type.
+
+## How it works
+
+::flow Printed code > Phone scans it > Short ID or link > Database lookup > Only allowed details shown | The code itself holds almost nothing. The system decides what each person can see.
+
+::photo images/cases/case-survey123/02-qr-autofill-follow-up.webp | Design mockup with fictional data: one scan fills in the record, so nothing is retyped. | Design mockup of a QR autofill follow-up form
+
+## Good uses
+
+- Staff or community health worker ID cards that can be verified online
+- Stock items or boxes that are counted, received or issued
+- Attendance at trainings, outreach sessions or meetings
+- Linking a paper form or sample to the right digital record
+- Asset tags on computers and equipment, linked to an asset register
+
+## Where it does not help
+
+- When people do not have a phone or app that can scan
+- When the code would be scanned only once, so typing is just as quick
+- When there is no system behind the code, only a printout
+
+## What the code should contain
+
+Keep the code to a short ID, such as CHW-0482, or a web link containing that ID. Do not put names, phone numbers, dates of birth or other personal details inside the code. Anyone with a phone can read a QR code, and once a card is printed you cannot take the information back.
+
+> **Watch out:** A QR code is not a password. If the link opens a page, design that page so it only shows what a stranger is allowed to see, such as "Valid, active health worker", and nothing private.
+
+::photo images/cases/case-chw-card-studio/01-card-and-qr-verification.webp | Design mockup with a fictional worker: the QR code carries a short ID, and the verification page decides what to show. | Design mockup of a sample health worker card and QR verification page
+
+## Plan for real conditions
+
+[ ] Print codes at least 2 to 3 cm wide so basic phones can scan them
+[ ] Laminate cards or use durable labels against rain, sweat and dust
+[ ] Print the ID in plain text under every code as a backup
+[ ] Keep a lookup screen where the ID can be typed
+[ ] Decide who can see which details after a scan
+[ ] Have a process for lost or damaged cards, including cancelling the old code
+
+## In a Survey123 or Kobo form
+
+Most tools have a barcode question type that opens the camera and reads the code into a field. You can then use the scanned ID to pull or check information, which removes typing errors at registration points and during campaigns.
+
+## The real work is the system
+
+A QR code is only the key. The reliable part is the database, the unique ID rules, the access levels and the process for issuing and cancelling codes. Get those right first, and the code becomes the easy part.''')
+
+# ---------------------------------------------------------------------------------------------- 9
+note('note-stock-reconciliation', motif='boxes', resources=['stock-tracker.xlsx', 'me-data-quality-checklist.pdf'],
+     summary='Compare what the records say with what is on the shelf, then explain every difference. A monthly routine for clinics, stores and campaigns.',
+     takeaways=['Expected closing stock = opening + received - issued - losses. Compare it with a physical count.',
+                'Count with two people on the same day you close the books.',
+                'Every difference needs a reason and an action, written down.'],
+     body='''Stock records and shelves drift apart quickly. An issue goes unrecorded during a busy clinic day, a carton is counted in packs instead of tablets, or expired items stay on the books. A monthly reconciliation catches these differences while they are still small enough to explain.
+
+## What you need
+
+- Last month's closing stock, which becomes this month's opening stock
+- Everything received, with dates and delivery notes
+- Everything issued, with who received it
+- Any losses: expired, damaged or transferred items
+- A physical count done on the same day you close the records
+
+## The calculation
+
+::equation Opening stock + Received - Issued - Losses = Expected closing stock | Then compare the expected figure with what you actually count on the shelf.
+
+| Item | Opening | Received | Issued | Losses | Expected | Counted | Difference |
+| ORS sachets | 400 | 600 | 300 | 20 | 680 | 680 | 0 |
+| Paracetamol 500 mg tablets | 1,200 | 500 | 900 | 0 | 800 | 760 | -40 |
+
+The tablets are 40 short. That is not a disaster, but it does need an explanation before the report goes out.
+
+## Common causes of differences
+
+- Items issued but not written in the register
+- Quantities recorded in the wrong unit, such as boxes instead of tablets
+- Expired or damaged items thrown away but not written off
+- Stock lent to another site without a record
+- Simple counting mistakes
+
+## How to count
+
+1. Pick a fixed day, such as the last working day of the month.
+2. Stop issuing while you count, or count before the clinic opens.
+3. Count with two people: one counts, one records.
+4. Count in the same unit the register uses.
+5. Recount any item where the difference is large.
+
+> **Tip:** Store items so they are easy to count: same items together, labels facing out, earliest expiry at the front.
+
+## Record and act
+
+For every difference, write the item, the difference, the most likely reason and the action. An action might be updating the register, retraining on units or writing off expired stock with the right approval.
+
+::photo images/cases/case-survey123/04-offline-stock-dashboard.webp | Design mockup with sample data: balances, reorder levels and the items that need attention. | Design mockup of an offline stock dashboard
+
+## Know when to reorder
+
+Months of stock tells you how long current stock will last: closing stock divided by average monthly use. If it falls below the minimum your programme sets, it is time to order. If it is far above the maximum, you may be overstocked and at risk of expiry.
+
+The free stock tracker below does this calculation for you and flags each item as REORDER, OK or OVERSTOCK.''')
+
+# ---------------------------------------------------------------------------------------------- 10
+note('note-excel-to-database', motif='db', resources=['data-cleaning-log.xlsx', 'it-asset-register.xlsx'],
+     summary='Excel is a good place to start. These signs show it is time for a database, and this is how to move without losing data.',
+     takeaways=['Several people editing copies of one file is the clearest sign you have outgrown Excel.',
+                'A database gives one copy of the data, validation rules, user access and a history of changes.',
+                'Agree the process and clean the data before you migrate, then run both systems side by side.'],
+     body='''Excel is fast, flexible and familiar, which is why almost every programme starts there. For one person tracking a few hundred rows, it is often the right tool. It becomes risky when the data grows, when many people need it at once or when mistakes start to cost money or trust.
+
+## Signs you have outgrown Excel
+
+[ ] Several people edit their own copies of the same file
+[ ] Nobody is sure which version is the latest
+[ ] Files take minutes to open or crash
+[ ] You repeat the same cleaning steps every month
+[ ] Different sheets show different totals for the same thing
+[ ] You need to control who can see or change certain records
+
+If you ticked three or more, it is worth planning a move.
+
+## What changes with a database
+
+| | Excel workbook | Database with a simple app |
+| Copies of the data | Many, emailed around | One central copy |
+| Rules on entry | Optional and easy to bypass | Enforced every time |
+| Who can see what | Whole file or nothing | Access by role or record |
+| History of changes | Usually none | Who changed what and when |
+| Many users at once | Conflicts and overwrites | Built for it |
+| Reports | Rebuilt by hand | Update from the same source |
+
+## What a database will not fix
+
+A database does not fix an unclear process. If staff disagree on what counts as a visit, or forms arrive late, a database will store the confusion more efficiently. Agree the process and the definitions first.
+
+## Move in steps
+
+::flow Agree the process > Clean the Excel data > Design tables on paper > Import a sample > Test with users > Run side by side > Switch | Running both systems for a month catches problems before you depend on the new one.
+
+1. Write down how data flows today: who enters it, who checks it, who uses it.
+2. Clean the existing data, removing duplicates and fixing names.
+3. Design the tables on paper. Each thing you track, such as facilities, staff or visits, usually becomes its own table.
+4. Import a small sample and test it with the people who will use it.
+5. Run Excel and the database side by side for a month and compare totals.
+6. Switch over, and keep the final Excel file as a read-only archive.
+
+> **Tip:** Start with the one dataset that causes the most pain. A small, successful first step builds the confidence to move the rest.
+
+::photo images/cases/case-dms/01-patient-registration-workspace.webp | Design mockup with fictional records: a database-backed form with validation and a checklist, instead of a shared spreadsheet. | Design mockup of a registration workspace
+
+## Which tools?
+
+For small teams, a hosted form tool or a simple web app on top of a database such as PostgreSQL can be enough. The right choice depends on your users, your internet and who will maintain it. The technology matters less than clear tables, clear rules and someone responsible for the data.''')
+
+# ---------------------------------------------------------------------------------------------- 11
+note('note-chw-reporting', motif='people', resources=['field-supervision-checklist.pdf', 'reporting-timeliness-tracker.xlsx', 'xlsform-cheat-sheet.pdf'],
+     summary='Short forms, offline tools, quick feedback and gentle supervision help community health worker data stay accurate and on time.',
+     takeaways=['Community health workers report while doing demanding work, so reporting must be quick.',
+                'Give data back: a monthly summary shows workers their reports are used.',
+                'Protect people: collect the least personal information and never share identifiable data in group chats.'],
+     body='''Community health workers collect data while doing demanding work: walking long distances, visiting households and responding to illness. Reporting competes with all of that. If it is slow or confusing, it will be late, incomplete or guessed. Good design respects their time.
+
+::photo images/work/tablet-conversation.webp | Good reporting tools fit into the conversation, not the other way round. | Alhaji with a tablet, talking with a community member
+
+## The reporting loop
+
+::flow Visit > Record on phone > Sync when in signal > Supervisor checks > Monthly feedback > Better next visit | Data should travel back to the people who collected it, not only up to the report.
+
+## Keep the form short
+
+Ask only for what the programme will actually use. Use choice lists instead of typing, use skip logic so irrelevant questions disappear, and put the most important questions first. A form that takes three minutes will be filled in properly far more often than one that takes fifteen.
+
+## Make it work offline
+
+Many communities have weak or no signal. The tool must save every record on the phone and send it later without losing anything. Train workers to check their outbox and sync at least once a week, and show them how to tell when a record has been sent.
+
+> **Tip:** Agree a simple sync routine, such as sending everything when you visit the health facility each week.
+
+## Give something back
+
+People report more carefully when they see their data being used. Share a simple monthly summary with supervisors and health workers:
+
+- Visits completed this month, by worker
+- Referrals made and followed up
+- Reports outstanding
+- One thing that went well
+
+A short summary in a team meeting is enough. It turns reporting from a chore into a shared picture of the work.
+
+## Protect people
+
+[ ] Collect the least personal information needed
+[ ] Use IDs instead of names where you can
+[ ] Limit who can see individual records
+[ ] Never share identifiable data in group chats or public files
+[ ] Lock phones with a PIN and report lost devices quickly
+
+## Check quality kindly
+
+Supervisors should sample a few records each month and compare them with what happened in the field, for example by revisiting a household or checking a register. Feedback should be friendly, specific and private. The aim is better data, not blame.
+
+## Watch timeliness over months
+
+A worker who reports late every month probably has a practical problem: no airtime, a broken phone or a long walk to signal. Tracking timeliness by person helps supervisors spot these problems and solve them.
+
+The field supervision checklist and the reporting timeliness tracker below are built for exactly this.''')
+
+# ---------------------------------------------------------------------------------------------- 12
+note('note-small-organisation-website', motif='browser', resources=['backup-security-checklist.pdf'],
+     summary='A few clear pages build trust, answer common questions and let people reach you at any hour. What to include and how to keep it working.',
+     takeaways=['Visitors want four things: who you are, what you do, proof you are real and how to contact you.',
+                'Four pages are enough to start: Home, About, Services or Programmes, and Contact.',
+                'Fast on a phone and accurate beats big and half-finished.'],
+     body='''A website does not have to be big to be useful. For a small organisation, clinic, school or business, a few clear pages can do a lot of work: answer the same questions you get every week, show partners that you are real and active, and let people contact you at any hour.
+
+## What visitors look for
+
+When a partner, donor or customer finds you, they usually want to know four things within a minute:
+
+1. Who you are and what you do
+2. Where you work and who you serve
+3. Proof that you are real and active, such as projects, reports or photos
+4. How to contact you, ideally by WhatsApp, phone and email
+
+## A simple structure
+
+::fig sitemap | Four pages cover what most visitors need. Add more only when you have real content for them.
+
+| Page | What goes on it |
+| Home | One clear sentence about what you do, a photo, and a contact button |
+| About | Your story, your team or founder, where you work |
+| Services or Programmes | What you offer, who it is for, prices or how to ask for a quote |
+| Contact | WhatsApp, phone, email, location and hours |
+
+## Write for a phone first
+
+Most visitors in Sierra Leone will open your site on a phone, often on mobile data. Keep pages light, use compressed photos and put the contact button where a thumb can reach it.
+
+> **Tip:** A WhatsApp button that opens a chat with a prepared message gets far more replies than an email address alone.
+
+## Show proof, honestly
+
+Real photos of your work, short project descriptions and named partners, with their permission, build trust. Never use invented reviews or stock photos that pretend to be your team. Visitors notice, and it costs you credibility.
+
+## Keep it working
+
+[ ] Check that every contact detail still works
+[ ] Update the site when something important changes
+[ ] Make sure it loads quickly on a phone
+[ ] Back up the files and keep your domain renewed
+[ ] Make sure more than one person can log in to manage it
+
+## Start small and grow
+
+Launch with the essentials, then add pages when you have real content, such as reports, news or a resources page. A site that is finished and accurate is better than a big one that is half done.
+
+This website is itself a small, fast static site hosted for free, built on the same ideas.''')
+
+# ---------------------------------------------------------------------------------------------- 13
+note('note-backup-rule', motif='drives', resources=['backup-security-checklist.pdf', 'it-asset-register.xlsx'],
+     summary='Three copies, two kinds of storage, one copy somewhere else. A simple backup plan for small offices, and how to test it.',
+     takeaways=['Keep 3 copies of important files, on 2 types of storage, with 1 copy away from the office.',
+                'Unplug external backup drives when not in use, so a virus cannot reach them.',
+                'A backup you have never restored is only a hope. Test one file every month.'],
+     body='''Most people only think about backups after losing files: a laptop is stolen, a hard drive fails, a virus locks every document, or a computer is damaged in the rainy season. The 3-2-1 rule gives you a plan before any of that happens.
+
+## The rule
+
+::fig 321 | Three copies, two kinds of storage, one copy kept away from the office.
+
+- **3 copies** of important files: the original and two backups
+- **2 types of storage**, for example the computer and an external drive
+- **1 copy away from the office**, such as a cloud folder or a drive kept at another site
+
+## What to back up
+
+Start with the files you could not recreate:
+
+- Financial records, receipts and payroll
+- Programme data, registers and reports
+- Contracts, letters and key documents
+- Photos and evidence of your work
+- Software licences and setup files
+
+## A weekly routine for a small office
+
+| When | What | Who |
+| Every day | Work is saved in a synced cloud folder, not only on the desktop | Everyone |
+| Every Friday | Copy key folders to the external drive, then unplug it | Office lead |
+| Every month | Restore one file from each backup to prove it works | Office lead |
+| Every quarter | Check the off-site copy is up to date and readable | Manager |
+
+Name backup folders with the date, for example Backup_2026-01-30, so you can always go back to a known good version.
+
+## Protect the backups
+
+> **Watch out:** Do not leave the external drive plugged in all the time. If ransomware or a virus hits the computer, a connected drive can be encrypted or damaged too.
+
+- Keep the external drive in a different room or building
+- Use a strong password on the cloud account and turn on two-step verification
+- Do not let the only backup sit in the same bag as the laptop
+
+## Test restoring
+
+A backup you have never opened is only a hope. Once a month, pick one file, restore it from each backup and open it. If it opens, your backup works. If not, you have found the problem on a quiet day instead of during a crisis.
+
+## When things go wrong
+
+1. Disconnect the affected computer from the network.
+2. Do not plug in your backup drive until the computer is clean.
+3. Get help to remove the virus or replace the hardware.
+4. Restore from the most recent clean backup.
+
+The backup and security checklist below turns this into a one-page routine for your office.''')
+
+# ---------------------------------------------------------------------------------------------- 14
+note('note-ict-needs-assessment', motif='matrix', resources=['it-asset-register.xlsx', 'new-staff-it-setup.pdf', 'backup-security-checklist.pdf'],
+     summary='Before buying laptops or software, find out what your team actually needs and what already works. A short assessment you can run in a week.',
+     takeaways=['Start from the work and its problems, not from equipment.',
+                'Take stock of devices, internet, power, software, data and skills before you spend.',
+                'Fix the cheap, high-impact problems first, then plan the expensive ones.'],
+     body='''Organisations often buy laptops, software or a new internet package first and ask questions later. Six months on, the laptops sit unused, the software does not fit the work and the real problem, perhaps lost files or late reports, is still there. A short needs assessment avoids that waste.
+
+## Start with the work, not the equipment
+
+Sit with each team for half an hour and ask three questions:
+
+1. What are the main tasks you do every week?
+2. What slows you down or goes wrong most often?
+3. What would you stop doing if technology worked well?
+
+Typical answers include late reports, lost files, slow or unreliable internet, entering the same data twice, or nobody knowing how to fix the printer.
+
+## Take stock of what you have
+
+| Area | What to record |
+| Devices | Every computer, phone and printer: age, condition, who uses it |
+| Internet and power | How reliable, how fast, what it costs per month, backup power |
+| Software | What is licensed, what is actually used, what is out of date |
+| Data | Where files live, who can access them, whether they are backed up |
+| Security | Antivirus, passwords, updates, shared accounts |
+| Skills | What staff can do now and what they need to learn |
+
+> **Tip:** Record devices in an asset register as you go. You will need it anyway, and it makes the assessment twice as useful.
+
+## Set priorities
+
+Rank every problem by how much it costs the organisation in time, money or risk, and by how much it would cost to fix.
+
+::fig matrix | Do the quick wins first. Plan the big projects. Question anything that costs a lot for little benefit.
+
+Quick wins often include setting up backups, fixing shared passwords, a short training session, a better form or a cheap Wi-Fi extender. They build trust and free up time for the bigger changes.
+
+## Make a short plan
+
+Write one page with a simple table: what to do, why, who is responsible, the cost and the date. Keep it realistic. Three things done well beat ten things started.
+
+| Action | Why | Owner | Cost | By when |
+| Weekly backup to external drive | Files are on one laptop only | Office lead | One drive | End of month |
+| Two-step verification on email | Shared passwords are a risk | IT support | Free | Two weeks |
+| Excel training for programme staff | Reports take days to prepare | Data officer | Staff time | Next quarter |
+
+## Review every three months
+
+Check what was done, what changed and what is next. Needs change as programmes grow, so the assessment should be a living document, not a one-off report.
+
+The asset register, new staff IT checklist and backup checklist below are useful tools during and after the assessment.''')
+
+# ---------------------------------------------------------------------------------------------- 15
+note('note-healthcare-technology', motif='health', resources=['me-data-quality-checklist.pdf', 'stock-tracker.xlsx', 'training-session-plan.pdf'],
+     summary='Digital data collection, electronic reporting and better tracking are changing how facilities work. What improves, what holds us back and what helps.',
+     takeaways=['Digital tools reduce errors and speed up reporting, but only when the process around them is clear.',
+                'Internet, power, devices and skills are still the main barriers, and all four need planning.',
+                'Start with simple tools staff can use and support, then build up.'],
+     body='''Healthcare delivery in Sierra Leone is gradually moving from paper-only processes to a mix of paper and digital systems. Facilities and programmes now track performance with Excel sheets, mobile forms, digital logbooks and shared dashboards. Programmes such as nutrition supplement distribution, community health worker activity and ultrasound reporting become much easier to manage once the data is organised.
+
+::photo images/cover.jpeg | A working session with laptops and a projector. Much of digital health is people learning to use simple tools well together. | A busy meeting room where a team works on laptops while one person presents from a projector
+
+## From paper to digital
+
+::flow Paper register > Monthly summary > Mobile form or spreadsheet > Checked dataset > Dashboard > Decision | Each step that becomes digital removes a chance to copy a number wrongly.
+
+Paper registers still matter. They are often the original record and the backup when phones fail. Digital tools work best when they sit alongside paper, not when they pretend paper no longer exists.
+
+## What technology improves
+
+- **Fewer copying errors.** Numbers entered once on a phone do not need to be re-typed three times.
+- **Faster reporting.** Data can reach the district in days instead of weeks.
+- **Better tracking of supplies.** Stock levels and expiry dates are visible before items run out.
+- **Clearer decisions.** Managers can see which facilities need support this month, not last quarter.
+
+## What still holds us back
+
+| Barrier | What helps |
+| Weak or costly internet | Tools that work offline and sync later; agreed sync days |
+| Unreliable power | Power banks, solar chargers, charging routines |
+| Too few devices | Shared devices with clear sign-out, durable cases |
+| Limited IT and data skills | Short practical trainings and follow-up support |
+| Unclear processes | Agreed definitions, deadlines and responsibilities |
+
+> **Watch out:** Buying devices without training and support is the most common way digital projects stall. Budget for people, not just equipment.
+
+## What works in practice
+
+1. Start with one clear problem, such as late monthly reports.
+2. Choose the simplest tool that solves it and that staff can support.
+3. Train with real, anonymised examples, then follow up within a month.
+4. Share results back with the people who collect the data.
+5. Improve step by step, rather than replacing everything at once.
+
+## Protecting patients
+
+More digital data means more responsibility. Collect only what is needed, limit who can see personal information, keep devices locked and never share patient details in group chats.
+
+I keep working on this through data systems, IT support and practical training for health teams. The resources below are some of the tools I use.''')
+
+# ---------------------------------------------------------------------------------------------- 16
+note('note-small-business-it', motif='wrench', resources=['backup-security-checklist.pdf', 'it-asset-register.xlsx', 'new-staff-it-setup.pdf'],
+     summary='Basic IT support cuts downtime and improves productivity. A simple monthly routine any small business or office can follow.',
+     takeaways=['Small, regular maintenance prevents most expensive breakdowns.',
+                'Backups, updates and antivirus are the three habits that matter most.',
+                'Keep a list of your devices and who to call before something goes wrong.'],
+     body='''Many small businesses and offices live with slow computers, frequent faults and unreliable internet. Each problem seems small, but together they cost hours every week: a report that will not print, a laptop that takes ten minutes to start, files lost when a computer fails. You do not need expensive equipment to fix most of this. You need the right setup and a simple routine.
+
+::photo images/work/office-desk.webp | Reliable equipment, regular updates and tested backups keep an office working. | Alhaji working at an office computer
+
+## What basic IT support covers
+
+- Regular maintenance: updates, clean-up and checking storage space
+- Software installation and licences
+- Virus removal and antivirus that stays up to date
+- Network and Wi-Fi setup that covers the whole office
+- Backups that are tested, not just made
+- Help when something breaks, from someone who knows your setup
+
+## A simple monthly routine
+
+| Task | How often | Time needed |
+| Install Windows and app updates | Weekly or automatic | 10 minutes |
+| Check antivirus is active and updated | Weekly | 5 minutes |
+| Copy key files to a backup drive and unplug it | Weekly | 10 minutes |
+| Restore one file to test the backup | Monthly | 10 minutes |
+| Restart the router and check speed | Monthly | 5 minutes |
+| Delete old downloads and empty the recycle bin | Monthly | 10 minutes |
+| Check printers, cables and power sockets | Quarterly | 20 minutes |
+
+> **Tip:** Put the routine on a wall calendar or a shared phone reminder. A routine nobody remembers is not a routine.
+
+## Know what you have
+
+Keep a simple list of every computer, printer, phone and router: who uses it, when you bought it and when the warranty ends. When something breaks, you know exactly what it is, and you can plan replacements before old equipment fails during your busiest week.
+
+## Protect power and equipment
+
+Power cuts and surges damage computers and corrupt files. A UPS or a good surge protector for the main computer and router is one of the cheapest ways to protect your business.
+
+## When to call for help
+
+- The same problem keeps coming back
+- A computer shows strange pop-ups or files will not open
+- The network is slow for everyone, not just one device
+- You are setting up new staff, new devices or a new office
+
+## The real cost of doing nothing
+
+Every hour a computer is down is an hour of lost work, and a lost file may be gone forever. Basic support is not a luxury. It is how technology starts working for you instead of against you.
+
+The checklists and asset register below are free if you want to start today.''')
+
+# ---------------------------------------------------------------------------------------------- 17
+note('note-my-journey', motif='path', resources=[],
+     summary='From diplomas in software, hardware and networking in Bo to managing health programme data at RHCI, while studying Computer Science.',
+     takeaways=['I started with hands-on training in software, hardware and networking in Bo.',
+                'Teaching, IT support and data roles taught me that technology is about solving real problems.',
+                'Today I manage health programme data and keep building skills for larger data systems.'],
+     body='''My path into IT and data did not start in an office. It started in a computer training centre in Bo, learning how computers work from the inside, and then teaching others to use them.
+
+::photo images/hero-portrait.jpg | Alhaji Ibrahim Mehemoh, Bo, Sierra Leone | Portrait of Alhaji Ibrahim Mehemoh
+
+## The timeline
+
+::fig journey | The roles that shaped how I work.
+
+## Learning the foundations
+
+I took diplomas in computer software, computer hardware and networking at the Growth Centre Computer Training Institute in Bo. Software taught me how people actually use computers. Hardware taught me patience and how to diagnose a problem step by step. Networking taught me how everything connects, and what happens when it does not.
+
+## Teaching and fixing
+
+At the Growth Centre I worked as an ICT tutor and internet cafe attendant. I taught Microsoft Office and handled hardware and network problems every day. Teaching made me better at explaining technical things in plain words, a skill I still use in every training and report.
+
+## Data and IT in larger organisations
+
+As IT and Data Officer for SLPP in Bo District, I worked on membership databases, data analysis and digital campaign management. Then, as Assistant IT Manager at SLIEPA in Freetown, I supported agency-wide IT infrastructure, the helpdesk, cybersecurity measures and staff ICT training.
+
+## Health data at RHCI
+
+Since October 2024 I have worked at Rural Health Care Initiative as a Data Officer. I manage programme data for immunisation, home visits and malaria case management, build the Survey123 forms field teams use, and supervise a contract Data Assistant.
+
+> **What health taught me:** A good system is one that field staff actually use and managers actually trust. Accuracy, simplicity and support matter more than clever features.
+
+## What I believe about technology
+
+- It should solve a real problem that people can name.
+- It should be simple enough for the people who use it every day.
+- It should be supported after launch, not just delivered.
+- It should protect the people whose data it holds.
+
+## What comes next
+
+I am studying Computer Science and building the skills to design larger, more reliable data systems. I am open to consulting, contracts and full-time roles in monitoring and evaluation, health data and data systems, and I work in English and Krio.
+
+If you are working on something where better data or better IT would help, I would be glad to hear about it.''')
+
+# ---------------------------------------------------------------------------------------------- 18
+note('note-protect-your-computer', motif='shield', resources=['backup-security-checklist.pdf', 'new-staff-it-setup.pdf'],
+     summary='Most computer problems can be avoided with a few safe habits. Eight practical steps, the warning signs of infection and what to do if it happens.',
+     takeaways=['Updates, antivirus and backups prevent most problems.',
+                'Flash drives and email attachments are the most common ways viruses arrive.',
+                'If a computer is infected, disconnect it first, then get help.'],
+     body='''Most computer problems in small offices are not bad luck. A virus arrives on a shared flash drive, a fake email tricks someone into opening an attachment, or a computer misses months of security updates. The good news is that a few habits prevent most of it. Cybersecurity does not have to be complicated; awareness is the first line of defence.
+
+## Eight habits that protect you
+
+1. **Keep Windows and apps updated.** Updates close the security holes that viruses use. Turn on automatic updates and restart when asked.
+2. **Use antivirus and keep it on.** Windows includes Microsoft Defender. Make sure it is switched on and updating.
+3. **Scan flash drives before opening them.** Shared flash drives are one of the most common ways viruses spread between computers.
+4. **Think before opening attachments.** Be careful with unexpected files, even from people you know, especially if the message feels urgent.
+5. **Use strong, separate passwords.** A short phrase of several words is stronger and easier to remember than a short complex password.
+6. **Turn on two-step verification** for email and cloud accounts, so a stolen password is not enough.
+7. **Download software only from official sources.** Cracked software is a common hiding place for malware.
+8. **Back up your important files** and keep one copy disconnected.
+
+> **Watch out:** A message that says your account will be closed today, or asks you to "verify" your password through a link, is almost always a scam. Go to the website yourself instead of clicking.
+
+## Warning signs of an infection
+
+- The computer suddenly becomes very slow
+- Pop-ups or new toolbars appear that you did not install
+- Files are renamed, will not open or have strange extensions
+- Your antivirus has been switched off without you doing it
+- Friends receive messages from your account that you did not send
+
+## If you think a computer is infected
+
+::flow Disconnect from Wi-Fi and network > Do not plug in backup drives > Run a full antivirus scan > Change passwords from another device > Get help if it persists | Acting quickly limits the damage to one computer.
+
+## A quick monthly check
+
+[ ] Updates installed and computer restarted
+[ ] Antivirus on and up to date
+[ ] Backup made and tested
+[ ] No unknown programs installed
+[ ] Passwords not shared or written on the desk
+
+The backup and security checklist below covers these habits for a whole office.''')
+
+# ---------------------------------------------------------------------------------------------- 19
+note('note-data-decisions', motif='cycle', resources=['indicator-tracker.xlsx', 'monthly-report-template.pdf', 'me-data-quality-checklist.pdf'],
+     summary='Clean, organised data helps teams measure performance and plan with confidence. A simple cycle any team can follow every month.',
+     takeaways=['Data only matters when it changes a decision.',
+                'Follow the same monthly cycle: collect, check, analyse, discuss, act.',
+                'Start with a few questions you really need answered, not with all the data you have.'],
+     body='''Most organisations collect more data than they use. Forms are filled, spreadsheets grow and reports are sent, but decisions are still made from memory or habit. Data only matters when it changes what someone does next.
+
+## The monthly cycle
+
+::flow Collect > Check > Analyse > Discuss > Decide > Act > Collect again | The same cycle, every month, is what builds trust in the numbers.
+
+1. **Collect** the data you agreed on, using the same forms and definitions every month.
+2. **Check** it for completeness, errors and duplicates before anyone sees a chart.
+3. **Analyse** it against targets and last month, not in isolation.
+4. **Discuss** it with the people who can act: supervisors, managers and field staff.
+5. **Decide** on a small number of actions, with names and dates.
+6. **Act**, then look at next month's data to see whether it worked.
+
+## Start with questions, not data
+
+Before building any report, write down the three to five questions your team actually needs answered each month. For example:
+
+- Which facilities are behind on immunisation this month?
+- Will any medicines run out before the next delivery?
+- Which outreach sessions did not happen, and why?
+- Are reports arriving on time?
+
+Every table and chart should answer one of these. Anything else is decoration.
+
+## What good data lets a team do
+
+| Area | Question data answers | Decision it supports |
+| Supplies | What will run out first? | What to order and when |
+| Outreach | Where did activities not happen? | Where to send staff next month |
+| Performance | Who is on track against targets? | Where to focus supervision |
+| Reporting | Which sites report late? | Who needs support, not reminders |
+
+> **Example:** A facility's coverage drops for two months in a row. The data does not say why, but it tells the supervisor where to ask. The answer might be a vaccine stock-out, a staff absence or a reporting error. Each leads to a different action.
+
+::photo images/cases/case-epi-dashboard/02-facility-and-nurse-performance.webp | Design mockup with sample data: a page built to answer one question, who needs follow-up this month? | Design mockup of a facility and nurse performance dashboard
+
+## Make the meeting count
+
+A monthly review meeting is where data becomes decisions. Keep it short, start with the three most important findings, and end with a list of actions: what, who and by when. Begin the next meeting by checking those actions.
+
+## It works beyond health
+
+The same cycle works in schools, businesses and community groups. Whatever the sector, decisions based on checked, understood data lead to better outcomes than decisions based on guesses.
+
+The tracker, report template and checklist below support each step of the cycle.''')

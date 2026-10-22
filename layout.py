@@ -7,7 +7,7 @@ WA = 'https://wa.me/23279301430'
 EMAIL = 'alhajiimehemoh@gmail.com'
 CV = 'Alhaji_Ibrahim_Mehemoh_CV.pdf'
 OUT = os.path.dirname(os.path.abspath(__file__))
-CSS_V = '12'
+CSS_V = '21'
 
 NAV = [('portfolio.html', 'Projects', 'nav.projects'), ('services.html', 'Services', 'nav.services'),
        ('resources.html', 'Resources', 'nav.resources'), ('community.html', 'Notes', 'nav.notes'),
@@ -124,12 +124,13 @@ def page(fn, title, desc, body, active=None, ld=None, noindex=False, sitemap=Tru
   <meta name="twitter:description" content="{esc(desc)}">
   <meta name="twitter:image" content="{BASE}images/og-image.jpg">
 
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="images/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
-  <link rel="preload" href="fonts/zilla-slab-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>{preload}
+  <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>{preload}
   <link rel="stylesheet" href="style.css?v={CSS_V}">
   <script src="shared.js?v={CSS_V}"></script>{analytics_snippet()}{extra_head}{ldtags}
 </head>
@@ -139,7 +140,7 @@ def page(fn, title, desc, body, active=None, ld=None, noindex=False, sitemap=Tru
 
 <header class="site-header">
   <div class="wrap header-in">
-    <a class="brand" href="index.html">Alhaji Ibrahim Mehemoh</a>
+    <a class="brand" href="index.html"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""><span>Alhaji Ibrahim Mehemoh</span></a>
     <nav class="nav-links" aria-label="Main">{links}</nav>
     <div class="header-tools">
       {lang_btn}
@@ -156,6 +157,7 @@ def page(fn, title, desc, body, active=None, ld=None, noindex=False, sitemap=Tru
 {body}
 </main>
 
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="tt-track" cx="24" cy="24" r="21"/><circle class="tt-ring" id="toTopRing" cx="24" cy="24" r="21" pathLength="100"/><path class="tt-arrow" d="M24 31V17M17.5 23.5 24 17l6.5 6.5"/></svg></button>
 <a class="whatsapp-fab" href="{esc(wa_href)}" target="_blank" rel="noopener">WhatsApp</a>
 
 <footer class="site-footer">
@@ -197,6 +199,8 @@ def page(fn, title, desc, body, active=None, ld=None, noindex=False, sitemap=Tru
         </ul>
       </div>
     </div>
+    <p class="foot-logo"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
+    <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
     <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
   </div>
 </footer>

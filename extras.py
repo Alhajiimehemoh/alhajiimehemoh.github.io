@@ -96,14 +96,43 @@ def make_downloads():
 
 
 # ------------------------------------------------------------------ resources
+RES_ICON = {'PDF': 'pdf', 'Excel': 'xls', 'XLSForm': 'form'}
+
+
 def resources():
-    def card(title, text, href, label):
-        return f'<div class="tile"><h3>{title}</h3><p>{text}</p><p><a class="btn btn-primary" href="{href}" download>{label}</a></p></div>'
-    cards = ''.join([
-        card('M&amp;E data quality checklist', 'One page to run before every monthly report. Completeness, timeliness, accuracy, consistency, duplicates and privacy.', 'downloads/me-data-quality-checklist.pdf', 'Download PDF'),
-        card('Stock tracker (Excel)', 'Opening stock, received, issued, closing stock and an automatic REORDER flag. Built for clinics and small programmes.', 'downloads/stock-tracker.xlsx', 'Download Excel'),
-        card('Sample EPI XLSForm', 'A short monthly facility form with validation rules. Upload to Survey123 Connect or KoboToolbox and adapt.', 'downloads/sample-epi-xlsform.xlsx', 'Download XLSForm'),
-    ])
+    import json as _json
+    data = _json.load(open(os.path.join(OUT, 'downloads', 'resources.json')))
+    items, kit = data['items'], data['kit']
+    slug = lambda c: c.lower().replace('&', '').replace(' ', '-').replace('--', '-')
+    cats = []
+    for it in items:
+        if it['category'] not in cats:
+            cats.append(it['category'])
+    order = ['M&E', 'Data collection', 'Dashboards', 'Training', 'Inventory', 'IT']
+    cats.sort(key=lambda c: order.index(c) if c in order else 99)
+    n_pdf = sum(1 for i in items if i['type'] == 'PDF')
+    n_xls = len(items) - n_pdf
+
+    def card(it):
+        meta = (('%d page%s' % (it['pages'], '' if it['pages'] == 1 else 's')) if it.get('pages') else '%d sheets' % it['sheets']) + ' &middot; ' + it['size']
+        preview = ('<a class="btn" href="downloads/%s" target="_blank" rel="noopener">Preview</a>' % it['file']) if it['type'] == 'PDF' else ''
+        tags = ''.join('<li>%s</li>' % esc(t) for t in it['tags'])
+        return f'''<article class="res-card" data-type="{slug(it['category'])}">
+  <a class="res-thumb" href="downloads/{it['file']}" download tabindex="-1" aria-hidden="true"><span class="res-paper"><img src="images/resources/{it['slug']}.webp" width="720" height="562" alt="" loading="lazy"></span></a>
+  <div class="res-body">
+    <div class="res-top"><span class="ftype ft-{RES_ICON[it['type']]}">{it['type']}</span><span class="res-cat">{esc(it['category'])}</span></div>
+    <h3>{esc(it['title'])}</h3>
+    <p>{esc(it['blurb'])}</p>
+    <ul class="res-tags">{tags}</ul>
+    <div class="res-foot"><span class="res-meta">{meta}</span><span class="res-actions">{preview}<a class="btn btn-primary" href="downloads/{it['file']}" download>Download</a></span></div>
+  </div>
+</article>'''
+    cards = ''.join(card(i) for i in items)
+    btns = '<button type="button" class="filter is-active" data-filter="all" aria-pressed="true">All <span>%d</span></button>' % len(items) + ''.join(
+        '<button type="button" class="filter" data-filter="%s" aria-pressed="false">%s <span>%d</span></button>' % (
+            slug(c), esc(c), sum(1 for i in items if i['category'] == c)) for c in cats)
+    stack = ''.join('<img src="images/resources/%s.webp" alt="" width="720" height="562" style="--k:%d">' % (s_, k) for k, s_ in enumerate(
+        ['me-data-quality-checklist', 'stock-tracker', 'xlsform-cheat-sheet']))
     video_block = ''
     if C.TUTORIAL_VIDEOS:
         import re
@@ -114,16 +143,41 @@ def resources():
                    if m else f'<p><a class="btn" href="{esc(v["url"])}" target="_blank" rel="noopener">Watch</a></p>')
             vs += f'<div><h3>{esc(v["title"])}</h3>{emb}</div>'
         video_block = f'<section class="section"><div class="wrap"><div class="section-head"><h2>Tutorials</h2></div><div class="cols">{vs}</div></div></section>'
-    body = head('Free resources', 'Templates and checklists you can use today. No sign-up needed. Remove any patient or staff identifiers before you share files.') + f'''
-<section class="section"><div class="wrap"><div class="bento">{cards}</div></div></section>
+    body = f'''<div class="wrap">
+  <div class="page-head res-hero">
+    <div>
+      <h1>Free resources</h1>
+      <p class="lede">Checklists, templates and trackers I use in health data and IT work. Free to download, no sign-up, ready to print or adapt.</p>
+      <ul class="res-stats"><li><b>{len(items)}</b> free files</li><li><b>{n_pdf}</b> printable PDFs</li><li><b>{n_xls}</b> Excel and XLSForm</li></ul>
+      <div class="actions"><a class="btn btn-primary" href="downloads/{kit['file']}" download>Download all as a ZIP ({kit['size']})</a><a class="btn" href="#library">Browse the library</a></div>
+    </div>
+    <div class="res-stack" aria-hidden="true">{stack}</div>
+  </div>
+</div>
+<section class="section" id="library">
+  <div class="wrap">
+    <div class="section-head"><h2>The library</h2><p>Every file uses the same clean layout. PDFs print well on A4. Excel files have a How to use sheet, drop-down lists and formulas that fill in by themselves.</p></div>
+    <div class="filters res-filters" role="group" aria-label="Filter resources by topic">{btns}</div>
+    <p class="small muted" id="filterCount" data-noun="file" role="status" aria-live="polite"></p>
+    <div class="res-grid" data-filter-target>{cards}</div>
+  </div>
+</section>
 {video_block}
-<section class="section"><div class="wrap cols">
-  <div><h2>Read next</h2><ul class="plain"><li><a href="community.html">Notes on data and health systems</a></li><li><a href="glossary.html">Glossary of health data terms</a></li><li><a href="demo.html">Sample dashboard</a></li></ul></div>
-  <div><h2>Want these tailored?</h2><p>I can adapt any template to your indicators and train your staff to use it.</p><p><a class="btn btn-primary" href="request.html">Request help</a></p></div>
-</div></section>'''
-    page('resources.html', 'Free resources | Alhaji Ibrahim Mehemoh',
-         'Free M&E data quality checklist, Excel stock tracker and sample XLSForm from Alhaji Ibrahim Mehemoh.', body,
-         active='resources.html', crumbs=[('Resources', None)])
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Getting the most from them</h2></div>
+    <ol class="steps">
+      <li><h3>Start with one</h3><p>Pick the checklist that matches your next deadline and use it this month.</p></li>
+      <li><h3>Adapt the words</h3><p>Change labels and examples to your programme. Keep the structure.</p></li>
+      <li><h3>Remove personal data</h3><p>Never add patient names, phone numbers or ID numbers to shared files.</p></li>
+      <li><h3>Make it routine</h3><p>Same file, same day, every month. Consistency is what improves data.</p></li>
+    </ol>
+  </div>
+</section>
+{cta('Want these tailored to your programme?', 'I can adapt any template to your indicators, build it into Survey123 or Power BI, and train your staff to use it.')}'''
+    page('resources.html', 'Free resources: M&E checklists, Excel trackers and XLSForm templates | Alhaji Ibrahim Mehemoh',
+         'Free downloads: M&E data quality checklist, indicator reference sheet, monthly report template, XLSForm cheat sheet, stock tracker, indicator tracker, data cleaning log and IT checklists.',
+         body, active='resources.html', crumbs=[('Resources', None)])
 
 
 # ------------------------------------------------------------------ demo dashboard
@@ -268,8 +322,9 @@ def request():
     <div class="field"><label for="rq-wa">WhatsApp number (optional)</label><input id="rq-wa" name="whatsapp" type="tel" autocomplete="tel"></div>
     <div class="field"><label for="rq-service">Service</label>
       <select id="rq-service" name="service">
-        <option>Dashboard (Power BI or Excel)</option><option>Survey123 or XLSForm data collection</option><option>M&amp;E framework and reporting</option>
-        <option>Data quality review</option><option>Training</option><option>IT support (Starter)</option><option>IT support (Standard)</option><option>IT support (Premium)</option><option>Something else</option>
+        <optgroup label="Data and M&amp;E"><option>Dashboards and reports</option><option>Survey and form design</option><option>Data quality audits</option><option>M&amp;E reporting</option><option>Data systems</option><option>Training</option></optgroup>
+        <optgroup label="IT support"><option>Technical support and hardware</option><option>Networking and internet</option><option>Web and digital</option><option>Security and backups</option><option>Office and NGO IT support</option><option>IT support (Starter)</option><option>IT support (Standard)</option><option>IT support (Premium)</option></optgroup>
+        <option>Something else</option>
       </select></div>
     <div class="field"><label for="rq-budget">Budget range</label>
       <select id="rq-budget" name="budget"><option>Not sure yet</option><option>Under SLE 5,000</option><option>SLE 5,000 to 20,000</option><option>SLE 20,000 to 50,000</option><option>Over SLE 50,000</option></select></div>
@@ -364,6 +419,56 @@ g('n-copy').onclick=function(){{g('n-out').select();try{{navigator.clipboard.wri
     page('admin.html', 'Note composer', 'Private note composer.', body, noindex=True, sitemap=False, progress=False)
 
 
+
+FEED_XSL = """<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="html" encoding="UTF-8" indent="yes"/>
+<xsl:template match="/">
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RSS feed: <xsl:value-of select="rss/channel/title"/></title>
+<link rel="icon" href="images/favicon-32.png" type="image/png"/>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-weight:200 800;font-display:swap;src:url(fonts/bricolage-grotesque-latin-var.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-weight:100 1000;font-display:swap;src:url(fonts/dm-sans-latin-var.woff2) format('woff2')}
+:root{--paper:#F3F6F4;--sheet:#fff;--ink:#0F2430;--muted:#475D68;--rule:#D3DED9;--green:#0B7A5C;--green-soft:#DDF0E8;--amber:#D68A00}
+@media (prefers-color-scheme:dark){:root{--paper:#0A171D;--sheet:#112630;--ink:#E7EFEC;--muted:#A3B6BD;--rule:#25404B;--green:#3CC79A;--green-soft:#12372F}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 'DM Sans',system-ui,sans-serif}
+.wrap{width:min(46rem,100% - 2rem);margin:0 auto;padding:3rem 0 4rem}
+h1,h2{font-family:'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.03em;line-height:1.05}
+h1{font-size:clamp(2rem,6vw,3rem);margin:.5rem 0 .75rem}
+.tag{display:inline-block;font:500 .75rem ui-monospace,Menlo,monospace;background:var(--green-soft);color:var(--green);padding:.3rem .7rem;border-radius:999px}
+.box{background:var(--sheet);border:1px solid var(--rule);border-radius:20px;padding:1.25rem 1.4rem;margin:1.5rem 0 2.5rem}
+.box p{margin:.25rem 0}.muted{color:var(--muted)}
+code{display:block;margin-top:.6rem;padding:.6rem .8rem;border-radius:10px;background:var(--paper);border:1px solid var(--rule);font:500 .9rem ui-monospace,Menlo,monospace;word-break:break-all}
+a{color:var(--green);text-underline-offset:3px}
+ol{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+li{background:var(--sheet);border:1px solid var(--rule);border-radius:16px;padding:1rem 1.25rem}
+li h2{font-size:1.2rem;margin:0 0 .3rem}li h2 a{color:var(--ink);text-decoration:none}li h2 a:hover{color:var(--green)}
+li p{margin:0;color:var(--muted)}.meta{font:500 .75rem ui-monospace,Menlo,monospace;color:var(--muted);margin-bottom:.35rem}
+.back{font-weight:600}
+</style></head>
+<body><div class="wrap">
+<a class="back" href="community.html">&#8592; Back to Notes</a>
+<p style="margin-top:2rem"><span class="tag">RSS feed</span></p>
+<h1><xsl:value-of select="rss/channel/title"/></h1>
+<p class="muted"><xsl:value-of select="rss/channel/description"/></p>
+<div class="box">
+<p><strong>This is a feed you can follow.</strong> Copy the address below into a feed reader such as Feedly, Inoreader or NetNewsWire, and new notes will arrive there automatically.</p>
+<code>{BASE}feed.xml</code>
+<p class="muted" style="margin-top:.75rem">Prefer email or WhatsApp? <a href="contact.html">Contact me</a> and I will send new notes directly.</p>
+</div>
+<ol>
+<xsl:for-each select="rss/channel/item">
+<li><div class="meta"><xsl:value-of select="category"/> &#183; <xsl:value-of select="substring(pubDate,6,11)"/></div>
+<h2><a href="{link}"><xsl:value-of select="title"/></a></h2>
+<p><xsl:value-of select="description"/></p></li>
+</xsl:for-each>
+</ol>
+</div></body></html>
+</xsl:template>
+</xsl:stylesheet>
+"""
+
 # ------------------------------------------------------------------ feed, sitemap, pwa
 def feed(notes):
     items = ''
@@ -374,11 +479,15 @@ def feed(notes):
             pub = '<pubDate>%s</pubDate>' % d.strftime('%a, %d %b %Y 08:00:00 +0000')
         items += f'<item><title>{esc(n["title"])}</title><link>{BASE}{n["fn"]}</link><guid>{BASE}{n["fn"]}</guid><category>{esc(n["category"])}</category>{pub}<description>{esc(n["summary"])}</description></item>\n'
     xml = f'''<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>Notes by Alhaji Ibrahim Mehemoh</title><link>{BASE}community.html</link>
+<?xml-stylesheet type="text/xsl" href="feed.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes by Alhaji Ibrahim Mehemoh</title><link>{BASE}community.html</link>
+<atom:link href="{BASE}feed.xml" rel="self" type="application/rss+xml"/>
 <description>Practical posts on health data, IT and cybersecurity.</description><language>en</language>
+<image><url>{BASE}images/apple-touch-icon.png</url><title>Notes by Alhaji Ibrahim Mehemoh</title><link>{BASE}community.html</link></image>
 {items}</channel></rss>
 '''
     open(os.path.join(OUT, 'feed.xml'), 'w', encoding='utf-8').write(xml)
+    open(os.path.join(OUT, 'feed.xsl'), 'w', encoding='utf-8').write(FEED_XSL.replace('{BASE}', BASE))
 
 
 def sitemap(today):
@@ -397,7 +506,7 @@ def pwa(today):
                      {"src": "images/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}]}
     json.dump(man, open(os.path.join(OUT, 'manifest.webmanifest'), 'w'), indent=2)
     core = sorted(set(PAGES + ['offline.html', 'style.css?v=' + CSS_V, 'shared.js?v=' + CSS_V, 'demo.js?v=' + CSS_V, 'manifest.webmanifest',
-                               'images/favicon.svg', 'fonts/zilla-slab-latin-700-normal.woff2', 'fonts/public-sans-latin-400-normal.woff2']))
+                               'images/favicon-32.png', 'fonts/bricolage-grotesque-latin-var.woff2', 'fonts/dm-sans-latin-var.woff2']))
     sw = '''const VERSION = 'v%s-%s';
 const CORE = %s;
 self.addEventListener('install', e => { e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
@@ -424,7 +533,7 @@ KRIO = {
 
 
 def build_all(notes, today):
-    make_downloads()
+    # Downloads are built separately: python3 tools/make_resources.py
     for f in (resources, demo, now, glossary, request, privacy, offline, capability, cv, admin):
         f()
     json.dump(KRIO, open(os.path.join(OUT, 'lang', 'kri.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
