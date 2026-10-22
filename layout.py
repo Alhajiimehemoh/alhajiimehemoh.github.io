@@ -7,7 +7,7 @@ WA = 'https://wa.me/23279301430'
 EMAIL = 'alhajiimehemoh@gmail.com'
 CV = 'Alhaji_Ibrahim_Mehemoh_CV.pdf'
 OUT = os.path.dirname(os.path.abspath(__file__))
-CSS_V = '22'
+CSS_V = '23'
 
 NAV = [('portfolio.html', 'Projects', 'nav.projects'), ('services.html', 'Services', 'nav.services'),
        ('resources.html', 'Resources', 'nav.resources'), ('community.html', 'Notes', 'nav.notes'),

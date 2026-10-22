@@ -183,60 +183,109 @@ page('index.html', 'Alhaji Ibrahim Mehemoh | Health Data and M&E Specialist in B
      index_body, ld=person_ld)
 
 # ------------------------------------------------------------------ ABOUT
+about_story = [
+    ('2015', 'Where I started', 'I trained in computer software, hardware and networking at the Growth Centre Computer Training Institute in Bo. That year I also started my own small data and IT business, which still runs from an office in the Growth Centre compound.'),
+    ('2016', 'Learning by teaching', 'As an ICT tutor and internet cafe attendant I taught Microsoft Office and fixed hardware and network problems every day. Teaching taught me to explain technical things in plain words.'),
+    ('2022', 'Bigger systems', 'As IT and Data Officer for SLPP in Bo District and then Assistant IT Manager at SLIEPA in Freetown, I worked on membership databases, analysis, agency-wide infrastructure, helpdesk support, cybersecurity and staff training.'),
+    ('2024', 'Health data', 'At Rural Health Care Initiative I manage immunisation, home visit and malaria programme data, build the Survey123 forms field teams use, and supervise a contract Data Assistant.'),
+]
+about_timeline = [
+    ('Oct 2024 to present', 'Evaluator and Data Officer', 'Rural Health Care Initiative (RHCI), Tikonko', 'Health data systems, CHW database management, dashboards, mobile data collection and M&amp;E reporting. Reported a 25% accuracy improvement in programme data.', 'now'),
+    ('Sep 2023 to Oct 2024', 'Assistant IT Manager', 'SLIEPA, Freetown', 'Agency-wide IT infrastructure, helpdesk, cybersecurity measures and staff ICT training. Reported 99% system availability.', ''),
+    ('Jan 2022 to Sep 2023', 'IT and Data Officer', 'SLPP, Bo District', 'Centralised membership databases, data analysis and digital campaign management. Reported a 30% increase in online engagement.', ''),
+    ('2017', 'Registrar; Exhibition and Distribution Officer', 'NEC and NCRA', 'Short-term registration, exhibition and distribution roles.', ''),
+    ('2016 to 2021', 'ICT Tutor and Internet Cafe Attendant', 'Growth Centre, Bo', 'Taught Microsoft Office to more than 200 students and handled hardware and network troubleshooting.', ''),
+    ('Sep 2015 to present', 'Independent data and IT consultant', 'Own business, Growth Centre compound, Bo', 'Data, IT support and training for individuals, offices and organisations, alongside my employed roles.', 'side'),
+]
+about_skills = [
+    ('chart', 'Data and M&amp;E', ['Power BI', 'Excel', 'Survey123', 'XLSForm', 'Data cleaning', 'Data quality checks', 'Indicator reporting', 'Logframes']),
+    ('db', 'Systems', ['PostgreSQL', 'Flask', 'Google Apps Script', 'Google Sheets', 'HTML and JavaScript', 'Progressive web apps', 'System design']),
+    ('wifi', 'IT and networks', ['LAN and Wi-Fi', 'Hardware repair', 'Windows', 'Backups', 'Basic security', 'WordPress', 'Helpdesk']),
+    ('teach', 'Training and communication', ['Staff ICT training', 'Data skills training', 'Reports', 'Presentations', 'Documentation', 'English and Krio']),
+]
+about_principles = [
+    ('Solve a real problem', 'Technology should fix something people can name, like late reports or lost files.'),
+    ('Keep it simple', 'The best tool is one the people using it every day can understand.'),
+    ('Support after launch', 'Handover, training and follow-up matter as much as the build.'),
+    ('Protect people', 'Collect only what is needed and keep personal data out of shared files.'),
+]
+story_html = ''.join('<li><span class="st-y">%s</span><h3>%s</h3><p>%s</p></li>' % (y, esc(t), esc(d)) for y, t, d in about_story)
+tl_html = ''.join('<li class="%s"><span class="when">%s</span><div><h3>%s</h3><p class="tl-org">%s</p><p>%s</p></div></li>' % (c, w, r, o, d) for w, r, o, d, c in about_timeline)
+sk_html = ''.join('<div class="sk-card">%s<h3>%s</h3><ul>%s</ul></div>' % (icon(ic), t, ''.join('<li>%s</li>' % esc(x) for x in xs)) for ic, t, xs in about_skills)
+pr_html = ''.join('<li><b>%s</b><span>%s</span></li>' % (esc(a), esc(b)) for a, b in about_principles)
 about_body = f'''<div class="wrap">
-  <div class="page-head"><h1>About me</h1><p class="lede">I started in a computer training centre in Bo and now manage immunisation, home visit and malaria data for a health NGO.</p></div>
+  <header class="about-hero">
+    <div class="ah-text">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open to roles, contracts and consulting</p>
+      <h1>Hi, I am Alhaji.</h1>
+      <p class="lede">I am a Data Officer and MEL specialist in Bo, Sierra Leone. I help health programmes turn field data into decisions, and I keep the technology behind that data working.</p>
+      <ul class="trust"><li>Based in Bo</li><li>In IT since 2015</li><li>Health data since 2024</li><li>English and Krio</li></ul>
+      <div class="actions"><a class="btn btn-primary" href="{CV}" target="_blank" rel="noopener">Download CV (PDF)</a><a class="btn" href="contact.html">Contact me</a>{('<a class="text-link" href="' + esc(C.LINKEDIN) + '" target="_blank" rel="me noopener">LinkedIn</a>') if C.LINKEDIN else ''}</div>
+    </div>
+    <figure class="ah-photo">
+      <picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="640" height="640" alt="Portrait of Alhaji Ibrahim Mehemoh"></picture>
+      <span class="float-badge fb-1" aria-hidden="true"><b>MEL</b> specialist</span>
+      <span class="float-badge fb-2" aria-hidden="true"><b>RHCI</b> Data Officer</span>
+    </figure>
+  </header>
+  <div class="glance about-glance">
+    <div class="gl"><b>2015</b><span>first diploma and my own small business</span></div>
+    <div class="gl"><b>3</b><span>programme data areas at RHCI: EPI, home visits and malaria</span></div>
+    <div class="gl"><b>10</b><span>case studies on this site</span></div>
+    <div class="gl"><b>17</b><span>free resources I made for others</span></div>
+  </div>
 </div>
+
 <section class="section">
-  <div class="wrap about-grid">
-    <div>
-      <picture><source type="image/webp" srcset="images/profile-square.webp"><img class="portrait" src="images/profile.jpeg" width="320" height="320" alt="Portrait of Alhaji Ibrahim Mehemoh"></picture>
-    </div>
-    <div class="prose">
-      <p>I am Alhaji Ibrahim Mehemoh, based in Bo, Sierra Leone. I trained in computer software, hardware and networking, then spent years teaching Microsoft Office and fixing computers before moving into data and IT roles in government, politics and the NGO sector.</p>
-      <p>Since October 2024 I have worked at Rural Health Care Initiative (RHCI) as a Data Officer. I manage programme data for immunisation (EPI), home visits and malaria case management, build the Survey123 forms the field teams use, and supervise a contract Data Assistant. Working in health taught me that a good system is one that field staff actually use and managers actually trust.</p>
-      <p>I am studying Computer Science and I am open to consulting, contracts and full-time roles in M&amp;E, health data and data systems. I work in English and Krio.</p>
-      <div class="actions"><a class="btn btn-primary" href="{CV}" target="_blank" rel="noopener">Download CV (PDF)</a><a class="btn" href="contact.html">Contact me</a></div>
-    </div>
+  <div class="wrap">
+    <div class="section-head"><h2>My story</h2><p>From a computer training centre in Bo to managing health programme data.</p></div>
+    <ol class="story">{story_html}</ol>
+    <aside class="callout c-quote about-quote"><span class="callout-l">What health taught me</span><p>A good system is one that field staff actually use and managers actually trust.</p></aside>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
     <div class="section-head"><h2>Experience</h2></div>
-    <ul class="timeline">
-      <li><span class="when">Oct 2024 to present</span><div><h3>Evaluator and Data Officer, RHCI, Tikonko</h3><p>Health data systems, CHW database management, dashboards, mobile data collection and M&amp;E reporting. Reported a 25% accuracy improvement in programme data.</p></div></li>
-      <li><span class="when">Sep 2023 to Oct 2024</span><div><h3>Assistant IT Manager, SLIEPA, Freetown</h3><p>Agency-wide IT infrastructure, helpdesk, cybersecurity measures and staff ICT training. Reported 99% system availability.</p></div></li>
-      <li><span class="when">Jan 2022 to Sep 2023</span><div><h3>IT and Data Officer, SLPP, Bo District</h3><p>Centralised membership databases, data analysis and digital campaign management. Reported a 30% increase in online engagement.</p></div></li>
-      <li><span class="when">2016 to 2021</span><div><h3>ICT Tutor and Internet Cafe Attendant, Growth Centre, Bo</h3><p>Taught Microsoft Office to more than 200 students and handled hardware and network troubleshooting.</p></div></li>
-    </ul>
+    <ul class="timeline about-tl">{tl_html}</ul>
+    <p class="small muted" style="margin-top:1rem">Percentages are figures reported in those roles.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap cols">
+  <div class="wrap">
+    <div class="section-head"><h2>Skills and tools</h2></div>
+    <div class="sk-grid">{sk_html}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap about-two">
     <div>
-      <h2>Education</h2>
-      <ul class="plain">
-        <li>BSc Computer Science (in progress)</li>
-        <li>Diploma in Networking, Growth Centre Computer Training Institute, 2017 to 2019</li>
-        <li>Diploma in Computer Hardware, Growth Centre Computer Training Institute, 2015 to 2017</li>
-        <li>Diploma in Computer Software, Growth Centre Computer Training Institute, 2015 to 2016</li>
-      </ul>
+      <div class="section-head"><h2>How I work</h2></div>
+      <ul class="principles">{pr_html}</ul>
     </div>
     <div>
-      <h2>Tools and skills</h2>
-      <ul class="plain">
-        <li><strong>Data and M&amp;E:</strong> Power BI, Excel, Survey123 and XLSForm, data cleaning and quality checks, indicator reporting</li>
-        <li><strong>Systems:</strong> PostgreSQL and Flask design, Google Apps Script, HTML tools</li>
-        <li><strong>Platforms compared:</strong> KoboToolbox, CommCare, ODK, DHIS2</li>
-        <li><strong>IT:</strong> networking (LAN and Wi-Fi), hardware, WordPress, backups and basic security</li>
-        <li><strong>Training:</strong> staff ICT and data skills</li>
-      </ul>
+      <div class="section-head"><h2>Education</h2></div>
+      <ol class="jt edu">
+        <li><span class="jt-when">In progress</span><b>BSc Computer Science</b><em>Currently studying, with a focus on maths for data and systems work</em></li>
+        <li><span class="jt-when">2017 to 2019</span><b>Diploma in Networking</b><em>Growth Centre Computer Training Institute, Bo</em></li>
+        <li><span class="jt-when">2015 to 2017</span><b>Diploma in Computer Hardware</b><em>Growth Centre Computer Training Institute, Bo</em></li>
+        <li><span class="jt-when">2015 to 2016</span><b>Diploma in Computer Software</b><em>Growth Centre Computer Training Institute, Bo</em></li>
+        <li><span class="jt-when">2011 to 2015</span><b>WASSCE</b><em>Secondary school</em></li>
+      </ol>
     </div>
   </div>
 </section>
 
 {certs_section()}
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Organisations I have worked with</h2></div>
+    <div class="about-orgs">{partners().replace('<span class="chip">SLPP</span><span class="chip">Growth Centre</span>', '<span class="chip">SLPP</span><span class="chip">NEC</span><span class="chip">NCRA</span><span class="chip">Growth Centre</span>')}</div>
+  </div>
+</section>
 
 <section class="section-tight"><div class="wrap photo-strip">
   <figure class="ps ps-a"><img src="images/work/dashboard-review-800.webp" alt="Alhaji reviewing a dashboard at his desk" loading="lazy"></figure>
@@ -244,6 +293,18 @@ about_body = f'''<div class="wrap">
   <figure class="ps ps-c"><img src="images/work/office-desk-800.webp" alt="Alhaji working at an office computer" loading="lazy"></figure>
   <figure class="ps ps-d">{picture("images/cover.jpeg", "A team meeting in a busy room with laptops, documents and a projector", 1080, 810, "")}</figure>
 </div></section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Beyond work</h2></div>
+    <ul class="beyond">
+      <li>{icon('tool')}<b>Electronics</b><span>Exploring circuits and Arduino projects.</span></li>
+      <li>{icon('teach')}<b>Always learning</b><span>Building my maths for computer science, one evening at a time.</span></li>
+      <li>{icon('web')}<b>Sharing knowledge</b><span>Writing notes and free templates for anyone learning data and IT.</span></li>
+      <li>{icon('chart')}<b>Football</b><span>Following the game.</span></li>
+    </ul>
+  </div>
+</section>
 
 {cta('Want to work together?', 'Send me a short description of the report, form or system you need.')}'''
 page('about.html', 'About | Alhaji Ibrahim Mehemoh',

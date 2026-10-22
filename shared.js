@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   if (still || !('IntersectionObserver' in window)) return;
-  var sel = '.section-head, .pf li, .get-list li, .svc-card, .aud li, .sp-card, .gl, .more-card, .rn, .nfig, .callout, .ntable, .takeaways, .rel-card, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
+  var sel = '.section-head, .story li, .sk-card, .principles li, .beyond li, .pf li, .get-list li, .svc-card, .aud li, .sp-card, .gl, .more-card, .rn, .nfig, .callout, .ntable, .takeaways, .rel-card, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
   var els = document.querySelectorAll(sel);
   if (!els.length) return;
   root.classList.add('reveal-on');
