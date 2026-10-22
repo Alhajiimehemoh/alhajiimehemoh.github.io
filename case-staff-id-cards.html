@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff medical ID card generator | Case study | Alhaji Ibrahim Mehemoh</title>
+  <meta name="description" content="Case study: a single-file HTML app for RHCI that turns a staff and dependants workbook into print-ready 85.6 x 53.98 mm medical ID cards with QR verification and layered security features.">
+  <meta name="theme-color" content="#0F2430">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://alhajiimehemoh.github.io/case-staff-id-cards.html">
+
+  <meta property="og:title" content="Staff medical ID card generator | Case study | Alhaji Ibrahim Mehemoh">
+  <meta property="og:description" content="Case study: a single-file HTML app for RHCI that turns a staff and dependants workbook into print-ready 85.6 x 53.98 mm medical ID cards with QR verification and layered security features.">
+  <meta property="og:url" content="https://alhajiimehemoh.github.io/case-staff-id-cards.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Staff medical ID card generator | Case study | Alhaji Ibrahim Mehemoh">
+  <meta name="twitter:description" content="Case study: a single-file HTML app for RHCI that turns a staff and dependants workbook into print-ready 85.6 x 53.98 mm medical ID cards with QR verification and layered security features.">
+  <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
+
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="images/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
+  <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=20">
+  <script src="shared.js?v=20"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://alhajiimehemoh.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Projects",
+      "item": "https://alhajiimehemoh.github.io/portfolio.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Staff medical ID card generator",
+      "item": "https://alhajiimehemoh.github.io/case-staff-id-cards.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body class="">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""><span>Alhaji Ibrahim Mehemoh</span></a>
+    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" aria-current="page" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
+    <div class="header-tools">
+      
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">&#9790;</button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <div class="wrap"><a href="portfolio.html" aria-current="page" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></div>
+  </nav>
+</header>
+
+<main id="main">
+<article class="case">
+<div class="wrap">
+  <header class="case-hero">
+    <div class="case-hero-text">
+      <p class="crumb"><a href="portfolio.html">Projects</a></p>
+      <div class="case-status"><span class="pill pill-ok">Built</span><span class="case-org">RHCI, Bo District</span></div>
+      <h1>Staff medical ID card generator</h1>
+      <p class="lede">A single-file app that turns a staff and dependants spreadsheet into print-ready medical ID cards, front and back, in one step.</p>
+      <ul class="tool-chips"><li>HTML</li><li>JavaScript</li><li>Excel</li><li>QR codes</li><li>Print design</li></ul>
+      <div class="actions"><a class="btn btn-primary" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20read%20your%20Staff%20medical%20ID%20card%20generator%20case%20study%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">Ask for a walkthrough</a><a class="btn" href="#the-challenge">Read the case study</a></div>
+    </div>
+    <div class="case-art"><svg class="cover-art" viewBox="0 0 400 250" role="img" aria-label="Illustration: a Community Health Worker ID card with a photo placeholder, a QR code and a verified tick"><rect class="a-bg" width="400" height="250" rx="0"/><g class="a-grid"><line x1="25" y1="0" x2="25" y2="250"/><line x1="50" y1="0" x2="50" y2="250"/><line x1="75" y1="0" x2="75" y2="250"/><line x1="100" y1="0" x2="100" y2="250"/><line x1="125" y1="0" x2="125" y2="250"/><line x1="150" y1="0" x2="150" y2="250"/><line x1="175" y1="0" x2="175" y2="250"/><line x1="200" y1="0" x2="200" y2="250"/><line x1="225" y1="0" x2="225" y2="250"/><line x1="250" y1="0" x2="250" y2="250"/><line x1="275" y1="0" x2="275" y2="250"/><line x1="300" y1="0" x2="300" y2="250"/><line x1="325" y1="0" x2="325" y2="250"/><line x1="350" y1="0" x2="350" y2="250"/><line x1="375" y1="0" x2="375" y2="250"/></g><g class="float-c"><rect class="a-card a-back" x="96" y="52" width="232" height="146" rx="16" transform="rotate(-7 212 125)"/></g>
+<g class="float-a">
+  <rect class="a-card" x="76" y="62" width="232" height="146" rx="16"/>
+  <rect class="a-g" x="76" y="62" width="232" height="34" rx="16"/><rect class="a-g" x="76" y="80" width="232" height="16"/>
+  <rect class="a-white" x="92" y="74" width="70" height="9" rx="4.5"/>
+  <rect class="a-gs" x="92" y="110" width="58" height="72" rx="10"/><circle class="a-g" cx="121" cy="136" r="13"/><path class="a-g" d="M100 176c3-13 11-19 21-19s18 6 21 19z"/>
+  <rect class="a-line" x="162" y="114" width="62" height="9" rx="4.5"/><rect class="a-mu" x="162" y="132" width="46" height="7" rx="3.5"/><rect class="a-mu" x="162" y="146" width="56" height="7" rx="3.5"/>
+  <rect class="a-am" x="162" y="166" width="40" height="14" rx="7"/><rect class="a-ink-fill" x="238" y="108" width="6" height="6"/><rect class="a-ink-fill" x="246" y="108" width="6" height="6"/><rect class="a-ink-fill" x="254" y="108" width="6" height="6"/><rect class="a-ink-fill" x="270" y="108" width="6" height="6"/><rect class="a-ink-fill" x="238" y="116" width="6" height="6"/><rect class="a-ink-fill" x="254" y="116" width="6" height="6"/><rect class="a-ink-fill" x="270" y="116" width="6" height="6"/><rect class="a-ink-fill" x="238" y="124" width="6" height="6"/><rect class="a-ink-fill" x="254" y="124" width="6" height="6"/><rect class="a-ink-fill" x="270" y="124" width="6" height="6"/><rect class="a-ink-fill" x="238" y="132" width="6" height="6"/><rect class="a-ink-fill" x="254" y="132" width="6" height="6"/><rect class="a-ink-fill" x="270" y="132" width="6" height="6"/><rect class="a-ink-fill" x="238" y="140" width="6" height="6"/><rect class="a-ink-fill" x="246" y="140" width="6" height="6"/><rect class="a-ink-fill" x="254" y="140" width="6" height="6"/><rect class="a-ink-fill" x="270" y="140" width="6" height="6"/>
+</g>
+<g class="float-b">
+  <circle cx="318" cy="66" r="26" class="a-ok"/><path class="a-check-w" d="M306 66l8 8 16-16"/>
+</g></svg><p class="art-note">Illustration, not real data</p></div>
+  </header>
+  <div class="glance"><div class="gl"><b>1 file</b><span>runs in a browser, no install</span></div><div class="gl"><b>85.6 x 54</b><span>mm card size, front and back</span></div><div class="gl"><b>QR</b><span>verification on every card</span></div><div class="gl"><b>Several</b><span>design versions refined</span></div></div>
+  <div class="case-layout">
+    <aside class="case-side">
+      <div class="case-facts"><p class="cf-l">Project facts</p><dl><div><dt>Organisation</dt><dd>Rural Health Care Initiative (RHCI), Bo District</dd></div><div><dt>My role</dt><dd>Design and build</dd></div><div><dt>Input</dt><dd>Staff and dependants Excel workbook</dd></div><div><dt>Output</dt><dd>Print-ready front and back cards</dd></div></dl><p class="cf-l">Status</p><ol class="stepper" aria-label="Project status: Built"><li class="done"><span></span>Designed</li><li class="done"><span></span>In development</li><li class="done"><span></span>Built</li></ol></div>
+      <nav class="note-toc"><p>On this page</p><ol><li><a href="#the-challenge">The challenge</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#security-layers">Security layers</a></li><li><a href="#refined-through-versions">Refined through versions</a></li><li><a href="#why-a-single-file">Why a single file</a></li></ol></nav>
+    </aside>
+    <div class="case-main">
+      
+      <div class="note-body case-body"><h2 id="the-challenge">The challenge</h2>
+<p>Staff and their dependants needed medical ID cards. Designing each card by hand is slow and error-prone, and simple cards are easy to copy. The cards needed to be consistent, quick to produce and harder to fake.</p>
+<h2 id="how-it-works">How it works</h2>
+<figure class="nfig nfig-flow"><ol class="flow"><li style="--i:0"><span class="flow-n">1</span>Upload staff and dependants workbook</li><li style="--i:1"><span class="flow-n">2</span>App reads each person</li><li style="--i:2"><span class="flow-n">3</span>Front and back cards generated</li><li style="--i:3"><span class="flow-n">4</span>Print sheet at card size</li><li style="--i:4"><span class="flow-n">5</span>QR verification on each card</li></ol><figcaption>Everything runs in the browser from one HTML file.</figcaption></figure>
+<ul class="bullets"><li>Upload the staff and dependants workbook</li><li>The app builds a front and back card for each person</li><li>Cards print at the standard 85.6 by 53.98 mm size</li><li>Each card carries a QR code for verification</li></ul>
+<h2 id="security-layers">Security layers</h2>
+<p>Cards are harder to copy when several small features are layered together:</p>
+<ul class="bullets"><li>Guilloche patterns, the fine looping lines used on certificates and banknotes</li><li>Microtext that looks like a line until you look closely</li><li>Faded &quot;ghost&quot; portraits alongside the main photo</li><li>Previews of where UV and holographic features would sit</li></ul>
+<aside class="callout c-warn"><span class="callout-l">Watch out</span><p>True UV ink, holographic laminate and embossing need secure-card printing hardware. The app prepares the positions and previews; the physical features depend on the printer. Live QR checks depend on deploying a verification page.</p></aside>
+<h2 id="refined-through-versions">Refined through versions</h2>
+<p>The design went through several versions, including a version focused on faded portraits and a later design refinement. Each round made the cards clearer to read and harder to reproduce.</p>
+<h2 id="why-a-single-file">Why a single file</h2>
+<p>A single HTML file runs on any computer with a browser, needs no installation and keeps the data on that computer. For a small team, that is often more practical than a hosted system.</p></div>
+    </div>
+  </div>
+  
+  
+  <section class="case-more"><h2>Read more on this topic</h2><div class="rn-grid"><a class="rn" href="note-qr-code-registration.html"><span class="rn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: an ID card with a QR code being scanned by a phone"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-card" x="80" y="50" width="200" height="130" rx="14"/><rect class="a-g" x="80" y="50" width="200" height="28" rx="14"/><rect class="a-g" x="80" y="64" width="200" height="14"/><rect class="a-ink-fill" x="110" y="92" width="9" height="9"/><rect class="a-ink-fill" x="121" y="92" width="9" height="9"/><rect class="a-ink-fill" x="132" y="92" width="9" height="9"/><rect class="a-ink-fill" x="154" y="92" width="9" height="9"/><rect class="a-ink-fill" x="165" y="92" width="9" height="9"/><rect class="a-ink-fill" x="110" y="103" width="9" height="9"/><rect class="a-ink-fill" x="132" y="103" width="9" height="9"/><rect class="a-ink-fill" x="165" y="103" width="9" height="9"/><rect class="a-ink-fill" x="121" y="114" width="9" height="9"/><rect class="a-ink-fill" x="143" y="114" width="9" height="9"/><rect class="a-ink-fill" x="165" y="114" width="9" height="9"/><rect class="a-ink-fill" x="110" y="125" width="9" height="9"/><rect class="a-ink-fill" x="143" y="125" width="9" height="9"/><rect class="a-ink-fill" x="154" y="125" width="9" height="9"/><rect class="a-ink-fill" x="110" y="136" width="9" height="9"/><rect class="a-ink-fill" x="132" y="136" width="9" height="9"/><rect class="a-ink-fill" x="165" y="136" width="9" height="9"/><rect class="a-ink-fill" x="110" y="147" width="9" height="9"/><rect class="a-ink-fill" x="121" y="147" width="9" height="9"/><rect class="a-ink-fill" x="143" y="147" width="9" height="9"/><rect class="a-ink-fill" x="165" y="147" width="9" height="9"/><rect class="a-line" x="196" y="98" width="64" height="8" rx="4"/><rect class="a-mu" x="196" y="114" width="44" height="6" rx="3"/><rect class="a-mu" x="196" y="128" width="54" height="6" rx="3"/></g><g class="float-b"><rect class="a-phone" x="310" y="40" width="96" height="164" rx="18"/><rect class="a-card" x="316" y="52" width="84" height="140" rx="10"/><rect x="330" y="80" width="56" height="56" rx="6" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-dasharray="10 8"/><line class="a-scan" x1="332" y1="108" x2="384" y2="108"/><rect class="a-g" x="328" y="152" width="60" height="7" rx="3"/></g></svg></span><b>When QR codes help in registration and tracking systems</b></a></div></section>
+  
+  <nav class="note-pn" aria-label="More case studies">
+    <a class="pn-card" href="case-chw-card-studio.html"><span class="pn-l">Previous case study</span><span class="pn-art"><img class="proj-shot" src="images/cases/case-chw-card-studio/01-card-and-qr-verification-800.webp" alt="" loading="lazy"></span><b>CHW Card Studio</b></a>
+    <a class="pn-card" href="case-dms.html"><span class="pn-l">Next case study</span><span class="pn-art"><img class="proj-shot" src="images/cases/case-dms/01-patient-registration-workspace-800.webp" alt="" loading="lazy"></span><b>Data Management System</b></a>
+  </nav>
+</div>
+</article>
+<section class="cta-band section">
+  <div class="wrap">
+    <h2>Need a dashboard, a data collection form or IT support?</h2>
+    <p>Tell me what you need to report on and who will read it. I will reply with a plan and a quote.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn" href="request.html">Request a quote</a>
+      <a class="btn" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20book%20a%2020-minute%20call.%20What%20times%20suit%20you%20this%20week%3F" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="tt-track" cx="24" cy="24" r="21"/><circle class="tt-ring" id="toTopRing" cx="24" cy="24" r="21" pathLength="100"/><path class="tt-arrow" d="M24 31V17M17.5 23.5 24 17l6.5 6.5"/></svg></button>
+<a class="whatsapp-fab" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20read%20your%20Staff%20medical%20ID%20card%20generator%20case%20study%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Alhaji Ibrahim Mehemoh</h2>
+        <p class="muted">Data Officer and M&amp;E specialist. Bo, Sierra Leone.</p>
+        <ul class="social"><li><a href="https://www.linkedin.com/in/alhajiimehemoh/" target="_blank" rel="me noopener">LinkedIn</a></li></ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></li>
+          <li><a href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
+          <li><a href="request.html">Request a quote</a></li>
+          <li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="portfolio.html">Projects</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="resources.html">Free resources</a></li>
+          <li><a href="demo.html">Sample dashboard</a></li>
+          <li><a href="community.html">Notes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="now.html">What I am doing now</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="capability-statement.html">Capability statement</a></li>
+          <li><a href="cv.html">Web CV</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-logo"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
+    <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
+  </div>
+</footer>
+</body>
+</html>

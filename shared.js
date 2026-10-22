@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   if (still || !('IntersectionObserver' in window)) return;
-  var sel = '.section-head, .nfig, .callout, .ntable, .takeaways, .rel-card, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
+  var sel = '.section-head, .gl, .more-card, .rn, .nfig, .callout, .ntable, .takeaways, .rel-card, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
   var els = document.querySelectorAll(sel);
   if (!els.length) return;
   root.classList.add('reveal-on');
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* Spotlight that follows the pointer on cards */
   document.addEventListener('pointermove', function (e) {
-    var c = e.target.closest && e.target.closest('.tile, .quote, .package, .steps li, a.reg-row, .proj-card');
+    var c = e.target.closest && e.target.closest('.tile, .quote, .package, .steps li, a.reg-row, .proj-card, .more-card');
     if (!c) return;
     var r = c.getBoundingClientRect();
     c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -380,5 +380,5 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
-  document.querySelectorAll('.note-body h2[id]').forEach(function (h) { io.observe(h); });
+  document.querySelectorAll('.note-body h2[id], .case-body h2[id]').forEach(function (h) { io.observe(h); });
 });

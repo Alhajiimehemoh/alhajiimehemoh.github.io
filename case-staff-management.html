@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff management system | Case study | Alhaji Ibrahim Mehemoh</title>
+  <meta name="description" content="Case study: an RHCI staff and employment records system with roles and permissions, approval routes, duplicate checking, audit trails, Excel import and export, offline queue and PostgreSQL sync.">
+  <meta name="theme-color" content="#0F2430">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://alhajiimehemoh.github.io/case-staff-management.html">
+
+  <meta property="og:title" content="Staff management system | Case study | Alhaji Ibrahim Mehemoh">
+  <meta property="og:description" content="Case study: an RHCI staff and employment records system with roles and permissions, approval routes, duplicate checking, audit trails, Excel import and export, offline queue and PostgreSQL sync.">
+  <meta property="og:url" content="https://alhajiimehemoh.github.io/case-staff-management.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Staff management system | Case study | Alhaji Ibrahim Mehemoh">
+  <meta name="twitter:description" content="Case study: an RHCI staff and employment records system with roles and permissions, approval routes, duplicate checking, audit trails, Excel import and export, offline queue and PostgreSQL sync.">
+  <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
+
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="images/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
+  <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=20">
+  <script src="shared.js?v=20"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://alhajiimehemoh.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Projects",
+      "item": "https://alhajiimehemoh.github.io/portfolio.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Staff management system",
+      "item": "https://alhajiimehemoh.github.io/case-staff-management.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body class="">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="index.html"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""><span>Alhaji Ibrahim Mehemoh</span></a>
+    <nav class="nav-links" aria-label="Main"><a href="portfolio.html" aria-current="page" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></nav>
+    <div class="header-tools">
+      
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme">&#9790;</button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <div class="wrap"><a href="portfolio.html" aria-current="page" data-i18n="nav.projects">Projects</a><a href="services.html" data-i18n="nav.services">Services</a><a href="resources.html" data-i18n="nav.resources">Resources</a><a href="community.html" data-i18n="nav.notes">Notes</a><a href="about.html" data-i18n="nav.about">About</a><a href="hire.html" data-i18n="nav.hire">Hire me</a><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Contact</a></div>
+  </nav>
+</header>
+
+<main id="main">
+<article class="case">
+<div class="wrap">
+  <header class="case-hero">
+    <div class="case-hero-text">
+      <p class="crumb"><a href="portfolio.html">Projects</a></p>
+      <div class="case-status"><span class="pill pill-ok">Completed</span><span class="case-org">RHCI, Bo District</span></div>
+      <h1>Staff management system</h1>
+      <p class="lede">A staff records system planned decision by decision, then built with roles, approvals, audit trails and offline sync.</p>
+      <ul class="tool-chips"><li>System design</li><li>PostgreSQL</li><li>Web app</li><li>Offline sync</li><li>Excel import</li></ul>
+      <div class="actions"><a class="btn btn-primary" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20read%20your%20Staff%20management%20system%20case%20study%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">Ask for a walkthrough</a><a class="btn" href="#the-challenge">Read the case study</a></div>
+    </div>
+    <div class="case-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: community health workers syncing reports from phones"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><circle cx="90" cy="90" r="22" class="a-gs-fill"/><circle cx="90" cy="84" r="9" class="a-g"/><path class="a-g" d="M76 104c3-10 9-14 14-14s11 4 14 14z"/><rect class="a-phone" x="70" y="128" width="40" height="64" rx="8"/><rect class="a-card" x="74" y="134" width="32" height="50" rx="4"/><rect class="a-g" x="78" y="142" width="22" height="5" rx="2"/><rect class="a-mu" x="78" y="154" width="18" height="5" rx="2"/></g><g class="float-b"><circle cx="200" cy="90" r="22" class="a-gs-fill"/><circle cx="200" cy="84" r="9" class="a-g"/><path class="a-g" d="M186 104c3-10 9-14 14-14s11 4 14 14z"/><rect class="a-phone" x="180" y="128" width="40" height="64" rx="8"/><rect class="a-card" x="184" y="134" width="32" height="50" rx="4"/><rect class="a-g" x="188" y="142" width="22" height="5" rx="2"/><rect class="a-mu" x="188" y="154" width="18" height="5" rx="2"/></g><path class="a-link" d="M200 128 Q260 40 410 60"/><g class="float-c"><circle cx="310" cy="90" r="22" class="a-gs-fill"/><circle cx="310" cy="84" r="9" class="a-g"/><path class="a-g" d="M296 104c3-10 9-14 14-14s11 4 14 14z"/><rect class="a-phone" x="290" y="128" width="40" height="64" rx="8"/><rect class="a-card" x="294" y="134" width="32" height="50" rx="4"/><rect class="a-g" x="298" y="142" width="22" height="5" rx="2"/><rect class="a-mu" x="298" y="154" width="18" height="5" rx="2"/></g><g class="float-b"><circle cx="420" cy="60" r="26" class="a-ok"/><path class="a-check-w" d="M408 60l8 8 16-16"/></g></svg><p class="art-note">Illustration, not real data</p></div>
+  </header>
+  <div class="glance"><div class="gl"><b>4</b><span>record modules</span></div><div class="gl"><b>Roles</b><span>permissions and approval routes</span></div><div class="gl"><b>Audit</b><span>every change recorded</span></div><div class="gl"><b>Offline</b><span>local queue, then sync</span></div></div>
+  <div class="case-layout">
+    <aside class="case-side">
+      <div class="case-facts"><p class="cf-l">Project facts</p><dl><div><dt>Organisation</dt><dd>Rural Health Care Initiative (RHCI), Bo District</dd></div><div><dt>My role</dt><dd>Planning, system design and build</dd></div><div><dt>Status</dt><dd>Completed</dd></div><div><dt>Stack</dt><dd>Cloud PostgreSQL with a synchronised web app</dd></div></dl><p class="cf-l">Status</p><ol class="stepper" aria-label="Project status: Completed"><li class="done"><span></span>Designed</li><li class="done"><span></span>In development</li><li class="done"><span></span>Completed</li></ol></div>
+      <nav class="note-toc"><p>On this page</p><ol><li><a href="#the-challenge">The challenge</a></li><li><a href="#what-the-system-covers">What the system covers</a></li><li><a href="#how-a-change-moves-through-the-system">How a change moves through the system</a></li><li><a href="#planned-before-it-was-built">Planned before it was built</a></li><li><a href="#why-offline-matters">Why offline matters</a></li></ol></nav>
+    </aside>
+    <div class="case-main">
+      
+      <div class="note-body case-body"><h2 id="the-challenge">The challenge</h2>
+<p>Staff and employment records are sensitive, change often and are touched by several people: HR, finance, managers and the owner of the organisation. Spreadsheets make it hard to control who changes what, to avoid duplicate records or to know what a record looked like last month.</p>
+<h2 id="what-the-system-covers">What the system covers</h2>
+<ul class="bullets"><li>Owner-level access with oversight of everything</li><li>Four record modules for staff and employment information</li><li>Roles and permissions, so each person sees only what they need</li><li>Approval routes for changes that need sign-off</li><li>Duplicate checking before a new record is saved</li><li>Audit trails showing who changed what and when</li><li>Excel import and export, so existing records can move in and reports can move out</li><li>An offline local queue that syncs to a cloud PostgreSQL database and web app</li></ul>
+<h2 id="how-a-change-moves-through-the-system">How a change moves through the system</h2>
+<figure class="nfig nfig-flow"><ol class="flow"><li style="--i:0"><span class="flow-n">1</span>Staff member edits a record</li><li style="--i:1"><span class="flow-n">2</span>Duplicate and rule checks</li><li style="--i:2"><span class="flow-n">3</span>Approval route if needed</li><li style="--i:3"><span class="flow-n">4</span>Saved with audit entry</li><li style="--i:4"><span class="flow-n">5</span>Synced to the cloud database</li></ol><figcaption>Nothing important changes without a check and a record.</figcaption></figure>
+<h2 id="planned-before-it-was-built">Planned before it was built</h2>
+<p>The work started as a decision-by-decision planning workspace: each question about modules, roles, approvals and sync was answered and recorded before development, so the build followed a clear plan.</p>
+<aside class="callout c-tip"><span class="callout-l">Tip</span><p>Writing down who can approve what is often harder than writing the code. Doing it first avoids rebuilding screens later.</p></aside>
+<h2 id="why-offline-matters">Why offline matters</h2>
+<p>Power and internet are not always reliable. A local queue lets staff keep working and sync later, instead of losing changes or waiting for the connection to return.</p></div>
+    </div>
+  </div>
+  
+  
+  <section class="case-more"><h2>Read more on this topic</h2><div class="rn-grid"><a class="rn" href="note-excel-to-database.html"><span class="rn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a spreadsheet moving into a database"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-b"><rect class="a-card" x="40" y="60" width="130" height="120" rx="10"/><rect class="a-g" x="40" y="60" width="130" height="18" rx="10"/><rect class="a-mu" x="52" y="90" width="100" height="6" rx="3"/><rect class="a-mu" x="52" y="106" width="80" height="6" rx="3"/><rect class="a-mu" x="52" y="122" width="100" height="6" rx="3"/><rect class="a-mu" x="52" y="138" width="80" height="6" rx="3"/><rect class="a-mu" x="52" y="154" width="100" height="6" rx="3"/></g><path class="a-link" d="M180 120 H290"/><path d="M282 112l10 8-10 8" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><g class="float-a"><ellipse class="a-db" cx="370" cy="62" rx="62" ry="18"/><path class="a-db" d="M308 62v116c0 10 28 18 62 18s62-8 62-18V62"/><path class="a-db-line" d="M308 100c0 10 28 18 62 18s62-8 62-18M308 140c0 10 28 18 62 18s62-8 62-18"/></g></svg></span><b>When to move from Excel to a database</b></a><a class="rn" href="note-ict-needs-assessment.html"><span class="rn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a priority matrix of impact against cost"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-card" x="110" y="20" width="260" height="200" rx="12"/><line x1="240" y1="34" x2="240" y2="206" stroke="var(--rule)" stroke-width="2"/><line x1="124" y1="120" x2="356" y2="120" stroke="var(--rule)" stroke-width="2"/><rect class="a-gs" x="128" y="38" width="104" height="74" rx="8"/><rect x="248" y="38" width="104" height="74" rx="8" fill="var(--amber-soft,#FBEBC8)"/><circle cx="160" cy="66" r="11" class="a-g"/><circle cx="196" cy="84" r="11" class="a-g"/><circle cx="290" cy="70" r="11" class="a-am-fill"/><circle cx="170" cy="160" r="11" class="a-mu"/><circle cx="300" cy="170" r="11" class="a-mu"/></g></svg></span><b>How to run a quick ICT needs assessment</b></a></div></section>
+  <section class="note-rel case-res"><h2>Free tools from this work</h2><div class="rel-grid"><a class="rel-card" href="downloads/data-cleaning-log.xlsx" download><img src="images/resources/data-cleaning-log.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-xls">Excel</span><b>Data cleaning log</b><em>18 KB</em></span></a><a class="rel-card" href="downloads/new-staff-it-setup.pdf" download><img src="images/resources/new-staff-it-setup.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-pdf">PDF</span><b>New staff IT setup checklist</b><em>29 KB</em></span></a></div></section>
+  <nav class="note-pn" aria-label="More case studies">
+    <a class="pn-card" href="case-campaign-inventory.html"><span class="pn-l">Previous case study</span><span class="pn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: stacked stock boxes beside a count sheet"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect x="60" y="130" width="90" height="70" rx="6" fill="#D9B98A" stroke="#B8935C" stroke-width="2"/><rect x="94" y="130" width="22" height="23" fill="#C9A46E"/><rect x="150" y="130" width="90" height="70" rx="6" fill="#D9B98A" stroke="#B8935C" stroke-width="2"/><rect x="184" y="130" width="22" height="23" fill="#C9A46E"/><rect x="100" y="64" width="90" height="66" rx="6" fill="#D9B98A" stroke="#B8935C" stroke-width="2"/><rect x="134" y="64" width="22" height="22" fill="#C9A46E"/></g><g class="float-b"><rect class="a-card" x="290" y="34" width="150" height="176" rx="14"/><rect class="a-mu" x="306" y="56" width="60" height="7" rx="3"/><rect class="a-line" x="380" y="56" width="24" height="7" rx="3"/><circle cx="420" cy="59" r="5" class="a-g"/><rect class="a-mu" x="306" y="80" width="60" height="7" rx="3"/><rect class="a-line" x="380" y="80" width="24" height="7" rx="3"/><circle cx="420" cy="83" r="5" class="a-g"/><rect class="a-mu" x="306" y="104" width="60" height="7" rx="3"/><rect class="a-line" x="380" y="104" width="24" height="7" rx="3"/><circle cx="420" cy="107" r="5" class="a-g"/><rect class="a-mu" x="306" y="128" width="60" height="7" rx="3"/><rect class="a-line" x="380" y="128" width="24" height="7" rx="3"/><circle cx="420" cy="131" r="5" class="a-am-fill"/><rect class="a-mu" x="306" y="152" width="60" height="7" rx="3"/><rect class="a-line" x="380" y="152" width="24" height="7" rx="3"/><circle cx="420" cy="155" r="5" class="a-g"/><rect class="a-mu" x="306" y="176" width="60" height="7" rx="3"/><rect class="a-line" x="380" y="176" width="24" height="7" rx="3"/><circle cx="420" cy="179" r="5" class="a-g"/></g></svg></span><b>Campaign inventory tracker</b></a>
+    <a class="pn-card" href="case-encms.html"><span class="pn-l">Next case study</span><span class="pn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a simple website open on a laptop and a phone"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-card" x="50" y="30" width="300" height="180" rx="12"/><rect class="a-gs" x="50" y="30" width="300" height="24" rx="12"/><rect class="a-gs" x="50" y="44" width="300" height="10"/><circle cx="66" cy="42" r="4" class="a-mu"/><circle cx="80" cy="42" r="4" class="a-mu"/><circle cx="94" cy="42" r="4" class="a-mu"/><rect class="a-line" x="70" y="72" width="140" height="14" rx="7"/><rect class="a-mu" x="70" y="94" width="190" height="7" rx="3"/><rect class="a-mu" x="70" y="108" width="160" height="7" rx="3"/><rect class="a-g" x="70" y="126" width="80" height="22" rx="11"/><rect x="230" y="120" width="100" height="72" rx="8" class="a-gs-fill"/></g><g class="float-b"><rect class="a-phone" x="370" y="70" width="70" height="130" rx="14"/><rect class="a-card" x="375" y="80" width="60" height="110" rx="8"/><rect class="a-line" x="383" y="94" width="40" height="8" rx="4"/><rect class="a-mu" x="383" y="110" width="44" height="5" rx="2"/><rect class="a-g" x="383" y="166" width="44" height="14" rx="7"/></g></svg></span><b>College management system (ENCMS)</b></a>
+  </nav>
+</div>
+</article>
+<section class="cta-band section">
+  <div class="wrap">
+    <h2>Need a dashboard, a data collection form or IT support?</h2>
+    <p>Tell me what you need to report on and who will read it. I will reply with a plan and a quote.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn" href="request.html">Request a quote</a>
+      <a class="btn" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20book%20a%2020-minute%20call.%20What%20times%20suit%20you%20this%20week%3F" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="tt-track" cx="24" cy="24" r="21"/><circle class="tt-ring" id="toTopRing" cx="24" cy="24" r="21" pathLength="100"/><path class="tt-arrow" d="M24 31V17M17.5 23.5 24 17l6.5 6.5"/></svg></button>
+<a class="whatsapp-fab" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20read%20your%20Staff%20management%20system%20case%20study%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">WhatsApp</a>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h2>Alhaji Ibrahim Mehemoh</h2>
+        <p class="muted">Data Officer and M&amp;E specialist. Bo, Sierra Leone.</p>
+        <ul class="social"><li><a href="https://www.linkedin.com/in/alhajiimehemoh/" target="_blank" rel="me noopener">LinkedIn</a></li></ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a></li>
+          <li><a href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
+          <li><a href="request.html">Request a quote</a></li>
+          <li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="portfolio.html">Projects</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="resources.html">Free resources</a></li>
+          <li><a href="demo.html">Sample dashboard</a></li>
+          <li><a href="community.html">Notes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>More</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="now.html">What I am doing now</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="capability-statement.html">Capability statement</a></li>
+          <li><a href="cv.html">Web CV</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-logo"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
+    <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
+  </div>
+</footer>
+</body>
+</html>
