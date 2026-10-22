@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   if (still || !('IntersectionObserver' in window)) return;
-  var sel = '.section-head, .mini-dash, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
+  var sel = '.section-head, .mini-dash, .proj-card, .note-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
   var els = document.querySelectorAll(sel);
   if (!els.length) return;
   root.classList.add('reveal-on');
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* Spotlight that follows the pointer on cards */
   document.addEventListener('pointermove', function (e) {
-    var c = e.target.closest && e.target.closest('.tile, .quote, .package, .steps li, a.reg-row');
+    var c = e.target.closest && e.target.closest('.tile, .quote, .package, .steps li, a.reg-row, .proj-card');
     if (!c) return;
     var r = c.getBoundingClientRect();
     c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -346,4 +346,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     b.addEventListener('pointerleave', function () { b.style.setProperty('--tx', '0px'); b.style.setProperty('--ty', '0px'); });
   });
+});
+
+/* v15: sliding pill under the main navigation */
+document.addEventListener('DOMContentLoaded', function () {
+  var nav = document.querySelector('.nav-links');
+  if (!nav || !window.matchMedia('(hover: hover)').matches) return;
+  var pill = document.createElement('span'); pill.className = 'nav-pill'; pill.setAttribute('aria-hidden', 'true');
+  nav.appendChild(pill); nav.classList.add('has-pill');
+  var cur = nav.querySelector('a[aria-current=page]:not(.nav-cta)');
+  var place = function (a, show) {
+    if (!a) { pill.style.opacity = '0'; return; }
+    pill.style.setProperty('--nx', a.offsetLeft + 'px'); pill.style.setProperty('--nw', a.offsetWidth + 'px');
+    pill.style.opacity = show ? '1' : '0';
+  };
+  place(cur, !!cur);
+  nav.querySelectorAll('a:not(.nav-cta)').forEach(function (a) { a.addEventListener('mouseenter', function () { place(a, true); }); });
+  nav.addEventListener('mouseleave', function () { place(cur, !!cur); });
+  addEventListener('resize', function () { place(cur, !!cur); });
 });
