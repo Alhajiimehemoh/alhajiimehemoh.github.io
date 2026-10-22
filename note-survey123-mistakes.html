@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Survey123 form mistakes to avoid | Alhaji Ibrahim Mehemoh</title>
-  <meta name="description" content="Common problems that make field data messy, and the simple form design choices that prevent them.">
+  <meta name="description" content="Seven form design mistakes that make field data messy, why they happen and the exact XLSForm settings that prevent them.">
   <meta name="theme-color" content="#0F2430">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://alhajiimehemoh.github.io/note-survey123-mistakes.html">
 
   <meta property="og:title" content="Survey123 form mistakes to avoid | Alhaji Ibrahim Mehemoh">
-  <meta property="og:description" content="Common problems that make field data messy, and the simple form design choices that prevent them.">
+  <meta property="og:description" content="Seven form design mistakes that make field data messy, why they happen and the exact XLSForm settings that prevent them.">
   <meta property="og:url" content="https://alhajiimehemoh.github.io/note-survey123-mistakes.html">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
@@ -18,7 +18,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Survey123 form mistakes to avoid | Alhaji Ibrahim Mehemoh">
-  <meta name="twitter:description" content="Common problems that make field data messy, and the simple form design choices that prevent them.">
+  <meta name="twitter:description" content="Seven form design mistakes that make field data messy, why they happen and the exact XLSForm settings that prevent them.">
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
@@ -27,14 +27,14 @@
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
   <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=17">
-  <script src="shared.js?v=17"></script>
+  <link rel="stylesheet" href="style.css?v=18">
+  <script src="shared.js?v=18"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Survey123 form mistakes to avoid",
-  "description": "Common problems that make field data messy, and the simple form design choices that prevent them.",
+  "description": "Seven form design mistakes that make field data messy, why they happen and the exact XLSForm settings that prevent them.",
   "author": {
     "@type": "Person",
     "name": "Alhaji Ibrahim Mehemoh",
@@ -43,7 +43,8 @@
   "mainEntityOfPage": "https://alhajiimehemoh.github.io/note-survey123-mistakes.html",
   "image": "https://alhajiimehemoh.github.io/images/og-image.jpg",
   "articleSection": "Data collection",
-  "datePublished": "2026-10-21"
+  "datePublished": "2026-10-21",
+  "dateModified": "2026-10-22"
 }
   </script>
   <script type="application/ld+json">
@@ -93,28 +94,68 @@
 </header>
 
 <main id="main">
+<article class="note">
 <div class="wrap">
-  <div class="page-head"><p class="crumb"><a href="community.html">Notes</a></p><h1>Survey123 form mistakes to avoid</h1><p class="lede">Common problems that make field data messy, and the simple form design choices that prevent them.</p>
-  <p class="small muted"><time datetime="2026-10-21">21 October 2026</time> &middot; Data collection &middot; 1 min read</p></div>
-  <section class="section"><div class="note-body"><p>Most data quality problems start in the form, not in the spreadsheet. Fixing the form is cheaper than cleaning the data every month.</p>
-<h2>Free-text where a list would do</h2>
-<p>If facility names are typed, you will get five spellings of the same clinic. Use a choice list so every record uses the same name.</p>
-<h2>No limits on numbers</h2>
-<p>A field for children vaccinated should not accept 5,000. Add a constraint with a clear message so the mistake is caught on the phone, while the health worker is still at the facility.</p>
-<h2>Too many questions</h2>
-<p>Every extra question lowers the chance that the form is filled in properly. Ask only what you will use in a report. If nobody will read an answer, remove the question.</p>
-<h2>Asking for names you do not need</h2>
-<p>Collect the least personal information possible. Patient names and phone numbers create risk and are often not needed for programme reporting.</p>
-<h2>Skipping skip logic</h2>
-<p>If a follow-up question only applies when the answer is yes, show it only then. This keeps the form short and avoids contradictory answers.</p>
-<h2>Not testing in the field</h2>
-<p>A form that looks fine on a laptop can be slow or confusing on a basic phone with weak signal. Test with two or three real users before you roll out.</p>
-<h2>Changing the form without a plan</h2>
-<p>Renaming a field mid-programme can break your dashboard. Version your form, write down changes and update the report at the same time.</p>
-<p>There is a sample XLSForm with validation rules on the <a href="resources.html">resources page</a> if you want a starting point.</p>
-  <div class="share"><span class="muted small">Share:</span><a class="btn" href="https://wa.me/23279301430?text=Survey123%20form%20mistakes%20to%20avoid%20https%3A//alhajiimehemoh.github.io/note-survey123-mistakes.html" target="_blank" rel="noopener">WhatsApp</a><button class="btn" type="button" data-copy="https://alhajiimehemoh.github.io/note-survey123-mistakes.html">Copy link</button></div>
-  <div class="note-nav"><a href="community.html">All notes</a><a href="note-dashboards-people-use.html">Next: Why dashboards fail and how to design one people use</a></div></div></section>
+  <header class="note-hero">
+    <div class="note-hero-text">
+      <p class="crumb"><a href="community.html">Notes</a></p>
+      <p class="note-cat">Data collection</p>
+      <h1>Survey123 form mistakes to avoid</h1>
+      <p class="lede">Seven form design mistakes that make field data messy, why they happen and the exact XLSForm settings that prevent them.</p>
+      <div class="note-meta"><picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="44" height="44" alt=""></picture>
+        <div><b>Alhaji Ibrahim Mehemoh</b><p><span>Published <time datetime="2026-10-21">21 October 2026</time></span><span>Updated <time datetime="2026-10-22">22 October 2026</time></span><span>3 min read</span></p></div></div>
+    </div>
+    <div class="note-hero-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a phone form showing a validation message"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-phone" x="180" y="18" width="124" height="210" rx="22"/><rect class="a-card" x="188" y="32" width="108" height="184" rx="12"/><rect class="a-g" x="198" y="44" width="54" height="8" rx="4"/><rect class="a-line" x="198" y="64" width="40" height="8" rx="4"/><rect class="a-field" x="198" y="76" width="88" height="18" rx="5"/><rect class="a-line" x="198" y="104" width="50" height="8" rx="4"/><rect x="198" y="116" width="88" height="18" rx="5" fill="none" stroke="#B42318" stroke-width="2"/><rect x="198" y="140" width="88" height="20" rx="5" fill="#FDE2E1"/><rect x="204" y="147" width="60" height="6" rx="3" fill="#B42318"/><rect class="a-g" x="198" y="188" width="88" height="18" rx="9"/></g><g class="float-b"><rect class="a-card" x="330" y="60" width="110" height="60" rx="14"/><rect class="a-line" x="344" y="74" width="56" height="8" rx="4"/><text class="a-code" x="344" y="104">. &lt;= 500</text></g><g class="float-c"><rect class="a-card" x="40" y="120" width="110" height="70" rx="14"/><circle class="a-gs-fill" cx="64" cy="155" r="14"/><path class="a-check" d="M57 155l5 5 9-9"/><rect class="a-line" x="86" y="146" width="50" height="8" rx="4"/><rect class="a-mu" x="86" y="160" width="36" height="6" rx="3"/></g></svg></div>
+  </header>
+  <div class="note-layout">
+    <aside class="note-side" aria-label="On this page">
+      <nav class="note-toc"><p>On this page</p><ol><li><a href="#1-free-text-where-a-list-would-do">1. Free text where a list would do</a></li><li><a href="#2-no-limits-on-numbers">2. No limits on numbers</a></li><li><a href="#3-too-many-questions">3. Too many questions</a></li><li><a href="#4-asking-for-personal-details-you-do-not-need">4. Asking for personal details you do not need</a></li><li><a href="#5-skipping-skip-logic">5. Skipping skip logic</a></li><li><a href="#6-not-testing-in-the-field">6. Not testing in the field</a></li><li><a href="#7-changing-the-form-without-a-plan">7. Changing the form without a plan</a></li><li><a href="#a-quick-pre-launch-check">A quick pre-launch check</a></li></ol></nav>
+      <div class="note-share"><p>Share</p><a class="btn" href="https://wa.me/23279301430?text=Survey123%20form%20mistakes%20to%20avoid%20https%3A//alhajiimehemoh.github.io/note-survey123-mistakes.html" target="_blank" rel="noopener">WhatsApp</a><button class="btn" type="button" data-copy="https://alhajiimehemoh.github.io/note-survey123-mistakes.html">Copy link</button></div>
+    </aside>
+    <div class="note-main">
+      <div class="takeaways"><p class="tk-l">In short</p><ul><li>Most data quality problems start in the form, not in the spreadsheet.</li><li>Use choice lists and constraints so mistakes are caught on the phone, while the health worker can still fix them.</li><li>Test on a basic phone, offline, with real users before rolling out.</li></ul></div>
+      <div class="note-body"><p>Most data quality problems start in the form, not in the spreadsheet. Every month spent cleaning the same mistakes is a sign the form is doing less work than it could. Fixing the form once is cheaper than cleaning the data every month.</p>
+<p>Here are the mistakes I see most often in Survey123 and KoboToolbox forms, and how to avoid each one.</p>
+<h2 id="1-free-text-where-a-list-would-do">1. Free text where a list would do</h2>
+<p>If facility or village names are typed, you will get five spellings of the same clinic, and your pivot table will count them as five places. Use a choice list so every record uses exactly the same name.</p>
+<p>For long lists, use a cascading select: choose the district first, then only that district&#x27;s facilities appear.</p>
+<div class="ntable"><table><thead><tr><th scope="col">Column</th><th scope="col">Value</th></tr></thead><tbody><tr><th scope="row">type</th><td>select_one facility</td></tr><tr><th scope="row">choice_filter</th><td>district = ${district}</td></tr><tr><th scope="row">appearance</th><td>minimal or autocomplete</td></tr></tbody></table></div>
+<h2 id="2-no-limits-on-numbers">2. No limits on numbers</h2>
+<p>A field for children vaccinated today should not accept 5,000. Add a constraint with a clear message so the mistake is caught on the phone, while the health worker is still at the facility and can check the register.</p>
+<figure class="nfig nfig-phone-error"><div class="fx-phone" aria-hidden="true"><div class="fx-screen">
+<p class="fx-q">Children vaccinated today</p><div class="fx-input bad">5000</div>
+<p class="fx-err">Enter a number from 0 to 500</p>
+<p class="fx-q">Any vaccine stock-out this month?</p><div class="fx-choices"><span>Yes</span><span class="on">No</span></div>
+<div class="fx-send">Send</div></div></div><figcaption>A constraint message appears the moment a value is out of range, before the record can be sent.</figcaption></figure>
+<aside class="callout c-tip"><span class="callout-l">Tip</span><p>Write constraint messages that say what to do, not just that something is wrong. &quot;Enter a number from 0 to 500&quot; is better than &quot;Invalid value&quot;.</p></aside>
+<h2 id="3-too-many-questions">3. Too many questions</h2>
+<p>Every extra question lowers the chance that the whole form is filled in carefully. Go through the form with the person who writes the report and ask of each question: which table or chart uses this answer? If nobody can name one, remove the question.</p>
+<h2 id="4-asking-for-personal-details-you-do-not-need">4. Asking for personal details you do not need</h2>
+<p>Collect the least personal information possible. Patient names and phone numbers create a privacy risk if a phone is lost or a file is shared, and they are rarely needed for programme reporting. Use an ID or a code instead, and keep any lookup list in a separate, protected place.</p>
+<h2 id="5-skipping-skip-logic">5. Skipping skip logic</h2>
+<p>If a follow-up question only applies when the answer is yes, show it only then. This keeps the form short and stops contradictory answers, such as &quot;no stock-out&quot; followed by &quot;stock-out lasted 6 days&quot;.</p>
+<div class="ntable"><table><thead><tr><th scope="col">Column</th><th scope="col">Value</th></tr></thead><tbody><tr><th scope="row">relevant</th><td>${stock_out} = &#x27;yes&#x27;</td></tr></tbody></table></div>
+<h2 id="6-not-testing-in-the-field">6. Not testing in the field</h2>
+<p>A form that looks fine on a laptop can be slow or confusing on a basic phone in bright sunlight with weak signal. Before training the whole team:</p>
+<ul class="checklist"><li><label><input type="checkbox"><span>Fill it in on the cheapest phone your team uses</span></label></li><li><label><input type="checkbox"><span>Switch off data and complete three records offline</span></label></li><li><label><input type="checkbox"><span>Turn data back on and confirm they all arrive</span></label></li><li><label><input type="checkbox"><span>Ask two real users to complete it while you watch, without helping</span></label></li></ul>
+<h2 id="7-changing-the-form-without-a-plan">7. Changing the form without a plan</h2>
+<p>Renaming a field in the middle of a programme can quietly break your dashboard, because last month&#x27;s data and this month&#x27;s data no longer line up. Keep field names stable, increase the version number for every change, write down what changed and update the report at the same time.</p>
+<aside class="callout c-warn"><span class="callout-l">Watch out</span><p>Never reuse an old field name for a new meaning. Create a new field instead.</p></aside>
+<h2 id="a-quick-pre-launch-check">A quick pre-launch check</h2>
+<figure class="nfig nfig-flow"><ol class="flow"><li style="--i:0"><span class="flow-n">1</span>Draft in Excel</li><li style="--i:1"><span class="flow-n">2</span>Peer review</li><li style="--i:2"><span class="flow-n">3</span>Phone test offline</li><li style="--i:3"><span class="flow-n">4</span>Pilot with 2 to 3 users</li><li style="--i:4"><span class="flow-n">5</span>Fix</li><li style="--i:5"><span class="flow-n">6</span>Train team</li><li style="--i:6"><span class="flow-n">7</span>Launch</li></ol><figcaption>A week spent here saves months of cleaning.</figcaption></figure>
+<p>The XLSForm cheat sheet below has the syntax for every rule in this note, and the sample form shows them working together.</p></div>
+      <section class="note-rel" aria-labelledby="rel-h"><h2 id="rel-h">Free tools for this note</h2><div class="rel-grid"><a class="rel-card" href="downloads/xlsform-cheat-sheet.pdf" download><img src="images/resources/xlsform-cheat-sheet.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-pdf">PDF</span><b>XLSForm cheat sheet</b><em>33 KB</em></span></a><a class="rel-card" href="downloads/sample-epi-xlsform.xlsx" download><img src="images/resources/sample-epi-xlsform.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-form">XLSForm</span><b>Sample EPI XLSForm</b><em>10 KB</em></span></a><a class="rel-card" href="downloads/field-supervision-checklist.pdf" download><img src="images/resources/field-supervision-checklist.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-pdf">PDF</span><b>Field data collection supervision checklist</b><em>31 KB</em></span></a></div><p class="small"><a class="text-link" href="resources.html">See all free resources</a></p></section>
+      <div class="author-card"><picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="84" height="84" alt="Alhaji Ibrahim Mehemoh"></picture>
+        <div><p class="ac-l">Written by</p><b>Alhaji Ibrahim Mehemoh</b><p>Data Officer and M&amp;E specialist in Bo, Sierra Leone. I build Survey123 forms, Power BI dashboards and simple data systems for health programmes, and provide IT support for small organisations.</p>
+        <p class="ac-links"><a href="about.html">About me</a><a href="contact.html">Contact</a><a href="feed.xml">Follow by RSS</a></p></div></div>
+    </div>
+  </div>
+  <nav class="note-pn" aria-label="More notes">
+    <a class="pn-card" href="note-check-epi-data-quality.html"><span class="pn-l">Previous</span><span class="pn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a dataset passing through six numbered checks"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-card" x="150" y="30" width="180" height="180" rx="14"/><circle class="a-g" cx="174" cy="52" r="8"/><path class="a-check-w" d="M170 52 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-mu" x="192" y="48" width="90" height="8" rx="4"/><circle class="a-g" cx="174" cy="78" r="8"/><path class="a-check-w" d="M170 78 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-line" x="192" y="74" width="70" height="8" rx="4"/><circle class="a-g" cx="174" cy="104" r="8"/><path class="a-check-w" d="M170 104 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-mu" x="192" y="100" width="100" height="8" rx="4"/><circle class="a-g" cx="174" cy="130" r="8"/><path class="a-check-w" d="M170 130 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-line" x="192" y="126" width="60" height="8" rx="4"/><circle class="a-g" cx="174" cy="156" r="8"/><path class="a-check-w" d="M170 156 l3 3 6-6" style="stroke-width:2.2"/><rect class="a-mu" x="192" y="152" width="84" height="8" rx="4"/><circle class="a-am" cx="174" cy="182" r="8"/><rect class="a-line" x="192" y="178" width="76" height="8" rx="4"/></g><g class="float-b"><rect class="a-card" x="40" y="70" width="90" height="100" rx="14"/><rect class="a-mu" x="54" y="86" width="62" height="6" rx="3"/><rect class="a-mu" x="54" y="100" width="52" height="6" rx="3"/><rect class="a-mu" x="54" y="114" width="42" height="6" rx="3"/><rect class="a-mu" x="54" y="128" width="62" height="6" rx="3"/><rect class="a-mu" x="54" y="142" width="52" height="6" rx="3"/></g><path class="a-link" d="M130 120 H150 M330 120 H350"/><g class="float-c"><rect class="a-card" x="350" y="80" width="90" height="80" rx="14"/><rect class="a-g" x="364" y="120" width="10" height="20" rx="3"/><rect class="a-g" x="380" y="108" width="10" height="32" rx="3"/><rect class="a-g" x="396" y="114" width="10" height="26" rx="3"/><rect class="a-g" x="412" y="96" width="10" height="44" rx="3"/></g></svg></span><b>How to check EPI data quality before you report</b></a>
+    <a class="pn-card" href="note-dashboards-people-use.html"><span class="pn-l">Next</span><span class="pn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a dashboard with headline numbers, a trend line and a table"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-card" x="60" y="24" width="360" height="192" rx="14"/><rect class="a-gs" x="76" y="40" width="100" height="42" rx="8"/><rect class="a-mu" x="86" y="50" width="40" height="6" rx="3"/><rect class="a-g" x="86" y="64" width="54" height="10" rx="5"/><rect class="a-gs" x="188" y="40" width="100" height="42" rx="8"/><rect class="a-mu" x="198" y="50" width="40" height="6" rx="3"/><rect class="a-am" x="198" y="64" width="54" height="10" rx="5"/><rect class="a-gs" x="300" y="40" width="100" height="42" rx="8"/><rect class="a-mu" x="310" y="50" width="40" height="6" rx="3"/><rect class="a-g" x="310" y="64" width="54" height="10" rx="5"/><polyline class="a-am a-path" pathLength="1" points="80,150 120,138 160,142 200,122 240,116 280,104" style="fill:none;stroke-width:3"/><line x1="80" y1="112" x2="290" y2="112" stroke="var(--green)" stroke-dasharray="5 5" stroke-width="2"/><rect class="a-g" x="310" y="130" width="14" height="30" rx="3"/><rect class="a-g" x="330" y="114" width="14" height="46" rx="3"/><rect class="a-g" x="350" y="140" width="14" height="20" rx="3"/><rect class="a-g" x="370" y="104" width="14" height="56" rx="3"/><rect class="a-g" x="390" y="122" width="14" height="38" rx="3"/><rect class="a-mu" x="76" y="176" width="320" height="5" rx="2"/><rect class="a-mu" x="76" y="188" width="320" height="5" rx="2"/><rect class="a-mu" x="76" y="200" width="320" height="5" rx="2"/></g></svg></span><b>Why dashboards fail and how to design one people use</b></a>
+  </nav>
 </div>
+</article>
 <section class="cta-band section">
   <div class="wrap">
     <h2>Questions about your own data or IT setup?</h2>

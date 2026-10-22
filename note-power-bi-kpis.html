@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Starting a Power BI dashboard: five measures that matter | Alhaji Ibrahim Mehemoh</title>
-  <meta name="description" content="A short list of measures to build first, and why a clean data model matters more than clever formulas.">
+  <meta name="description" content="Start a Power BI report the right way: a clean data model, five trusted measures and a simple page layout, with the DAX to copy.">
   <meta name="theme-color" content="#0F2430">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://alhajiimehemoh.github.io/note-power-bi-kpis.html">
 
   <meta property="og:title" content="Starting a Power BI dashboard: five measures that matter | Alhaji Ibrahim Mehemoh">
-  <meta property="og:description" content="A short list of measures to build first, and why a clean data model matters more than clever formulas.">
+  <meta property="og:description" content="Start a Power BI report the right way: a clean data model, five trusted measures and a simple page layout, with the DAX to copy.">
   <meta property="og:url" content="https://alhajiimehemoh.github.io/note-power-bi-kpis.html">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
@@ -18,7 +18,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Starting a Power BI dashboard: five measures that matter | Alhaji Ibrahim Mehemoh">
-  <meta name="twitter:description" content="A short list of measures to build first, and why a clean data model matters more than clever formulas.">
+  <meta name="twitter:description" content="Start a Power BI report the right way: a clean data model, five trusted measures and a simple page layout, with the DAX to copy.">
   <meta name="twitter:image" content="https://alhajiimehemoh.github.io/images/og-image.jpg">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
@@ -27,14 +27,14 @@
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
   <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=17">
-  <script src="shared.js?v=17"></script>
+  <link rel="stylesheet" href="style.css?v=18">
+  <script src="shared.js?v=18"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Starting a Power BI dashboard: five measures that matter",
-  "description": "A short list of measures to build first, and why a clean data model matters more than clever formulas.",
+  "description": "Start a Power BI report the right way: a clean data model, five trusted measures and a simple page layout, with the DAX to copy.",
   "author": {
     "@type": "Person",
     "name": "Alhaji Ibrahim Mehemoh",
@@ -43,7 +43,8 @@
   "mainEntityOfPage": "https://alhajiimehemoh.github.io/note-power-bi-kpis.html",
   "image": "https://alhajiimehemoh.github.io/images/og-image.jpg",
   "articleSection": "Power BI",
-  "datePublished": "2026-10-21"
+  "datePublished": "2026-10-21",
+  "dateModified": "2026-10-22"
 }
   </script>
   <script type="application/ld+json">
@@ -93,22 +94,54 @@
 </header>
 
 <main id="main">
+<article class="note">
 <div class="wrap">
-  <div class="page-head"><p class="crumb"><a href="community.html">Notes</a></p><h1>Starting a Power BI dashboard: five measures that matter</h1><p class="lede">A short list of measures to build first, and why a clean data model matters more than clever formulas.</p>
-  <p class="small muted"><time datetime="2026-10-21">21 October 2026</time> &middot; Power BI &middot; 1 min read</p></div>
-  <section class="section"><div class="note-body"><p>Many dashboards start with charts. Good ones start with a clear data model and a few trusted measures.</p>
-<h2>Build the model first</h2>
-<p>Use one table for facts, such as monthly reports, and small tables for facilities, months and indicators. Connect them with simple relationships. A tidy model makes every formula shorter.</p>
-<h2>Five measures to create first</h2>
-<ul class="bullets"><li><strong>Total</strong>: the sum of the value you report, for example doses given</li><li><strong>Target</strong>: the target for the same period</li><li><strong>Coverage</strong>: total divided by target, using DIVIDE so a zero target does not cause an error</li><li><strong>Change from last month</strong>: this month minus last month</li><li><strong>Facilities reporting</strong>: a count of distinct facilities with data</li></ul>
-<h2>Keep the page simple</h2>
-<p>Put the key numbers at the top, one trend chart, one comparison by facility, and a table underneath. Add filters for month and facility. Show the target as a line so a number always has meaning.</p>
-<h2>Test before you share</h2>
-<p>Check three facilities by hand against the source file. If they match, you can trust the rest.</p>
-<p>You can see this approach on the <a href="demo.html">sample dashboard</a>.</p>
-  <div class="share"><span class="muted small">Share:</span><a class="btn" href="https://wa.me/23279301430?text=Starting%20a%20Power%20BI%20dashboard%3A%20five%20measures%20that%20matter%20https%3A//alhajiimehemoh.github.io/note-power-bi-kpis.html" target="_blank" rel="noopener">WhatsApp</a><button class="btn" type="button" data-copy="https://alhajiimehemoh.github.io/note-power-bi-kpis.html">Copy link</button></div>
-  <div class="note-nav"><a href="community.html">All notes</a><a href="note-me-indicators.html">Next: How to write a monitoring indicator people can actually measure</a></div></div></section>
+  <header class="note-hero">
+    <div class="note-hero-text">
+      <p class="crumb"><a href="community.html">Notes</a></p>
+      <p class="note-cat">Power BI</p>
+      <h1>Starting a Power BI dashboard: five measures that matter</h1>
+      <p class="lede">Start a Power BI report the right way: a clean data model, five trusted measures and a simple page layout, with the DAX to copy.</p>
+      <div class="note-meta"><picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="44" height="44" alt=""></picture>
+        <div><b>Alhaji Ibrahim Mehemoh</b><p><span>Published <time datetime="2026-10-21">21 October 2026</time></span><span>Updated <time datetime="2026-10-22">22 October 2026</time></span><span>2 min read</span></p></div></div>
+    </div>
+    <div class="note-hero-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a data model with one fact table linked to four lookup tables"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="a-link-g"><line class="a-rel" x1="240" y1="120" x2="90" y2="56"/><line class="a-rel" x1="240" y1="120" x2="390" y2="56"/><line class="a-rel" x1="240" y1="120" x2="90" y2="186"/><line class="a-rel" x1="240" y1="120" x2="390" y2="186"/></g><g class="float-a"><rect class="a-card" x="185" y="82" width="110" height="76" rx="14"/><rect class="a-g" x="185" y="82" width="110" height="22" rx="14"/><rect class="a-g" x="185" y="94" width="110" height="10"/><rect class="a-mu" x="197" y="114" width="80" height="6" rx="3"/><rect class="a-mu" x="197" y="126" width="68" height="6" rx="3"/><rect class="a-mu" x="197" y="138" width="56" height="6" rx="3"/></g><g class="float-b"><rect class="a-card" x="40" y="30" width="100" height="52" rx="10"/><rect class="a-gs" x="40" y="30" width="100" height="16" rx="10"/><rect class="a-line" x="52" y="56" width="60" height="6" rx="3"/><rect class="a-mu" x="52" y="68" width="40" height="6" rx="3"/></g><g class="float-c"><rect class="a-card" x="340" y="30" width="100" height="52" rx="10"/><rect class="a-gs" x="340" y="30" width="100" height="16" rx="10"/><rect class="a-line" x="352" y="56" width="60" height="6" rx="3"/><rect class="a-mu" x="352" y="68" width="40" height="6" rx="3"/></g><g class="float-b"><rect class="a-card" x="40" y="160" width="100" height="52" rx="10"/><rect class="a-gs" x="40" y="160" width="100" height="16" rx="10"/><rect class="a-line" x="52" y="186" width="60" height="6" rx="3"/><rect class="a-mu" x="52" y="198" width="40" height="6" rx="3"/></g><g class="float-b"><rect class="a-card" x="340" y="160" width="100" height="52" rx="10"/><rect class="a-gs" x="340" y="160" width="100" height="16" rx="10"/><rect class="a-line" x="352" y="186" width="60" height="6" rx="3"/><rect class="a-mu" x="352" y="198" width="40" height="6" rx="3"/></g></svg></div>
+  </header>
+  <div class="note-layout">
+    <aside class="note-side" aria-label="On this page">
+      <nav class="note-toc"><p>On this page</p><ol><li><a href="#build-the-model-first">Build the model first</a></li><li><a href="#five-measures-to-create-first">Five measures to create first</a></li><li><a href="#keep-the-page-simple">Keep the page simple</a></li><li><a href="#test-before-you-share">Test before you share</a></li><li><a href="#write-the-definitions-down">Write the definitions down</a></li></ol></nav>
+      <div class="note-share"><p>Share</p><a class="btn" href="https://wa.me/23279301430?text=Starting%20a%20Power%20BI%20dashboard%3A%20five%20measures%20that%20matter%20https%3A//alhajiimehemoh.github.io/note-power-bi-kpis.html" target="_blank" rel="noopener">WhatsApp</a><button class="btn" type="button" data-copy="https://alhajiimehemoh.github.io/note-power-bi-kpis.html">Copy link</button></div>
+    </aside>
+    <div class="note-main">
+      <div class="takeaways"><p class="tk-l">In short</p><ul><li>Build the data model before any charts: one fact table and small lookup tables.</li><li>Create five measures first: total, target, coverage, change from last month and facilities reporting.</li><li>Check three facilities by hand against the source before you share anything.</li></ul></div>
+      <div class="note-body"><p>Many dashboards start with charts. Good ones start with a clear data model and a few measures everyone trusts. Once those are right, the charts almost build themselves.</p>
+<h2 id="build-the-model-first">Build the model first</h2>
+<p>Use one table for the facts, such as one row per facility per month, and small lookup tables for facilities, dates and indicators. Connect each lookup table to the fact table with a simple one-to-many relationship. This shape is often called a star schema.</p>
+<figure class="nfig nfig-star"><div class="st" aria-hidden="true"><div class="st-dim st-0"><b>Facilities</b><span>FacilityID, Name, District</span></div><div class="st-dim st-1"><b>Dates</b><span>Date, Month, Year</span></div><div class="st-dim st-2"><b>Indicators</b><span>IndicatorID, Name, Unit</span></div><div class="st-dim st-3"><b>Targets</b><span>FacilityID, Month, Target</span></div><div class="st-fact"><b>Facts</b><span>FacilityID, Date, IndicatorID, Doses</span></div><svg class="st-lines" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M25 22L50 50M75 22L50 50M25 78L50 50M75 78L50 50"/></svg></div><figcaption>The fact table sits in the middle. Each lookup table filters it through one relationship.</figcaption></figure>
+<aside class="callout c-tip"><span class="callout-l">Tip</span><p>Add a proper date table and mark it as a date table. Month-to-month comparisons become far simpler.</p></aside>
+<h2 id="five-measures-to-create-first">Five measures to create first</h2>
+<p>Write these as measures, not calculated columns, so they respond to every filter on the page.</p>
+<div class="ntable"><table><thead><tr><th scope="col">Measure</th><th scope="col">What it answers</th><th scope="col">Example DAX</th></tr></thead><tbody><tr><th scope="row">Total doses</th><td>How many?</td><td>Total Doses = SUM(Facts[Doses])</td></tr><tr><th scope="row">Target</th><td>How many should there be?</td><td>Target = SUM(Targets[Target])</td></tr><tr><th scope="row">Coverage</th><td>Are we on track?</td><td>Coverage = DIVIDE([Total Doses], [Target])</td></tr><tr><th scope="row">Change from last month</th><td>Up or down?</td><td>Change = [Total Doses] - CALCULATE([Total Doses], DATEADD(Dates[Date], -1, MONTH))</td></tr><tr><th scope="row">Facilities reporting</th><td>Is the data complete?</td><td>Reporting = DISTINCTCOUNT(Facts[FacilityID])</td></tr></tbody></table></div>
+<p>DIVIDE is used for coverage because it returns a blank instead of an error when the target is zero.</p>
+<h2 id="keep-the-page-simple">Keep the page simple</h2>
+<ul class="bullets"><li>Headline cards at the top: total, coverage and facilities reporting</li><li>One trend chart: coverage by month with the target as a line</li><li>One comparison: coverage by facility, sorted lowest first</li><li>A table underneath with the same numbers</li><li>Filters for month and facility in the same place on every page</li></ul>
+<h2 id="test-before-you-share">Test before you share</h2>
+<p>Pick three facilities and calculate their numbers by hand from the source file. If all three match the report, you can trust the logic. If one does not, you have found a relationship or filter problem before your audience did.</p>
+<h2 id="write-the-definitions-down">Write the definitions down</h2>
+<p>Every measure should have a one-line definition that a manager can read. Keep them on a hidden page or in the indicator reference sheet, so the next person to maintain the report knows exactly what each number means.</p>
+<p>You can see this layout on the sample dashboard on this site, and use the checklist below before you share your own.</p></div>
+      <section class="note-rel" aria-labelledby="rel-h"><h2 id="rel-h">Free tools for this note</h2><div class="rel-grid"><a class="rel-card" href="downloads/dashboard-design-checklist.pdf" download><img src="images/resources/dashboard-design-checklist.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-pdf">PDF</span><b>Dashboard design checklist</b><em>31 KB</em></span></a><a class="rel-card" href="downloads/indicator-tracker.xlsx" download><img src="images/resources/indicator-tracker.webp" alt="" width="720" height="562" loading="lazy"><span><span class="ftype ft-xls">Excel</span><b>Indicator tracker</b><em>14 KB</em></span></a></div><p class="small"><a class="text-link" href="resources.html">See all free resources</a></p></section>
+      <div class="author-card"><picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="84" height="84" alt="Alhaji Ibrahim Mehemoh"></picture>
+        <div><p class="ac-l">Written by</p><b>Alhaji Ibrahim Mehemoh</b><p>Data Officer and M&amp;E specialist in Bo, Sierra Leone. I build Survey123 forms, Power BI dashboards and simple data systems for health programmes, and provide IT support for small organisations.</p>
+        <p class="ac-links"><a href="about.html">About me</a><a href="contact.html">Contact</a><a href="feed.xml">Follow by RSS</a></p></div></div>
+    </div>
+  </div>
+  <nav class="note-pn" aria-label="More notes">
+    <a class="pn-card" href="note-clean-data-in-excel.html"><span class="pn-l">Previous</span><span class="pn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: a spreadsheet with highlighted cleaned cells"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><rect class="a-card" x="70" y="26" width="340" height="188" rx="12"/><rect class="a-g" x="70" y="26" width="340" height="26" rx="12"/><rect class="a-g" x="70" y="40" width="340" height="12"/><rect class="a-mu" x="82" y="62" width="40" height="7" rx="3"/><rect class="a-mu" x="148" y="62" width="40" height="7" rx="3"/><rect class="a-mu" x="214" y="62" width="40" height="7" rx="3"/><rect class="a-mu" x="280" y="62" width="40" height="7" rx="3"/><rect class="a-mu" x="346" y="62" width="40" height="7" rx="3"/><rect class="a-mu" x="82" y="86" width="40" height="7" rx="3"/><rect x="144" y="81" width="60" height="18" rx="4" fill="var(--amber-soft,#FBEBC8)"/><rect class="a-am" x="148" y="86" width="41" height="7" rx="3"/><rect class="a-mu" x="214" y="86" width="42" height="7" rx="3"/><rect class="a-mu" x="280" y="86" width="43" height="7" rx="3"/><rect class="a-mu" x="346" y="86" width="44" height="7" rx="3"/><rect class="a-mu" x="82" y="110" width="40" height="7" rx="3"/><rect class="a-mu" x="148" y="110" width="42" height="7" rx="3"/><rect class="a-mu" x="214" y="110" width="44" height="7" rx="3"/><rect class="a-mu" x="280" y="110" width="46" height="7" rx="3"/><rect class="a-mu" x="346" y="110" width="48" height="7" rx="3"/><rect class="a-mu" x="82" y="134" width="40" height="7" rx="3"/><rect class="a-mu" x="148" y="134" width="43" height="7" rx="3"/><rect class="a-mu" x="214" y="134" width="46" height="7" rx="3"/><rect x="276" y="129" width="60" height="18" rx="4" fill="var(--amber-soft,#FBEBC8)"/><rect class="a-am" x="280" y="134" width="49" height="7" rx="3"/><rect class="a-mu" x="346" y="134" width="52" height="7" rx="3"/><rect x="78" y="153" width="60" height="18" rx="4" fill="var(--amber-soft,#FBEBC8)"/><rect class="a-am" x="82" y="158" width="40" height="7" rx="3"/><rect class="a-mu" x="148" y="158" width="44" height="7" rx="3"/><rect class="a-mu" x="214" y="158" width="48" height="7" rx="3"/><rect class="a-mu" x="280" y="158" width="52" height="7" rx="3"/><rect class="a-mu" x="346" y="158" width="42" height="7" rx="3"/><rect class="a-mu" x="82" y="182" width="40" height="7" rx="3"/><rect class="a-mu" x="148" y="182" width="45" height="7" rx="3"/><rect class="a-mu" x="214" y="182" width="50" height="7" rx="3"/><rect class="a-mu" x="280" y="182" width="41" height="7" rx="3"/><rect class="a-mu" x="346" y="182" width="46" height="7" rx="3"/></g><g class="float-b"><circle cx="400" cy="40" r="24" class="a-ok"/><path class="a-check-w" d="M390 40l7 7 13-13"/></g></svg></span><b>Ten habits for cleaning data in Excel without breaking it</b></a>
+    <a class="pn-card" href="note-me-indicators.html"><span class="pn-l">Next</span><span class="pn-art"><svg class="cover-art note-art" viewBox="0 0 480 240" role="img" aria-label="Illustration: an indicator target with numerator over denominator"><rect class="a-bg" width="480" height="240"/><g class="a-grid"><line x1="20" y1="0" x2="20" y2="240"/><line x1="40" y1="0" x2="40" y2="240"/><line x1="60" y1="0" x2="60" y2="240"/><line x1="80" y1="0" x2="80" y2="240"/><line x1="100" y1="0" x2="100" y2="240"/><line x1="120" y1="0" x2="120" y2="240"/><line x1="140" y1="0" x2="140" y2="240"/><line x1="160" y1="0" x2="160" y2="240"/><line x1="180" y1="0" x2="180" y2="240"/><line x1="200" y1="0" x2="200" y2="240"/><line x1="220" y1="0" x2="220" y2="240"/><line x1="240" y1="0" x2="240" y2="240"/><line x1="260" y1="0" x2="260" y2="240"/><line x1="280" y1="0" x2="280" y2="240"/><line x1="300" y1="0" x2="300" y2="240"/><line x1="320" y1="0" x2="320" y2="240"/><line x1="340" y1="0" x2="340" y2="240"/><line x1="360" y1="0" x2="360" y2="240"/><line x1="380" y1="0" x2="380" y2="240"/><line x1="400" y1="0" x2="400" y2="240"/><line x1="420" y1="0" x2="420" y2="240"/><line x1="440" y1="0" x2="440" y2="240"/><line x1="460" y1="0" x2="460" y2="240"/></g><g class="float-a"><circle cx="140" cy="120" r="80" class="a-tgt1"/><circle cx="140" cy="120" r="58" class="a-tgt2"/><circle cx="140" cy="120" r="36" class="a-tgt1"/><circle cx="140" cy="120" r="14" class="a-am-fill"/></g><g class="float-b"><rect class="a-card" x="260" y="50" width="170" height="140" rx="14"/><rect class="a-g" x="280" y="72" width="90" height="9" rx="4"/><rect class="a-mu" x="280" y="90" width="120" height="7" rx="3"/><line x1="280" y1="118" x2="410" y2="118" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><rect class="a-line" x="280" y="132" width="110" height="9" rx="4"/><rect class="a-mu" x="280" y="150" width="70" height="7" rx="3"/></g></svg></span><b>How to write a monitoring indicator people can actually measure</b></a>
+  </nav>
 </div>
+</article>
 <section class="cta-band section">
   <div class="wrap">
     <h2>Questions about your own data or IT setup?</h2>
