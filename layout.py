@@ -7,7 +7,8 @@ WA = 'https://wa.me/23279301430'
 EMAIL = 'alhajiimehemoh@gmail.com'
 CV = 'Alhaji_Ibrahim_Mehemoh_CV.pdf'
 OUT = os.path.dirname(os.path.abspath(__file__))
-CSS_V = '31'
+from aimlogo import aim_logo
+CSS_V = '35'
 
 NAV = [('portfolio.html', 'Projects', 'nav.projects'), ('services.html', 'Services', 'nav.services'),
        ('resources.html', 'Resources', 'nav.resources'), ('community.html', 'Notes', 'nav.notes'),
@@ -138,11 +139,11 @@ def page(fn, title, desc, body, active=None, ld=None, noindex=False, sitemap=Tru
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <div class="cursor-dot" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"></div>
-<div class="intro" aria-hidden="true"><img src="images/brand/logo-mark.png" alt="" width="160" height="94"></div>
+<div class="intro" aria-hidden="true">{aim_logo("i", "aim-intro")}</div>
 
 <header class="site-header">
   <div class="wrap header-in">
-    <a class="brand" href="index.html"><span class="logo-anim"><img class="brand-logo logo-light" src="images/brand/logo-mark.png" width="48" height="28" alt=""><img class="brand-logo logo-dark" src="images/brand/logo-mark-dark.png" width="48" height="28" alt=""></span><span>Alhaji Ibrahim Mehemoh</span></a>
+    <a class="brand" href="index.html">{aim_logo("h", "aim-head")}<span>Alhaji Ibrahim Mehemoh</span></a>
     <nav class="nav-links" aria-label="Main">{links}</nav>
     <div class="header-tools">
       {lang_btn}
@@ -201,9 +202,9 @@ def page(fn, title, desc, body, active=None, ld=None, noindex=False, sitemap=Tru
         </ul>
       </div>
     </div>
-    <p class="foot-logo logo-anim"><img class="logo-light" src="images/brand/logo-mark.png" width="96" height="56" alt="AIM logo"><img class="logo-dark" src="images/brand/logo-mark-dark.png" width="96" height="56" alt=""></p>
+    <p class="foot-logo">{aim_logo("f", "aim-foot", "AIM logo")}</p>
     <p class="wordmark" aria-hidden="true">Mehemoh<span>.</span></p>
-    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="feed.xml">RSS</a></p>
+    <p class="foot-note">&copy; 2026 Alhaji Ibrahim Mehemoh &middot; <a href="rss.html">RSS</a></p>
   </div>
 </footer>
 </body>

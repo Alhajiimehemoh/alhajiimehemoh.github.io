@@ -953,7 +953,7 @@ cat_btns = '<button type="button" class="filter is-active" data-cat="all" aria-p
     '<button type="button" class="filter" data-cat="%s" aria-pressed="false">%s</button>' % (esc(c), esc(c)) for c in cats)
 notes_body = f'''<div class="wrap">
   <div class="page-head"><h1>Notes</h1><p class="lede">Short, practical posts on data, health systems, IT and cybersecurity.</p>
-  <p class="small"><a class="rss-link" href="feed.xml">Subscribe with RSS</a> <span class="muted">to get new notes in your feed reader.</span></p></div>
+  <p class="small"><a class="rss-link" href="rss.html">Subscribe with RSS</a> <span class="muted">to get new notes in your feed reader.</span></p></div>
 </div>
 <section class="section">
   <div class="wrap">
@@ -1018,7 +1018,7 @@ for i, n in enumerate(NOTES):
       {rel}
       <div class="author-card"><picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="84" height="84" alt="Alhaji Ibrahim Mehemoh"></picture>
         <div><p class="ac-l">Written by</p><b>Alhaji Ibrahim Mehemoh</b><p>Data Officer and M&amp;E specialist in Bo, Sierra Leone. I build Survey123 forms, Power BI dashboards and simple data systems for health programmes, and provide IT support for small organisations.</p>
-        <p class="ac-links"><a href="about.html">About me</a><a href="contact.html">Contact</a><a href="feed.xml">Follow by RSS</a></p></div></div>
+        <p class="ac-links"><a href="about.html">About me</a><a href="contact.html">Contact</a><a href="rss.html">Follow by RSS</a></p></div></div>
     </div>
   </div>
   <nav class="note-pn" aria-label="More notes">
@@ -1039,6 +1039,70 @@ for i, n in enumerate(NOTES):
          og_type='article', crumbs=[('Notes', 'community.html'), (n['title'], None)],
          wa_text='Hello Alhaji, I read your note "%s" and have a question.' % n['title'])
 
+
+
+# ------------------------------------------------------------------ RSS LANDING PAGE
+_feed_url = BASE + 'feed.xml'
+_cats = []
+for n in NOTES:
+    if n['category'] not in _cats:
+        _cats.append(n['category'])
+_rss_list = ''.join(note_row(n) for n in sorted(NOTES, key=lambda n: (n.get('date') or '', n['title']), reverse=True))
+_readers = [('Feedly', 'Web, Android and iPhone. Paste the feed address into the search box and press Follow.'),
+            ('Inoreader', 'Web, Android and iPhone. Choose Add new, then paste the feed address.'),
+            ('NetNewsWire', 'Free for Mac and iPhone. Choose File, New Feed, then paste the address.'),
+            ('Thunderbird', 'Free email app that also reads feeds. Add a Feeds account, then paste the address.')]
+rss_body = f"""<div class="wrap">
+  <header class="about-hero rss-hero">
+    <div class="ah-text">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>{len(NOTES)} notes and counting</p>
+      <h1>Follow my notes by RSS.</h1>
+      <p class="lede">Get every new note on health data, M&amp;E and IT in your feed reader as soon as it is published. No sign-up, no email list, no tracking. You can unfollow at any time.</p>
+      <div class="feed-box"><span class="fb-ico" aria-hidden="true"></span><code id="feedUrl">{_feed_url}</code><button class="btn btn-primary" type="button" data-copy="{_feed_url}">Copy address</button></div>
+      <p class="small muted" style="margin-top:.8rem">Or open <a href="feed.xml">the feed file</a> directly.</p>
+    </div>
+    <div class="rss-art" aria-hidden="true">
+      <div class="rss-signal"><svg viewBox="0 0 120 120"><circle class="sg-dot" cx="22" cy="98" r="11"/><path class="sg a1" d="M22 64a34 34 0 0 1 34 34"/><path class="sg a2" d="M22 40a58 58 0 0 1 58 58"/><path class="sg a3" d="M22 16a82 82 0 0 1 82 82"/></svg></div>
+      <div class="rss-cards">{''.join('<span style="--k:%d"><em>%s</em>%s</span>' % (k, esc(n['category']), esc(n['title'])) for k, n in enumerate(NOTES[:4]))}</div>
+    </div>
+  </header>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>How to follow in three steps</h2></div>
+    <ol class="steps steps-line">
+      <li><h3>Copy the address</h3><p>Use the Copy address button above.</p></li>
+      <li><h3>Open a feed reader</h3><p>Any reader works. A few free options are listed below.</p></li>
+      <li><h3>Paste and follow</h3><p>New notes now appear in your reader automatically.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Free feed readers</h2><p>Pick any one. They all read the same feed.</p></div>
+    <div class="readers">{''.join('<div class="reader"><span class="rd-badge">%s</span><b>%s</b><p>%s</p></div>' % (esc(a[:1]), esc(a), esc(b)) for a, b in _readers)}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>What is in the feed</h2><p>Every note, newest first. Topics: {', '.join(esc(c) for c in _cats)}.</p></div>
+    <div class="note-grid">{_rss_list}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap about-two">
+    <div><div class="section-head"><h2>What is RSS?</h2></div><p class="prose">RSS is a simple, open way to follow websites. Instead of checking a site for updates, your feed reader checks for you and shows new posts in one place. It has been around for over 20 years and works with almost every reader app.</p></div>
+    <div><div class="section-head"><h2>Prefer another way?</h2></div><ul class="other-links"><li><a href="community.html">Read the notes on the website</a></li><li><a href="{WA}" target="_blank" rel="noopener">Ask me on WhatsApp to share new notes with you</a></li>{('<li><a href="' + esc(C.LINKEDIN) + '" target="_blank" rel="me noopener">Follow me on LinkedIn</a></li>') if C.LINKEDIN else ''}</ul></div>
+  </div>
+</section>
+{cta('Questions about your own data or IT setup?', 'Send me a message and I will point you in the right direction.')}"""
+page('rss.html', 'Follow by RSS | Notes by Alhaji Ibrahim Mehemoh',
+     'Follow Alhaji Ibrahim Mehemoh\'s practical notes on health data, M&E and IT in any RSS feed reader. Copy the feed address and paste it into Feedly, Inoreader or NetNewsWire.',
+     rss_body, active='community.html', crumbs=[('Notes', 'community.html'), ('RSS', None)])
 
 # ------------------------------------------------------------------ SERVICE DETAIL PAGES
 SCREW = '''<div class="screw-anim" aria-hidden="true"><svg viewBox="0 0 240 150">  <rect x="20" y="96" width="200" height="34" rx="8" class="sw-board"/>  <g class="sw-chips"><rect x="40" y="104" width="26" height="18" rx="3"/><rect x="172" y="104" width="26" height="18" rx="3"/></g>  <path class="sw-trace" d="M66 113h30M144 113h28"/>  <g class="sw-screw"><circle cx="120" cy="113" r="12" class="sw-head"/><path d="M112 113h16M120 105v16" class="sw-slot"/></g>  <g class="sw-driver"><rect x="115" y="40" width="10" height="64" rx="2" class="sw-shaft"/><path d="M116 104l4 7 4-7z" class="sw-shaft"/><rect x="104" y="0" width="32" height="46" rx="10" class="sw-handle"/><path d="M112 8v30M120 8v30M128 8v30" class="sw-grip"/></g>  <g class="sw-sparks"><circle cx="100" cy="98" r="2"/><circle cx="142" cy="96" r="2"/><circle cx="96" cy="88" r="1.5"/></g></svg></div>'''

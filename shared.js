@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   if (still || !('IntersectionObserver' in window)) return;
-  var sel = '.section-head, .foot-logo, .me-open, .laptop, .hs, .role-card, .story li, .sk-card, .principles li, .beyond li, .pf li, .get-list li, .svc-card, .aud li, .sp-card, .gl, .more-card, .rn, .nfig, .callout, .ntable, .takeaways, .rel-card, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
+  var sel = '.section-head, .reader, .foot-logo, .me-open, .laptop, .hs, .role-card, .story li, .sk-card, .principles li, .beyond li, .pf li, .get-list li, .svc-card, .aud li, .sp-card, .gl, .more-card, .rn, .nfig, .callout, .ntable, .takeaways, .rel-card, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
   var els = document.querySelectorAll(sel);
   if (!els.length) return;
   root.classList.add('reveal-on');
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /* v28: intro, cursor, rotating words, ripple, wordmark letters, shapes, theme spin */
 (function () {
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  try { if (!still && !sessionStorage.getItem('introSeen')) { document.documentElement.classList.add('show-intro'); sessionStorage.setItem('introSeen', '1'); setTimeout(function () { document.documentElement.classList.remove('show-intro'); }, 1900); } } catch (e) {}
+  try { if (!still && !sessionStorage.getItem('introSeen')) { document.documentElement.classList.add('show-intro'); sessionStorage.setItem('introSeen', '1'); setTimeout(function () { document.documentElement.classList.remove('show-intro'); }, 2600); } } catch (e) {}
   document.addEventListener('DOMContentLoaded', function () {
     var b = document.body;
     if (location.pathname.endsWith('/') || location.pathname.endsWith('index.html')) b.classList.add('page-index');
