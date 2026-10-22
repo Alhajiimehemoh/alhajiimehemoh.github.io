@@ -856,32 +856,62 @@ page('hire.html', 'Hire Me | Alhaji Ibrahim Mehemoh',
      hire_body)
 
 # ------------------------------------------------------------------ CONTACT
+topics = ['Dashboard or report', 'Survey or form', 'Data quality', 'M&amp;E support', 'Data system', 'Training', 'IT support', 'Website', 'A job or role', 'Something else']
+topic_html = ''.join('<label class="tchip"><input type="radio" name="topic" value="%s"%s><span>%s</span></label>' % (t.replace('&amp;', '&'), ' required' if k == 0 else '', t) for k, t in enumerate(topics))
+book_href = esc(C.BOOKING_URL) if C.BOOKING_URL else esc(wa_link('Hello Alhaji, I would like to book a 20-minute call. What times suit you this week?'))
 contact_body = f'''<div class="wrap">
-  <div class="page-head"><h1>Contact</h1><p class="lede">WhatsApp is the fastest way to reach me. Email suits proposals and documents.</p>
-  <div class="actions"><a class="btn btn-primary" href="{WA}" target="_blank" rel="noopener">WhatsApp now</a><a class="btn" href="mailto:{EMAIL}">Email me</a><button class="btn" type="button" data-copy="{EMAIL}">Copy email</button><a class="btn" href="tel:+23279301430">Call</a><a class="btn" href="{esc(C.BOOKING_URL) if C.BOOKING_URL else esc(wa_link('Hello Alhaji, I would like to book a 20-minute call. What times suit you this week?'))}" target="_blank" rel="noopener">Book a call</a></div></div>
-</div>
-<section class="section">
-  <div class="wrap cols">
-    <div>
-      <dl class="facts" style="margin-bottom:0">
-        <div><dt>WhatsApp and phone</dt><dd><a href="tel:+23279301430">+232 79 301 430</a></dd></div>
-        <div><dt>Email</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a><br><a href="mailto:amehemohib@gmail.com">amehemohib@gmail.com</a></dd></div>
-        <div><dt>Location</dt><dd>Bo, Sierra Leone. Onsite in Bo and nearby areas, remote across the country.</dd></div>
-        <div><dt>CV</dt><dd><a href="{CV}" target="_blank" rel="noopener">Download as PDF</a></dd></div>
-      </dl>
+  <header class="about-hero contact-hero">
+    <div class="ah-text">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="openNow">Open Monday to Saturday</span></p>
+      <h1>Let us talk.</h1>
+      <p class="lede">Tell me what you need: a dashboard, a form, a data review, IT support or a role. WhatsApp is the fastest way to reach me; email suits documents and proposals.</p>
+      <ul class="trust"><li>Based in Bo, Sierra Leone</li><li>Remote across the country</li><li>English and Krio</li></ul>
     </div>
-    <div>
+    <div class="cbig">
+      <a class="cb cb-wa" href="{WA}" target="_blank" rel="noopener"><span class="cb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 9.2c.3 2.6 2.7 5 5.3 5.3l1.2-1.2 1.6.8-.5 1.6c-3.9.4-8.5-4.2-8.1-8.1l1.6-.5.8 1.6z"/></svg></span><span><b>WhatsApp</b><em>+232 79 301 430</em></span><span class="cb-go" aria-hidden="true">Fastest</span></a>
+      <a class="cb" href="mailto:{EMAIL}"><span class="cb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><b>Email</b><em>{EMAIL}</em></span></a>
+      <a class="cb" href="tel:+23279301430"><span class="cb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><b>Call</b><em>+232 79 301 430</em></span></a>
+      <a class="cb" href="{book_href}" target="_blank" rel="noopener"><span class="cb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span><b>Book a call</b><em>20 minutes, free</em></span></a>
+    </div>
+  </header>
+</div>
+
+<section class="section">
+  <div class="wrap contact-grid">
+    <div class="cform-card">
       <h2>Send a message</h2>
-      <form {form_attrs()}>
+      <p class="muted">I read every message and reply as soon as I can.</p>
+      <form {form_attrs()} class="cform">
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="cf-email">Your email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="field"><label for="cf-message">What do you need?</label><textarea id="cf-message" name="message" rows="6" required></textarea></div>
-        <button class="btn btn-primary" type="submit">Send message</button>
+        <fieldset class="topics"><legend>What is it about?</legend><div class="tchips">{topic_html}</div></fieldset>
+        <div class="frow">
+          <div class="ffield"><input id="cf-name" name="name" autocomplete="name" placeholder=" " required><label for="cf-name">Your name</label></div>
+          <div class="ffield"><input id="cf-email" name="email" type="email" autocomplete="email" placeholder=" " required><label for="cf-email">Your email</label></div>
+        </div>
+        <div class="ffield"><input id="cf-org" name="organisation" autocomplete="organization" placeholder=" "><label for="cf-org">Organisation (optional)</label></div>
+        <div class="ffield"><textarea id="cf-message" name="message" rows="6" maxlength="2000" placeholder=" " required></textarea><label for="cf-message">What do you need?</label><span class="fcount" aria-hidden="true"><span id="cfCount">0</span> / 2000</span></div>
+        <p class="small muted">Please do not include patient names, phone numbers or other personal data.</p>
+        <button class="btn btn-primary send-btn" type="submit"><span>Send message</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg></button>
         <p class="small muted" id="formStatus" role="status" aria-live="polite" style="margin-top:.75rem"></p>
       </form>
-      <p class="small muted">Prefer a structured request? Use the <a href="request.html">quote request form</a>.</p>
+      <div class="sent" hidden><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-15"/></svg><h3>Message sent</h3><p>Thank you. I will reply soon, usually fastest on WhatsApp.</p></div>
+      <p class="small muted" style="margin-top:1rem">Need a detailed quote? Use the <a href="request.html">quote request form</a>.</p>
     </div>
+    <aside class="contact-side">
+      <div class="cs-card">
+        <h3>What happens next</h3>
+        <ol class="next-steps"><li><b>I read your message</b><span>and ask any questions I need.</span></li><li><b>We talk</b><span>by WhatsApp, phone or a short call.</span></li><li><b>You get a plan</b><span>with scope, timing and a quote.</span></li></ol>
+      </div>
+      <div class="cs-card cs-hours">
+        <h3>When I work</h3>
+        <ul class="hours">''' + ''.join('<li data-day="%d"><span>%s</span><b>%s</b></li>' % (d, n, 'Closed' if d == 0 else 'Open') for d, n in [(1, 'Monday'), (2, 'Tuesday'), (3, 'Wednesday'), (4, 'Thursday'), (5, 'Friday'), (6, 'Saturday'), (0, 'Sunday')]) + f'''</ul>
+        <p class="small muted">Sierra Leone time (GMT). <span class="nowtime"><time id="boClock2">GMT</time></span></p>
+      </div>
+      <div class="cs-card">
+        <h3>Other ways</h3>
+        <ul class="other-links"><li><a href="{CV}" target="_blank" rel="noopener">Download my CV (PDF)</a></li>{('<li><a href="' + esc(C.LINKEDIN) + '" target="_blank" rel="me noopener">LinkedIn</a></li>') if C.LINKEDIN else ''}<li><button class="link-btn" type="button" data-copy="{EMAIL}">Copy my email address</button></li><li><a href="mailto:amehemohib@gmail.com">amehemohib@gmail.com</a></li><li><a href="hire.html">Hiring? See the Hire me page</a></li></ul>
+      </div>
+    </aside>
   </div>
 </section>'''
 page('contact.html', 'Contact | Alhaji Ibrahim Mehemoh',

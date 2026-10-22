@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       var status = document.getElementById('formStatus');
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (r) { if (!r.ok) throw 0; form.reset(); if (status) status.textContent = 'Thank you. Your message was sent and I will reply soon.'; })
+        .then(function (r) { if (!r.ok) throw 0; form.reset(); if (status) status.textContent = 'Thank you. Your message was sent and I will reply soon.'; var ok = form.parentNode.querySelector('.sent'); if (ok) { form.hidden = true; ok.hidden = false; } })
         .catch(function () { if (status) status.textContent = 'Sorry, that did not send. Please use WhatsApp or email instead.'; });
     });
   });
@@ -552,3 +552,15 @@ document.addEventListener('DOMContentLoaded', function () {
     (function loop() { rx += (mx - rx) * .18; ry += (my - ry) * .18; ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)'; requestAnimationFrame(loop); })();
   });
 })();
+
+/* v30: contact page: open now, clock, character count */
+document.addEventListener('DOMContentLoaded', function () {
+  var d = new Date(), day = d.getUTCDay();
+  var on = document.getElementById('openNow');
+  if (on) on.textContent = day === 0 ? 'Closed on Sundays. Message me and I will reply on Monday' : 'Open today, Monday to Saturday';
+  document.querySelectorAll('.hours li').forEach(function (li) { if (+li.getAttribute('data-day') === day) li.classList.add('today'); });
+  var c2 = document.getElementById('boClock2');
+  if (c2) { var t = function () { var n = new Date(); c2.textContent = 'Now ' + String(n.getUTCHours()).padStart(2, '0') + ':' + String(n.getUTCMinutes()).padStart(2, '0') + ' in Bo'; }; t(); setInterval(t, 15000); }
+  var ta = document.getElementById('cf-message'), cnt = document.getElementById('cfCount');
+  if (ta && cnt) ta.addEventListener('input', function () { cnt.textContent = ta.value.length; });
+});

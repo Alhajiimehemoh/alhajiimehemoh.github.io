@@ -28,8 +28,8 @@
   <link rel="alternate" type="application/rss+xml" title="Notes by Alhaji Ibrahim Mehemoh" href="feed.xml">
   <link rel="preload" href="fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=30">
-  <script src="shared.js?v=30"></script>
+  <link rel="stylesheet" href="style.css?v=31">
+  <script src="shared.js?v=31"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -74,31 +74,58 @@
 
 <main id="main">
 <div class="wrap">
-  <div class="page-head"><h1>Contact</h1><p class="lede">WhatsApp is the fastest way to reach me. Email suits proposals and documents.</p>
-  <div class="actions"><a class="btn btn-primary" href="https://wa.me/23279301430" target="_blank" rel="noopener">WhatsApp now</a><a class="btn" href="mailto:alhajiimehemoh@gmail.com">Email me</a><button class="btn" type="button" data-copy="alhajiimehemoh@gmail.com">Copy email</button><a class="btn" href="tel:+23279301430">Call</a><a class="btn" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20book%20a%2020-minute%20call.%20What%20times%20suit%20you%20this%20week%3F" target="_blank" rel="noopener">Book a call</a></div></div>
-</div>
-<section class="section">
-  <div class="wrap cols">
-    <div>
-      <dl class="facts" style="margin-bottom:0">
-        <div><dt>WhatsApp and phone</dt><dd><a href="tel:+23279301430">+232 79 301 430</a></dd></div>
-        <div><dt>Email</dt><dd><a href="mailto:alhajiimehemoh@gmail.com">alhajiimehemoh@gmail.com</a><br><a href="mailto:amehemohib@gmail.com">amehemohib@gmail.com</a></dd></div>
-        <div><dt>Location</dt><dd>Bo, Sierra Leone. Onsite in Bo and nearby areas, remote across the country.</dd></div>
-        <div><dt>CV</dt><dd><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download as PDF</a></dd></div>
-      </dl>
+  <header class="about-hero contact-hero">
+    <div class="ah-text">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="openNow">Open Monday to Saturday</span></p>
+      <h1>Let us talk.</h1>
+      <p class="lede">Tell me what you need: a dashboard, a form, a data review, IT support or a role. WhatsApp is the fastest way to reach me; email suits documents and proposals.</p>
+      <ul class="trust"><li>Based in Bo, Sierra Leone</li><li>Remote across the country</li><li>English and Krio</li></ul>
     </div>
-    <div>
+    <div class="cbig">
+      <a class="cb cb-wa" href="https://wa.me/23279301430" target="_blank" rel="noopener"><span class="cb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 9.2c.3 2.6 2.7 5 5.3 5.3l1.2-1.2 1.6.8-.5 1.6c-3.9.4-8.5-4.2-8.1-8.1l1.6-.5.8 1.6z"/></svg></span><span><b>WhatsApp</b><em>+232 79 301 430</em></span><span class="cb-go" aria-hidden="true">Fastest</span></a>
+      <a class="cb" href="mailto:alhajiimehemoh@gmail.com"><span class="cb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><b>Email</b><em>alhajiimehemoh@gmail.com</em></span></a>
+      <a class="cb" href="tel:+23279301430"><span class="cb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><b>Call</b><em>+232 79 301 430</em></span></a>
+      <a class="cb" href="https://wa.me/23279301430?text=Hello%20Alhaji%2C%20I%20would%20like%20to%20book%20a%2020-minute%20call.%20What%20times%20suit%20you%20this%20week%3F" target="_blank" rel="noopener"><span class="cb-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span><b>Book a call</b><em>20 minutes, free</em></span></a>
+    </div>
+  </header>
+</div>
+
+<section class="section">
+  <div class="wrap contact-grid">
+    <div class="cform-card">
       <h2>Send a message</h2>
-      <form action="https://formspree.io/f/mkjodord" method="POST">
+      <p class="muted">I read every message and reply as soon as I can.</p>
+      <form action="https://formspree.io/f/mkjodord" method="POST" class="cform">
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="cf-email">Your email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="field"><label for="cf-message">What do you need?</label><textarea id="cf-message" name="message" rows="6" required></textarea></div>
-        <button class="btn btn-primary" type="submit">Send message</button>
+        <fieldset class="topics"><legend>What is it about?</legend><div class="tchips"><label class="tchip"><input type="radio" name="topic" value="Dashboard or report" required><span>Dashboard or report</span></label><label class="tchip"><input type="radio" name="topic" value="Survey or form"><span>Survey or form</span></label><label class="tchip"><input type="radio" name="topic" value="Data quality"><span>Data quality</span></label><label class="tchip"><input type="radio" name="topic" value="M&E support"><span>M&amp;E support</span></label><label class="tchip"><input type="radio" name="topic" value="Data system"><span>Data system</span></label><label class="tchip"><input type="radio" name="topic" value="Training"><span>Training</span></label><label class="tchip"><input type="radio" name="topic" value="IT support"><span>IT support</span></label><label class="tchip"><input type="radio" name="topic" value="Website"><span>Website</span></label><label class="tchip"><input type="radio" name="topic" value="A job or role"><span>A job or role</span></label><label class="tchip"><input type="radio" name="topic" value="Something else"><span>Something else</span></label></div></fieldset>
+        <div class="frow">
+          <div class="ffield"><input id="cf-name" name="name" autocomplete="name" placeholder=" " required><label for="cf-name">Your name</label></div>
+          <div class="ffield"><input id="cf-email" name="email" type="email" autocomplete="email" placeholder=" " required><label for="cf-email">Your email</label></div>
+        </div>
+        <div class="ffield"><input id="cf-org" name="organisation" autocomplete="organization" placeholder=" "><label for="cf-org">Organisation (optional)</label></div>
+        <div class="ffield"><textarea id="cf-message" name="message" rows="6" maxlength="2000" placeholder=" " required></textarea><label for="cf-message">What do you need?</label><span class="fcount" aria-hidden="true"><span id="cfCount">0</span> / 2000</span></div>
+        <p class="small muted">Please do not include patient names, phone numbers or other personal data.</p>
+        <button class="btn btn-primary send-btn" type="submit"><span>Send message</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg></button>
         <p class="small muted" id="formStatus" role="status" aria-live="polite" style="margin-top:.75rem"></p>
       </form>
-      <p class="small muted">Prefer a structured request? Use the <a href="request.html">quote request form</a>.</p>
+      <div class="sent" hidden><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-15"/></svg><h3>Message sent</h3><p>Thank you. I will reply soon, usually fastest on WhatsApp.</p></div>
+      <p class="small muted" style="margin-top:1rem">Need a detailed quote? Use the <a href="request.html">quote request form</a>.</p>
     </div>
+    <aside class="contact-side">
+      <div class="cs-card">
+        <h3>What happens next</h3>
+        <ol class="next-steps"><li><b>I read your message</b><span>and ask any questions I need.</span></li><li><b>We talk</b><span>by WhatsApp, phone or a short call.</span></li><li><b>You get a plan</b><span>with scope, timing and a quote.</span></li></ol>
+      </div>
+      <div class="cs-card cs-hours">
+        <h3>When I work</h3>
+        <ul class="hours"><li data-day="1"><span>Monday</span><b>Open</b></li><li data-day="2"><span>Tuesday</span><b>Open</b></li><li data-day="3"><span>Wednesday</span><b>Open</b></li><li data-day="4"><span>Thursday</span><b>Open</b></li><li data-day="5"><span>Friday</span><b>Open</b></li><li data-day="6"><span>Saturday</span><b>Open</b></li><li data-day="0"><span>Sunday</span><b>Closed</b></li></ul>
+        <p class="small muted">Sierra Leone time (GMT). <span class="nowtime"><time id="boClock2">GMT</time></span></p>
+      </div>
+      <div class="cs-card">
+        <h3>Other ways</h3>
+        <ul class="other-links"><li><a href="Alhaji_Ibrahim_Mehemoh_CV.pdf" target="_blank" rel="noopener">Download my CV (PDF)</a></li><li><a href="https://www.linkedin.com/in/alhajiimehemoh/" target="_blank" rel="me noopener">LinkedIn</a></li><li><button class="link-btn" type="button" data-copy="alhajiimehemoh@gmail.com">Copy my email address</button></li><li><a href="mailto:amehemohib@gmail.com">amehemohib@gmail.com</a></li><li><a href="hire.html">Hiring? See the Hire me page</a></li></ul>
+      </div>
+    </aside>
   </div>
 </section>
 </main>
