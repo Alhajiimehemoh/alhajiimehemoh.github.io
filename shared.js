@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
           var show = t === 'all' || (' ' + it.getAttribute('data-type') + ' ').indexOf(' ' + t + ' ') > -1;
           it.hidden = !show; if (show) n++;
         });
-        if (count) count.textContent = t === 'all' ? '' : n + ' project' + (n === 1 ? '' : 's') + ' shown';
+        if (count) { var noun = count.getAttribute('data-noun') || 'project'; count.textContent = t === 'all' ? '' : n + ' ' + noun + (n === 1 ? '' : 's') + ' shown'; }
       });
     });
   }
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   if (still || !('IntersectionObserver' in window)) return;
-  var sel = '.section-head, .mini-dash, .proj-card, .note-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
+  var sel = '.section-head, .mini-dash, .proj-card, .note-card, .res-card, .tile, .reg-row, .steps li, .quote, .promo, .cta-band .wrap, .timeline li, .package, .plain, .faq, .facts, .note-card, .card, .kpi, .demo-card, .shot, .wide-photo, .about-grid > *';
   var els = document.querySelectorAll(sel);
   if (!els.length) return;
   root.classList.add('reveal-on');

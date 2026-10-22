@@ -1,0 +1,192 @@
+{
+ "items": [
+  {
+   "file": "me-data-quality-checklist.pdf",
+   "slug": "me-data-quality-checklist",
+   "type": "PDF",
+   "category": "M&E",
+   "title": "M&E data quality checklist",
+   "blurb": "Completeness, timeliness, accuracy, consistency, duplicates and privacy, on one sheet you run before every report.",
+   "tags": [
+    "Checklist",
+    "Monthly"
+   ],
+   "size": "32 KB",
+   "pages": 2
+  },
+  {
+   "file": "indicator-reference-sheet.pdf",
+   "slug": "indicator-reference-sheet",
+   "type": "PDF",
+   "category": "M&E",
+   "title": "Indicator reference sheet",
+   "blurb": "Define each indicator once: numerator, denominator, source, frequency and limits. Includes a worked example and a blank sheet.",
+   "tags": [
+    "Template",
+    "Worked example"
+   ],
+   "size": "31 KB",
+   "pages": 2
+  },
+  {
+   "file": "monthly-report-template.pdf",
+   "slug": "monthly-report-template",
+   "type": "PDF",
+   "category": "M&E",
+   "title": "Monthly programme report",
+   "blurb": "A two-page structure for monthly reports: highlights, indicator table, challenges, actions and data quality notes.",
+   "tags": [
+    "Template",
+    "Report"
+   ],
+   "size": "30 KB",
+   "pages": 2
+  },
+  {
+   "file": "xlsform-cheat-sheet.pdf",
+   "slug": "xlsform-cheat-sheet",
+   "type": "PDF",
+   "category": "Data collection",
+   "title": "XLSForm cheat sheet",
+   "blurb": "Question types, required, relevant, constraint and calculation syntax with copy-ready examples and common mistakes.",
+   "tags": [
+    "Reference",
+    "Survey123",
+    "Kobo"
+   ],
+   "size": "33 KB",
+   "pages": 2
+  },
+  {
+   "file": "dashboard-design-checklist.pdf",
+   "slug": "dashboard-design-checklist",
+   "type": "PDF",
+   "category": "Dashboards",
+   "title": "Dashboard design checklist",
+   "blurb": "Audience, layout, charts, numbers and trust: a one-page review to run before you share any Power BI or Excel dashboard.",
+   "tags": [
+    "Checklist",
+    "Power BI"
+   ],
+   "size": "31 KB",
+   "pages": 2
+  },
+  {
+   "file": "backup-security-checklist.pdf",
+   "slug": "backup-security-checklist",
+   "type": "PDF",
+   "category": "IT",
+   "title": "Backup and security checklist",
+   "blurb": "The 3-2-1 backup rule, passwords, updates, antivirus and safe sharing for small offices, clinics and NGOs.",
+   "tags": [
+    "Checklist",
+    "Security"
+   ],
+   "size": "29 KB",
+   "pages": 1
+  },
+  {
+   "file": "field-supervision-checklist.pdf",
+   "slug": "field-supervision-checklist",
+   "type": "PDF",
+   "category": "Data collection",
+   "title": "Field data collection supervision checklist",
+   "blurb": "What a supervisor checks during a field visit: devices, consent, form use, GPS, sync and data quality spot checks.",
+   "tags": [
+    "Checklist",
+    "Field work"
+   ],
+   "size": "31 KB",
+   "pages": 2
+  },
+  {
+   "file": "new-staff-it-setup.pdf",
+   "slug": "new-staff-it-setup",
+   "type": "PDF",
+   "category": "IT",
+   "title": "New staff IT setup checklist",
+   "blurb": "Accounts, device setup, security and training for a new colleague, plus the matching exit checklist.",
+   "tags": [
+    "Checklist",
+    "Onboarding"
+   ],
+   "size": "29 KB",
+   "pages": 1
+  },
+  {
+   "file": "stock-tracker.xlsx",
+   "slug": "stock-tracker",
+   "type": "Excel",
+   "category": "Inventory",
+   "title": "Stock tracker",
+   "blurb": "Opening stock, received, issued and losses give closing stock, months of stock and an automatic REORDER or OVERSTOCK flag.",
+   "tags": [
+    "Excel",
+    "Formulas"
+   ],
+   "size": "15 KB",
+   "sheets": 3
+  },
+  {
+   "file": "indicator-tracker.xlsx",
+   "slug": "indicator-tracker",
+   "type": "Excel",
+   "category": "M&E",
+   "title": "Indicator tracker",
+   "blurb": "Baseline, annual target and quarterly results for count indicators, with year-to-date, percent of target and a traffic-light status.",
+   "tags": [
+    "Excel",
+    "M&E"
+   ],
+   "size": "14 KB",
+   "sheets": 3
+  },
+  {
+   "file": "data-cleaning-log.xlsx",
+   "slug": "data-cleaning-log",
+   "type": "Excel",
+   "category": "M&E",
+   "title": "Data cleaning log",
+   "blurb": "Record every issue found and every correction made, with drop-down issue types and an automatic summary by type and status.",
+   "tags": [
+    "Excel",
+    "Data quality"
+   ],
+   "size": "18 KB",
+   "sheets": 3
+  },
+  {
+   "file": "it-asset-register.xlsx",
+   "slug": "it-asset-register",
+   "type": "Excel",
+   "category": "IT",
+   "title": "IT asset register",
+   "blurb": "Every computer, phone, printer and router in one list, with warranty status and next service date worked out for you.",
+   "tags": [
+    "Excel",
+    "IT"
+   ],
+   "size": "16 KB",
+   "sheets": 2
+  },
+  {
+   "file": "sample-epi-xlsform.xlsx",
+   "slug": "sample-epi-xlsform",
+   "type": "XLSForm",
+   "category": "Data collection",
+   "title": "Sample EPI XLSForm",
+   "blurb": "A short monthly facility form with validation, skip logic and a calculated field. Upload to Survey123 Connect or KoboToolbox and adapt.",
+   "tags": [
+    "XLSForm",
+    "Survey123",
+    "Kobo"
+   ],
+   "size": "10 KB",
+   "sheets": 3
+  }
+ ],
+ "kit": {
+  "file": "free-resource-kit.zip",
+  "size": "275 KB"
+ }
+}
