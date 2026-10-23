@@ -71,7 +71,7 @@ index_body = f'''<div class="wrap">
       <div class="actions">
         <a class="btn btn-primary" href="portfolio.html" data-i18n="hero.projects">See projects</a>
         <a class="btn" href="contact.html" data-i18n="hero.contact">Contact me</a>
-        <a class="text-link" href="{CV}" target="_blank" rel="noopener" data-i18n="hero.cv">Download CV (PDF)</a>
+        <a class="text-link" href="{CV_ASK}" target="_blank" rel="noopener" data-i18n="hero.cv">Request my CV</a>
       </div>
       <p class="fact" data-i18n="hero.fact">Based in Bo, Sierra Leone. Open to roles, contracts and consulting, onsite or remote.</p>
     </div>
@@ -288,7 +288,7 @@ about_body = f'''<div class="wrap">
       <h1>Hi, I am Alhaji.</h1>
       <p class="lede">I am a Data Officer and MEL specialist in Bo, Sierra Leone. I help health programmes turn field data into decisions, and I keep the technology behind that data working.</p>
       <ul class="trust"><li>Based in Bo</li><li>In IT since 2015</li><li>Health data since 2024</li><li>English and Krio</li></ul>
-      <div class="actions"><a class="btn btn-primary" href="{CV}" target="_blank" rel="noopener">Download CV (PDF)</a><a class="btn" href="contact.html">Contact me</a>{('<a class="text-link" href="' + esc(C.LINKEDIN) + '" target="_blank" rel="me noopener">LinkedIn</a>') if C.LINKEDIN else ''}</div>
+      <div class="actions"><a class="btn btn-primary" href="{CV_ASK}" target="_blank" rel="noopener">Request my CV</a><a class="btn" href="contact.html">Contact me</a>{('<a class="text-link" href="' + esc(C.LINKEDIN) + '" target="_blank" rel="me noopener">LinkedIn</a>') if C.LINKEDIN else ''}</div>
     </div>
     <figure class="ah-photo">
       <picture><source type="image/webp" srcset="images/profile-square.webp"><img src="images/profile.jpeg" width="640" height="640" alt="Portrait of Alhaji Ibrahim Mehemoh"></picture>
@@ -781,7 +781,7 @@ hire_body = f'''<div class="wrap">
       <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Available for roles, contracts and consulting</p>
       <h1>Hire a data and MEL specialist who also knows the tech.</h1>
       <p class="lede">I am a Data Officer at Rural Health Care Initiative in Bo, Sierra Leone, with a background in IT since 2015. I am open to full-time, contract and consulting work, onsite in Bo or remote.</p>
-      <div class="actions"><a class="btn btn-primary" href="{CV}" target="_blank" rel="noopener">Download CV (PDF)</a><a class="btn" href="{hire_wa}" target="_blank" rel="noopener">Discuss a role</a><a class="text-link" href="cv.html">View web CV</a></div>
+      <div class="actions"><a class="btn btn-primary" href="{CV_ASK}" target="_blank" rel="noopener">Request my CV</a><a class="btn" href="{hire_wa}" target="_blank" rel="noopener">Discuss a role</a><a class="text-link" href="mailto:{EMAIL}?subject=CV%20request">Or ask by email</a></div>
     </div>
     <aside class="hire-card" aria-label="Quick facts">
       <p class="hc-l">At a glance</p>
@@ -909,7 +909,7 @@ contact_body = f'''<div class="wrap">
       </div>
       <div class="cs-card">
         <h3>Other ways</h3>
-        <ul class="other-links"><li><a href="{CV}" target="_blank" rel="noopener">Download my CV (PDF)</a></li>{('<li><a href="' + esc(C.LINKEDIN) + '" target="_blank" rel="me noopener">LinkedIn</a></li>') if C.LINKEDIN else ''}<li><button class="link-btn" type="button" data-copy="{EMAIL}">Copy my email address</button></li><li><a href="mailto:amehemohib@gmail.com">amehemohib@gmail.com</a></li><li><a href="hire.html">Hiring? See the Hire me page</a></li></ul>
+        <ul class="other-links"><li><a href="{CV_ASK}" target="_blank" rel="noopener">Request my CV</a></li>{('<li><a href="' + esc(C.LINKEDIN) + '" target="_blank" rel="me noopener">LinkedIn</a></li>') if C.LINKEDIN else ''}<li><button class="link-btn" type="button" data-copy="{EMAIL}">Copy my email address</button></li><li><a href="mailto:amehemohib@gmail.com">amehemohib@gmail.com</a></li><li><a href="hire.html">Hiring? See the Hire me page</a></li></ul>
       </div>
     </aside>
   </div>

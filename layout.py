@@ -5,7 +5,6 @@ import site_config as C
 BASE = 'https://alhajiimehemoh.github.io/'
 WA = 'https://wa.me/23279301430'
 EMAIL = 'alhajiimehemoh@gmail.com'
-CV = 'Alhaji_Ibrahim_Mehemoh_CV.pdf'
 OUT = os.path.dirname(os.path.abspath(__file__))
 from aimlogo import aim_logo
 CSS_V = '36'
@@ -25,6 +24,10 @@ def esc(s):
 
 def wa_link(text=''):
     return WA + ('?text=' + urllib.parse.quote(text) if text else '')
+
+
+# CV is shared on request only (no public CV file)
+CV_ASK = wa_link('Hello Alhaji, I came across your website. Could you please send me your latest CV?')
 
 
 def form_action():
@@ -177,7 +180,7 @@ def page(fn, title, desc, body, active=None, ld=None, noindex=False, sitemap=Tru
           <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
           <li><a href="{WA}" target="_blank" rel="noopener">WhatsApp +232 79 301 430</a></li>
           <li><a href="request.html">Request a quote</a></li>
-          <li><a href="{CV}" target="_blank" rel="noopener">Download CV (PDF)</a></li>{gbp}
+          <li><a href="{CV_ASK}" target="_blank" rel="noopener">Request my CV</a></li>{gbp}
         </ul>
       </div>
       <div>
@@ -197,7 +200,6 @@ def page(fn, title, desc, body, active=None, ld=None, noindex=False, sitemap=Tru
           <li><a href="now.html">What I am doing now</a></li>
           <li><a href="glossary.html">Glossary</a></li>
           <li><a href="capability-statement.html">Capability statement</a></li>
-          <li><a href="cv.html">Web CV</a></li>
           <li><a href="privacy.html">Privacy</a></li>
         </ul>
       </div>

@@ -379,23 +379,12 @@ def capability():
 
 
 def cv():
-    body = f'''<div class="wrap doc">
-  <div class="doc-actions no-print"><button class="btn btn-primary" type="button" data-print>Print or save as PDF</button> <a class="btn" href="{CV}" download>Download my formal CV</a></div>
-  <header class="doc-head"><h1>Alhaji Ibrahim Mehemoh</h1><p>Data Officer and M&amp;E specialist &middot; Bo, Sierra Leone &middot; {EMAIL} &middot; +232 79 301 430</p></header>
-  <h2>Profile</h2><p>Data Officer managing immunisation, home visit and malaria data for a health NGO. Builds Survey123 forms, Power BI dashboards and data quality processes. Works in English and Krio.</p>
-  <h2>Experience</h2>
-  <p><strong>Evaluator and Data Officer, RHCI, Tikonko</strong>, Oct 2024 to present. Health data systems, CHW database management, dashboards, mobile data collection and M&amp;E reporting.</p>
-  <p><strong>Assistant IT Manager, SLIEPA, Freetown</strong>, Sep 2023 to Oct 2024. IT infrastructure, helpdesk, cybersecurity and staff ICT training.</p>
-  <p><strong>IT and Data Officer, SLPP, Bo District</strong>, Jan 2022 to Sep 2023. Membership databases, data analysis and digital campaigns.</p>
-  <p><strong>ICT Tutor, Growth Centre, Bo</strong>, 2016 to 2021. Taught Microsoft Office to more than 200 students; hardware and network troubleshooting.</p>
-  <h2>Education</h2><ul class="bullets"><li>BSc Computer Science (in progress)</li><li>Diplomas in Networking, Hardware and Software, Growth Centre Computer Training Institute, 2015 to 2019</li></ul>
-  <h2>Skills</h2><p>Power BI, Excel, Survey123, XLSForm, data cleaning and quality checks, PostgreSQL, Flask, Google Apps Script, networking, WordPress, staff training.</p>
-</div>'''
-    page('cv.html', 'Web CV | Alhaji Ibrahim Mehemoh', 'Web and printable CV of Alhaji Ibrahim Mehemoh, generated from the content of this site.',
-         body, crumbs=[('Web CV', None)], progress=False)
+    # The public CV was removed. Keep the old address working by sending visitors to Hire me.
+    html = """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<title>CV available on request</title><link rel="canonical" href="hire.html"><meta http-equiv="refresh" content="0; url=hire.html"></head>
+<body><p>My CV is available on request. <a href="hire.html">Go to the Hire me page</a>.</p></body></html>"""
+    open('cv.html', 'w').write(html)
 
-
-# ------------------------------------------------------------------ admin note composer
 def admin():
     cats = ['Health data', 'IT support', 'Career', 'Cybersecurity']
     opts = ''.join(f'<option>{c}</option>' for c in cats)
@@ -533,7 +522,7 @@ self.addEventListener('fetch', e => {
 KRIO = {
     "nav.projects": "Wok dɛm", "nav.services": "Sɛvis dɛm", "nav.resources": "Tin dɛm fɔ yuz", "nav.notes": "Nōt dɛm",
     "nav.about": "Bɔt mi", "nav.hire": "Contract mi", "nav.contact": "Tɔk to mi",
-    "hero.projects": "Si di wok dɛm", "hero.contact": "Tɔk to mi", "hero.cv": "Dawnload mi CV (PDF)"
+    "hero.projects": "Si di wok dɛm", "hero.contact": "Tɔk to mi", "hero.cv": "Aks fɔ mi CV"
 }
 
 
